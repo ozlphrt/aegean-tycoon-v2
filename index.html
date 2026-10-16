@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aegean Tycoon — Rebirth of the Archipelago</title>
+    <meta name="description" content="A 3D simulation of maritime commerce across the Aegean Sea, awakening from night into daylight." />
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <!-- Three.js 3D Viewport -->
+    <div id="canvas-container">
+      <canvas id="three-canvas"></canvas>
+    </div>
+
+    <!-- UI Overlay (Glassmorphism HUD) -->
+    <div id="hud-overlay">
+      <!-- Top Navigation & Treasury Bar -->
+      <header id="top-bar" class="glass-panel">
+        <div class="brand-section">
+          <span class="brand-badge">AEGEAN</span>
+          <h1 id="brand-title">Aegean Tycoon</h1>
+          <span id="version-tag" class="subtle-tag">v2.0 Pre-Alpha</span>
+        </div>
+
+        <div class="metrics-section">
+          <div class="metric-chip" id="metric-treasury" title="Company Treasury">
+            <span class="metric-icon">🪙</span>
+            <span class="metric-label">Treasury</span>
+            <span class="metric-value" id="val-treasury">500 d</span>
+          </div>
+
+          <div class="metric-chip" id="metric-trade-points" title="Trade Points earned through commerce">
+            <span class="metric-icon">⭐</span>
+            <span class="metric-label">Trade Pts</span>
+            <span class="metric-value" id="val-tp">0 TP</span>
+          </div>
+
+          <div class="metric-chip" id="metric-islands" title="Connected / Total Islands">
+            <span class="metric-icon">🏝️</span>
+            <span class="metric-label">Archipelago</span>
+            <span class="metric-value" id="val-islands">2 / 52</span>
+          </div>
+        </div>
+
+        <div class="time-controls-section">
+          <div class="clock-display" id="clock-display">
+            <span id="game-date">May 1, 2026</span>
+            <span id="game-time">08:00</span>
+          </div>
+          <div class="btn-group" id="speed-controls" role="group" aria-label="Game Speed Controls">
+            <button id="btn-speed-pause" class="btn-icon" title="Pause (Space)">⏸</button>
+            <button id="btn-speed-1x" class="btn-icon active" title="Normal 1x (1)">1x</button>
+            <button id="btn-speed-4x" class="btn-icon" title="Fast 4x (2)">4x</button>
+            <button id="btn-speed-16x" class="btn-icon" title="Ultra 16x (3)">16x</button>
+          </div>
+          <button id="btn-top-settings" class="btn-icon" title="Display & Graphics Settings (S)">⚙️</button>
+        </div>
+      </header>
+
+      <!-- Left Inspector Panel (Island & Route Detail) -->
+      <aside id="inspector-panel" class="glass-panel closed">
+        <div class="panel-header">
+          <div class="island-title-row">
+            <h2 id="inspector-title">Naxos Port</h2>
+            <div class="header-tag-group">
+              <span id="inspector-status-badge" class="badge-connected">Daylight • Connected</span>
+              <button id="btn-close-inspector" class="btn-icon btn-panel-close" title="Close Panel (Esc)">✕</button>
+            </div>
+          </div>
+          <p id="inspector-subtitle" class="subtle-text">Cyclades • Population: 19,000</p>
+        </div>
+
+        <div class="panel-content" id="inspector-body">
+          <div class="section-block">
+            <h3 class="section-title">Production & Exports</h3>
+            <div class="good-pill-list" id="inspector-produces">
+              <span class="good-pill producer" title="Exports Grain">🌾 Grain <strong class="good-rate">+8/d</strong></span>
+              <span class="good-pill producer" title="Exports Cheese">🧀 Cheese <strong class="good-rate">+6/d</strong></span>
+              <span class="good-pill producer" title="Exports Fresh Water">💧 Water <strong class="good-rate">+5/d</strong></span>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <h3 class="section-title">Imports & Demand</h3>
+            <div class="good-pill-list" id="inspector-consumes">
+              <span class="good-pill consumer" title="Needs Fuel">⛽ Fuel <strong class="good-rate">-4/d</strong></span>
+              <span class="good-pill consumer" title="Needs Wine">🍷 Wine <strong class="good-rate">-2/d</strong></span>
+              <span class="good-pill consumer" title="Needs Crafts">🏺 Crafts <strong class="good-rate">-3/d</strong></span>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <h3 class="section-title">Active Routes & Vessels</h3>
+            <div id="inspector-routes" class="route-list">
+              <div class="route-card" id="route-naxos-santorini">
+                <span class="route-icon">⛵</span>
+                <div class="route-info">
+                  <div class="route-name">Naxos ↔ Santorini</div>
+                  <div class="route-meta">1 Fishing Boat • Carrying Grain</div>
+                </div>
+                <span class="route-profit positive">+18 d/trip</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-actions">
+          <button id="btn-new-route" class="btn-primary">Establish Route</button>
+          <button id="btn-buy-ship" class="btn-secondary">Commission Vessel</button>
+        </div>
+      </aside>
+
+      <!-- Right Event Feed & Notifications -->
+      <aside id="feed-panel" class="glass-panel closed">
+        <div class="feed-header">
+          <span class="feed-title">Maritime Dispatch</span>
+          <div class="feed-header-actions">
+            <button id="btn-clear-feed" class="btn-text">Clear</button>
+            <button id="btn-close-feed" class="btn-icon btn-panel-close" title="Close Dispatches">✕</button>
+          </div>
+        </div>
+        <div id="event-feed-list" class="event-feed">
+          <div class="feed-item event-highlight" id="feed-item-intro">
+            <span class="feed-badge">AWAKENING</span>
+            <p class="feed-text">Santorini and Naxos have opened the first trade exchange in the Aegean.</p>
+            <span class="feed-time">Just now</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Bottom Mini-bar & Controls -->
+      <footer id="bottom-bar" class="glass-panel">
+        <div class="quick-toggles">
+          <div class="layer-switcher" id="layer-switcher" role="group" aria-label="Geodata Layer Switcher">
+            <button id="btn-layer-night" class="layer-btn active" title="Night Satellite View (N)">🌙 Night</button>
+            <button id="btn-layer-day" class="layer-btn" title="Day Satellite View (D)">☀️ Day</button>
+            <button id="btn-layer-heightmap" class="layer-btn" title="DEM Heightmap (H)">🏔️ DEM</button>
+            <button id="btn-layer-mask" class="layer-btn" title="Island Territory Mask (M)">🗺️ Mask</button>
+          </div>
+          <button id="btn-open-settings" class="toggle-btn" title="Display & Graphics Settings (S)">
+            <span class="toggle-indicator"></span> ⚙️ Settings
+          </button>
+          <button id="btn-toggle-feed" class="toggle-btn" title="Toggle Maritime Dispatch Panel">
+            <span class="toggle-indicator"></span> Dispatch
+          </button>
+          <button id="btn-toggle-flow" class="toggle-btn active" title="Toggle Trade Flow Arcs (F)">
+            <span class="toggle-indicator"></span> Trade Flows
+          </button>
+          <button id="btn-toggle-labels" class="toggle-btn active" title="Toggle Island Names (L)">
+            <span class="toggle-indicator"></span> Island Labels
+          </button>
+        </div>
+        <div id="simulation-status" class="status-msg">
+          <span class="pulse-dot"></span> Aegean Geodata Verified • 16 Ports Mapped
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

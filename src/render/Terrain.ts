@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import type { IslandData, IslandEconomyState } from '../data/types';
+import { getProsperityRgb } from './prosperityPalette';
 
 const terrainVertexShader = /* glsl */ `
   varying vec2 vUv;
@@ -64,6 +66,16 @@ const terrainFragmentShader = /* glsl */ `
   uniform float uDEMBrownStart;
   uniform float uDEMBrownPeak;
   uniform float uDEMWhiteStart;
+  uniform vec3 uDEMColCoast;
+  uniform vec3 uDEMColValley;
+  uniform vec3 uDEMColFoothill;
+  uniform vec3 uDEMColSlope;
+  uniform vec3 uDEMColRidge;
+  uniform vec3 uDEMColSummit;
+  uniform float uDEMSunRadiance;
+  uniform float uDEMAmbientFill;
+  uniform float uDEMSunWarmth;
+  uniform float uDEMReliefStrength;
   uniform float uMoonlightIntensity;
   uniform float uNightAmbient;
   uniform float uCityGlow;
@@ -73,6 +85,63 @@ const terrainFragmentShader = /* glsl */ `
   uniform float uDayWarmth;
   uniform float uDaySaturation;
   uniform float uDaySeaBrilliance;
+  uniform float uIslandLightRadius;
+  uniform float uIslandLit[64];
+  uniform vec2 uIslandPortUV[64];
+  uniform int uWaveIslandId;
+  uniform vec2 uWaveCenter;
+  uniform float uWaveRadius;
+  uniform float uWaveProgress;
+
+  // Prosperity outline: RGB = color, A = alpha / intensity
+  uniform vec4 uIslandOutline[64];
+  uniform float uDistanceOutlineWeight;
+
+  // Luminous cartographic shoreline outline reflecting island prosperity
+  vec3 getIslandOutlineGlow(vec2 uv, float isLandVal, float time) {
+    vec4 maskSample = texture2D(uMaskTex, uv);
+    int landId = int(clamp(floor(maskSample.r * 255.0 + 0.5), 0.0, 63.0));
+    int nearestId = int(clamp(floor(maskSample.g * 255.0 + 0.5), 0.0, 63.0));
+
+    // Seaward component: smooth coastal halo extending into the sea (wider reach ~0.072)
+    float seaDist = maskSample.b;
+    float seaGlow = 0.0;
+    if (seaDist < 0.072 && nearestId > 0) {
+      float core = smoothstep(0.062, 0.0, seaDist);
+      float halo = exp(-seaDist * 16.0);
+      seaGlow = mix(core, halo, 0.45);
+    }
+
+    // Landward component: soft luminous contour inside the island perimeter (wider reach ~0.038)
+    // STRICT RULE: Only recognized islands/ports (landId > 0) glow; unassigned mainland (Turkey, etc.) is strictly 0.0!
+    float inlandDist = maskSample.a;
+    float landGlow = 0.0;
+    if (landId > 0 && inlandDist > 0.0005 && inlandDist < 0.038) {
+      float core = smoothstep(0.036, 0.0, inlandDist);
+      float halo = exp(-inlandDist * 22.0);
+      landGlow = mix(core, halo, 0.40) * 0.82;
+    }
+
+    // Smooth bilateral coastline transition: eliminates harsh 1-pixel step at water's edge
+    float shoreBlend = smoothstep(0.30, 0.70, isLandVal);
+    float glow = mix(seaGlow, landGlow, shoreBlend);
+    if (glow <= 0.001) return vec3(0.0);
+
+    // Identify relevant island for color lookup
+    int activeId = (shoreBlend > 0.5 && landId > 0) ? landId : (nearestId > 0 ? nearestId : landId);
+    if (activeId <= 0) return vec3(0.0);
+
+    vec4 outlineData = uIslandOutline[activeId];
+    if (outlineData.a <= 0.001) return vec3(0.0);
+
+    vec3 outlineColor = outlineData.rgb;
+    float outlineAlpha = outlineData.a;
+
+    // Organic living rhythm
+    float pulse = 0.94 + 0.06 * sin(time * 2.2 + float(activeId) * 1.3);
+
+    return outlineColor * (glow * outlineAlpha * pulse * uDistanceOutlineWeight);
+  }
 
   // Organic, multi-directional Mediterranean sea wave simulation
   // Non-orthogonal wave trains + domain warping (zero geometric grid or fabric weave artifacts)
@@ -123,19 +192,19 @@ const terrainFragmentShader = /* glsl */ `
   // Topographic elevation color ramp for DEM mode (Dynamic Parametric Mediterranean Palette)
   // Real-time tunable via interactive sliders: Green limit -> Brown start -> Brown peak -> White start
   vec3 getDEMColor(float elev, float isLand, float depth) {
-    // Deep Aegean bathymetry gradient: dark slate navy abyss to shelf grey-blue
-    vec3 oceanCol = mix(vec3(0.015, 0.035, 0.075), vec3(0.045, 0.095, 0.15), depth);
+    // Deep Aegean bathymetry gradient: dark slate navy abyss to shelf grey-blue (deep, dark Mediterranean water)
+    vec3 oceanCol = mix(vec3(0.007, 0.018, 0.042), vec3(0.022, 0.052, 0.096), depth);
 
-    // Exact user reference color stops:
-    vec3 cGreenDark   = vec3(0.020, 0.220, 0.114); // Shoreline fringe: deep dark forest green
-    vec3 cGreenRich   = vec3(0.125, 0.325, 0.080); // Lowlands: rich green
-    vec3 cOliveKhaki  = vec3(0.355, 0.405, 0.135); // Foothills: warm olive / khaki
-    vec3 cOchreTan    = vec3(0.535, 0.450, 0.208); // Lower slopes: warm golden ochre tan
-    vec3 cSienna      = vec3(0.665, 0.490, 0.285); // Mid slopes: warm sienna / terracotta
-    vec3 cBrownDeep   = vec3(0.575, 0.380, 0.220); // Upper slopes: rich deep mountain brown
-    vec3 cLimestone   = vec3(0.760, 0.655, 0.520); // High ridges: warm limestone / buff
-    vec3 cPaleStone   = vec3(0.840, 0.800, 0.750); // Sub-peaks: pale stone
-    vec3 cAlpineWhite = vec3(0.930, 0.930, 0.960); // Highest peaks: alpine white
+    // Dynamic user-tunable color stops (Coast -> Valley -> Foothill -> Slope -> Ridge -> Summit):
+    vec3 cGreenDark   = uDEMColCoast;
+    vec3 cGreenRich   = uDEMColValley;
+    vec3 cOliveKhaki  = uDEMColFoothill;
+    vec3 cOchreTan    = mix(uDEMColFoothill, uDEMColSlope, 0.45);
+    vec3 cSienna      = uDEMColSlope;
+    vec3 cBrownDeep   = mix(uDEMColSlope, uDEMColRidge, 0.35);
+    vec3 cLimestone   = uDEMColRidge;
+    vec3 cPaleStone   = mix(uDEMColRidge, uDEMColSummit, 0.45);
+    vec3 cAlpineWhite = uDEMColSummit;
 
     vec3 landCol;
     float gLim = max(0.005, uDEMGreenLimit);
@@ -228,10 +297,28 @@ const terrainFragmentShader = /* glsl */ `
     if (uViewMode == 2) {
       // 🏔️ DEM Digital Elevation Model (National Geographic / Swiss Hillshade Cartography)
       vec3 demCol = getDEMColor(hm.r, isLand, seaDepth);
-      float NdotL = dot(norm, normalize(vec3(0.65, 0.58, -0.48)));
-      float hillshade = smoothstep(-0.25, 0.85, NdotL);
-      float shadeFactor = mix(0.40, 1.08, hillshade);
-      gl_FragColor = vec4(demCol * shadeFactor, 1.0);
+
+      // Topographic hillshading with tunable sun radiance, sky ambient, and warmth
+      vec3 demSunDir = normalize(vec3(0.65, 0.58, -0.48));
+      float NdotL = dot(norm, demSunDir);
+      float hillshade = smoothstep(-0.28, 0.88, NdotL);
+
+      // Relief contrast shaping
+      float relief = pow(hillshade, mix(0.70, 1.45, uDEMReliefStrength));
+
+      // Sky ambient fill (soft blue-grey atmospheric tint)
+      vec3 ambientSky = vec3(0.85, 0.90, 0.96) * uDEMAmbientFill;
+
+      // Direct sun radiance with warm-to-cool sunlight temperature
+      vec3 sunWarmTint = mix(vec3(0.92, 0.98, 1.06), vec3(1.18, 0.98, 0.76), uDEMSunWarmth);
+      vec3 directSun = vec3(1.05, 1.00, 0.95) * sunWarmTint * (relief * uDEMSunRadiance);
+
+      vec3 litDEM = demCol * (ambientSky + directSun);
+
+      // Luminous prosperity outline along island shorelines
+      litDEM += getIslandOutlineGlow(vUv, isLand, uTime);
+
+      gl_FragColor = vec4(litDEM, 1.0);
       return;
     } else if (uViewMode == 3) {
       // 🗺️ Island Territory ID Mask
@@ -241,17 +328,91 @@ const terrainFragmentShader = /* glsl */ `
       return;
     }
 
+    // Effective daylight blend for this pixel:
+    // Mode 1: Global Day layer forces 1.0 everywhere
+    // Mode 0: Normal Simulation view blends per-island dynamically based on uIslandLit[islandId] and dawn wave
+    float effectiveDayBlend = uGlobalDayBlend;
+    vec3 frontierGlow = vec3(0.0);
+
+    if (uViewMode == 0) {
+      // Sample 4-channel Island Distance Field Texture:
+      // Channel R: Discrete land territory maskId (1..63 on land, 0 on sea)
+      // Channel G: Nearest island ID (1..63 propagated across land and sea)
+      // Channel B: Normalized Euclidean distance from coast into the sea (0.0 at coast -> 1.0 at ~14 km out)
+      // Channel A: Normalized distance inland (0.0 at coast -> 1.0 interior)
+      vec4 maskSample = texture2D(uMaskTex, vUv);
+      int landId = int(clamp(floor(maskSample.r * 255.0 + 0.5), 0.0, 63.0));
+      int nearestId = int(clamp(floor(maskSample.g * 255.0 + 0.5), 0.0, 63.0));
+      float seaDist = maskSample.b;
+
+      int activeId = (landId > 0) ? landId : nearestId;
+      float islandLit = (activeId > 0) ? uIslandLit[activeId] : 0.0;
+
+      // Distance from this island's port / harbor center (Euclidean metric in UV space)
+      vec2 portUV = uIslandPortUV[activeId];
+      vec2 pNorm = vec2(vUv.x * 0.788, vUv.y);
+      vec2 portNorm = vec2(portUV.x * 0.788, portUV.y);
+      float distFromPort = distance(pNorm, portNorm);
+
+      // Light reach configured by user tuner (default reach ~0.029 UV ≈ 21 km, illuminating harbor & surrounding territory)
+      float maxReach = max(0.016, uIslandLightRadius * 0.065);
+      float innerCore = maxReach * 0.25; // Full daylight core immediately around the harbor quays
+      float distNorm = clamp((distFromPort - innerCore) / max(0.001, maxReach - innerCore), 0.0, 1.0);
+      // Quintic smootherstep (C2 continuity: 6x^5 - 15x^4 + 10x^3) for seamless, silky photographic fade out
+      float smoothPortFade = 1.0 - distNorm * distNorm * distNorm * (distNorm * (distNorm * 6.0 - 15.0) + 10.0);
+
+      // Active radial wave of light when this island is undergoing dawn reveal
+      if (activeId > 0 && activeId == uWaveIslandId && uWaveProgress > 0.0) {
+        vec2 cNorm = vec2(uWaveCenter.x * 0.788, uWaveCenter.y);
+        float d = distance(pNorm, cNorm);
+
+        // Soft, cinematic feathering for daylight expansion up to maxReach
+        float currentReach = min(uWaveRadius, maxReach);
+        float feather = max(0.016, currentReach * 0.50);
+        float edge0 = currentReach + feather * 0.65;
+        float edge1 = max(0.0, currentReach - feather * 0.45);
+        float waveFront = smoothstep(edge0, edge1, d);
+        waveFront = waveFront * waveFront * waveFront * (waveFront * (waveFront * 6.0 - 15.0) + 10.0);
+        islandLit = max(islandLit, waveFront);
+
+        // Diffuse golden dawn halo along the advancing light frontier
+        float haloWidth = feather * 0.90;
+        float ringDist = abs(d - currentReach);
+        if (ringDist < haloWidth && uWaveProgress < 0.98) {
+          float normHalo = ringDist / haloWidth;
+          // Smooth Hann bell curve (zero slope at center and zero slope at boundary)
+          float ringIntensity = 0.5 * (1.0 + cos(normHalo * 3.14159265)) * sin(uWaveProgress * 3.14159265);
+          frontierGlow = vec3(1.20, 0.92, 0.42) * ringIntensity * 1.5;
+        }
+      }
+
+      if (islandLit > 0.0001) {
+        if (landId > 0) {
+          // Solid land territory: light radiates from port and smoothly fades out across the island into the night
+          effectiveDayBlend = clamp(islandLit * smoothPortFade, 0.0, 1.0);
+        } else {
+          // Coastal sea: radiant daylight smoothly attenuates with both harbor distance and coastal distance
+          float normDist = clamp(seaDist / max(0.01, uIslandLightRadius), 0.0, 1.0);
+          float seaFalloff = smoothstep(1.0, 0.0, normDist);
+          // Smootherstep for continuous transition into open water without abrupt cutoff
+          float seaSmooth = seaFalloff * seaFalloff * (3.0 - 2.0 * seaFalloff);
+          float seaLight = pow(seaSmooth, 1.5);
+          effectiveDayBlend = clamp(islandLit * smoothPortFade * seaLight, 0.0, 1.0);
+        }
+      }
+    }
+
     // Moonlit night enhancement: balanced silver-blue Mediterranean full moon (no blue over-amplification)
     vec3 nightEnhanced = nightColor.rgb * vec3(1.85, 2.05, 2.25);
     // Daylight enhancement: sunny, radiant Mediterranean base
     vec3 dayEnhanced = dayColor.rgb * vec3(1.12, 1.12, 1.10);
-    vec3 baseColor = mix(nightEnhanced, dayEnhanced, uGlobalDayBlend);
+    vec3 baseColor = mix(nightEnhanced, dayEnhanced, effectiveDayBlend);
 
     // Dynamic light direction:
     // Moon at night -> Angled Radiant Mediterranean Morning Sun (~45 deg from Southeast)
     vec3 nightLightDir = uMoonDir;
     vec3 daySunDir = normalize(vec3(0.65, 0.58, -0.48));
-    vec3 lightDir = normalize(mix(nightLightDir, daySunDir, uGlobalDayBlend));
+    vec3 lightDir = normalize(mix(nightLightDir, daySunDir, effectiveDayBlend));
 
     // Dynamic topographic gradient hillshading (both Full Moon and Daylight):
     // Full moon casts distinct silver illumination on sunward ridges and soft lunar shade on backslopes
@@ -261,29 +422,29 @@ const terrainFragmentShader = /* glsl */ `
 
     float dayShade = smoothstep(-0.25, 0.90, NdotL);
     float dayDiff = mix(0.25, 1.35, dayShade);
-    float lightDiff = mix(nightDiff, dayDiff, uGlobalDayBlend);
+    float lightDiff = mix(nightDiff, dayDiff, effectiveDayBlend);
 
     // Dynamic ambient & direct lighting calibrated for luminous full moon and radiant sun
     vec3 nightAmbient = vec3(1.15, 1.38, 1.75) * uNightAmbient;
     vec3 dayAmbient = vec3(0.82, 0.88, 0.94) * uDayAmbient;
-    vec3 ambient = mix(nightAmbient, dayAmbient, uGlobalDayBlend);
+    vec3 ambient = mix(nightAmbient, dayAmbient, effectiveDayBlend);
 
     // Sunlight color temperature / warmth: shifts from cool Aegean crispness to golden hour warmth
     vec3 warmSunTint = mix(vec3(0.92, 0.98, 1.08), vec3(1.16, 0.97, 0.78), uDayWarmth);
     vec3 nightDirect = vec3(2.10, 2.45, 3.10) * uMoonlightIntensity;
     vec3 dayDirect = vec3(1.05, 1.00, 0.92) * warmSunTint * uDaySunIntensity;
-    vec3 direct = mix(nightDirect, dayDirect, uGlobalDayBlend);
+    vec3 direct = mix(nightDirect, dayDirect, effectiveDayBlend);
 
     // Natural Mediterranean terrain color grading with user-tunable landscape saturation:
     float luma = dot(baseColor, vec3(0.2126, 0.7152, 0.0722));
     vec3 naturalLand = mix(vec3(luma), baseColor, uDaySaturation);
-    vec3 terrainBase = mix(baseColor, naturalLand, uGlobalDayBlend);
+    vec3 terrainBase = mix(baseColor, naturalLand, effectiveDayBlend);
 
     vec3 terrainLit = terrainBase * (ambient + direct * lightDiff);
 
     // Highlight ceiling safety limiter: ensures mountain slopes never exceed comfortable viewing luminance
     float litLuma = dot(terrainLit, vec3(0.299, 0.587, 0.114));
-    float maxLitLuma = mix(0.42, 0.88, uGlobalDayBlend);
+    float maxLitLuma = mix(0.42, 0.88, effectiveDayBlend);
     if (litLuma > maxLitLuma) {
       float compLitLuma = maxLitLuma + (1.0 - exp(-(litLuma - maxLitLuma) * 3.0)) * 0.08;
       terrainLit *= (compLitLuma / litLuma);
@@ -291,10 +452,10 @@ const terrainFragmentShader = /* glsl */ `
 
     // Gentle, soft amber harbor and city lights (dim, delicate nocturnal embers)
     float cityAlpha = lightsColor.a;
-    float nightLightMult = (1.0 - uGlobalDayBlend * 0.96);
+    float nightLightMult = (1.0 - effectiveDayBlend * 0.96);
     float glowLevel = (cityAlpha * 0.45 + pow(cityAlpha, 2.2) * 0.25) * nightLightMult * uCityGlow;
     vec3 cityGlow = lightsColor.rgb * glowLevel;
-    vec3 landResult = terrainLit + cityGlow;
+    vec3 landResult = terrainLit + cityGlow + frontierGlow;
 
     // Smooth anti-aliased ocean transition: 1.0 = deep sea, 0.0 = solid land
     float oceanFactor = 1.0 - smoothstep(0.15, 0.85, isLand);
@@ -309,24 +470,24 @@ const terrainFragmentShader = /* glsl */ `
       float fresnel = 0.04 + 0.96 * pow(1.0 - NdotV, 4.0);
 
       // Authentic Mediterranean sea color palette:
-      // Nocturnal sapphire abyss -> Daylight azure with coastal shelf teal
-      vec3 deepSeaNight = vec3(0.018, 0.045, 0.115);
-      vec3 deepSeaDay = vec3(0.018, 0.11, 0.25);
-      vec3 shelfSeaDay = vec3(0.035, 0.22, 0.38) * mix(vec3(1.0), vec3(0.85, 1.15, 1.25), (uDaySeaBrilliance - 1.0) * 0.4) * uDaySeaBrilliance;
+      // Nocturnal sapphire abyss -> Daylight azure with coastal shelf teal (deep, rich dark sea)
+      vec3 deepSeaNight = vec3(0.008, 0.022, 0.060);
+      vec3 deepSeaDay = vec3(0.010, 0.062, 0.155);
+      vec3 shelfSeaDay = vec3(0.020, 0.135, 0.240) * mix(vec3(1.0), vec3(0.85, 1.15, 1.25), (uDaySeaBrilliance - 1.0) * 0.4) * uDaySeaBrilliance;
 
-      vec3 deepSea = mix(deepSeaNight, deepSeaDay, uGlobalDayBlend);
-      vec3 shelfSea = mix(vec3(0.028, 0.075, 0.17), shelfSeaDay, uGlobalDayBlend);
+      vec3 deepSea = mix(deepSeaNight, deepSeaDay, effectiveDayBlend);
+      vec3 shelfSea = mix(vec3(0.014, 0.040, 0.095), shelfSeaDay, effectiveDayBlend);
       vec3 seaWaterCol = mix(shelfSea, deepSea, clamp(seaDepth * 1.25, 0.0, 1.0));
 
       // Atmospheric sky reflection for natural water sheen and horizon blend
-      vec3 skyReflectNight = vec3(0.08, 0.14, 0.28);
-      vec3 skyReflectDay = vec3(0.38, 0.58, 0.82);
-      vec3 skyReflect = mix(skyReflectNight, skyReflectDay, uGlobalDayBlend);
+      vec3 skyReflectNight = vec3(0.04, 0.08, 0.16);
+      vec3 skyReflectDay = vec3(0.22, 0.38, 0.58);
+      vec3 skyReflect = mix(skyReflectNight, skyReflectDay, effectiveDayBlend);
 
       // Shimmering full moon & sun specular glint path across waves
-      float specPower = mix(32.0, 110.0, uGlobalDayBlend);
+      float specPower = mix(32.0, 110.0, effectiveDayBlend);
       float spec = pow(max(0.0, dot(waveNorm, halfVec)), specPower);
-      vec3 waterGlint = direct * spec * mix(1.45 * uMoonGlint, 0.85 * uDaySeaBrilliance, uGlobalDayBlend);
+      vec3 waterGlint = direct * spec * mix(1.45 * uMoonGlint, 0.85 * uDaySeaBrilliance, effectiveDayBlend);
 
       // Full ocean result combining deep liquid body, sky reflection, and sun/moon glint
       vec3 seaResult = mix(seaWaterCol, skyReflect, fresnel * 0.60) + waterGlint;
@@ -334,6 +495,9 @@ const terrainFragmentShader = /* glsl */ `
       // Blend gracefully into land at coastlines
       landResult = mix(landResult, seaResult, oceanFactor * 0.94);
     }
+
+    // Luminous prosperity outline along island shorelines
+    landResult += getIslandOutlineGlow(vUv, isLand, uTime);
 
     gl_FragColor = vec4(landResult, 1.0);
   }
@@ -354,6 +518,29 @@ export class AegeanTerrain {
   private heightmapWidth = 0;
   private heightmapHeight = 0;
 
+  public islandLitArray: Float32Array = new Float32Array(64);
+  private waveAnim: {
+    islandId: number;
+    center: THREE.Vector2;
+    startTime: number;
+    duration: number;
+    maxRadius: number;
+    onComplete?: () => void;
+  } | null = null;
+  private fadeAnims: Map<number, {
+    startVal: number;
+    targetVal: number;
+    startTime: number;
+    duration: number;
+    onComplete?: () => void;
+  }> = new Map();
+
+  private islandPortUV: THREE.Vector2[] = Array.from({ length: 64 }, () => new THREE.Vector2(0.5, 0.5));
+  private islandOutline: THREE.Vector4[] = Array.from({ length: 64 }, () => new THREE.Vector4(0.38, 0.32, 0.22, 0.28));
+  private islandsList: IslandData[] = [];
+  private selectedIslandId: string | null = null;
+  private lastEconomies: Record<string, IslandEconomyState> | Map<string, IslandEconomyState> | null = null;
+
   constructor(
     private scene: THREE.Scene,
     textures: {
@@ -368,6 +555,24 @@ export class AegeanTerrain {
   ) {
     const geometry = new THREE.PlaneGeometry(this.planeWidth, this.planeHeight, 896, 896);
     geometry.rotateX(-Math.PI / 2);
+
+    // Santorini starts in daylight; Naxos awakens upon first maritime delivery
+    this.islandLitArray[1] = 1.0;
+    this.islandLitArray[2] = 0.0;
+
+    // Pre-initialize starting trade hub ports
+    // Santorini port: lat 36.386, lon 25.431 -> UV (0.49014, 0.26943)
+    this.islandPortUV[1].set(0.49014, 0.26943);
+    // Naxos port: lat 37.105, lon 25.373 -> UV (0.48186, 0.37214)
+    this.islandPortUV[2].set(0.48186, 0.37214);
+
+    // Asynchronously preload all island port UV coordinates from islands.json
+    fetch('/data/islands.json')
+      .then((res) => res.json())
+      .then((islands: IslandData[]) => {
+        this.setPortLocations(islands);
+      })
+      .catch((err) => console.warn('Could not preload island port UVs:', err));
 
     // Cache heightmap elevation data in memory to precisely ground 3D port pins on terrain
     if (textures.heightmap && textures.heightmap.image) {
@@ -400,18 +605,28 @@ export class AegeanTerrain {
         uDayTex: { value: textures.day },
         uLightsTex: { value: textures.lights },
         uMaskTex: { value: textures.mask },
-        uViewMode: { value: 0 },
-        uDisplacementScale: { value: 1.00 }, // User configured natural 3D mountain relief
+        uViewMode: { value: 2 }, // Default view mode: 2 = DEM Topography
+        uDisplacementScale: { value: 0.85 }, // User configured natural 3D mountain relief
         uGlobalDayBlend: { value: 0.0 },
         uMoonDir: { value: new THREE.Vector3().copy(moonLight.position).normalize() },
         uMoonColor: { value: new THREE.Color(0xb5d5fc) },
         uAmbientColor: { value: new THREE.Color(0x3e527a) },
         uCameraPos: { value: new THREE.Vector3() },
         uTime: { value: 0.0 },
-        uDEMGreenLimit: { value: 0.020 },
-        uDEMBrownStart: { value: 0.065 },
-        uDEMBrownPeak:  { value: 0.380 },
-        uDEMWhiteStart: { value: 0.780 },
+        uDEMGreenLimit: { value: 0.015 },
+        uDEMBrownStart: { value: 0.075 },
+        uDEMBrownPeak:  { value: 0.500 },
+        uDEMWhiteStart: { value: 0.700 },
+        uDEMColCoast:    { value: new THREE.Color(0x1e433d) },
+        uDEMColValley:   { value: new THREE.Color(0x35512f) },
+        uDEMColFoothill: { value: new THREE.Color(0x535a30) },
+        uDEMColSlope:    { value: new THREE.Color(0x8a7d6a) },
+        uDEMColRidge:    { value: new THREE.Color(0xb7874e) },
+        uDEMColSummit:   { value: new THREE.Color(0xefeff5) },
+        uDEMSunRadiance:   { value: 2.05 },
+        uDEMAmbientFill:   { value: 0.60 },
+        uDEMSunWarmth:     { value: 0.00 },
+        uDEMReliefStrength:{ value: 1.50 },
         uMoonlightIntensity: { value: 0.55 },
         uNightAmbient: { value: 0.40 },
         uCityGlow: { value: 0.20 },
@@ -421,6 +636,15 @@ export class AegeanTerrain {
         uDayWarmth: { value: 0.36 },
         uDaySaturation: { value: 0.50 },
         uDaySeaBrilliance: { value: 0.60 },
+        uIslandLightRadius: { value: 0.45 },
+        uIslandLit: { value: this.islandLitArray },
+        uIslandPortUV: { value: this.islandPortUV },
+        uIslandOutline: { value: this.islandOutline },
+        uDistanceOutlineWeight: { value: 1.0 },
+        uWaveIslandId: { value: 0 },
+        uWaveCenter: { value: new THREE.Vector2(0.5, 0.5) },
+        uWaveRadius: { value: 0.0 },
+        uWaveProgress: { value: 0.0 },
       },
     });
 
@@ -431,9 +655,225 @@ export class AegeanTerrain {
   public update(time: number, camera: THREE.Camera) {
     this.material.uniforms.uTime.value = time;
     this.material.uniforms.uCameraPos.value.copy(camera.position);
+
+    // Distance-based outline weight:
+    // Boost outline radiance at distant overview (camY >= 35) to pop out vividly,
+    // settling gracefully when zoomed close to an island (camY <= 15).
+    const camY = camera.position.y;
+    const distWeight = THREE.MathUtils.lerp(0.75, 1.30, THREE.MathUtils.clamp((camY - 14) / 20, 0, 1));
+    this.material.uniforms.uDistanceOutlineWeight.value = distWeight;
+
+    const now = performance.now();
+
+    // 1. Advance active radial dawn wave animation
+    if (this.waveAnim) {
+      const elapsed = now - this.waveAnim.startTime;
+      const progress = Math.min(1.0, elapsed / this.waveAnim.duration);
+      // Smooth cubic ease-out
+      const ease = 1.0 - Math.pow(1.0 - progress, 3.0);
+
+      this.material.uniforms.uWaveProgress.value = progress;
+      this.material.uniforms.uWaveRadius.value = ease * this.waveAnim.maxRadius;
+
+      if (progress >= 1.0) {
+        this.islandLitArray[this.waveAnim.islandId] = 1.0;
+        this.material.uniforms.uWaveIslandId.value = 0;
+        this.material.uniforms.uWaveProgress.value = 0.0;
+        this.material.uniforms.uWaveRadius.value = 0.0;
+        const cb = this.waveAnim.onComplete;
+        this.waveAnim = null;
+        this.recomputeOutlines();
+        cb?.();
+      }
+    }
+
+    // 2. Advance active sleep fade animations
+    if (this.fadeAnims.size > 0) {
+      for (const [id, anim] of this.fadeAnims.entries()) {
+        const elapsed = now - anim.startTime;
+        const p = Math.min(1.0, elapsed / anim.duration);
+        const val = THREE.MathUtils.lerp(anim.startVal, anim.targetVal, p);
+        this.islandLitArray[id] = val;
+        if (p >= 1.0) {
+          this.islandLitArray[id] = anim.targetVal;
+          this.fadeAnims.delete(id);
+          this.recomputeOutlines();
+          anim.onComplete?.();
+        }
+      }
+    }
   }
 
-  public displacementScale = 1.00;
+  public setSelectedIsland(islandId: string | null): void {
+    this.selectedIslandId = islandId;
+    this.recomputeOutlines();
+  }
+
+  public updateIslandEconomies(
+    economies: Record<string, IslandEconomyState> | Map<string, IslandEconomyState>,
+    islands?: IslandData[],
+    selectedIslandId?: string | null
+  ): void {
+    this.lastEconomies = economies;
+    if (islands && islands.length > 0) {
+      this.islandsList = islands;
+    }
+    if (selectedIslandId !== undefined) {
+      this.selectedIslandId = selectedIslandId;
+    }
+    this.recomputeOutlines();
+  }
+
+  /**
+   * Recomputes per-island coastline outline color and alpha reflecting prosperity and selection.
+   */
+  public recomputeOutlines(): void {
+    if (!this.islandsList || this.islandsList.length === 0) return;
+
+    for (const isl of this.islandsList) {
+      const maskId = isl.maskId;
+      if (!maskId || maskId <= 0 || maskId >= 64) continue;
+
+      const isSelected = this.selectedIslandId === isl.id;
+      const isLit = this.islandLitArray[maskId] > 0.5;
+
+      if (!isLit) {
+        // Subtle warm bronze for sleeping/unconnected islands
+        this.islandOutline[maskId].set(0.38, 0.32, 0.22, isSelected ? 0.45 : 0.28);
+      } else {
+        // Lit connected island: Continuous Prosperity Color Palette (0% #D32F2F -> 100% #249B56)
+        const eco = this.lastEconomies instanceof Map
+          ? this.lastEconomies.get(isl.id)
+          : (this.lastEconomies as any)?.[isl.id];
+
+        if (eco) {
+          const p = Math.max(0, Math.min(1, eco.prosperity));
+          const col = getProsperityRgb(p);
+          this.islandOutline[maskId].set(col.r, col.g, col.b, isSelected ? 1.0 : 0.95);
+        } else {
+          // Default connected: neutral mid-prosperity (50% #FFD23F)
+          const midCol = getProsperityRgb(0.5);
+          this.islandOutline[maskId].set(midCol.r, midCol.g, midCol.b, isSelected ? 1.0 : 0.95);
+        }
+      }
+    }
+  }
+
+  public lonLatToUV(lon: number, lat: number): { u: number; v: number } {
+    const u = Math.max(0, Math.min(1, (lon - this.minLon) / (this.maxLon - this.minLon)));
+    const v = Math.max(0, Math.min(1, (lat - this.minLat) / (this.maxLat - this.minLat)));
+    return { u, v };
+  }
+
+  public setPortLocations(
+    islands: Array<{ maskId: number; port?: { lon: number; lat: number }; lon: number; lat: number } & Partial<IslandData>>
+  ) {
+    this.islandsList = islands as IslandData[];
+    for (const isl of islands) {
+      if (isl.maskId >= 1 && isl.maskId <= 63) {
+        const pLon = isl.port?.lon ?? isl.lon;
+        const pLat = isl.port?.lat ?? isl.lat;
+        const uv = this.lonLatToUV(pLon, pLat);
+        this.islandPortUV[isl.maskId].set(uv.u, uv.v);
+      }
+    }
+    this.recomputeOutlines();
+  }
+
+  public awakenIsland(
+    islandId: number,
+    portLon?: number,
+    portLat?: number,
+    durationMs: number = 2800,
+    onComplete?: () => void
+  ) {
+    if (islandId < 1 || islandId > 63) return;
+
+    this.fadeAnims.delete(islandId);
+
+    let centerUV: { u: number; v: number };
+    if (portLon !== undefined && portLat !== undefined) {
+      centerUV = this.lonLatToUV(portLon, portLat);
+    } else {
+      centerUV = { u: this.islandPortUV[islandId].x, v: this.islandPortUV[islandId].y };
+    }
+
+    // Dynamic wave radius blooming smoothly up to harbor daylight reach
+    let maxRadius = 0.055;
+    if (islandId === 7) {
+      maxRadius = 0.085; // Crete spans entire southern border
+    } else if (islandId === 8 || islandId === 9 || islandId === 10) {
+      maxRadius = 0.065; // Rhodes, Lesbos, Chios
+    } else if (islandId >= 11 && islandId <= 15) {
+      maxRadius = 0.060; // Samos, Lemnos, Corfu, etc.
+    }
+
+    this.material.uniforms.uWaveIslandId.value = islandId;
+    this.material.uniforms.uWaveCenter.value.set(centerUV.u, centerUV.v);
+    this.material.uniforms.uWaveRadius.value = 0.0;
+    this.material.uniforms.uWaveProgress.value = 0.001;
+
+    this.waveAnim = {
+      islandId,
+      center: new THREE.Vector2(centerUV.u, centerUV.v),
+      startTime: performance.now(),
+      duration: durationMs,
+      maxRadius,
+      onComplete,
+    };
+  }
+
+  public sleepIsland(islandId: number, durationMs: number = 1400, onComplete?: () => void) {
+    if (islandId < 1 || islandId > 63) return;
+
+    if (this.waveAnim && this.waveAnim.islandId === islandId) {
+      this.waveAnim = null;
+      this.material.uniforms.uWaveIslandId.value = 0;
+      this.material.uniforms.uWaveProgress.value = 0.0;
+      this.material.uniforms.uWaveRadius.value = 0.0;
+    }
+
+    const currentVal = this.islandLitArray[islandId];
+    if (currentVal <= 0.001) {
+      this.islandLitArray[islandId] = 0.0;
+      onComplete?.();
+      return;
+    }
+
+    this.fadeAnims.set(islandId, {
+      startVal: currentVal,
+      targetVal: 0.0,
+      startTime: performance.now(),
+      duration: durationMs,
+      onComplete,
+    });
+  }
+
+  public getIslandLit(islandId: number): number {
+    if (islandId < 1 || islandId > 63) return 0.0;
+    return this.islandLitArray[islandId] || 0.0;
+  }
+
+  public setIslandLit(islandId: number, lit: number) {
+    if (islandId < 1 || islandId > 63) return;
+    this.islandLitArray[islandId] = Math.max(0, Math.min(1, lit));
+    this.recomputeOutlines();
+  }
+
+  public toggleIslandLit(
+    islandId: number,
+    portLon?: number,
+    portLat?: number,
+    onComplete?: (isLit: boolean) => void
+  ) {
+    if (this.getIslandLit(islandId) > 0.5) {
+      this.sleepIsland(islandId, 1400, () => onComplete?.(false));
+    } else {
+      this.awakenIsland(islandId, portLon, portLat, 2800, () => onComplete?.(true));
+    }
+  }
+
+  public displacementScale = 0.85;
 
   public setDisplacementScale(scale: number) {
     this.displacementScale = scale;
@@ -454,6 +894,49 @@ export class AegeanTerrain {
       brownPeak: this.material.uniforms.uDEMBrownPeak.value as number,
       whiteStart: this.material.uniforms.uDEMWhiteStart.value as number,
       displacementScale: this.material.uniforms.uDisplacementScale.value as number,
+    };
+  }
+
+  public setDEMColors(colors: {
+    coast?: string;
+    valley?: string;
+    foothill?: string;
+    slope?: string;
+    ridge?: string;
+    summit?: string;
+  }) {
+    if (colors.coast) (this.material.uniforms.uDEMColCoast.value as THREE.Color).set(colors.coast);
+    if (colors.valley) (this.material.uniforms.uDEMColValley.value as THREE.Color).set(colors.valley);
+    if (colors.foothill) (this.material.uniforms.uDEMColFoothill.value as THREE.Color).set(colors.foothill);
+    if (colors.slope) (this.material.uniforms.uDEMColSlope.value as THREE.Color).set(colors.slope);
+    if (colors.ridge) (this.material.uniforms.uDEMColRidge.value as THREE.Color).set(colors.ridge);
+    if (colors.summit) (this.material.uniforms.uDEMColSummit.value as THREE.Color).set(colors.summit);
+  }
+
+  public getDEMColors() {
+    return {
+      coast: '#' + (this.material.uniforms.uDEMColCoast.value as THREE.Color).getHexString(),
+      valley: '#' + (this.material.uniforms.uDEMColValley.value as THREE.Color).getHexString(),
+      foothill: '#' + (this.material.uniforms.uDEMColFoothill.value as THREE.Color).getHexString(),
+      slope: '#' + (this.material.uniforms.uDEMColSlope.value as THREE.Color).getHexString(),
+      ridge: '#' + (this.material.uniforms.uDEMColRidge.value as THREE.Color).getHexString(),
+      summit: '#' + (this.material.uniforms.uDEMColSummit.value as THREE.Color).getHexString(),
+    };
+  }
+
+  public setDEMLightParams(sunRadiance: number, ambientFill: number, warmth: number, reliefStrength: number) {
+    this.material.uniforms.uDEMSunRadiance.value = sunRadiance;
+    this.material.uniforms.uDEMAmbientFill.value = ambientFill;
+    this.material.uniforms.uDEMSunWarmth.value = warmth;
+    this.material.uniforms.uDEMReliefStrength.value = reliefStrength;
+  }
+
+  public getDEMLightParams() {
+    return {
+      sunRadiance: this.material.uniforms.uDEMSunRadiance.value as number,
+      ambientFill: this.material.uniforms.uDEMAmbientFill.value as number,
+      sunWarmth: this.material.uniforms.uDEMSunWarmth.value as number,
+      reliefStrength: this.material.uniforms.uDEMReliefStrength.value as number,
     };
   }
 
@@ -489,6 +972,14 @@ export class AegeanTerrain {
       saturation: this.material.uniforms.uDaySaturation.value as number,
       seaBrilliance: this.material.uniforms.uDaySeaBrilliance.value as number,
     };
+  }
+
+  public setIslandLightRadius(radius: number) {
+    this.material.uniforms.uIslandLightRadius.value = Math.max(0.05, Math.min(2.0, radius));
+  }
+
+  public getIslandLightRadius(): number {
+    return this.material.uniforms.uIslandLightRadius.value as number;
   }
 
   public setDayBlend(blend: number) {

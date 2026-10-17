@@ -1,0 +1,8 @@
+Model Information:
+* title:	Fishing Boat
+* source:	https://sketchfab.com/3d-models/fishing-boat-a3f138089e164200b34bfb1bebb978c2
+* author:	CharlieCatling (https://sketchfab.com/charliecatling)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

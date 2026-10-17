@@ -1,0 +1,6949 @@
+{
+  "version": 1,
+  "timestamp": 1792266658466,
+  "gameDay": 42.583,
+  "totalTicks": 2570,
+  "treasury": 25411.99,
+  "tradePoints": 850,
+  "unlockedIslands": [
+    "santorini",
+    "naxos",
+    "paros",
+    "syros",
+    "mykonos",
+    "andros",
+    "samos",
+    "chios",
+    "izmir",
+    "samothrace",
+    "rhodes",
+    "kos",
+    "delos",
+    "tinos",
+    "milos"
+  ],
+  "islandDeliveries": {
+    "samos": 18,
+    "izmir": 32,
+    "santorini": 24,
+    "naxos": 29,
+    "syros": 21,
+    "rhodes": 15
+  },
+  "islands": {
+    "santorini": {
+      "id": "santorini",
+      "unlocked": true,
+      "prosperity": 1,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 23.6,
+          "buyPrice": 30.54,
+          "sellPrice": 29.01,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "wine": {
+          "stock": 120.8,
+          "buyPrice": 20.92,
+          "sellPrice": 19.87,
+          "produceRatePerDay": 10,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 29.6,
+          "buyPrice": 12.28,
+          "sellPrice": 11.67,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 47.4,
+          "buyPrice": 9.75,
+          "sellPrice": 9.26,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 8
+        },
+        "fuel": {
+          "stock": 15,
+          "buyPrice": 39.75,
+          "sellPrice": 37.76,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "produce": {
+          "stock": 72.2,
+          "buyPrice": 9.95,
+          "sellPrice": 9.45,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 48.4,
+          "buyPrice": 23.68,
+          "sellPrice": 22.5,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "naxos": {
+      "id": "naxos",
+      "unlocked": true,
+      "prosperity": 1,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 17.6,
+          "buyPrice": 12.04,
+          "sellPrice": 11.44,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 60.4,
+          "buyPrice": 19.11,
+          "sellPrice": 18.15,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 17.8,
+          "buyPrice": 35.86,
+          "sellPrice": 34.07,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 84.6,
+          "buyPrice": 7.53,
+          "sellPrice": 7.15,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        },
+        "cheese": {
+          "stock": 96.4,
+          "buyPrice": 14.95,
+          "sellPrice": 14.2,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 127.67,
+          "sellPrice": 121.28,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 72.6,
+          "buyPrice": 5.95,
+          "sellPrice": 5.65,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "fuel": {
+          "stock": 29.6,
+          "buyPrice": 27.84,
+          "sellPrice": 26.45,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 109.41,
+          "sellPrice": 103.94,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "paros": {
+      "id": "paros",
+      "unlocked": true,
+      "prosperity": 1,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 48.2,
+          "buyPrice": 6.93,
+          "sellPrice": 6.58,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 72.6,
+          "buyPrice": 20.82,
+          "sellPrice": 19.78,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 23.6,
+          "buyPrice": 12.05,
+          "sellPrice": 11.45,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 96.6,
+          "buyPrice": 27.86,
+          "sellPrice": 26.47,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 29.6,
+          "buyPrice": 9.83,
+          "sellPrice": 9.34,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "fuel": {
+          "stock": 23.6,
+          "buyPrice": 27.32,
+          "sellPrice": 25.95,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "mykonos": {
+      "id": "mykonos",
+      "unlocked": true,
+      "prosperity": 1,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 48.2,
+          "buyPrice": 6.93,
+          "sellPrice": 6.58,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 23.6,
+          "buyPrice": 30.54,
+          "sellPrice": 29.01,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "wine": {
+          "stock": 29.6,
+          "buyPrice": 34.39,
+          "sellPrice": 32.67,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 15,
+          "buyPrice": 17.54,
+          "sellPrice": 16.66,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "cheese": {
+          "stock": 72.2,
+          "buyPrice": 14.93,
+          "sellPrice": 14.18,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 47.4,
+          "buyPrice": 9.75,
+          "sellPrice": 9.26,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 8
+        },
+        "fuel": {
+          "stock": 23.6,
+          "buyPrice": 27.32,
+          "sellPrice": 25.95,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "produce": {
+          "stock": 35.4,
+          "buyPrice": 16.23,
+          "sellPrice": 15.42,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        },
+        "crafts": {
+          "stock": 84.6,
+          "buyPrice": 24.11,
+          "sellPrice": 22.9,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "syros": {
+      "id": "syros",
+      "unlocked": true,
+      "prosperity": 1,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 23.6,
+          "buyPrice": 30.54,
+          "sellPrice": 29.01,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "wine": {
+          "stock": 23.6,
+          "buyPrice": 33.75,
+          "sellPrice": 32.06,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 35.6,
+          "buyPrice": 12.12,
+          "sellPrice": 11.51,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        },
+        "cheese": {
+          "stock": 84.4,
+          "buyPrice": 15.09,
+          "sellPrice": 14.34,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 35.6,
+          "buyPrice": 9.7,
+          "sellPrice": 9.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        },
+        "fuel": {
+          "stock": 72.6,
+          "buyPrice": 16.85,
+          "sellPrice": 16.01,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 72.6,
+          "buyPrice": 23.79,
+          "sellPrice": 22.6,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "milos": {
+      "id": "milos",
+      "unlocked": true,
+      "prosperity": 1,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 48.2,
+          "buyPrice": 6.93,
+          "sellPrice": 6.58,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 23.6,
+          "buyPrice": 12.05,
+          "sellPrice": 11.45,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 60.2,
+          "buyPrice": 15.12,
+          "sellPrice": 14.36,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 84.6,
+          "buyPrice": 28.12,
+          "sellPrice": 26.71,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 35.6,
+          "buyPrice": 9.7,
+          "sellPrice": 9.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        },
+        "fuel": {
+          "stock": 17.8,
+          "buyPrice": 29.03,
+          "sellPrice": 27.58,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 23.6,
+          "buyPrice": 16.07,
+          "sellPrice": 15.27,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "crete_heraklion": {
+      "id": "crete_heraklion",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 66,
+          "buyPrice": 18.92,
+          "sellPrice": 17.97,
+          "produceRatePerDay": 12,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 98.6,
+          "buyPrice": 32.88,
+          "sellPrice": 31.24,
+          "produceRatePerDay": 18,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 66,
+          "buyPrice": 36.11,
+          "sellPrice": 34.3,
+          "produceRatePerDay": 12,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 15,
+          "buyPrice": 17.54,
+          "sellPrice": 16.66,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "cheese": {
+          "stock": 54.6,
+          "buyPrice": 25.87,
+          "sellPrice": 24.58,
+          "produceRatePerDay": 10,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 19.6,
+          "buyPrice": 90.64,
+          "sellPrice": 86.11,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        },
+        "marble": {
+          "stock": 26.4,
+          "buyPrice": 67.79,
+          "sellPrice": 64.4,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 8
+        },
+        "sponges": {
+          "stock": 23.4,
+          "buyPrice": 33.85,
+          "sellPrice": 32.16,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 7
+        },
+        "water": {
+          "stock": 43.6,
+          "buyPrice": 10.33,
+          "sellPrice": 9.81,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "fuel": {
+          "stock": 45.8,
+          "buyPrice": 41.86,
+          "sellPrice": 39.77,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 14
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "rhodes": {
+      "id": "rhodes",
+      "unlocked": true,
+      "prosperity": 1,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 169.2,
+          "buyPrice": 18.95,
+          "sellPrice": 18,
+          "produceRatePerDay": 14,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 145,
+          "buyPrice": 20.94,
+          "sellPrice": 19.89,
+          "produceRatePerDay": 12,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 71,
+          "buyPrice": 12.26,
+          "sellPrice": 11.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 12
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 35.6,
+          "buyPrice": 60.61,
+          "sellPrice": 57.58,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        },
+        "marble": {
+          "stock": 47.4,
+          "buyPrice": 45.52,
+          "sellPrice": 43.24,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 8
+        },
+        "sponges": {
+          "stock": 41.4,
+          "buyPrice": 22.99,
+          "sellPrice": 21.84,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 7
+        },
+        "water": {
+          "stock": 15,
+          "buyPrice": 14.03,
+          "sellPrice": 13.33,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "fuel": {
+          "stock": 120.8,
+          "buyPrice": 16.93,
+          "sellPrice": 16.08,
+          "produceRatePerDay": 10,
+          "consumeRatePerDay": 0
+        },
+        "produce": {
+          "stock": 120.4,
+          "buyPrice": 9.98,
+          "sellPrice": 9.48,
+          "produceRatePerDay": 10,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "kos": {
+      "id": "kos",
+      "unlocked": true,
+      "prosperity": 1,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 29.6,
+          "buyPrice": 31.12,
+          "sellPrice": 29.56,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 84.6,
+          "buyPrice": 23.1,
+          "sellPrice": 21.95,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 47.4,
+          "buyPrice": 12.19,
+          "sellPrice": 11.58,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 8
+        },
+        "cheese": {
+          "stock": 96.4,
+          "buyPrice": 14.95,
+          "sellPrice": 14.2,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 35.6,
+          "buyPrice": 9.7,
+          "sellPrice": 9.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        },
+        "fuel": {
+          "stock": 35.6,
+          "buyPrice": 27.48,
+          "sellPrice": 26.11,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        },
+        "produce": {
+          "stock": 144.6,
+          "buyPrice": 9.99,
+          "sellPrice": 9.49,
+          "produceRatePerDay": 12,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "samos": {
+      "id": "samos",
+      "unlocked": true,
+      "prosperity": 1,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 29.4,
+          "buyPrice": 11.52,
+          "sellPrice": 10.94,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 96.6,
+          "buyPrice": 18.91,
+          "sellPrice": 17.96,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 7.2,
+          "buyPrice": 119.7,
+          "sellPrice": 113.72,
+          "produceRatePerDay": 14,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 72.6,
+          "buyPrice": 22.8,
+          "sellPrice": 21.66,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 47.4,
+          "buyPrice": 12.19,
+          "sellPrice": 11.58,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 8
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 16.49,
+          "sellPrice": 15.67,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "fuel": {
+          "stock": 41.4,
+          "buyPrice": 27.92,
+          "sellPrice": 26.52,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 7
+        },
+        "produce": {
+          "stock": 72.2,
+          "buyPrice": 9.95,
+          "sellPrice": 9.45,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "chios": {
+      "id": "chios",
+      "unlocked": true,
+      "prosperity": 1,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 96.6,
+          "buyPrice": 10.95,
+          "sellPrice": 10.4,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 47.4,
+          "buyPrice": 12.19,
+          "sellPrice": 11.58,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 8
+        },
+        "cheese": {
+          "stock": 29.4,
+          "buyPrice": 24.68,
+          "sellPrice": 23.45,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "mastic": {
+          "stock": 193.4,
+          "buyPrice": 37.42,
+          "sellPrice": 35.55,
+          "produceRatePerDay": 16,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 15,
+          "buyPrice": 14.03,
+          "sellPrice": 13.33,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "fuel": {
+          "stock": 41.4,
+          "buyPrice": 27.92,
+          "sellPrice": 26.52,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 7
+        },
+        "produce": {
+          "stock": 108.4,
+          "buyPrice": 10.06,
+          "sellPrice": 9.56,
+          "produceRatePerDay": 9,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 35.6,
+          "buyPrice": 38.79,
+          "sellPrice": 36.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        }
+      }
+    },
+    "lesbos": {
+      "id": "lesbos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 49.6,
+          "buyPrice": 12.08,
+          "sellPrice": 11.48,
+          "produceRatePerDay": 9,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 54.8,
+          "buyPrice": 18.92,
+          "sellPrice": 17.97,
+          "produceRatePerDay": 10,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 87.4,
+          "buyPrice": 32.92,
+          "sellPrice": 31.27,
+          "produceRatePerDay": 16,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 16.6,
+          "buyPrice": 50.65,
+          "sellPrice": 48.12,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 26.4,
+          "buyPrice": 18.16,
+          "sellPrice": 17.25,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 8
+        },
+        "cheese": {
+          "stock": 43.6,
+          "buyPrice": 25.82,
+          "sellPrice": 24.53,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 16.6,
+          "buyPrice": 67.54,
+          "sellPrice": 64.16,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 15,
+          "buyPrice": 14.03,
+          "sellPrice": 13.33,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "fuel": {
+          "stock": 30.2,
+          "buyPrice": 41.16,
+          "sellPrice": 39.1,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 9
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "lemnos": {
+      "id": "lemnos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 16.6,
+          "buyPrice": 45.83,
+          "sellPrice": 43.54,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "wine": {
+          "stock": 38.6,
+          "buyPrice": 36.18,
+          "sellPrice": 34.37,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 77.2,
+          "buyPrice": 12.89,
+          "sellPrice": 12.25,
+          "produceRatePerDay": 14,
+          "consumeRatePerDay": 0
+        },
+        "cheese": {
+          "stock": 43.6,
+          "buyPrice": 25.82,
+          "sellPrice": 24.53,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 16.6,
+          "buyPrice": 14.47,
+          "sellPrice": 13.75,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "fuel": {
+          "stock": 16.6,
+          "buyPrice": 41,
+          "sellPrice": 38.95,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 13.6,
+          "buyPrice": 55.58,
+          "sellPrice": 52.8,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        }
+      }
+    },
+    "hydra": {
+      "id": "hydra",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 22.2,
+          "buyPrice": 11.72,
+          "sellPrice": 11.13,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 10.8,
+          "buyPrice": 44.95,
+          "sellPrice": 42.7,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 19.6,
+          "buyPrice": 14.5,
+          "sellPrice": 13.77,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        },
+        "fuel": {
+          "stock": 15,
+          "buyPrice": 39.75,
+          "sellPrice": 37.76,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "produce": {
+          "stock": 10.8,
+          "buyPrice": 23.66,
+          "sellPrice": 22.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "crafts": {
+          "stock": 38.6,
+          "buyPrice": 41.35,
+          "sellPrice": 39.28,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "piraeus": {
+      "id": "piraeus",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 39.8,
+          "buyPrice": 17.03,
+          "sellPrice": 16.18,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 12
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 52.6,
+          "buyPrice": 46.72,
+          "sellPrice": 44.38,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 16
+        },
+        "wine": {
+          "stock": 45.8,
+          "buyPrice": 51.71,
+          "sellPrice": 49.12,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 14
+        },
+        "honey": {
+          "stock": 26.4,
+          "buyPrice": 55.69,
+          "sellPrice": 52.91,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 8
+        },
+        "grain": {
+          "stock": 59.58,
+          "buyPrice": 18.38,
+          "sellPrice": 17.46,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 18
+        },
+        "cheese": {
+          "stock": 33,
+          "buyPrice": 36.5,
+          "sellPrice": 34.67,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 10
+        },
+        "mastic": {
+          "stock": 19.6,
+          "buyPrice": 90.64,
+          "sellPrice": 86.11,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        },
+        "marble": {
+          "stock": 26.4,
+          "buyPrice": 67.79,
+          "sellPrice": 64.4,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 8
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 15,
+          "buyPrice": 14.03,
+          "sellPrice": 13.33,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "fuel": {
+          "stock": 138,
+          "buyPrice": 29.41,
+          "sellPrice": 27.94,
+          "produceRatePerDay": 25,
+          "consumeRatePerDay": 0
+        },
+        "produce": {
+          "stock": 33,
+          "buyPrice": 24.34,
+          "sellPrice": 23.12,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 10
+        },
+        "crafts": {
+          "stock": 109.6,
+          "buyPrice": 41.55,
+          "sellPrice": 39.47,
+          "produceRatePerDay": 20,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "izmir": {
+      "id": "izmir",
+      "unlocked": true,
+      "prosperity": 1,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 82.8,
+          "buyPrice": 31.12,
+          "sellPrice": 29.56,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 14
+        },
+        "wine": {
+          "stock": 71,
+          "buyPrice": 34.34,
+          "sellPrice": 32.62,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 12
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 265.8,
+          "buyPrice": 7.49,
+          "sellPrice": 7.12,
+          "produceRatePerDay": 22,
+          "consumeRatePerDay": 0
+        },
+        "cheese": {
+          "stock": 59,
+          "buyPrice": 24.53,
+          "sellPrice": 23.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 10
+        },
+        "mastic": {
+          "stock": 47.4,
+          "buyPrice": 60.97,
+          "sellPrice": 57.92,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 8
+        },
+        "marble": {
+          "stock": 59.2,
+          "buyPrice": 45.68,
+          "sellPrice": 43.4,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 10
+        },
+        "sponges": {
+          "stock": 47.4,
+          "buyPrice": 22.76,
+          "sellPrice": 21.62,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 8
+        },
+        "water": {
+          "stock": 15,
+          "buyPrice": 14.03,
+          "sellPrice": 13.33,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "fuel": {
+          "stock": 314.2,
+          "buyPrice": 16.99,
+          "sellPrice": 16.14,
+          "produceRatePerDay": 26,
+          "consumeRatePerDay": 0
+        },
+        "produce": {
+          "stock": 216.8,
+          "buyPrice": 10.01,
+          "sellPrice": 9.51,
+          "produceRatePerDay": 18,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 47.4,
+          "buyPrice": 39.02,
+          "sellPrice": 37.07,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 8
+        }
+      }
+    },
+    "tinos": {
+      "id": "tinos",
+      "unlocked": true,
+      "prosperity": 1,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 17.8,
+          "buyPrice": 32.44,
+          "sellPrice": 30.82,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 23.6,
+          "buyPrice": 12.05,
+          "sellPrice": 11.45,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 96.6,
+          "buyPrice": 27.86,
+          "sellPrice": 26.47,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 29.6,
+          "buyPrice": 9.83,
+          "sellPrice": 9.34,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "fuel": {
+          "stock": 17.8,
+          "buyPrice": 29.03,
+          "sellPrice": 27.58,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 60.2,
+          "buyPrice": 10.08,
+          "sellPrice": 9.58,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 72.6,
+          "buyPrice": 23.79,
+          "sellPrice": 22.6,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "andros": {
+      "id": "andros",
+      "unlocked": true,
+      "prosperity": 1,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 72.6,
+          "buyPrice": 18.83,
+          "sellPrice": 17.89,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 17.8,
+          "buyPrice": 35.86,
+          "sellPrice": 34.07,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "honey": {
+          "stock": 48.4,
+          "buyPrice": 22.69,
+          "sellPrice": 21.56,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 29.6,
+          "buyPrice": 12.28,
+          "sellPrice": 11.67,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 25.8,
+          "buyPrice": 16.16,
+          "sellPrice": 15.35,
+          "produceRatePerDay": 9,
+          "consumeRatePerDay": 0
+        },
+        "fuel": {
+          "stock": 23.6,
+          "buyPrice": 27.32,
+          "sellPrice": 25.95,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "sifnos": {
+      "id": "sifnos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 10.8,
+          "buyPrice": 16.56,
+          "sellPrice": 15.73,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 10.8,
+          "buyPrice": 44.95,
+          "sellPrice": 42.7,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 22.4,
+          "buyPrice": 38.28,
+          "sellPrice": 36.37,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 28.4,
+          "buyPrice": 25.26,
+          "sellPrice": 24,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 15,
+          "buyPrice": 39.75,
+          "sellPrice": 37.76,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 43.6,
+          "buyPrice": 41.32,
+          "sellPrice": 39.25,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "serifos": {
+      "id": "serifos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 18.2,
+          "buyPrice": 11.78,
+          "sellPrice": 11.19,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 22.4,
+          "buyPrice": 34.95,
+          "sellPrice": 33.2,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 32.56,
+          "buyPrice": 39.5,
+          "sellPrice": 37.53,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 10.8,
+          "buyPrice": 35.49,
+          "sellPrice": 33.72,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "kythnos": {
+      "id": "kythnos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 18.2,
+          "buyPrice": 11.78,
+          "sellPrice": 11.19,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 10.8,
+          "buyPrice": 44.95,
+          "sellPrice": 42.7,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 43.6,
+          "buyPrice": 39.59,
+          "sellPrice": 37.61,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 28.4,
+          "buyPrice": 25.26,
+          "sellPrice": 24,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "kea": {
+      "id": "kea",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 22.4,
+          "buyPrice": 31.62,
+          "sellPrice": 30.04,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 32.56,
+          "buyPrice": 39.5,
+          "sellPrice": 37.53,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 28.4,
+          "buyPrice": 25.26,
+          "sellPrice": 24,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 10.8,
+          "buyPrice": 14.19,
+          "sellPrice": 13.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "ios": {
+      "id": "ios",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 22.2,
+          "buyPrice": 11.72,
+          "sellPrice": 11.13,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 10.8,
+          "buyPrice": 49.68,
+          "sellPrice": 47.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "honey": {
+          "stock": 28.4,
+          "buyPrice": 38.74,
+          "sellPrice": 36.8,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 32.4,
+          "buyPrice": 25.85,
+          "sellPrice": 24.56,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 16.6,
+          "buyPrice": 14.47,
+          "sellPrice": 13.75,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "amorgos": {
+      "id": "amorgos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 10.8,
+          "buyPrice": 44.95,
+          "sellPrice": 42.7,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "wine": {
+          "stock": 32.56,
+          "buyPrice": 36.07,
+          "sellPrice": 34.27,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 32.56,
+          "buyPrice": 39.5,
+          "sellPrice": 37.53,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 22.2,
+          "buyPrice": 25.12,
+          "sellPrice": 23.86,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 16.6,
+          "buyPrice": 14.47,
+          "sellPrice": 13.75,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "karpathos": {
+      "id": "karpathos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 32.56,
+          "buyPrice": 32.63,
+          "sellPrice": 31,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 38.6,
+          "buyPrice": 39.63,
+          "sellPrice": 37.65,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 16.6,
+          "buyPrice": 18.09,
+          "sellPrice": 17.19,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "cheese": {
+          "stock": 28.4,
+          "buyPrice": 25.26,
+          "sellPrice": 24,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 16.6,
+          "buyPrice": 14.47,
+          "sellPrice": 13.75,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "fuel": {
+          "stock": 13.6,
+          "buyPrice": 39.37,
+          "sellPrice": 37.4,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "kalymnos": {
+      "id": "kalymnos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 43.6,
+          "buyPrice": 12.05,
+          "sellPrice": 11.45,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 19.6,
+          "buyPrice": 45.92,
+          "sellPrice": 43.62,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 38.6,
+          "buyPrice": 39.63,
+          "sellPrice": 37.65,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 26.4,
+          "buyPrice": 18.16,
+          "sellPrice": 17.25,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 8
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 66,
+          "buyPrice": 24.08,
+          "sellPrice": 22.88,
+          "produceRatePerDay": 12,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 23.4,
+          "buyPrice": 14.51,
+          "sellPrice": 13.78,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 7
+        },
+        "fuel": {
+          "stock": 19.6,
+          "buyPrice": 41.09,
+          "sellPrice": 39.04,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "patmos": {
+      "id": "patmos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 13.6,
+          "buyPrice": 44,
+          "sellPrice": 41.8,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "wine": {
+          "stock": 10.8,
+          "buyPrice": 49.68,
+          "sellPrice": 47.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "honey": {
+          "stock": 22.4,
+          "buyPrice": 38.28,
+          "sellPrice": 36.37,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 28.4,
+          "buyPrice": 25.26,
+          "sellPrice": 24,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 16.6,
+          "buyPrice": 14.47,
+          "sellPrice": 13.75,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "fuel": {
+          "stock": 15,
+          "buyPrice": 39.75,
+          "sellPrice": 37.76,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 38.6,
+          "buyPrice": 41.35,
+          "sellPrice": 39.28,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "ikaria": {
+      "id": "ikaria",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 13.6,
+          "buyPrice": 16.21,
+          "sellPrice": 15.4,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 38.6,
+          "buyPrice": 36.18,
+          "sellPrice": 34.37,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 49.8,
+          "buyPrice": 39.59,
+          "sellPrice": 37.61,
+          "produceRatePerDay": 9,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 16.6,
+          "buyPrice": 18.09,
+          "sellPrice": 17.19,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 10.8,
+          "buyPrice": 14.19,
+          "sellPrice": 13.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "fuel": {
+          "stock": 13.6,
+          "buyPrice": 39.37,
+          "sellPrice": 37.4,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "produce": {
+          "stock": 28.4,
+          "buyPrice": 16.84,
+          "sellPrice": 16,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "thasos": {
+      "id": "thasos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 54.8,
+          "buyPrice": 18.92,
+          "sellPrice": 17.97,
+          "produceRatePerDay": 10,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 32.56,
+          "buyPrice": 32.63,
+          "sellPrice": 31,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 38.6,
+          "buyPrice": 39.63,
+          "sellPrice": 37.65,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 16.6,
+          "buyPrice": 18.09,
+          "sellPrice": 17.19,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "cheese": {
+          "stock": 13.6,
+          "buyPrice": 34.73,
+          "sellPrice": 32.99,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 49.8,
+          "buyPrice": 48.2,
+          "sellPrice": 45.79,
+          "produceRatePerDay": 9,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 15,
+          "buyPrice": 14.03,
+          "sellPrice": 13.33,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "fuel": {
+          "stock": 16.6,
+          "buyPrice": 41,
+          "sellPrice": 38.95,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "samothrace": {
+      "id": "samothrace",
+      "unlocked": true,
+      "prosperity": 1,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 17.8,
+          "buyPrice": 35.86,
+          "sellPrice": 34.07,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "honey": {
+          "stock": 60.4,
+          "buyPrice": 23.13,
+          "sellPrice": 21.97,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 23.6,
+          "buyPrice": 12.05,
+          "sellPrice": 11.45,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 72.2,
+          "buyPrice": 14.93,
+          "sellPrice": 14.18,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 108.8,
+          "buyPrice": 6.02,
+          "sellPrice": 5.72,
+          "produceRatePerDay": 9,
+          "consumeRatePerDay": 0
+        },
+        "fuel": {
+          "stock": 23.6,
+          "buyPrice": 27.32,
+          "sellPrice": 25.95,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "skiathos": {
+      "id": "skiathos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 22.2,
+          "buyPrice": 11.72,
+          "sellPrice": 11.13,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 32.56,
+          "buyPrice": 32.63,
+          "sellPrice": 31,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 28.4,
+          "buyPrice": 35.37,
+          "sellPrice": 33.6,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 10.8,
+          "buyPrice": 14.19,
+          "sellPrice": 13.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "fuel": {
+          "stock": 13.6,
+          "buyPrice": 39.37,
+          "sellPrice": 37.4,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "skopelos": {
+      "id": "skopelos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 38.6,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 28.4,
+          "buyPrice": 35.37,
+          "sellPrice": 33.6,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 10.8,
+          "buyPrice": 14.19,
+          "sellPrice": 13.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "fuel": {
+          "stock": 13.6,
+          "buyPrice": 39.37,
+          "sellPrice": 37.4,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "produce": {
+          "stock": 43.6,
+          "buyPrice": 17.22,
+          "sellPrice": 16.36,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "skyros": {
+      "id": "skyros",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 22.2,
+          "buyPrice": 11.72,
+          "sellPrice": 11.13,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 28.4,
+          "buyPrice": 25.26,
+          "sellPrice": 24,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 10.8,
+          "buyPrice": 14.19,
+          "sellPrice": 13.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 38.6,
+          "buyPrice": 41.35,
+          "sellPrice": 39.28,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "spetses": {
+      "id": "spetses",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 22.2,
+          "buyPrice": 11.72,
+          "sellPrice": 11.13,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 22.4,
+          "buyPrice": 31.62,
+          "sellPrice": 30.04,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 16.6,
+          "buyPrice": 14.47,
+          "sellPrice": 13.75,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 28.4,
+          "buyPrice": 40.42,
+          "sellPrice": 38.4,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "gokceada": {
+      "id": "gokceada",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 38.6,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 28.4,
+          "buyPrice": 38.74,
+          "sellPrice": 36.8,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 32.56,
+          "buyPrice": 10.31,
+          "sellPrice": 9.79,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "fuel": {
+          "stock": 13.6,
+          "buyPrice": 39.37,
+          "sellPrice": 37.4,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 10.8,
+          "buyPrice": 56.78,
+          "sellPrice": 53.94,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        }
+      }
+    },
+    "bozcaada": {
+      "id": "bozcaada",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 22.2,
+          "buyPrice": 11.72,
+          "sellPrice": 11.13,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 10.8,
+          "buyPrice": 44.95,
+          "sellPrice": 42.7,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "wine": {
+          "stock": 49.8,
+          "buyPrice": 36.15,
+          "sellPrice": 34.34,
+          "produceRatePerDay": 9,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 16.6,
+          "buyPrice": 14.47,
+          "sellPrice": 13.75,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 32.4,
+          "buyPrice": 17.23,
+          "sellPrice": 16.37,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "delos": {
+      "id": "delos",
+      "unlocked": true,
+      "prosperity": 92,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 11.8,
+          "buyPrice": 15.64,
+          "sellPrice": 14.86,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 11.8,
+          "buyPrice": 16.76,
+          "sellPrice": 15.92,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 23.6,
+          "buyPrice": 9.64,
+          "sellPrice": 9.16,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 15,
+          "buyPrice": 39.75,
+          "sellPrice": 37.76,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "produce": {
+          "stock": 17.6,
+          "buyPrice": 17.2,
+          "sellPrice": 16.34,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "crafts": {
+          "stock": 0.2,
+          "buyPrice": 136.8,
+          "sellPrice": 129.96,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "rinia": {
+      "id": "rinia",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 18.2,
+          "buyPrice": 11.78,
+          "sellPrice": 11.19,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "cheese": {
+          "stock": 22.2,
+          "buyPrice": 25.12,
+          "sellPrice": 23.86,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 10.8,
+          "buyPrice": 14.19,
+          "sellPrice": 13.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "fuel": {
+          "stock": 15,
+          "buyPrice": 39.75,
+          "sellPrice": 37.76,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "antiparos": {
+      "id": "antiparos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 22.2,
+          "buyPrice": 11.72,
+          "sellPrice": 11.13,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "produce": {
+          "stock": 10.8,
+          "buyPrice": 23.66,
+          "sellPrice": 22.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "crafts": {
+          "stock": 18.2,
+          "buyPrice": 40.38,
+          "sellPrice": 38.36,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "kimolos": {
+      "id": "kimolos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 18.2,
+          "buyPrice": 11.78,
+          "sellPrice": 11.19,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 18.2,
+          "buyPrice": 25.24,
+          "sellPrice": 23.98,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "produce": {
+          "stock": 22.2,
+          "buyPrice": 16.74,
+          "sellPrice": 15.9,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "folegandros": {
+      "id": "folegandros",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 18.2,
+          "buyPrice": 11.78,
+          "sellPrice": 11.19,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 10.8,
+          "buyPrice": 44.95,
+          "sellPrice": 42.7,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 18.2,
+          "buyPrice": 38.7,
+          "sellPrice": 36.77,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 28.4,
+          "buyPrice": 25.26,
+          "sellPrice": 24,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "sikinos": {
+      "id": "sikinos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 28.4,
+          "buyPrice": 35.37,
+          "sellPrice": 33.6,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 22.4,
+          "buyPrice": 38.28,
+          "sellPrice": 36.37,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 18.2,
+          "buyPrice": 25.24,
+          "sellPrice": 23.98,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "anafi": {
+      "id": "anafi",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 18.2,
+          "buyPrice": 11.78,
+          "sellPrice": 11.19,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 22.4,
+          "buyPrice": 38.28,
+          "sellPrice": 36.37,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "cheese": {
+          "stock": 18.2,
+          "buyPrice": 25.24,
+          "sellPrice": 23.98,
+          "produceRatePerDay": 2,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 10.8,
+          "buyPrice": 14.19,
+          "sellPrice": 13.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "fuel": {
+          "stock": 15,
+          "buyPrice": 39.75,
+          "sellPrice": 37.76,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "koufonisia": {
+      "id": "koufonisia",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 32.4,
+          "buyPrice": 12.06,
+          "sellPrice": 11.46,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 10.8,
+          "buyPrice": 35.49,
+          "sellPrice": 33.72,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 18.2,
+          "buyPrice": 16.83,
+          "sellPrice": 15.99,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "schinoussa": {
+      "id": "schinoussa",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 18.2,
+          "buyPrice": 11.78,
+          "sellPrice": 11.19,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 18.2,
+          "buyPrice": 25.24,
+          "sellPrice": 23.98,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "produce": {
+          "stock": 32.4,
+          "buyPrice": 17.23,
+          "sellPrice": 16.37,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "iraklia": {
+      "id": "iraklia",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 18.2,
+          "buyPrice": 11.78,
+          "sellPrice": 11.19,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 28.4,
+          "buyPrice": 38.74,
+          "sellPrice": 36.8,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 22.2,
+          "buyPrice": 25.12,
+          "sellPrice": 23.86,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "donoussa": {
+      "id": "donoussa",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 22.2,
+          "buyPrice": 11.72,
+          "sellPrice": 11.13,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 22.4,
+          "buyPrice": 38.28,
+          "sellPrice": 36.37,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "gyaros": {
+      "id": "gyaros",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 18.2,
+          "buyPrice": 11.78,
+          "sellPrice": 11.19,
+          "produceRatePerDay": 3,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 15,
+          "buyPrice": 17.54,
+          "sellPrice": 16.66,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 10.8,
+          "buyPrice": 14.19,
+          "sellPrice": 13.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "leros": {
+      "id": "leros",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 32.4,
+          "buyPrice": 12.06,
+          "sellPrice": 11.46,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 22.4,
+          "buyPrice": 38.28,
+          "sellPrice": 36.37,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 16.6,
+          "buyPrice": 18.09,
+          "sellPrice": 17.19,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 13.6,
+          "buyPrice": 39.37,
+          "sellPrice": 37.4,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "produce": {
+          "stock": 28.4,
+          "buyPrice": 16.84,
+          "sellPrice": 16,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "lipsi": {
+      "id": "lipsi",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 32.56,
+          "buyPrice": 36.07,
+          "sellPrice": 34.27,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 28.4,
+          "buyPrice": 38.74,
+          "sellPrice": 36.8,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 22.2,
+          "buyPrice": 25.12,
+          "sellPrice": 23.86,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "astypalea": {
+      "id": "astypalea",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 22.2,
+          "buyPrice": 11.72,
+          "sellPrice": 11.13,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 10.8,
+          "buyPrice": 44.95,
+          "sellPrice": 42.7,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 43.6,
+          "buyPrice": 39.59,
+          "sellPrice": 37.61,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 32.4,
+          "buyPrice": 25.85,
+          "sellPrice": 24.56,
+          "produceRatePerDay": 6,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 16.6,
+          "buyPrice": 14.47,
+          "sellPrice": 13.75,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "symi": {
+      "id": "symi",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 38.4,
+          "buyPrice": 12.1,
+          "sellPrice": 11.5,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 13.6,
+          "buyPrice": 44,
+          "sellPrice": 41.8,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 43.6,
+          "buyPrice": 24.1,
+          "sellPrice": 22.9,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 19.6,
+          "buyPrice": 14.5,
+          "sellPrice": 13.77,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        },
+        "fuel": {
+          "stock": 15,
+          "buyPrice": 39.75,
+          "sellPrice": 37.76,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "produce": {
+          "stock": 10.8,
+          "buyPrice": 23.66,
+          "sellPrice": 22.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "crafts": {
+          "stock": 28.4,
+          "buyPrice": 40.42,
+          "sellPrice": 38.4,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "tilos": {
+      "id": "tilos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 28.4,
+          "buyPrice": 38.74,
+          "sellPrice": 36.8,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 22.2,
+          "buyPrice": 25.12,
+          "sellPrice": 23.86,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "produce": {
+          "stock": 22.2,
+          "buyPrice": 16.74,
+          "sellPrice": 15.9,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "nisyros": {
+      "id": "nisyros",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 15,
+          "buyPrice": 16.37,
+          "sellPrice": 15.55,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 10.8,
+          "buyPrice": 44.95,
+          "sellPrice": 42.7,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 22.2,
+          "buyPrice": 25.12,
+          "sellPrice": 23.86,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 15,
+          "buyPrice": 39.75,
+          "sellPrice": 37.76,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "produce": {
+          "stock": 28.4,
+          "buyPrice": 16.84,
+          "sellPrice": 16,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 22.4,
+          "buyPrice": 39.95,
+          "sellPrice": 37.95,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "chalki": {
+      "id": "chalki",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 28.4,
+          "buyPrice": 11.79,
+          "sellPrice": 11.2,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 22.4,
+          "buyPrice": 38.28,
+          "sellPrice": 36.37,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 22.4,
+          "buyPrice": 39.95,
+          "sellPrice": 37.95,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "kasos": {
+      "id": "kasos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 22.2,
+          "buyPrice": 11.72,
+          "sellPrice": 11.13,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 22.4,
+          "buyPrice": 38.28,
+          "sellPrice": 36.37,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 38.4,
+          "buyPrice": 25.93,
+          "sellPrice": 24.63,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "fourni": {
+      "id": "fourni",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 43.6,
+          "buyPrice": 12.05,
+          "sellPrice": 11.45,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 28.4,
+          "buyPrice": 38.74,
+          "sellPrice": 36.8,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 16.6,
+          "buyPrice": 14.47,
+          "sellPrice": 13.75,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "fuel": {
+          "stock": 13.6,
+          "buyPrice": 39.37,
+          "sellPrice": 37.4,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "psara": {
+      "id": "psara",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 28.4,
+          "buyPrice": 11.79,
+          "sellPrice": 11.2,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 22.4,
+          "buyPrice": 38.28,
+          "sellPrice": 36.37,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 13.6,
+          "buyPrice": 13.89,
+          "sellPrice": 13.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "agios_efstratios": {
+      "id": "agios_efstratios",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 22.2,
+          "buyPrice": 11.72,
+          "sellPrice": 11.13,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 28.4,
+          "buyPrice": 25.26,
+          "sellPrice": 24,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 10.8,
+          "buyPrice": 14.19,
+          "sellPrice": 13.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 2
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "alonnisos": {
+      "id": "alonnisos",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 43.6,
+          "buyPrice": 12.05,
+          "sellPrice": 11.45,
+          "produceRatePerDay": 8,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 28.4,
+          "buyPrice": 32,
+          "sellPrice": 30.4,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 22.4,
+          "buyPrice": 38.28,
+          "sellPrice": 36.37,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 10.8,
+          "buyPrice": 14.19,
+          "sellPrice": 13.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 15,
+          "buyPrice": 23.38,
+          "sellPrice": 22.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "poros": {
+      "id": "poros",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 28.4,
+          "buyPrice": 11.79,
+          "sellPrice": 11.2,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 22.4,
+          "buyPrice": 31.62,
+          "sellPrice": 30.04,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 10.8,
+          "buyPrice": 14.19,
+          "sellPrice": 13.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 38.4,
+          "buyPrice": 17.29,
+          "sellPrice": 16.43,
+          "produceRatePerDay": 7,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 15,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "aegina": {
+      "id": "aegina",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 22.2,
+          "buyPrice": 11.72,
+          "sellPrice": 11.13,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 10.8,
+          "buyPrice": 44.95,
+          "sellPrice": 42.7,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 13.6,
+          "buyPrice": 17.37,
+          "sellPrice": 16.5,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 4
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 19.6,
+          "buyPrice": 14.5,
+          "sellPrice": 13.77,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 6
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 49.6,
+          "buyPrice": 17.26,
+          "sellPrice": 16.4,
+          "produceRatePerDay": 9,
+          "consumeRatePerDay": 0
+        },
+        "crafts": {
+          "stock": 28.4,
+          "buyPrice": 40.42,
+          "sellPrice": 38.4,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        }
+      }
+    },
+    "kastellorizo": {
+      "id": "kastellorizo",
+      "unlocked": false,
+      "prosperity": 0.4,
+      "distress": 0,
+      "markets": {
+        "fish": {
+          "stock": 28.4,
+          "buyPrice": 11.79,
+          "sellPrice": 11.2,
+          "produceRatePerDay": 5,
+          "consumeRatePerDay": 0
+        },
+        "olive": {
+          "stock": 15,
+          "buyPrice": 25.72,
+          "sellPrice": 24.43,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "olive_oil": {
+          "stock": 15,
+          "buyPrice": 44.42,
+          "sellPrice": 42.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "wine": {
+          "stock": 15,
+          "buyPrice": 49.1,
+          "sellPrice": 46.65,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "honey": {
+          "stock": 15,
+          "buyPrice": 53.78,
+          "sellPrice": 51.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "grain": {
+          "stock": 10.8,
+          "buyPrice": 17.74,
+          "sellPrice": 16.85,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "cheese": {
+          "stock": 15,
+          "buyPrice": 35.07,
+          "sellPrice": 33.32,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "mastic": {
+          "stock": 15,
+          "buyPrice": 87.68,
+          "sellPrice": 83.3,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "marble": {
+          "stock": 15,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "sponges": {
+          "stock": 15,
+          "buyPrice": 32.73,
+          "sellPrice": 31.09,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 0
+        },
+        "water": {
+          "stock": 16.6,
+          "buyPrice": 14.47,
+          "sellPrice": 13.75,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 5
+        },
+        "fuel": {
+          "stock": 10.8,
+          "buyPrice": 40.22,
+          "sellPrice": 38.21,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "produce": {
+          "stock": 10.8,
+          "buyPrice": 23.66,
+          "sellPrice": 22.48,
+          "produceRatePerDay": 0,
+          "consumeRatePerDay": 3
+        },
+        "crafts": {
+          "stock": 22.4,
+          "buyPrice": 39.95,
+          "sellPrice": 37.95,
+          "produceRatePerDay": 4,
+          "consumeRatePerDay": 0
+        }
+      }
+    }
+  },
+  "ships": [
+    {
+      "id": "ship_1_o20y",
+      "name": "Boreas",
+      "typeId": "ferry",
+      "tier": 3,
+      "capacity": 200,
+      "speedKmPerDay": 647.7170959356886,
+      "upkeepPerDay": 18,
+      "state": "sailing",
+      "homeIslandId": "samos",
+      "currentIslandId": null,
+      "targetIslandId": "izmir",
+      "cargo": {
+        "goodId": "fish",
+        "quantity": 73,
+        "buyPrice": 18
+      },
+      "distanceTraveledKm": 38.76315732235512,
+      "position": {
+        "lon": 26.68448357365641,
+        "lat": 37.97291834080238
+      },
+      "heading": 5.244670809008892,
+      "stateTimeRemaining": 0,
+      "tripsCompleted": 0,
+      "totalDeliveredValue": 0,
+      "totalProfit": 0,
+      "cargoPriority": "water"
+    },
+    {
+      "id": "ship_2_ixnv",
+      "name": "Calypso",
+      "typeId": "ferry",
+      "tier": 3,
+      "capacity": 200,
+      "speedKmPerDay": 745.3504409030663,
+      "upkeepPerDay": 18,
+      "state": "sailing",
+      "homeIslandId": "samos",
+      "currentIslandId": null,
+      "targetIslandId": "samothrace",
+      "cargo": {
+        "goodId": "wine",
+        "quantity": 162,
+        "buyPrice": 21.05,
+        "fromIslandId": "samos"
+      },
+      "distanceTraveledKm": 16.64348728775204,
+      "position": {
+        "lon": 26.893296363172595,
+        "lat": 37.86356402679738
+      },
+      "heading": 5.388535973725626,
+      "stateTimeRemaining": -0.0016666666666666592,
+      "tripsCompleted": 0,
+      "totalDeliveredValue": 0,
+      "totalProfit": 0,
+      "cargoPriority": "water"
+    },
+    {
+      "id": "ship_3_k3cf",
+      "name": "Nikolaos",
+      "typeId": "fishing_boat",
+      "tier": 1,
+      "capacity": 25,
+      "speedKmPerDay": 289.41091375824817,
+      "upkeepPerDay": 2,
+      "state": "sailing",
+      "homeIslandId": "santorini",
+      "currentIslandId": null,
+      "targetIslandId": "naxos",
+      "cargo": {
+        "goodId": "wine",
+        "quantity": 20,
+        "buyPrice": 42
+      },
+      "distanceTraveledKm": 16.457499322111953,
+      "position": {
+        "lon": 25.292481447172303,
+        "lat": 36.41135204055233
+      },
+      "heading": 6.13791859783172,
+      "stateTimeRemaining": 0,
+      "tripsCompleted": 0,
+      "totalDeliveredValue": 0,
+      "totalProfit": 0,
+      "cargoPriority": "auto"
+    },
+    {
+      "id": "ship_4_qj1m",
+      "name": "Delphis",
+      "typeId": "fishing_boat",
+      "tier": 1,
+      "capacity": 25,
+      "speedKmPerDay": 292.16196608182605,
+      "upkeepPerDay": 2,
+      "state": "sailing",
+      "homeIslandId": "naxos",
+      "currentIslandId": null,
+      "targetIslandId": "paros",
+      "cargo": {
+        "goodId": "cheese",
+        "quantity": 24,
+        "buyPrice": 35
+      },
+      "distanceTraveledKm": 14.702410706991822,
+      "position": {
+        "lon": 25.25463789027241,
+        "lat": 37.204837293208314
+      },
+      "heading": 5.61770613648507,
+      "stateTimeRemaining": 0,
+      "tripsCompleted": 0,
+      "totalDeliveredValue": 0,
+      "totalProfit": 0,
+      "cargoPriority": "auto"
+    },
+    {
+      "id": "ship_5_no5t",
+      "name": "Aeolos",
+      "typeId": "caique",
+      "tier": 2,
+      "capacity": 75,
+      "speedKmPerDay": 401.64685439796864,
+      "upkeepPerDay": 6,
+      "state": "sailing",
+      "homeIslandId": "syros",
+      "currentIslandId": null,
+      "targetIslandId": "mykonos",
+      "cargo": {
+        "goodId": "crafts",
+        "quantity": 65,
+        "buyPrice": 28
+      },
+      "distanceTraveledKm": 13.194867642451221,
+      "position": {
+        "lon": 25.100199221725465,
+        "lat": 37.46434173305612
+      },
+      "heading": 1.4645385113468055,
+      "stateTimeRemaining": 0,
+      "tripsCompleted": 0,
+      "totalDeliveredValue": 0,
+      "totalProfit": 0,
+      "cargoPriority": "auto"
+    },
+    {
+      "id": "ship_6_7j3g",
+      "name": "Hermes",
+      "typeId": "caique",
+      "tier": 2,
+      "capacity": 75,
+      "speedKmPerDay": 443.2201792980344,
+      "upkeepPerDay": 6,
+      "state": "sailing",
+      "homeIslandId": "chios",
+      "currentIslandId": null,
+      "targetIslandId": "samos",
+      "cargo": {
+        "goodId": "mastic",
+        "quantity": 50,
+        "buyPrice": 48
+      },
+      "distanceTraveledKm": 22.483255162745515,
+      "position": {
+        "lon": 26.24691446319231,
+        "lat": 38.19523905532423
+      },
+      "heading": 2.7550340944894556,
+      "stateTimeRemaining": 0,
+      "tripsCompleted": 0,
+      "totalDeliveredValue": 0,
+      "totalProfit": 0,
+      "cargoPriority": "auto"
+    },
+    {
+      "id": "ship_7_d425",
+      "name": "Poseidon",
+      "typeId": "cargo_ship",
+      "tier": 4,
+      "capacity": 650,
+      "speedKmPerDay": 491.55880721969754,
+      "upkeepPerDay": 45,
+      "state": "sailing",
+      "homeIslandId": "rhodes",
+      "currentIslandId": null,
+      "targetIslandId": "izmir",
+      "cargo": {
+        "goodId": "fuel",
+        "quantity": 380,
+        "buyPrice": 24
+      },
+      "distanceTraveledKm": 27.796274470573604,
+      "position": {
+        "lon": 27.94210375085138,
+        "lat": 36.47934367124447
+      },
+      "heading": 4.766711676477057,
+      "stateTimeRemaining": 0,
+      "tripsCompleted": 0,
+      "totalDeliveredValue": 0,
+      "totalProfit": 0,
+      "cargoPriority": "auto"
+    },
+    {
+      "id": "ship_8_3bux",
+      "name": "Nereus",
+      "typeId": "charter_yacht",
+      "tier": 5,
+      "capacity": 80,
+      "speedKmPerDay": 848.8680299416537,
+      "upkeepPerDay": 60,
+      "state": "loading",
+      "homeIslandId": "mykonos",
+      "currentIslandId": "delos",
+      "targetIslandId": "chios",
+      "cargo": {
+        "goodId": "crafts",
+        "quantity": 36,
+        "buyPrice": 25.45,
+        "fromIslandId": "delos"
+      },
+      "distanceTraveledKm": 0,
+      "position": {
+        "lon": 25.279675848044775,
+        "lat": 37.43629825489308
+      },
+      "heading": 0.6179926566200743,
+      "stateTimeRemaining": 0.015000000000000006,
+      "tripsCompleted": 0,
+      "totalDeliveredValue": 0,
+      "totalProfit": 0,
+      "cargoPriority": "auto"
+    }
+  ]
+}

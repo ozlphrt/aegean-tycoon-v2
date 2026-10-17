@@ -1,6 +1,7 @@
 import json
 import numpy as np
 from PIL import Image
+import cv2
 from config import MIN_LON, MAX_LON, MIN_LAT, MAX_LAT, WIDTH, HEIGHT, PUBLIC_DATA_DIR, lonlat_to_pixel
 
 def bake_island_mask():
@@ -43,32 +44,57 @@ def bake_island_mask():
     mask_ids = np.array([c["maskId"] for c in island_centers], dtype=np.uint8)
     types = [c["type"] for c in island_centers]
 
-    # Process in blocks or vectorized for land pixels
-    land_ys, land_xs = np.where(is_land)
-    print(f"Assigning {len(land_xs)} land pixels to {len(island_centers)} island territories...")
+    # Connected component labeling ensures separate islands (e.g. Naxos vs Paros) are never merged
+    num_labels, labels_im = cv2.connectedComponents(is_land.astype(np.uint8))
 
     scale_factor = WIDTH / 2048.0
     mainland_max_dist = (45.0 * scale_factor) ** 2
     island_max_dist = (140.0 * scale_factor) ** 2
 
-    # Chunk processing to avoid memory spike
-    chunk_size = 100000
-    for i in range(0, len(land_xs), chunk_size):
-        chunk_x = land_xs[i:i+chunk_size]
-        chunk_y = land_ys[i:i+chunk_size]
+    # Map each island center to its connected land component
+    comp_to_islands = {}
+    for c in island_centers:
+        px = max(0, min(WIDTH - 1, c["px"]))
+        py = max(0, min(HEIGHT - 1, c["py"]))
+        if is_land[py, px] == 0:
+            win = is_land[max(0, py-12):min(HEIGHT, py+13), max(0, px-12):min(WIDTH, px+13)]
+            wys, wxs = np.where(win)
+            if len(wys) > 0:
+                d = (wys - 12)**2 + (wxs - 12)**2
+                best = np.argmin(d)
+                py = max(0, py-12) + wys[best]
+                px = max(0, px-12) + wxs[best]
+        comp = labels_im[py, px]
+        c["comp"] = comp
+        c["px_land"] = px
+        c["py_land"] = py
+        if comp > 0:
+            comp_to_islands.setdefault(comp, []).append(c)
 
-        # Distances to all island centers: (chunk_size, N)
-        # Apply aspect correction for longitude: cos(38 deg) ~ 0.788
+    # 1. Assign isolated island components directly
+    for comp, isls in comp_to_islands.items():
+        if len(isls) == 1:
+            c = isls[0]
+            if c["type"] != "mainland_port":
+                mask[labels_im == comp] = c["maskId"]
+
+    # 2. For multi-island components (e.g. mainland, Mykonos/Delos) and unassigned islets, assign by proximity
+    unassigned_ys, unassigned_xs = np.where((is_land > 0) & (mask == 0))
+    print(f"Assigning remaining {len(unassigned_xs)} land pixels via constrained Voronoi...")
+
+    chunk_size = 100000
+    for i in range(0, len(unassigned_xs), chunk_size):
+        chunk_x = unassigned_xs[i:i+chunk_size]
+        chunk_y = unassigned_ys[i:i+chunk_size]
+
         dx = (chunk_x[:, None] - coords[None, :, 0]) * 0.788
         dy = chunk_y[:, None] - coords[None, :, 1]
         dist_sq = dx * dx + dy * dy
 
-        # For mainland ports, limit influence radius
         for idx, t in enumerate(types):
             if t == "mainland_port":
                 dist_sq[:, idx] = np.where(dist_sq[:, idx] > mainland_max_dist, 1e9, dist_sq[:, idx])
 
-        # Find closest island
         closest_idx = np.argmin(dist_sq, axis=1)
         min_dists = dist_sq[np.arange(len(chunk_x)), closest_idx]
 
@@ -85,9 +111,35 @@ def bake_island_mask():
         x1, x2 = max(0, cx - r), min(WIDTH, cx + r + 1)
         mask[y1:y2, x1:x2] = c["maskId"]
 
-    mask_img = Image.fromarray(mask, mode="L")
-    mask_img.save(target_path, "PNG", optimize=True)
-    print(f"Saved island mask texture -> {target_path} ({target_path.stat().st_size // 1024} KB)")
+    # --- Compute Smooth Distance Field & Nearest Island Propagation ---
+    print("Computing Euclidean distance transform into sea...")
+    sea = (mask == 0).astype(np.uint8) * 255
+    dist, labels = cv2.distanceTransformWithLabels(sea, cv2.DIST_L2, 5, labelType=cv2.DIST_LABEL_CCOMP)
+
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+    mask_dil = cv2.dilate(mask, kernel)
+
+    lut = np.zeros(labels.max() + 1, dtype=np.uint8)
+    touching = (sea > 0) & (mask_dil > 0)
+    for l, m in zip(labels[touching], mask_dil[touching]):
+        if lut[l] == 0:
+            lut[l] = m
+
+    nearest_id = lut[labels]
+    nearest_id[mask > 0] = mask[mask > 0]
+
+    # Normalized distance from coast into sea (0..255 over ~14 km)
+    sea_dist_norm = np.clip(dist / 90.0, 0.0, 1.0) * 255.0
+
+    # Interior distance on land
+    land_dist = cv2.distanceTransform((mask > 0).astype(np.uint8) * 255, cv2.DIST_L2, 5)
+    land_dist_norm = np.clip(land_dist / 40.0, 0.0, 1.0) * 255.0
+
+    # Channel R = land territory maskId, Channel G = nearest island ID, Channel B = sea distance to coast, Channel A = interior distance
+    rgba = np.stack([mask, nearest_id, sea_dist_norm.astype(np.uint8), land_dist_norm.astype(np.uint8)], axis=2)
+    mask_img = Image.fromarray(rgba, mode="RGBA")
+    mask_img.save(target_path, "PNG")
+    print(f"Saved 4-channel island mask texture -> {target_path} ({target_path.stat().st_size // 1024} KB)")
 
     # Print verification of assigned pixels
     for c in island_centers:

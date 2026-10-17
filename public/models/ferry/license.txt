@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ferry Concept
+* source:	https://sketchfab.com/3d-models/ferry-concept-73b9556133704e73af6637a428bcb8f4
+* author:	Gman The Cruise Dude (https://sketchfab.com/gmanisdabossatbeastmode)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ferry Concept" (https://sketchfab.com/3d-models/ferry-concept-73b9556133704e73af6637a428bcb8f4) by Gman The Cruise Dude (https://sketchfab.com/gmanisdabossatbeastmode) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

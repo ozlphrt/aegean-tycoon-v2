@@ -1,0 +1,18 @@
+{
+  "tickRateHz": 10,
+  "secondsPerGameDay": 24,
+  "priceElasticity": 0.7,
+  "minPriceMultiplier": 0.35,
+  "maxPriceMultiplier": 2.85,
+  "targetBufferDays": 4.5,
+  "storageCapacityFactor": 12.0,
+  "minStorageCapacity": 120,
+  "perishableDecayPerDay": 0.04,
+  "distressThreshold": 0.15,
+  "distressGrowthRate": 0.08,
+  "prosperitySurplusRatio": 1.25,
+  "prosperityGrowthRate": 0.05,
+  "startingTreasury": 500,
+  "startingTradePoints": 0,
+  "startingGameDate": "2026-05-01"
+}

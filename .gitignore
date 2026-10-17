@@ -27,3 +27,12 @@ dist-ssr
 tools/cache/
 __pycache__/
 *.pyc
+
+# Raw asset staging folders (already committed cleanly under public/models and public/audio)
+/Caique/
+/Kaiki/
+/Luxury Motor Yacht/
+/Merchant Freighter/
+/island ferry/
+/*.wav
+/*.mp3

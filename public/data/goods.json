@@ -1,0 +1,142 @@
+[
+  {
+    "id": "fish",
+    "name": "Fresh Fish",
+    "basePrice": 14,
+    "volume": 1,
+    "perishable": true,
+    "icon": "🐟",
+    "color": "#38bdf8",
+    "description": "Wild Aegean catch, Kalloni sardines, and coastal fisheries."
+  },
+  {
+    "id": "olive",
+    "name": "Table Olives",
+    "basePrice": 22,
+    "volume": 1,
+    "perishable": false,
+    "icon": "🫒",
+    "color": "#65a30d",
+    "description": "PDO Throumba and cured table olives harvested from ancient sun-drenched groves."
+  },
+  {
+    "id": "olive_oil",
+    "name": "Virgin Olive Oil",
+    "basePrice": 38,
+    "volume": 1,
+    "perishable": false,
+    "icon": "🫗",
+    "color": "#a3e635",
+    "description": "Cold-pressed extra virgin olive oil, liquid gold of Lesbos, Crete, and the Aegean."
+  },
+  {
+    "id": "wine",
+    "name": "Volcanic Wine",
+    "basePrice": 42,
+    "volume": 1,
+    "perishable": false,
+    "icon": "🍷",
+    "color": "#f43f5e",
+    "description": "Renowned Assyrtiko, Samos Muscat, and volcanic Vinsanto wines."
+  },
+  {
+    "id": "honey",
+    "name": "Thyme Honey",
+    "basePrice": 46,
+    "volume": 1,
+    "perishable": false,
+    "icon": "🍯",
+    "color": "#f59e0b",
+    "description": "Golden wild thyme and mountain pine honey harvested from fragrant Cycladic hillsides."
+  },
+  {
+    "id": "grain",
+    "name": "Wheat & Grain",
+    "basePrice": 15,
+    "volume": 2,
+    "perishable": false,
+    "icon": "🌾",
+    "color": "#fde047",
+    "description": "Essential bulk cereal flour, critical for bakeries across dry islands."
+  },
+  {
+    "id": "cheese",
+    "name": "Graviera Cheese",
+    "basePrice": 30,
+    "volume": 1,
+    "perishable": true,
+    "icon": "🧀",
+    "color": "#facc15",
+    "description": "Aged Graviera, San Michali, and Kopanisti cheeses crafted in highland pastures."
+  },
+  {
+    "id": "mastic",
+    "name": "Chios Mastic",
+    "basePrice": 75,
+    "volume": 1,
+    "perishable": false,
+    "icon": "🌿",
+    "color": "#34d399",
+    "description": "Precious aromatic tear resin harvested uniquely in southern Chios."
+  },
+  {
+    "id": "marble",
+    "name": "Aegean Marble",
+    "basePrice": 56,
+    "volume": 3,
+    "perishable": false,
+    "icon": "🏛️",
+    "color": "#e2e8f0",
+    "description": "Pure white translucent statuary stone from Paros, Tinos, and Thasos."
+  },
+  {
+    "id": "sponges",
+    "name": "Natural Sponges",
+    "basePrice": 28,
+    "volume": 1,
+    "perishable": false,
+    "icon": "🧽",
+    "color": "#fb923c",
+    "description": "Hand-harvested sea sponges from the deep sponge diver fleets of Kalymnos and Symi."
+  },
+  {
+    "id": "water",
+    "name": "Fresh Water",
+    "basePrice": 12,
+    "volume": 2,
+    "perishable": false,
+    "icon": "💧",
+    "color": "#60a5fa",
+    "description": "Potable spring water, the most desperate lifeline for arid Cycladic rocks."
+  },
+  {
+    "id": "fuel",
+    "name": "Marine Fuel",
+    "basePrice": 34,
+    "volume": 2,
+    "perishable": false,
+    "icon": "⛽",
+    "color": "#f97316",
+    "description": "Refined bunkering diesel and kerosene imported from mainland refineries."
+  },
+  {
+    "id": "produce",
+    "name": "Volcanic Produce",
+    "basePrice": 20,
+    "volume": 1,
+    "perishable": true,
+    "icon": "🍅",
+    "color": "#ef4444",
+    "description": "Santorini fava, cherry tomatoes, capers, Aegina pistachios, and sun-ripened citrus."
+  },
+  {
+    "id": "crafts",
+    "name": "Ceramics & Crafts",
+    "basePrice": 48,
+    "volume": 1,
+    "perishable": false,
+    "icon": "🏺",
+    "color": "#c084fc",
+    "description": "Handmade Siphniote earthenware pottery, Skyrian carvings, and woven textiles."
+  }
+]

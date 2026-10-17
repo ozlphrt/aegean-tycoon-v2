@@ -1,8 +1,1681 @@
 # Progress Log
 
-## Current Milestone: M2 Completed ➔ Ready for M3 (Day/Night Reveal)
+## Post-Roadmap Expansions: Island Festivals, Meltemi Weather, Fleet Management, Commodity Sourcing & Archipelago Directory Completed 🎪⛵💨⛽🏝️
 
-## Done
+- [x] 2026-10-17 – **Post-Roadmap Feature 60: Comprehensive Authentic Island Commodities, Table Olives, Thyme Honey & Archipelago Trade Registry (`goods.json`, `islands.json`, `i18n.ts`, `Icons.ts`, `main.ts`, `PROGRESS.md`)**:
+  - **Replaced Generic Produce with Authentic Aegean Island Specialties**:
+    - **Previous Problem**: Many smaller islands (25+ islands) were assigned generic fallback `{"fish": 3}` and `{"water": 3, "grain": 2}`, and agricultural commodities were overly generic ("Island Produce").
+    - **Added Authentic Protected Commodities**:
+      - `olive` (Table Olives 🫒): PDO Throumba & Kalamata cured table olives (Thasos, Lesbos, Chios, Crete).
+      - `honey` (Thyme Honey 🍯): Fragrant wild mountain thyme and pine honey (Kythnos, Ikaria, Astypalaia, Kalymnos, Sifnos, Serifos, Samothrace).
+      - `produce` (Volcanic Produce & Pistachios 🍅): Santorini Fava, cherry tomatoes, capers, PDO Aegina pistachios, Skopelos plums.
+      - `crafts` (Ceramics & Folk Crafts 🏺): Sifnos earthenware pottery, Skyros woodcarvings, Tinos marble sculptors.
+    - **Tailored All 63 Islands**:
+      - Fully researched and defined genuine production and consumption profiles for all 63 islands based on Aegean geography, rainfall, spring water networks, and PDO agricultural heritages.
+      - Arid Cyclades (Santorini, Mykonos, Syros, Ios, etc.) consume freshwater imports, while green spring-rich islands (Andros, Naxos, Samothrace, Crete, Gökçeada) produce and export fresh spring water.
+    - **UI & Engine Support**:
+      - Added vector SVGs for Table Olives and Thyme Honey in Antiquity, Minimalist, and Imperial styles in `Icons.ts`.
+      - Added English, Greek, and Turkish localized names in `i18n.ts`.
+      - Updated color palettes and emoji mappings in `main.ts`.
+  - **Verification**: `npm run build` compiled cleanly; all 22 test suites (121 unit tests) pass 100%.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 59: Theme-Aligned Glassmorphic Modal Close Buttons (`style.css`, `PROGRESS.md`)**:
+  - **Replaced Browser Default Close Button with Aegean Tycoon Glassmorphism**:
+    - **Previous Problem**: The close buttons across modal headers (e.g. Commodity Sourcing, Archipelago Directory, Vessel Advisory, and Confirm Modals) lacked CSS rules for `.btn-close` and fell back to the browser's default white rectangular button with a plain black `✕`, clashing with the dark Mediterranean glassmorphic aesthetic.
+    - **Sleek Aegean Maritime Close Button Styling**:
+      - Applied dark glassmorphic container: `background: rgba(15, 23, 42, 0.75)`, `border: 1px solid rgba(255, 255, 255, 0.18)`, and soft drop shadow `0 2px 6px rgba(0, 0, 0, 0.45)`.
+      - Proportional sizing: `30px × 30px` square with smooth `var(--radius-sm)` corners.
+      - Smooth interaction transitions:
+        - **Hover**: Subtle crimson danger tint `rgba(239, 68, 68, 0.22)`, border `rgba(239, 68, 68, 0.65)`, light coral glyph `#fca5a5`, `transform: scale(1.08)`, and glowing box shadow.
+        - **Active**: Gentle press feedback `transform: scale(0.92)` and deeper red fill.
+        - **Focus**: Accessible golden focus outline (`var(--accent-gold)`).
+  - **Verification**: Clean compilation with `npm run build`; all 22 test suites (121 unit tests) pass 100%.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 58: Toned Down Maritime Dispatch Audio, Concurrency Throttling & Safety Limiter (`AudioManager.ts`, `PROGRESS.md`)**:
+  - **Toned Down Dispatch Sound Levels & Buffer Gains**:
+    - **Previous Problem**: With fleets of 8–26 vessels actively trading, coin sounds played at volume `0.85`, ferry tickets played at unattenuated `1.0`, and cargo loading dock thuds fired at `0.20`, creating a loud, overwhelming acoustic wall when multiple ships traded simultaneously.
+    - **Subtle, Soft & Musical Volumes**:
+      - **Golden Coin Drops**: Cut buffer gain from `0.85` down to `0.26` (-10dB), and reduced procedural coin/wood impacts from `0.22/0.26` to `0.07/0.08` for a gentle, satisfying clink.
+      - **Ferry Tickets**: Inserted a dedicated gain node set to `0.22` (was unattenuated 1.0) and procedural fallback to `0.045`.
+      - **VIP Charter Shimmer**: Lowered chord oscillators from `0.10` to `0.04`.
+      - **Harbor Docking / Cargo Loading**: Reduced from `0.20` down to `0.05` for a soft, subtle harbor knock rather than a booming thud.
+      - **Dawn Fanfare**: Lowered lyre chord sustain from `0.16` to `0.08`.
+      - **Default Master & SFX Volumes**: Lowered default SFX volume from `0.70` to `0.45` and master to `0.60`.
+  - **Rapid Concurrency Throttling (Anti-Cacophony)**:
+    - Added timestamp tracking (`lastCoinTime`, `lastTicketTime`, `lastDockTime`, `lastVipTime`) to throttle triggers occurring within 120–350ms of each other. Multiple ships docking or delivering on the same frame no longer stack overlapping audio pulses.
+  - **Master Dynamics Compressor (Limiter)**:
+    - Installed a `DynamicsCompressorNode` (`threshold: -14dB`, `knee: 10`, `ratio: 4:1`, `attack: 3ms`, `release: 200ms`) on the master output before destination, guaranteeing zero clipping or volume spikes regardless of fleet activity.
+  - **Verification**: Clean compilation with `npm run build`; all 22 test suites (121 unit tests) pass 100%.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 57: Sourcing Modal Height Expansion & High-Contrast Card Layering (`style.css`, `SourcingModal.ts`, `PROGRESS.md`)**:
+  - **Expanded Modal Height for Generous Fleet Assessment Visibility**:
+    - **Previous Problem**: The sourcing modal was constrained with an arbitrary `max-height: 56px` on the vessel fleet grid. In active ports with large fleets (e.g. 26 boats), only 2 cramped rows were visible at a time with a tiny scrollbar.
+    - **Taller Layout & Spacious Fleet Scroll**:
+      - Set modal container to `height: 88vh; max-height: 94vh; min-height: 640px;` with `flex: 1; overflow-y: auto;` in `.sourcing-modal-body`.
+      - Expanded `.inspection-fleet-grid` from `max-height: 56px` to `min-height: 140px; max-height: 230px;`, allowing 5–7+ vessels to be immediately visible at once without scrolling.
+      - Increased ship row min-height to `34px` with better padding, distinct status badges, and prominent action buttons.
+  - **Enhanced Tile Contrast Against Modal Background**:
+    - **Previous Problem**: Producer port cards, vessel suitability cards, and inspection sections used dark semi-transparent backgrounds (`rgba(15, 23, 42, 0.75)`) that bled into the dark modal floor with faint, low-contrast borders.
+    - **Elevated High-Contrast Maritime Layering**:
+      - **Producer Port Cards**: Upgraded to vivid layered gradient `linear-gradient(180deg, rgba(26, 38, 64, 0.96) 0%, rgba(18, 27, 46, 0.96) 100%)` with crisp `1px solid rgba(255, 255, 255, 0.22)` borders, elevated drop shadow `0 4px 14px rgba(0, 0, 0, 0.5)`, pure white bold headers (`#ffffff`), and high-contrast metadata rows.
+      - **Vessel Suitability Cards**: Added matching elevated background, crisp border contrast, pure white tier names, and clear status pill badges.
+      - **Inspection Box & Commission Card**: Boosted border clarity, cyan accent borders, and updated treasury chip to use `formatCompactNumber(sim.treasury)` (`🪙 2.36M d`).
+  - **Verification**: Clean compilation with `npm run build`; all 22 test suites (121 unit tests) pass 100%.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 56: Compact Large Number Formatting (xxxK, xxxM, xxxB) & Pulled-Back Panoramic Camera Framing (`i18n.ts`, `main.ts`, `CameraManager.ts`, `Scene.ts`, `i18n.test.ts`, `PROGRESS.md`)**:
+  - **Compact Human-Readable Numbers for Treasury & Trade Points**:
+    - **Previous Problem**: Values like `2,253,741 d` were rendered as raw, unformatted multi-digit strings that crowded the top bar HUD pill.
+    - **Added Standardized `formatCompactNumber` & `formatDrachmas` in `src/ui/i18n.ts`**:
+      - Values $< 1,000$: rendered cleanly as integer (e.g. `500 d`).
+      - Thousands ($1,000 \le x < 1,000,000$): formatted as `xxxK` (e.g. `25.4K d`, `254K d`).
+      - Millions ($1,000,000 \le x < 1,000,000,000$): formatted as `xxxM` with up to 2 decimal places below 10M (e.g. `2,253,741` becomes `2.25M d`).
+      - Billions: formatted as `xxxB` (e.g. `1.25B d`).
+    - **Exact Breakdown on Hover**: Added rich popover tooltips displaying the exact integer drachma and Trade Point totals (`Company Treasury: 🪙 2,253,741 drachmas`).
+  - **Pulled Back Camera Framing & Overview Zoom**:
+    - **Previous Problem**: The camera starting pose was overly constrained to distance ~11.5 directly over Santorini's pier, and `fitToPositions` was clamped to distance 12–36, making the default view feel claustrophobic and uncomfortably zoomed in.
+    - **Natural Panoramic Framing**:
+      - Updated intro starting pose to `startPos = (-4.2, 24.0, 46.5)` gliding smoothly to `endPos = (-4.2, 18.5, 39.5)` at distance ~30.
+      - Increased default framing `minDistance` from 12 to 26 and padding to 1.30, providing generous sea room and framing Santorini, Naxos, Paros, Ios, and active shipping lanes.
+      - Expanded the upper framing clamp from 36 to 58 so mid-game empires are viewed in majestic widescreen perspective.
+      - Updated world-load hub focus to distance 28 (was 12).
+  - **Verification**: Clean compilation with `npm run build`; all 22 test suites (121 unit tests) pass 100%.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 55: Early Proactive Maritime Collision Avoidance (COLREGs Rule 14/15) (`Ships.ts`, `PROGRESS.md`)**:
+  - **Eliminated Last-Minute Collision Avoidance Swerving**:
+    - **Previous Problem**: Vessels only checked for collisions when `dist < 1.35` world units and `alongFwd < 1.25`. At normal cruising speeds, two approaching vessels had under 0.8 seconds before impact, creating an aggressive, last-minute evasive jerk where hulls nearly touched before parting.
+    - **Extended Radar Detection Horizon**:
+      - Quadrupled the lookahead horizon: up to **4.8 world units** ahead for head-on encounters, and **3.4 world units** for overtaking/crossing situations.
+      - Expanded lateral corridor scanning (`|alongStb| < 1.15`) across full navigable lane widths.
+    - **Smooth COLREGs Early Lane Separation**:
+      - Replaced linear last-minute urgency with a smooth sinusoidal progress curve (`progressCurve = Math.sin(fwdRatio * PI / 2)`).
+      - Vessels begin gently adjusting rudder angle and sliding outward into their designated Starboard (Right) lane starting at 4.5+ units away.
+      - By 2.0 units separation, vessels are already well clear of each other (~1.2 - 1.44 units center-to-center hull clearance), passing port-to-port like real professional ships with zero close calls or clipping.
+      - Graceful beam-clearing taper smoothly returns vessels to lane centerline over 0.5 units once aft of beam.
+      - Increased helm response agility (`filterAlpha = 1.0 - Math.exp(-dt * 3.4)`) with cumulative lane offset clamping (`[-0.90, +0.90]`) for smooth, non-twitchy nautical inertia.
+  - **Verification**: Clean compilation with `npm run build`; all 22 test suites (120 unit tests) pass 100%.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 54: High-Definition Vector SVG Flags (US, Greek, Turkish) & Tooltip Suppression (`index.html`, `i18n.ts`, `GameTooltip.ts`, `style.css`, `i18n.test.ts`, `PROGRESS.md`)**:
+  - **Replaced Country Code Characters with Crisp Vector SVG Flags**:
+    - **Previous Problem**: On Windows and browsers lacking color emoji flag fonts, standard flag emojis (`🇬🇧`, `🇬🇷`, `🇹🇷`) rendered as plain text country codes (`GB`, `GR`, `TR`), causing the selector to display `GB EN ▼` instead of a flag.
+    - **Replaced with US, Greek, and Turkish Flags**:
+      - Updated English language flag from Great Britain to the United States (**US Flag** 🇺🇸).
+      - Authored pixel-perfect, self-contained SVG vector flags for **United States** (13 red/white stripes, blue canton with stars), **Greece** (9 blue/white stripes with Greek cross canton), and **Turkey** (crimson field with white crescent moon and 5-pointed star).
+      - Added `.flag-icon` styles with rounded corners (`2px`), subtle border contrast (`rgba(255, 255, 255, 0.18)`), and soft drop shadows for high-DPI clarity across all operating systems.
+    - **Dynamic Switcher Updates**:
+      - Updated `SUPPORTED_LANGUAGES` in `src/ui/i18n.ts` with `flagSvg` properties and updated `updateDomTranslations()` to cleanly swap active SVGs into `#lang-active-flag`.
+  - **Removed Language Selector Tooltip**:
+    - Removed `title="Language / Γλώσσα / Dil"` attributes from `#top-lang-selector` and `#btn-lang-toggle`.
+    - Added `data-no-tooltip="true"` to language selector elements.
+    - Updated `GameTooltip.ts` with explicit suppression logic targeting `.lang-selector-wrap`, `#top-lang-selector`, `#btn-lang-toggle`, and `[data-no-tooltip]`, guaranteeing no popover tooltip triggers on hover.
+  - **Verification**: Clean compilation with `npm run build`; all 22 test suites (120 unit tests) pass 100%.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 53: Mediterranean Ocean Surf & Wind Ambience Auto-Start Lifecycle Fix (`AudioManager.ts`, `PROGRESS.md`)**:
+  - **Identified & Resolved Ambience Gatekeeping Bug**:
+    - **Previous Problem**: Ocean surf and wind whisper were completely inaudible upon entering the game unless the player explicitly toggled Mute/Unmute.
+    - **Root Cause Diagnosis**:
+      - In `AudioManager.ts`, the user interaction unlock handler only started ambience inside `if (this.ctx && this.ctx.state === 'suspended') { this.ctx.resume().then(...) }`.
+      - When an `AudioContext` was created or resumed with `this.ctx.state === 'running'` (e.g. browser already granted audio permission, or `playCoinSound()` triggered context creation), the `suspended` check evaluated to false, leaving `this.startAmbience()` permanently uncalled.
+      - The only method that directly invoked `startAmbience()` was `toggleMute()`, forcing users to click mute/unmute to hear the environment.
+    - **Comprehensive Lifecycle Fix**:
+      - Upgraded interaction unlock handler (`pointerdown`, `mousedown`, `keydown`, `touchstart`, `click`) to ensure ambience starts whether the context was suspended or already running.
+      - Updated `initContext()` to immediately start ambience if the browser begins in `'running'` state.
+      - Updated `startAmbience()` to auto-initialize context and auto-resume if suspended, making direct calls fully idempotent and resilient.
+      - Added fallback ambience start triggers to `playCoinSound()` and `setAmbienceVolume()`.
+      - Boosted default ambience acoustic balance: `ambienceVolume` default to `0.50`, wave swell gain to `0.35`, and wind whisper gain to `0.12` for soothing, distinct Mediterranean atmosphere.
+  - **Verification**: Clean compilation with `npm run build`; all 22 test suites (120 unit tests) pass 100%.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 52: Intimate Tactical Starting Zoom & Archipelago Framing Clamp (`CameraManager.ts`, `Scene.ts`, `main.ts`, `PROGRESS.md`)**:
+  - **Eliminated Deep-Space Startup Zoom**:
+    - **Previous Problem**: The camera began at high-altitude coordinates `(10, 95, 115)` (distance ~150), followed by an unconstrained bounding box fit on world load. For mid-game saves or the 15-port preview snapshot, `fitToPositions` blew the camera out to distances exceeding 130+, rendering islands, ships, and ports as tiny, unreadable specks and forcing players to repeatedly scroll zoom.
+    - **Intimate Starter Pose**:
+      - Replaced deep-space coordinates with an intimate Cycladic pose: `startPos = (-4.2, 14.5, 27.5)` gliding softly over 1.8s to rest at `endPos = (-4.2, 8.2, 23.8)` directly over Santorini (distance ~11.5).
+      - Player immediately sees the volcanic caldera, whitewashed harbor village, illuminated sea lanes, and starting Kaiki vessels up-close.
+  - **Smart World-Load Framing**:
+    - On world load, if only starter islands are active (`<= 2`), tightly frames Santorini & Naxos at distance 12-14.
+    - When numerous ports are unlocked (e.g. 15-port snapshot or 43-port dynasty save), the camera focuses crisply on Santorini (distance ~12) so the player is immediately immersed in maritime activity rather than pulled into the stratosphere.
+  - **Archipelago Framing Clamping**:
+    - Updated `fitToPositions()` in `CameraManager.ts` with `minDistance = 12`, `padding = 1.15`, and a firm upper clamp `distance = Math.min(36, rawDistance)`.
+    - Pressing <kbd>Z</kbd> or clicking **🎯 Active Islands** now delivers a readable, tactical overview where ship models and wakes remain distinct, never exceeding distance 36.
+    - Reduced `controls.maxDistance` in `Scene.ts` from 250 to 120 to prevent accidental zooming into empty black void.
+  - **Verification**: Clean compilation with `npm run build`; all 22 test suites (120 unit tests) pass 100%.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 51: Shortened Ferry Ticket Audio Integration & Hybrid Sample Engine (`AudioManager.ts`, `ferry_ticket.wav`, `CREDITS.md`, `PROGRESS.md`)**:
+  - **Acoustic Sample Analysis & Master Shortening**:
+    - Analyzed `"ferry ticket.mp3"` (original 2.064s with 79ms initial silence and 1.38s trailing silence).
+    - Extracted the authentic mechanical ticket punch action (tactile lever contact clamp followed by crisp punch strike), trimming all dead air.
+    - Applied a 3ms zero-crossing fade-in (0ms latency tactile strike) and 25ms natural decay fade-out.
+    - Normalized peak volume (-1.0 dBFS) without clipping or distortion.
+    - Exported high-fidelity 48kHz 16-bit stereo PCM audio to `public/audio/ferry_ticket.wav`, `public/audio/ticket.wav`, and `ferry ticket (Shortened).wav` (117 KB, 0.610s duration, down from 2.064s).
+  - **Hybrid Web Audio API Integration**:
+    - Upgraded `AudioManager.ts` with `loadTicketAudio()` to asynchronously fetch and decode `/audio/ferry_ticket.wav` into an in-memory `AudioBuffer`.
+    - Integrated real sample playback in `audio.playTicketSound()` with dynamic `±2%` micro-pitch humanization on passenger embarkations, falling back to procedural synthesis if the sample is still loading.
+  - **Verification**: Clean compilation with `npm run build`; all 22 test suites (120 unit tests) pass 100%.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 50: First-Time User 5-Minute Executive Preview, Clean-Slate Reset & Continuous Dynasty Saving (`previewManager.ts`, `preview_snapshot.json`, `PreviewModal.ts`, `main.ts`, `style.css`, `PROGRESS.md`)**:
+  - **Executive Archipelago Trial (5-Minute Thriving Snapshot)**:
+    - **Snapshot Asset Generation (`public/data/preview_snapshot.json`)**: Captured an advanced, bustling mid-game Aegean empire featuring 15 awakened islands (Cyclades, Dodecanese, Samos, Izmir), 8 commercial vessels across all 5 classes (including *Boreas* and *Calypso* ferries, *Aegean Trader* freighters, caiques, and fishing boats), active multi-commodity cargo manifests, live route assignments, and 🪙 25,411.99 in treasury drachmas.
+    - **Default Experience for New Users**: First-time players entering without an existing save in `localStorage` are automatically placed at the helm of this thriving empire to immediately experience the depth of maritime trade, ship navigation, and live coin acoustics.
+  - **Headless Preview Simulation System (`src/sim/previewManager.ts`, `previewManager.test.ts`)**:
+    - **Session Lifecycle & Timer Logic**: Built `isFirstTimeUser()`, `getPreviewRemainingSeconds()`, `startPreviewSession()`, and `completePreviewSession()` tracking a strict 300-second (5-minute) preview window in `localStorage`.
+    - **Clean-Slate Reset Engine (`resetSimulationToCleanSlate`)**: Fully restores the game back to Day 1 clean slate: starting treasury of 🪙 120 drachmas, 0 TP, resets all island market inventories and production rates to pristine defaults, restricts awakened islands strictly to Santorini & Naxos, clears fleet back to 2 starter fishing boats (*Nikolaos* and *Delphis*), and automatically calls `saveToStorage(sim)`.
+    - **Headless Unit Tests**: 100% test coverage in `src/sim/previewManager.test.ts` adhering strictly to AGENTS.md Rule 6 (zero render imports in simulation core).
+  - **Presentation & Modal UI System (`src/render/PreviewModal.ts`, `index.html`, `style.css`)**:
+    - **Introductory Welcome Modal (`#preview-welcome-modal`)**: Presents an executive introduction explaining the 15 awakened ports, 8 active vessels, and 🪙 25,400 drachmas, with a prominent alert that the simulation will automatically reset back to zero after 5 minutes so the player can build their own dynasty. Provides `[⛵ Embark on 5-Minute Preview]` and `[⚡ Skip to Clean Slate Now]` action buttons.
+    - **Persistent Floating HUD Bar (`#preview-hud-bar`)**: Sleek floating glassmorphism pill displaying a live `MM:SS` countdown timer, trade status indicators, and an instant `[⚡ Start My Own Empire]` early reset button. Features an amber pulsating glow (`.ending-soon`) when under 60 seconds remain.
+    - **Preview Concluded Transition Modal (`#preview-ended-modal`)**: Triggers immediately upon 5-minute expiration or manual skip, detailing the transition to Day 1 virgin start (Santorini harbor, 🪙 120 drachmas, starter boats) with continuous organic progress saving activated.
+  - **Save Storage Isolation & Continuous Organic Saving**:
+    - Guarded background daily autosaves and `beforeunload` saves with `isPreviewCompleted()` so the snapshot state is never mistakenly saved over player storage during the preview.
+    - Once the preview concludes or is skipped, continuous saving is permanently active and future visits resume the player's own organic progress.
+  - **Bottom Bar Polish**: Removed the redundant `#btn-open-settings` button from the bottom quick-toggles bar, leaving clean focus on Layer Cycling, Active Islands, Dispatch, Trade Flows, and Island Labels (Settings remains accessible via the top-right header gear `⚙️` and keyboard shortcut `S`).
+  - **Verification**: All 22 test suites (120 unit tests) pass 100%; production build clean with `tsc && vite build`.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 49: Shortened "Crisp Coin Taps" Audio Integration & Hybrid Sample Engine (`AudioManager.ts`, `public/audio/coin.wav`, `CREDITS.md`, `PROGRESS.md`)**:
+  - **Acoustic Sample Analysis & Master Shortening**:
+    - Analyzed `"Crisp Coin Taps.mp3"` (original 1.056s with ~350ms initial silence and ~470ms trailing silence).
+    - Extracted the core rapid cascading coin impact cluster (4 crisp metallic taps between 0.354s and 0.584s).
+    - Normalized peak volume (-1.3 dBFS) with a 2.5ms zero-crossing fade-in (0ms latency tactile strike) and smooth 20ms natural decay fade-out.
+    - Exported high-fidelity 48kHz 16-bit stereo PCM audio to `public/audio/coin.wav`, `public/audio/crisp_coin_taps.wav`, and `Crisp Coin Taps (Shortened).wav` (44 KB, 0.230s duration).
+  - **Hybrid Web Audio API Sample Integration**:
+    - Upgraded `AudioManager.ts` to asynchronously fetch and decode `/audio/coin.wav` into an in-memory `AudioBuffer` upon audio context initialization.
+    - Implemented instant buffer playback in `audio.playCoinSound()` with subtle dynamic micro-pitch humanization (`±3%` playback rate jitter) so rapid coin transactions (e.g. trading, island awakening, ship commissioning, sound preview) sound natural and responsive.
+    - Maintained full routing through `this.sfxGain` and `this.masterGain` with procedural oscillator synthesis fallback if the sample has not yet finished loading.
+  - **Verification**: Clean compilation with `npm run build`; all 20 test suites (115 unit tests) pass; sound loaded and validated.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 48: Sourcing Analysis Executive Single-Page Transformation & Zero-Scrollbar Layout (`SourcingModal.ts`, `style.css`, `PROGRESS.md`)**:
+  - **Eliminated All Modal Vertical Scrolling**:
+    - **Previous Problem**: The Commodity Sourcing dialog (`#sourcing-modal`) exceeded viewport heights due to verbose headers, tall multi-line hero status banners, and loose section gaps (20px), forcing users to scroll vertically across ports, vessel classes, fleet rows, and commission cards.
+    - **Executive Single-Page Layout**:
+      - Set `.sourcing-modal-body { overflow: hidden; }` and `.sourcing-modal-container { max-height: 94vh; width: 95vw; max-width: 1180px; height: auto; }` guaranteeing that the entire modal fits into a single desktop screen view with zero vertical scrollbars.
+  - **Information-Dense Component Streamlining**:
+    - **Ultra-Sleek 26px Hero Status Strip**: Replaced the bulky banner with a single-line horizontal status bar grouping stockout/deficit badges, inventory capacity (`100/120t`), daily drain (`-12t/d`), remaining runway (`~8.3d`), and inline diagnosis narrative.
+    - **Closest Exporting Ports (3 Cards in 1 Row)**: Formatted cards with compact 2x2 grid stats, inline badges, and 21px `[🧭 View on Map]` action buttons.
+    - **Vessel Class Suitability Matrix (5 Cards in 1 Row)**: Displayed all 5 tiers (Boat, Coaster, Ferry, Freighter, Yacht) in a single balanced row with inline 2-column specs (`Cap`, `Range`, `Speed`, `Supply/Trip`), suitability tags, and glowing selection borders.
+    - **Fleet Assessment & Route Dispatcher**: Compacted route waypoint banner (origin ➔ destination with nautical distance & capability pills), internal 2-row scrollable fleet list, and single-line on-the-spot commissioning bar (`🔨 Commission & Deploy`).
+  - **100% Functionality Retention**: All click interactions (supplier port selection, ship tier switching, 1-click vessel redirect, 1-click commission & deploy, map inspection) remain fully responsive and intact.
+  - **Verification**: All 20 test suites (115 unit tests) pass 100%; production build clean in 720ms.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 47: Vessel Voyage & Travel Port Recommendation Engine with 1-Click Sea Lane Dispatching (`sourcing.ts`, `sourcing.test.ts`, `main.ts`, `index.html`, `style.css`, `PROGRESS.md`)**:
+  - **Solved Idle Vessel Destination Ambiguity**:
+    - **Previous Problem**: When a vessel was docked and idle with a cargo mandate (e.g. *Boreas* at Samos Port mandated for Marine Fuel), the vessel dossier displayed an uninformative dead-end text: `Hold empty. Seeking trade opportunity.` with no indication of which ports export the good, how far they are, or where the vessel should travel to load.
+    - **Added Intelligent Voyage Recommendation Engine (`analyzeVesselVoyageOptions`)**:
+      - **Mandate Supplier Detection**: If a vessel's priority good is not produced at its current port (e.g. Samos has 0 fuel output), the engine warns the player (`⚠️ Samos Port does not produce Marine Fuel`) and searches all Aegean ports producing that commodity (e.g. Izmir at 68 km with +26/d output, Syros at 120 km).
+      - **Distance & Voyage Calculation**: Calculates exact sea lane nautical distances and estimated voyage durations (`~1.2 days voyage`).
+      - **Awakening & Trade Status Prioritization**: Ranks awakened supplier ports first with wholesale buy prices and warehouse reserves; flags locked ports with awakening drachma costs.
+      - **Local Producer Demanding Route Detection**: If the current port produces the priority good, identifies top deficit buyer ports with starving alerts (`🚨 Deficit`) and premium selling prices.
+      - **Automatic Arbitrage Recommendations**: For `auto` mandate, evaluates optimal trade runs or identifies closest supply hubs when local stockpiles are depleted.
+  - **Interactive 1-Click Port Travel & Dispatch Controls**:
+    - **Primary Recommendation Card**: Prominent glowing tile (`.vessel-travel-card`) displaying the destination port name, distance, supplier badge (`SUPPLIER`, `TOP ARBITRAGE`, `DEFICIT BUYER`), warehouse stock, wholesale rate, and a single-click action button: `[🧭 Travel to {PortName} Port]`.
+    - **Alternative Port Quick-Travel Pills**: Displays secondary alternative supply ports with instant travel buttons.
+    - **Quick Destination Port Selector (`<select>` + `[⛵ Set Sail]`)**: Allows players to order the vessel to sail to any port across the Aegean, with sorted distances and commodity tags (e.g. `Izmir (68 km - ⛽ Produces Marine Fuel)`).
+    - **Seamless Live Sea Lane Dispatch**: Clicking any travel button calls `sim.redirectShip(shipId, targetPortId, cargoPriority)`, calculates the sea lane path, transitions ship state to `sailing`, initiates camera and wake effects, and pushes a maritime dispatch notification.
+    - **Dynamic Mandate Reflection**: Changing the Cargo Priority Mandate dropdown instantly re-evaluates the destination recommendations without needing to re-open the inspector.
+  - **Visual & Layout Polish**:
+    - Fixed decommission button text wrapping by adding `white-space: nowrap; flex-shrink: 0;` to `.btn-danger-decommission` so `(+ 🪙 600)` stays neatly on one line.
+    - Added contextual hold status messages explaining whether cargo is empty due to missing local production or awaiting production accumulation.
+  - **Verification**: Added automated unit tests in `src/sim/sourcing.test.ts` verifying voyage options, fuel supplier identification, and immediate dispatch; all 20 test suites (115 unit tests) pass 100%; Vite production build compiles with zero errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 46: Archipelago Directory Graphical Layout Transformation & Maritime Intelligence Dashboard (`ArchipelagoModal.ts`, `style.css`, `PROGRESS.md`)**:
+  - **Replaced Wall-of-Text Cards with 3-Widget Graphical Intelligence Tiles**:
+    - **Previous Problem**: The directory card was an uninformative, text-heavy layout where population was a near-invisible 4% dot, opportunity score was hidden in small plain text (`Score: 91`), and exports/demands were crammed into a single blended footer line.
+    - **Tile Restructuring**: Expanded modal width to `1160px` with a clean 2-tier architecture: an executive topbar (ranking, port name, awaken state, berths, unlock cost, and contextual action buttons) above a 3-widget graphical dashboard grid (`.arch-card-dashboard`).
+  - **Widget 1: Demographics & Harbor Infrastructure**:
+    - **Large Visual Population Metric**: Bold formatted population figure (e.g. `4,000 citizens`) paired with a demographic tier badge (`Metropolis`, `Major Hub`, `Regional Port`, `Town Settlement`).
+    - **Perceptual Power-Scaled Comparison Bar**: Replaced linear `pop / maxPop` (which flattened 95% of islands into tiny specks due to Izmir's 400k population) with a perceptual power curve `Math.pow(pop / maxPop, 0.42)`. Small and mid-size islands now display distinct, informative visual comparisons (15% for outposts, 35% for regional ports, 60% for major hubs).
+    - **Live Harbor Berth Gauge**: Integrated berth capacity status bar showing current occupancy or unlock potential (`⚓ 3/6 Berths Active` or `⚓ 6 Berths upon awakening`).
+  - **Widget 2: Strategic Potential & Opportunity Radar**:
+    - **Glowing Score Badge & Tier Pill**: Large radiant score badge (`91`, `119`) classified into visual potential tiers: `🔥 PRIME HUB`, `⚡ STRATEGIC NEXUS`, `📈 EMERGING MARKET`, and `⚓ FRONTIER OUTPOST`.
+    - **Visual Potential Progress Meter**: Clean gradient progress track representing economic rank and readiness.
+    - **Tactical Narrative**: Clear strategic summary highlighting immediate unlocked benefits or gateway requirements (e.g. `✨ Ready to Awaken! 100 🪙 unlocks pop 2,000 & +8/d exports`).
+  - **Widget 3: Dual-Stream Trade Matrix**:
+    - **Side-by-Side Trade Split**: Clean 2-column layout distinguishing production from consumption.
+    - **Exports Stream (Green)**: Total export throughput banner (`+7/d Outflow`), individual commodity cards with wholesale market price (`42 🪙`) and proportional green volume meters.
+    - **Demands Stream (Amber/Cyan)**: Total demand intake banner (`-9/d Inflow`), commodity requirement cards with amber volume bars and prominent starving/deficit badges (`🚨 Deficit`) for urgent trade opportunities.
+  - **Interactive Handlers & Responsive Polish**:
+    - Retained 100% of interactive capabilities: `[📍 View on Map]`, `[✨ Awaken Port]`, `[📊 Report]`, `[🔍 Logistics]`, search, region filtering, and sorting.
+    - Responsive grid smoothly collapses on narrower screens without breaking layouts.
+  - **Verification**: All 20 test suites (114 unit tests) pass 100%; Vite production build passes with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 45: Interactive Port & Vessel Selection with On-The-Spot Fleet Inspection & Dispatching (`SourcingModal.ts`, `sourcing.ts`, `sourcing.test.ts`, `shipSim.ts`, `simulation.ts`, `style.css`, `PROGRESS.md`)**:
+  - **Interactive Port & Vessel Class Selection Without Leaving Modal**:
+    - **Selectable Exporting Ports**: Clicking any port card in *Closest Exporting Ports* (e.g. Naxos, Andros, Samothrace) highlights it with a glowing cyan/gold border (`.sourcing-port-card.selected`), checkmark badge (`✓ Selected Route`), and sets it as the active route origin without navigating away or closing the dialog.
+    - **Selectable Vessel Classes**: Clicking any vessel card in *Vessel Class Range & Capacity Suitability* (e.g. Boat, Coaster, Ferry, Freighter, Yacht) highlights it with an active golden radiant border (`.sourcing-vessel-card.selected`), selection tag (`✓ Selected Class`), and dynamically drives the route inspection below.
+  - **On-The-Spot Fleet Availability Inspection (`inspectVesselClassAvailability`)**:
+    - Scans player-owned vessels across the Aegean archipelago matching the selected class.
+    - Categorizes vessels by location: stationed at destination port (local), docked at supplier port, sailing along route, or operating elsewhere.
+    - Live status display with cargo inventory chips and current priority tags.
+  - **Direct 1-Click Redirect or Commission Action**:
+    - **If Vessel Class is Available**: Each matching vessel row features an instant `[🧭 Redirect to {SupplierPort}]` button. Clicking calls `sim.redirectShip(shipId, targetPortId, goodId)`:
+      - Assigns cargo priority to the requested deficit commodity immediately.
+      - If empty/idle, immediately computes the sea lane waypoints and dispatches the vessel towards the supplier port.
+      - Re-renders dynamically in place with celebratory notification and sound effects.
+    - **Commission Dedicated Vessel on the Spot**: Prominent commissioning card right in the panel:
+      - Shows construction cost, harbor berths available at destination (`{berthsUsed}/{berthsMax}`), and treasury status.
+      - Single-click `[🔨 Commission & Deploy to {SupplierPort}]`: constructs the ship, sets cargo priority, and deploys it immediately along the sea lane network.
+    - **Backward Compatibility**: Preserved access to other local harbor vessels at destination port in a clean secondary section.
+  - **Verification**: Added automated unit tests in `src/sim/sourcing.test.ts` covering class availability inspection, route distance calculation, and idle redirection; all 20 test suites (114 unit tests) pass 100%; Vite production build succeeds with zero errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 44: Minimalist Island Labels & Prosperity-Revealing Marker Streamlining (`IslandMarkers.ts`, `style.css`, `PROGRESS.md`)**:
+  - **Eliminated Bulky Prosperity Badges from 2D World Labels**:
+    - Removed the horizontal `.label-prosperity-badge` pill (which previously appended `[⚠️ SHORT]`, `[85%]`, etc. to every island name), slashing label screen real estate and preventing visual clutter across the archipelago.
+    - Simplified `.island-label` to display exclusively the glowing status marker dot and the clean island name: `<span class="island-status-dot"></span><span class="label-text">${islandName}</span>`.
+  - **Color of Label & Marker Directly Reveals Prosperity Status**:
+    - **Glowing Status Dot**: Inherits the live dynamic prosperity hex (`pHex`) with an ambient 8px box-shadow glow.
+    - **Label Border & Tint**: Directly rendered in the exact tier/prosperity palette:
+      - *Distressed / Shortage*: Crimson border (`#ef4444`), dark crimson background, pulsing red glow.
+      - *Struggling (< 40%)*: Warm amber border (`#f59e0b` / `#F05A28`), subtle amber background, amber glow.
+      - *Stable (40% - 69%)*: Aegean cyan border (`#38bdf8`), cyan aura.
+      - *Booming (>= 70%)*: Emerald green border (`#10b981`), green aura.
+    - **Preserved Selected Island Prosperity Colors**: Selected islands (`.selected-island`) now use a crisp outer golden focus ring (`outline: 2px solid #fbbf24; outline-offset: 2.5px;`) and elevated scale rather than overriding the inner label border and background to solid yellow/navy. This ensures selected islands (like Folegandros in distress) still vividly communicate their prosperity status through their inner border and marker dot.
+  - **Optimized Collision Bounds**:
+    - Reduced screen-space label collision bounding box width by ~40% (from 68+42px to 46+8px), drastically reducing collision culling between neighboring islands in tight archipelagic clusters.
+  - **Verification**: All 20 test suites (113 unit tests) pass 100%; Vite production build compiles cleanly in under 1 second.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 43: Economic Advisory Report Buffer Alignment & Diagnostic Synchronization (`advisory.ts`, `advisory.test.ts`, `main.ts`, `style.css`, `PROGRESS.md`)**:
+  - **Resolved False Shortage Conflict Between Inspector and Report Modal**:
+    - **Identified Root Cause**: In `src/sim/advisory.ts`, the import advice diagnostic calculated `bufferTarget = market.maxCapacity * 0.6` (60% of total physical warehouse capacity, e.g. 216 units for Water) rather than the island's safe operating buffer (`market.targetStock`, e.g. 36 units for Water).
+    - Consequently, Santorini's 90 units of water (250% of operating buffer, 11+ days of runway, displayed as `Abundant` in the inspector) was compared against 216 units, erroneously triggering `urgency = 'warning'` and displaying `Low Buffer ➔` in the report modal!
+  - **Synchronized Report Engine with Simulation Reality**:
+    - `bufferTarget` in `advisory.ts` now mirrors `market.targetStock` (the 4.5-day operating buffer denoted by `b` in the inspector).
+    - Computed exact live buffer percentages (`bufferPct`) and status labels (`Abundant` for >= 200%, `Supplied` for >= 40%, `Low Buffer` for < 40%, `Critical` for starving).
+    - In the report modal, import cards now display: `Stock / Target Buffer: 90 / 36b units (250%)` with interactive badges: `Abundant (250%) ✓` and `Supplied (117%) ✓` in stable cyan/green glow, matching the inspector's full green status bars.
+  - **Dynamic Economic Recovery Status in Report**:
+    - When an island has low prosperity (< 40%) but its import lifelines are fully secured with 0% distress, the hero card now displays `Economic Recovery ↗` with a green `RECOVERING ↗` badge and clear summary explaining that distress has cleared and prosperity is actively climbing +5%/day.
+    - Added executive action checklist items acknowledging the active recovery and alerting players if export reserves are depleted (e.g. `Crafts 7/276`).
+  - **Verification**: Added automated unit test in `src/sim/advisory.test.ts` verifying recovery detection, abundant buffer targets, and depleted export alerts; all 20 test suites (113 unit tests) pass 100%; Vite production build succeeds cleanly.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 42: Prosperity Status Recovery Trend & Export Depletion Alert System (`style.css`, `main.ts`, `PROGRESS.md`)**:
+  - **Fixed Prosperity Badge Color Inversion & Disconnect**:
+    - Addressed bug where low prosperity (`15% Struggling`) displayed in emerald green: `.prosperity-badge` previously lacked styling for intermediate tiers and fell back to default green (`#249B56`).
+    - Added dedicated CSS classes with distinct colors, glowing borders, and backgrounds: `.prosperity-badge.booming` (`#249B56`), `.prosperity-badge.stable` (`#38bdf8`), `.prosperity-badge.struggling` (`#F05A28`, warm amber-orange), and `.prosperity-badge.distressed` (`#D32F2F`, crimson).
+    - Updated `prosperityVal.className` in `main.ts` to assign the proper status class dynamically matching the simulated bracket.
+  - **Clarified Economic State & Recovery Momentum**:
+    - Clarified the relationship between import buffering and island prosperity: when an island's vital imports were previously exhausted, distress drove prosperity down to 10–15%. Once imports are replenished (e.g. Water, Produce, and Grain fully buffered at Santorini), prosperity climbs gradually at +5%/day (`updateDistressAndProsperity`).
+    - Added recovery trend indicator directly to the status badge: e.g. `15.0% Struggling ↗` when imports are satisfied (`fulfillmentRatio >= 70%` and `distress < 15%`), indicating an active economic rebound.
+    - Added comprehensive diagnostic tooltips on both `#inspector-prosperity-val` and `#inspector-prosperity-bar` reporting live recovery rate (+5%/day), import satisfaction ratio, and distress index.
+  - **Export Warehouse Depletion Alerts & Column Header Attention Cues**:
+    - **Card-Level Depleted Warnings**: Producer cards with critically low warehouse reserves (`<= 10%` fill or below reserve safety threshold) now receive the `.depleted` class, an amber warning border, glowing amber stock gauge (`.good-stock-gauge-fill.export-low`), and an alert tag `⚠️ Low Reserve` (e.g. `Crafts 7/276`).
+    - **Diagnostic Card Tooltips**: Hovering over a low export clearly explains that local production (+5/d) is currently trailing behind export departures and trade ships cannot load until reserves accumulate.
+    - **Dynamic Export Header Summary (`#transfer-pill-exports`)**: Upgraded the column summary chip next to `EXPORTS (+/D)` to highlight critical export states (e.g. `⚠️ Crafts Low` in pulsing amber, or `📦 Crafts Full` if capped), giving instant visual cues parallel to the `[✓ All Buffered]` / `[⚠️ Starving]` import header.
+  - **Verification**: All 20 test suites (112 unit tests) pass 100%; Vite production build succeeds cleanly.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 41: In-Game Glassmorphic Confirmation Modal System (`ConfirmModal.ts`, `ConfirmModal.test.ts`, `main.ts`, `FleetPanel.ts`, `VesselAdvisoryModal.ts`, `SettingsPanel.ts`, `style.css`, `i18n.ts`, `PROGRESS.md`)**:
+  - **Eliminated Native Browser `window.confirm()` Dialogs**:
+    - Replaced all raw browser `confirm(...)` dialogs (previously triggered during ship scrapping in the Left Inspector, Fleet Panel, and Vessel Advisory Modal, as well as Game Reset in Settings) with an immersive, custom glassmorphic in-game confirmation modal (`ConfirmModal.ts`).
+  - **Premium Cycladic Modal Aesthetics & Audio Feedback**:
+    - High-elevation glassmorphism (`z-index: 100005`, `backdrop-filter: blur(14px)`, `linear-gradient` dark ocean navy).
+    - Glowing icon badges (`🔨` for vessel decommission, `⚠️` for empire reset).
+    - Dynamic danger/warning variant border glows and button palettes (`.btn-danger`, `.btn-warning`, `.btn-secondary`).
+    - Multi-bullet structured detail cards for harbor berths reclaimed, drachma salvage values, and permanent consequences.
+    - Integrated sound design: triggers `audio.playClickSound()` on modal open, cancel, and Escape key, and `audio.playCoinSound()` upon completed scrap.
+  - **Promise-Based & Keyboard Accessible**:
+    - Asynchronous API returning `Promise<boolean>` for seamless integration with async event handlers.
+    - Full keyboard navigation: `Escape` cancels, `Enter` confirms, backdrop click dismisses, auto-focuses action button.
+  - **Trilingual Internationalization (`i18n.ts`)**:
+    - Added localized action strings (`modal.confirm.title`, `modal.confirm.cancel`, `modal.confirm.ok`, `modal.confirm.decommission_title`, `modal.confirm.decommission_action`, `modal.confirm.reset_title`, `modal.confirm.reset_action`) across English, Greek, and Turkish.
+  - **Verification**: All 20 test suites (112 unit tests) pass 100%; Vite production build succeeds cleanly.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 40: Left Inspector Good Pill Hover Stabilization & Tooltip De-jittering (`GameTooltip.ts`, `style.css`, `main.ts`, `PROGRESS.md`)**:
+  - **Identified Multiple Root Causes of Rapid Hover On/Off Oscillations**:
+    - **Pulsing Keyframe Animation Conflict**: Starving goods (`.good-pill.consumer.starving`) run `@keyframes starvingCardGlow` (and active transfers run `@keyframes cardLoadGlow` / `cardUnloadGlow`) continuously animating `border-color` and `box-shadow`. Without pausing during `:hover`, browsers continually fought between keyframe styling and `:hover` rules at 60 FPS.
+    - **Nested `title` Attributes & Pointer Sub-target Fragmenting**: The parent `.good-pill` element had a complete multi-bullet tooltip, but internal child chips (`.good-rate-chip`, `.good-stock-gauge-bar`, `.good-stock-chip`, `.good-price-chip`) also possessed independent `title` attributes. Moving the mouse across internal elements fired rapid `pointerout` / `pointerover` transitions that repeatedly hid and re-queued tooltips every 50–60ms.
+    - **Unchecked In-Place DOM Re-assignments**: High-frequency inspector updates (every 250ms) unconditionally re-assigned `.className`, `.style.width`, and `.innerHTML` on pill elements, invalidating hover styling caches.
+  - **Complete Stabilization Fixes**:
+    - **Disabled Conflicting Keyframe Animations on Hover (`src/style.css`)**: Added `animation: none !important;` to `.good-pill:hover`, `.good-pill.producer:hover`, `.good-pill.consumer:hover`, `.good-pill.consumer.starving:hover`, `.good-pill.transfer-anim-load:hover`, `.good-pill.transfer-anim-unload:hover`, and their `.good-icon-wrapper` elements. Provides a rock-solid, serene, and radiant highlight with zero flickering.
+    - **Composite Root Pointer Delegation & Boundary Lock (`src/render/GameTooltip.ts`)**: `handlePointerOver` and `handlePointerOut` now lock onto composite card roots (`.good-pill, [data-tooltip-root]`). Hover transitions between internal children remain locked to the parent card root without closing or restarting tooltip timers.
+    - **Removed Conflicting Child `title` Attributes (`src/main.ts`)**: Cleaned nested `title` attributes from production/demand rate chips, gauge bars, stock chips, and price chips in both `produces` and `consumes`. All tooltip information is consolidated into the rich parent card tooltip.
+    - **Diffed In-Place DOM Updates (`src/main.ts`)**: In `canUpdateInPlace`, only update `className`, `textContent`, `style.width`, and `innerHTML` when their values have actually changed.
+  - **Verification**: All 19 test suites (107 unit tests) pass 100%; Vite production build passes with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 39: Proximity-Based Island Marker & Label LOD with Overview De-cluttering (`IslandMarkers.ts`, `PROGRESS.md`)**:
+  - **Overview Zoom Level Clean-up**:
+    - Replaced overly aggressive visibility thresholds (`camY <= 34`, `distToCam <= 38`) that previously caused all active islands to display bulky 2D labels and 3D drop-pins simultaneously across the Aegean.
+    - At macro/overview altitude (`camY > 15.5` or `distToCam > 19.0`), non-selected island labels and 3D drop-pins are automatically culled, leaving the panoramic Aegean archipelago, water wakes, and island terrain unobstructed.
+  - **Smooth Proximity-Based Fade-In**:
+    - As the camera dollies/zooms closer towards an island (`camY <= 15.5`, `distToCam <= 19.0`), its name label and live prosperity badge smoothly fade in with distance-interpolated opacity.
+    - 3D summit drop-pins scale into view proportionally as the camera approaches within `distToCam <= 17.5` and `camY <= 14.5`.
+  - **Selected Island Persistence & De-cluttering Collision Bounds**:
+    - The currently selected island (`isSelected`) always preserves its prominent illuminated drop-pin, radiant gold concentric rings, and 100% opacity label regardless of camera distance.
+    - Expanded label collision bounding box calculation to include status dots, full translated island names, prosperity percentage badges, and margins, preventing label overlap in dense island clusters (e.g. Paros/Naxos and Small Cyclades).
+  - **Verification**: All 19 test suites (107 unit tests) pass 100%; Vite production build succeeds.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 38: Unified Maritime Dispatch Header Audio Control (`notificationAudio.ts`, `NotificationAudio.test.ts`, `main.ts`, `index.html`, `style.css`, `PROGRESS.md`)**:
+  - **Single Header Audio Toggle (`#btn-feed-audio-toggle`)**:
+    - Replaced individual, repetitive per-card notification audio buttons (`.feed-audio-toggle`) with a single, prominent header control in the Maritime Dispatch panel next to `Clear` and `Close`.
+    - Features sleek glassmorphic pill styling (`.feed-header-audio-btn`), smooth hover states, dynamic audio icon + status (`🔊 ON` in Cycladic cyan glow / `🔇 OFF` in muted red), and accessible ARIA attributes.
+  - **Clean Notification Cards**:
+    - Removed audio toggles from each individual dispatch card footer across both template markup (`index.html`) and dynamically generated cards (`main.ts` `addNotification`).
+    - Dispatch card footers now cleanly display only the timestamp (`Just now`), completely uncluttering the event list.
+  - **Unified Notification Audio State & Persistence (`notificationAudio.ts`, `NotificationAudio.test.ts`)**:
+    - Centralized notification audio state under `aegean_notification_audio_enabled` with `isNotificationAudioEnabled()`, `setNotificationAudioEnabled()`, and `toggleNotificationAudio()`.
+    - Muting notification audio cleanly silences all dispatch chimes (trade runs, coin/ticket/shimmer chimes, dawns, dock operations, and shipyards) while leaving master ambience and UI controls intact.
+  - **Verification**: All 19 test suites (107 unit tests) pass 100%; Vite production build passes with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 37: Trilingual Internationalization Engine (English, Greek, Turkish) (`i18n.ts`, `i18n.test.ts`, `main.ts`, `index.html`, `style.css`, `SettingsPanel.ts`, `TopSearch.ts`, `IslandMarkers.ts`, `PROGRESS.md`)**:
+  - **Trilingual System (English Default, Greek Ελληνικά, Turkish Türkçe)**:
+    - **Architecture & Persistence (`src/ui/i18n.ts`)**: Built a reactive internationalization engine with persistent storage under `localStorage['aegean_language']`, fallback to English, and event emitter (`onLanguageChange`).
+    - **Comprehensive Dictionary**: Core UI keys (HUD metrics, speed controls, island inspector, vessel dossier, shipyard, action buttons, modals, calendar).
+    - **Full 63-Island Trilingual Nomenclature**: Authentic historical names for every single Aegean island and port in English, Greek, and Turkish (e.g. `Santorini / Σαντορίνη / Santoron`, `Naxos / Νάξος / Nakşa`, `Chios / Χίος / Sakız Adası`, `Lesbos / Λέσβος / Midilli`, `Crete / Κρήτη / Girit`, `Rhodes / Ρόδος / Rodos`, `Piraeus / Πειραιάς / Pire`, `Izmir / Σμύρνη / İzmir`).
+    - **12 Commodities & 5 Vessel Tiers**: Localized names for all trade goods (`Olive Oil / Ελαιόλαδο / Zeytinyağı`, `Volcanic Wine / Ηφαιστειακό Κρασί / Volkanik Şarap`, `Chios Mastic / Μαστίχα Χίου / Sakız Reçinesi`, etc.) and vessel classes (`Traditional Kaiki / Παραδοσιακό Καΐκι / Geleneksel Kayık`, `Island Passenger Ferry / Επιβατηγό / Ada Feribotu`, etc.).
+  - **Interactive Language Switcher UI**:
+    - **Top Bar Language Dropdown**: Sleek glassmorphic button (`[ 🇬🇧 EN ▾ ]`) with interactive popup to quickly select between English, Greek, and Turkish.
+    - **Settings Panel Card**: Interactive language selection buttons inside Settings Panel Tab 6 (Game) with immediate feedback and toast alerts.
+  - **Multilingual Search & Dynamic Labels**:
+    - **Top Search (`TopSearch.ts`)**: Fuzzy search matches islands, goods, and ship types across all three languages simultaneously (e.g. typing "Midilli", "Sakız", or "Σμύρνη" immediately finds the corresponding Aegean hub).
+    - **2D Island Labels (`IslandMarkers.ts`)**: Screen-space floating island labels and tooltips update in real-time when switching language.
+  - **Verification**: 19 test suites (107 unit tests) pass 100%; Vite production build succeeds.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 36: Continuous Prosperity Color Palette & Left Inspector Progress Bar Alignment (`prosperityPalette.ts`, `Terrain.ts`, `IslandMarkers.ts`, `main.ts`, `index.html`, `style.css`, `prosperityPalette.test.ts`, `PROGRESS.md`)**:
+  - **7-Stop Continuous Prosperity Palette**:
+    - `0%` — Deep Red `#D32F2F`
+    - `15%` — Red-Orange `#F05A28`
+    - `30%` — Orange `#F7941D`
+    - `50%` — Yellow `#FFD23F`
+    - `70%` — Yellow-Green `#B5D334`
+    - `85%` — Light Green `#70BC45`
+    - `100%` — Green `#249B56`
+  - **Left Inspector Prosperity Bar Aligned with Color Code (`style.css`, `index.html`, `main.ts`)**:
+    - **Replaced Old Inverted Gradient**: Removed legacy green-to-yellow gradient (`background: linear-gradient(90deg, #2ecc71, #f1c40f);`) which had placed green at 0% and yellow at 100%.
+    - **Anchored 7-Stop Gradient with Dynamic Inset Clip**: `.prosperity-bar-fill` now spans 100% with the full 7-stop linear gradient from `#D32F2F` at 0% across to `#249B56` at 100%, dynamically clipped with `clip-path: inset(0 calc(100% - var(--prosperity-pct)) 0 0)`.
+    - **Dynamic Color Tone & Glow**: At 100% Booming, the entire spectrum to emerald green is revealed; at 50%, it fills to yellow; at 15%, to red-orange. Dynamic box-shadow glow matches each island's interpolated hex color (`pHex`).
+    - **Harmonized Prosperity Badge**: `#inspector-prosperity-val` text color, border, and translucent pill background match `pHex` dynamically.
+    - **Cleaned Clutter**: Removed redundant scale ticks from the left inspector, keeping the layout tight and focused directly above the exports/imports dual column.
+  - **Dynamic Island Color Updates Across the Archipelago**:
+    - **Coastline Outlines (`Terrain.ts`)**: Shoreline bilateral glow shader continuously samples `getProsperityRgb(eco.prosperity)` for every lit island.
+    - **3D Summit Pins & Rings (`IslandMarkers.ts`)**: Dropship pins and concentric ground ripples dynamically update materials in-place to match each island's continuous prosperity color.
+    - **2D Island Labels (`IslandMarkers.ts`)**: Status dot and prosperity pill glow dynamically with the interpolated hex color.
+  - **Bottom Bar Red-to-Green Gradient Legend (`#prosperity-legend`)**:
+    - Docked cleanly in the bottom bar with all 7 labeled stops (`0%`, `15%`, `30%`, `50%`, `70%`, `85%`, `100%`) and a dynamic sliding needle (`#prosperity-legend-marker`) tracking current selection or average.
+  - **Verification**: All 18 test suites (97 unit tests) pass 100%; Vite production bundle built cleanly.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 35: High-Legibility GameTooltip & Key Information Visual Pop (`GameTooltip.ts`, `IslandMarkers.ts`, `style.css`, `GameTooltip.test.ts`, `PROGRESS.md`)**:
+  - **High-Contrast, Readable Typography & Spacious Card Geometry**:
+    - **Enlarged Card Dimensions**: Increased tooltip minimum width to `280px` (up to `440px`), padding to `12px 18px`, and added deep obsidian backdrop blur (`16px`).
+    - **Header Typography**: Upgraded island and vessel titles to `1.05rem` (800 font weight) in bright white `#ffffff` with high-contrast drop-shadows.
+    - **Body Typography**: Upgraded body line items from tiny `0.74rem` to clean, legible `0.90rem` with `1.5` line height.
+  - **Illuminated Distress Alert Banners (`.tooltip-alert-banner.alert-distress`)**:
+    - Automatically parses distress alerts, critical shortages, and supply depletion strings into prominent crimson warning banners.
+    - Features a bold title (`⚠️ Supplies Depleted` or `⚠️ Critical Shortage`), a high-contrast glowing badge (`74% DISTRESS` / `DEPLETED`), and a clear advisory note.
+    - Card container automatically applies `.warning` or `.high` border glow (`#ef4444`) and red ambient halo.
+  - **Vibrant Key Information Chips (`.tooltip-chip`)**:
+    - **Distress Badges (`.chip-distress`)**: Radiant red background with bright border and warning icon.
+    - **Prosperity Metrics (`.chip-prosperity`)**: Luminous emerald green chip (`✨ 92% PROSPERITY`).
+    - **Coin & Trade Prices (`.chip-coin`)**: Glowing golden chip (`🪙 12.5k`).
+    - **Velocity / Rates (`.chip-rate-pos`, `.chip-rate-neg`)**: Distinct mint green (`+5/d`) and coral red (`-3.2/d`) indicators.
+    - **Warehouse Stock Levels (`.chip-stock`)**: High-contrast white chips for stock fractions (`120/500 tons`).
+  - **Scene Marker Tooltip Integration (`IslandMarkers.ts`)**:
+    - Daylight and unlit island markers now supply explicit tooltip attributes (`data-tooltip-title`, `data-tooltip-body`, `data-tooltip-severity`, `data-tooltip-badge`, `data-tooltip-icon`, `data-tooltip-hint`).
+    - Distressed islands immediately display `⚠️ [X]% DISTRESS` badge and `🚨` alert icon; booming islands display `✨ [X]% PROSPERITY` and `🏛️` icon.
+  - **Verification**: All 17 test suites (92 unit tests) pass 100%; Vite production bundle built cleanly in 1.33s.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 34: Expanded Harbor Fleet Berth Capacities Across Archipelago (`simulation.ts`, `ships.test.ts`, `PROGRESS.md`)**:
+  - **Generous Berth Capacities for Fluid Fleet Growth**:
+    - **Tripled Base Harbor Berths**: Increased base berths from `2` $\to$ **`6` berths** for any active Aegean harbor. Small ports no longer get jammed after commissioning only 2 ships.
+    - **Accelerated Population Scaling**: Replaced sluggish `Math.floor(pop / 15000)` with **`Math.floor(pop / 5000)`**, rewarding island population growth with frequent harbor berth expansions.
+    - **Enhanced Economic Throughput Tiers**:
+      - `Throughput >= 50 units/day`: **+4 berths** (previously +2).
+      - `Throughput >= 30 units/day`: **+3 berths** (previously +1).
+      - `Throughput >= 15 units/day`: **+2 berths**.
+      - `Throughput >= 5 units/day`: **+1 berth**.
+    - **Mainland Deepwater Terminals**: Increased mainland shipping terminal bonus from `+2` $\to$ **`+6` berths** (Piraeus, Thessaloniki, Izmir, etc.).
+    - **Prosperity Harbor Modernization**:
+      - Booming prosperity (`>= 0.75`): **+2 berths** (previously +1).
+      - Active trade prosperity (`>= 0.50`): **+1 berth**.
+      - Distress penalty (`distress > 0.25`): **-2 berths** (safely bounded with minimum 4 berths).
+    - **Minimum Floor**: Raised minimum harbor floor from `2` $\to$ **`6` berths**.
+  - **Impact Across the Archipelago**:
+    - **Small Islets (e.g. Anafi, Pop 450)**: Expanded from **2 $\to$ 7–9 berths**.
+    - **Medium Regional Hubs (e.g. Karpathos, Pop 6,500)**: Expanded from **2 $\to$ 10 berths** (8 open berths with 2 active ships instead of congested!).
+    - **Core Island Hubs (e.g. Santorini, Pop 15,500)**: Expanded from **4 $\to$ 13–14 berths**.
+    - **Major Gateway Ports (e.g. Piraeus, Pop 160,000)**: Expanded from **16 $\to$ 49 berths**.
+  - **Verification**: All 17 test suites (88 unit tests) pass 100%; Vite production bundle built in 1.64s with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 33: Non-Jitter Hover Stabilizer & Vibrant Color Highlights for Left Inspector (`style.css`, `main.ts`, `PROGRESS.md`)**:
+  - **Eliminated Hover Jitter & "Going Up and Down" Oscillation**:
+    - **Removed `transform: translateY` on Hover Across All Inspector Components**: Completely eliminated vertical displacement (`transform: translateY(-2px)`, `translateY(-1px)`) across `.good-pill:hover`, `.vessel-row:hover`, `.shipyard-chip:hover`, `.btn-inspector-manage-fleet:hover`, `.btn-primary:hover`, and `.vessel-underutilized-chip:hover`. Elements now remain rock-solid in place without micro-oscillations near border thresholds.
+    - **Removed Layout Shifting Scalers**: Replaced `.good-pill:hover .good-icon-wrapper { transform: scale(1.12); }` with subtle border/filter glow cues to prevent child box dimension jumps.
+  - **In-Place DOM Mutation Engine in `updateInspector` (`main.ts`)**:
+    - Eliminated 250ms periodic DOM destruction (`producesEl.innerHTML = ...`, `consumesEl.innerHTML = ...`, and `routesEl.innerHTML = ...`).
+    - When viewing the same island, dynamic elements (`.good-stock-gauge-fill`, `.good-stock-chip`, `.stock-status-dot`, `.stock-status-tag`, `.good-price-chip`, `.good-transfer-banner`, `.vessel-row`) update in-place without unmounting DOM nodes.
+    - Preserves cursor hover state, active `:hover` pseudo-classes, and prevents tooltip re-trigger churn.
+  - **Vibrant, Glowing Color Changes on Hover (`style.css`)**:
+    - **Producer / Export Goods (`.good-pill.producer:hover`)**:
+      - Radiant Aegean Gold theme: `linear-gradient(135deg, rgba(242, 193, 78, 0.22) 0%, rgba(20, 30, 48, 0.98) 100%)`.
+      - High-contrast gold border: `rgba(242, 193, 78, 0.90)` and golden ambient box shadow `0 0 16px rgba(242, 193, 78, 0.45)`.
+      - Golden commodity title: `#fef08a` with warm text-shadow.
+    - **Consumer / Import Goods (`.good-pill.consumer:hover`)**:
+      - Normal/Satisfied: Vibrant Mediterranean Emerald theme (`#34d399` / `#10b981`), glowing emerald border (`rgba(52, 211, 153, 0.90)`), and bright mint title `#a7f3d0`.
+      - Starving Alert (`.good-pill.consumer.starving:hover`): Intense Crimson Red warning gradient (`#ef4444`), vibrant red border, and bright alert text `#fecaca`.
+    - **Vessel Rows (`.vessel-row:hover`)**:
+      - Aegean Gold and Obsidian gradient with `rgba(242, 193, 78, 0.80)` border, glowing box shadow, and bright white ship name with gold text-shadow.
+    - **Shipyard Chips (`.shipyard-chip:hover:not(.locked)`)**:
+      - Radiant cyan/turquoise gradient with `rgba(31, 181, 176, 0.85)` border and glowing shadow.
+  - **Verification**: All 17 test suites (88 unit tests) pass 100%; Vite production bundle built in 1.18s with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 32: Graphical Stocks & Production Gauges in Left Inspector Market Tabs (`main.ts`, `style.css`, `PROGRESS.md`)**:
+  - **Instant Visual Focus for Archipelago Logistics**:
+    - Transformed plain fraction text into high-impact graphical level meters, enabling players to immediately spot where goods are starving, overflowing, or needed at a glance.
+  - **Graphical Stock Level Gauge Bars (`.good-stock-gauge-bar`, `.good-stock-gauge-fill`)**:
+    - **Imports (Demands / Reserve Buffers)**:
+      - **Critical Starving Alert (`.import-starving`)**: When an island is starving (`0/15b` or empty), the card displays a flashing crimson red striped progress bar (`#ef4444`) with animated hazard barber-pole stripes, glowing red border, and a flashing `⚠️ STARVING` badge.
+      - **Low Reserve Buffer (`.import-low`)**: Amber/orange gradient bar (`#ea580c` to `#f59e0b`) indicating buffer < 40%.
+      - **Satisfied Buffer (`.import-satisfied`)**: Healthy emerald green gradient bar (`#10b981` to `#34d399`) showing full buffer coverage (`✓ 100%+`).
+      - **Surplus Buffer (`.import-surplus`)**: Cyan/teal abundance gradient (`#06b6d4` to `#10b981`) for stockpiles exceeding 200% target.
+    - **Exports (Production Warehouses)**:
+      - **Warehouse Capped (`.export-capped`)**: When warehouse inventory exceeds 85% capacity, pulses with golden amber warning gradient (`#f59e0b`) and `📦 Packed` tag to signal immediate export runs before production stalls.
+      - **Active Production (`.export-healthy`)**: Vibrant Aegean azure gradient bar (`#0284c7` to `#38bdf8`) showing available stock ratio.
+      - **Depleted Supply (`.export-low`)**: Muted slate/cyan bar for depleted export stores.
+  - **Graphical Production & Demand Rate Velocity Chips (`.good-rate-chip`)**:
+    - Replaced raw text with illuminated directional velocity chips:
+      - Exports: Emerald green `▲ +N/d` chip with elevated glow for high-output nodes (`rate >= 5`).
+      - Imports: Coral/red `▼ -N/d` demand chip with chevron indicator.
+  - **Column Header Health Summaries (`.col-summary-chip`)**:
+    - `Exports (+/d)`: Displays live total export volume (`+10/d`).
+    - `Imports (-/d)`: Shows immediate distress count (`⚠️ 1 Starving`) or `✓ All Buffered`.
+  - **Verification**: All 17 test suites (88 unit tests) pass 100%; Vite production bundle built in 1.14s with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 31: Dynamic Cargo Load & Unload Transfer Animations for Exports & Imports (`shipSim.ts`, `main.ts`, `index.html`, `style.css`, `PROGRESS.md`)**:
+  - **Dynamic Transfer State Engine (`shipSim.ts`, `main.ts`)**:
+    - Added `'unloading'` event to `ShipStatusEvent` in `src/sim/shipSim.ts`, emitted directly when vessels arrive at a destination port to begin discharging cargo.
+    - Integrated `ActiveGoodTransfer` state tracker in `src/main.ts` bridging `sim.onShipStatus` (`loading` and `unloading`) and `sim.onShipDelivery`.
+    - Automatically captures transferring commodity, tonnage, vessel name, and direction (`load` vs `unload`) with 3.2s dynamic animation windows.
+  - **Animated Left Inspector Market Columns & Tabs (`index.html`, `style.css`)**:
+    - Added `#transfer-pill-exports` and `#transfer-pill-imports` in the `Exports (+/d)` and `Imports (-/d)` column headers.
+    - **Header Transfer Badges**: Flashes live pulsing status chips with glowing indicator dots (amber `▲ Loading Nt` for exports, emerald `▼ Delivered +Nt` for imports).
+  - **Commodity Card Transfer Visual FX (`style.css`, `main.ts`)**:
+    - **Loading Exports (`.transfer-anim-load`)**:
+      - Warm amber/gold radiant border pulse (`box-shadow: 0 0 16px rgba(245, 158, 11, 0.5)`).
+      - Card lift and icon upward loading bounce (`@keyframes iconLoadBounce`).
+      - Injected transfer banner: `▲ Loading 25t ➔ Delphis` with animated fade-in.
+      - Stock delta tag `(-25t)` and flashing amber stock counter text (`.stock-load-flash`).
+    - **Unloading Imports (`.transfer-anim-unload`)**:
+      - Vibrant emerald delivery pulse (`box-shadow: 0 0 18px rgba(56, 239, 125, 0.55)`).
+      - Card expansion and icon landing bounce (`@keyframes iconUnloadBounce`).
+      - Injected delivery banner: `▼ Received +25t from Nikolaos`.
+      - Stock delta tag `(+25t)` and flashing emerald stock counter text (`.stock-unload-flash`).
+  - **DOM State Preservation & Zero Animation Reset**:
+    - Retains active animation timers and re-renders in-place during the game loop's 250ms periodic inspector updates, allowing smooth continuous CSS keyframe animations.
+  - **Verification**: All 17 test suites (88 unit tests) pass 100%; Vite production bundle built in 750ms with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 30: Top Panel Omnisearch for Islands & Fleet Vessels (`TopSearch.ts`, `TopSearch.test.ts`, `index.html`, `style.css`, `main.ts`, `AudioManager.ts`, `PROGRESS.md`)**:
+  - **Omnipresent Top Navigation Search Input (`index.html`, `style.css`)**:
+    - Integrated an interactive search input (`#top-search-container`, `#top-search-input`) directly into `#top-bar` between the metrics chips and time controls.
+    - Glassmorphic Aegean design with gold accent border, magnifying glass icon, keyboard shortcut badge (`/`), and clean `×` reset button.
+    - Global shortcut `/` (slash) immediately focuses and highlights the search input from anywhere in the game.
+  - **Archipelago & Fleet Pure Search Engine (`TopSearch.ts`, `TopSearch.test.ts`)**:
+    - Decoupled pure search logic `searchArchipelagoAndFleet(sim, query, filter)` into headless unit-tested function.
+    - **Islands**: Searches all 52 Aegean islands by exact name, prefix, substring, geographic region (e.g. `Cyclades`, `Dodecanese`, `Crete`, `Saronic`), and produced/consumed goods (e.g. `Wine`, `Marble`, `Olives`).
+    - **Fleet Vessels**: Searches active maritime fleet by vessel name (e.g. `Delphis`, `Nikolaos`), ship type (`Ferry`, `Fishing Boat`, `Caique`), home port harbor, voyage destination, and cargo commodity.
+    - **Smart Scoring & Default Ranking**: When search input is opened without text, displays daylight unlocked islands and highest profit ships; query typing ranks exact matches (2000), prefix matches (1500), substring matches (1000), region/port matches (600), and cargo/good matches (400).
+    - **Category Filter Pills**: Quick tabs for `All`, `Islands (N)`, and `Vessels (N)` with live counter updates.
+  - **Keyboard Navigation & Seamless 3D Map Interactions (`TopSearch.ts`, `main.ts`)**:
+    - Full arrow-key navigation (`ArrowDown`, `ArrowUp`), `Enter` to select/activate, and `Escape` to dismiss.
+    - Selecting an island smoothly swings the 3D camera (`scene.cameraManager.focusOn`), selects the island, opens the Left Inspector, and plays acoustic audio.
+    - Selecting a vessel engages cinematic chase follow camera (`scene.followShip`), opens the Left Inspector vessel dossier, and plays acoustic audio.
+  - **Headless Unit Testing & Validation**:
+    - Added comprehensive unit tests in `src/render/TopSearch.test.ts` verifying island search, fleet search, filter tabs, and empty ranking.
+    - 17 test suites (88 unit tests) pass 100%; Vite production bundle built in 699ms with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 29: Vessel Decommissioning & Scrap Salvage System to Free Harbor Berths (`shipSim.ts`, `simulation.ts`, `ships.test.ts`, `FleetPanel.ts`, `VesselAdvisoryModal.ts`, `index.html`, `style.css`, `main.ts`, `PROGRESS.md`)**:
+  - **Vessel Scrapping & Berth Reclaim Mechanics (`shipSim.ts`, `simulation.ts`)**:
+    - Added `removeShip(shipId: string)` to `ShipSimulationManager`.
+    - Added `getShipDecommissionRefund(shipId: string): number` to `SimulationCore`:
+      - Standard salvage value recovers 50% of the vessel's original construction cost, plus 50% of the wholesale value of any cargo currently carried.
+    - Added `decommissionShip(shipId: string)`:
+      - Despawns the ship instance cleanly from the simulation fleet.
+      - Credits salvage drachmas directly to the treasury (`sim.treasury += refund`).
+      - Immediately decrements the home port's occupied berths (`sim.getHomePortedShipsCount(homeIslandId)`), freeing up harbor capacity to commission newer or larger tier vessels.
+  - **Seamless Multi-Surface UI Decommission Controls**:
+    - **1. Left Inspector Vessel Dossier (`#btn-vessel-decommission`)**:
+      - Inspecting any vessel in 3D or from the roster displays an obsidian red `🔨 Decommission (+🪙 ...)` button alongside Follow and Island Port actions, dynamically displaying the exact salvage drachmas refunded.
+    - **2. Left Inspector Vessel Row & Group Cards**:
+      - Individual vessel rows feature an unobtrusive `🔨` scrap button in the right actions column.
+      - Grouped class cards display a direct `🔨 Scrap 1x (+🪙 ...)` button whenever vessels in that class are idle, allowing players to instantly resolve harbor congestion with a single click right on the card.
+    - **3. Fleet Management Modal (`FleetPanel.ts`)**:
+      - Added a `🔨 Scrap` button in each vessel's action column with complete breakdown of harbor berth reclaimed and salvage value.
+    - **4. Vessel Logistics Modal (`VesselAdvisoryModal.ts`)**:
+      - The diagnostic modal features a primary `🔨 Decommission Vessel (+🪙 ...)` action in the modal footer bar.
+  - **Acoustic & Procedural Feedback**:
+    - Plays `audio.playCoinSound()` with tumbling drachmas audio upon scrapping.
+    - Dispatches high-priority in-game notification: `VESSEL SCRAPPED: VesselName decommissioned at Harbor. Reclaimed 1 harbor berth (+🪙 ... drachmas salvage).`
+    - Seamless camera un-follow and inspector refresh so the harbor's berth count (e.g. `2/3` or `8/3`) updates immediately.
+  - **Comprehensive Unit Testing & Verification**:
+    - Added unit test in `src/sim/ships.test.ts` validating fleet count reduction, berth opening, scrap refund calculation, and unblocking new ship commissions at previously full harbors.
+    - All 16 test suites (83 unit tests) pass; Vite production bundle built in 875ms with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 28: Decluttered Left Inspector Fleet Management & Consolidated Grouped View (`FleetPanel.ts`, `index.html`, `style.css`, `main.ts`, `PROGRESS.md`)**:
+  - **Eliminated Severe Left Inspector Overcrowding & Truncation**:
+    - **Root Cause**: In the Left Inspector's ~360px panel, an island with 9 vessels stationed or docked (especially when harbor berths were at 9/3 overcapacity) crammed dot + tier badge (`T1`) + 22px vessel icon + vessel name + multiple redundant chips (`[⚓ 0]` + `[⚓ Harbor]` + `[⚠️ Idle]`) + `[+🪙 19.3k]`. This squeezed the ship name down to ~20px, truncating names into unreadable 1–2 letter fragments (`N...`, `S...`, `M..`).
+    - **Streamlined Vessel Rows**:
+      - Removed the redundant 22px boat icon from the row, preserving sleek status dot, tier pill (`T1`), and full, non-truncated ship names (`flex: 1; min-width: 0;`).
+      - Completely removed redundant chips (`⚓ 0` and `⚓ Harbor`) for idle ships—since an idle vessel is already clearly tagged with `⚠️ Idle` and docked at harbor.
+      - Retained clean profit badges (`+🪙 19.3k`) aligned neatly to the right.
+  - **Harbor Congestion Alert Banner (`#inspector-congestion-banner`)**:
+    - When an island's berths are exceeded (`berthsUsed > berthsMax`, e.g. `9/3`), an amber warning banner appears dynamically: *"Harbor Congested (9/3 Berths) — 6 excess vessel(s) sitting idle. Reassign to ports with open berths."*
+  - **Fleet Status Filter Pills (`All` | `Active` | `⚠️ Idle`)**:
+    - When an island has more than 2 stationed vessels, interactive filter pills appear directly above the fleet list.
+    - Allows single-click filtering to see only sailing ships, or immediately isolate underutilized vessels without wading through the entire fleet.
+  - **Consolidated Class Summary Mode (`⊞ Group` / `☰ List`)**:
+    - Added view toggle button: switch between individual vessel rows and grouped class cards.
+    - Grouped view aggregates identical ship types (e.g. `9x Fishing Boat • ⚠️ 9 Idle • Hold: 225t • +🪙 98.4k`), collapsing 9 separate cramped rows into a single clean summary card.
+    - Includes a direct `⚓ Manage & Reassign Fleet` button on each group card.
+  - **Quick Fleet Management Modal Integration**:
+    - Added a `⚙️ Manage` header action button next to the vessel count (`ACTIVE ROUTES & VESSELS`).
+    - Clicking opens the full-screen Fleet Management Modal pre-filtered to the inspected island's harbor (`fleetPanel.showForPort(island.id)`), providing extensive fleet operations, batch reassignments, cargo priority mandates, and upgrades without leaving the inspection flow.
+  - **Verification**: All 16 test suites (82 unit tests) pass; Vite production bundle built in 880ms with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 27: In-Game Themed Tooltip System & Interactive Vessel Logistics Modal (`GameTooltip.ts`, `VesselAdvisoryModal.ts`, `style.css`, `main.ts`, `FleetPanel.ts`, `ArchipelagoModal.ts`, `GameTooltip.test.ts`, `PROGRESS.md`)**:
+  - **In-Game Themed Tooltip System (`GameTooltip.ts`, `style.css`)**:
+    - **Replaced Raw OS/Browser Tooltips**: Completely eliminated standard OS/browser `title` tooltips by automatically capturing and moving `title` to `data-game-tooltip` on pointer enter.
+    - **Obsidian & Gold Glassmorphic Modal Theme**: Renders a rich in-game tooltip card (`.game-tooltip-card`) with obsidian blur gradient (`rgba(13, 22, 38, 0.96)`), 1px Aegean gold border (`rgba(242, 193, 78, 0.38)`), gold heading typography (Outfit), status badges (`warning`, `medium`, `info`), bullet point breakdown (`•`), keyboard shortcut badges (`<kbd>`), and advisory recommendation cards (`💡`).
+    - **Viewport & Modal Boundary Clamping**: Intelligently anchors to hovered element or cursor, dynamically flipping above/below and clamping within viewport edges with safe margins.
+    - **Universal Modal Compatibility**: Positioned at `z-index: 100000`, floating seamlessly on top of all HUD panels and all modals (`#archipelago-modal`, `#fleet-modal`, `#sourcing-modal`, `#settings-modal`, `#advisory-modal`).
+  - **Dedicated Vessel Logistics & Utilization Modal (`VesselAdvisoryModal.ts`, `style.css`)**:
+    - **Full Operational Audit Modal**: Clicking on any underutilized status chip (`.vessel-underutilized-chip`, `.fleet-underutilized-pill`, or `.arch-underutilized-chip`) opens a dedicated in-game modal dialog (`#vessel-advisory-modal`).
+    - **Telemetry & Diagnostic Summary**: Displays current ship state, cargo hold fill %, knots speed, navigation range, and lifetime drachma profits alongside a root-cause logistics diagnosis.
+    - **Interactive Operational Actions**:
+      - Direct Home Harbor reassignment dropdown.
+      - Autonomous Arbitrage vs specific commodity cargo priority switcher.
+      - Instant 3D camera tracking (`🎥 Track with 3D Camera`).
+      - Direct shortcut to Commodity Sourcing Analysis (`🔍 Sourcing`).
+  - **Comprehensive Verification**: Added `GameTooltip.test.ts`. All 16 test suites (82 unit tests) pass; Vite production bundle built in 930ms with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 26: Concise Single-Word Fleet Status Badges & Anti-Wrap Layout Constraints (`shipSim.ts`, `style.css`, `ships.test.ts`, `PROGRESS.md`)**:
+  - **Eliminated Multi-Line Text Wrapping & Overlap on Vessel Rows**:
+    - **Root Cause**: In the Left Inspector's active vessel list, the underutilized vessel badge displayed verbose phrases like `"Idle in Port"` and `"Empty Ballast Voyage"`. Without `white-space: nowrap;` in the compact flex row, the badge wrapped into vertical 3-line stacks (`Idle \n in \n Port` / `Empty \n Ballast \n Voyage`), overlapping row icons and warning markers.
+  - **Concise Single-Word Labels & Formatting (`shipSim.ts`)**:
+    - Replaced verbose labels with crisp, punchy single words:
+      - `"Idle in Port"` $\to$ **`"Idle"`**
+      - `"Empty Ballast Voyage"` $\to$ **`"Ballast"`**
+      - `"Starving for X"` $\to$ **`"Starved"`**
+      - `"Low Load (X%)"` $\to$ **`"Low (X%)"`**
+  - **CSS Anti-Wrap & Alignment Hardening (`style.css`)**:
+    - Added `white-space: nowrap;`, `flex-shrink: 0;`, and `line-height: 1.2;` to `.vessel-underutilized-chip` and `.fleet-underutilized-pill`.
+    - Badges now stay on a single neat horizontal pill that never breaks or causes vertical layout collisions.
+  - **Verification**: Synchronized unit tests in `src/sim/ships.test.ts`. All 15 test suites (77 unit tests) pass, production Vite client bundle built with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 25: Modal Isolation & Stacking: Suppressed Floating World Overlays on Modals (`style.css`, `ShipPopups.ts`, `GoodsCatapult.ts`, `IslandMarkers.ts`, `PROGRESS.md`)**:
+  - **Identified & Resolved Overlay Bleed-Through on Modals**:
+    - **Root Cause**: `ship-popups-layer` (vessel dispatch pills like "En route to Samos") and `catapult-labels-layer` (cargo delivery profit pills like "+🪙 3378 🎟️") were appended directly to `document.body` with `z-index: 12` and `14`. Because `#hud-overlay` (which contains `#archipelago-modal`, `#fleet-modal`, `#sourcing-modal`, `#advisory-modal`, etc.) had `z-index: 10`, any 3D map event spawned floating text in front of the active modal, obstructing directory rows and buttons.
+  - **Unified Stacking Context & Suppression Architecture**:
+    - **Corrected Z-Index Stacking**:
+      - Raised `#hud-overlay` to `z-index: 100`, ensuring all modals, panels, and top-bar controls properly envelop the viewport above the 3D map.
+      - Lowered `.ship-popups-layer`, `.catapult-labels-layer`, and `.catapult-floating-label` to `z-index: 6`, positioning them above the 3D canvas and terrain, but strictly below `#hud-overlay` (`100`) and the Left Inspector (`20`).
+    - **Zero-Latency Modal Suppression Rules (`style.css`)**:
+      - Added global CSS `:has()` suppression rule: `body:has(.modal-overlay:not(.closed)) .ship-popups-layer, body:has(.modal-overlay:not(.closed)) .catapult-labels-layer, body:has(.modal-overlay:not(.closed)) #island-labels-container { display: none !important; }`.
+    - **Render-Loop Modal Guardrails (`ShipPopups.ts`, `GoodsCatapult.ts`, `IslandMarkers.ts`)**:
+      - Added active modal detection (`.modal-overlay:not(.closed)`) to each render loop, automatically hiding overlay containers and halting projection calculations while any modal is active.
+  - **Verification**: All 15 test suites (77 unit tests) pass, production Vite client bundle built with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 24: Interactive KPI Cards with Expandable Analytics Drawers in Archipelago Directory (`ArchipelagoModal.ts`, `style.css`, `main.ts`, `PROGRESS.md`)**:
+  - **Interactive KPI Ribbon Cards**:
+    - Transformed all 4 top KPI cards in the Archipelago Directory modal into interactive, toggleable analytics modules with hover elevation, subtle glow, and visual `▾ Details` / `▴ Close` affordance indicators.
+  - **Expandable Glassmorphic Detail Drawers**:
+    - **1. Archipelago Coverage Drawer (`coverage`)**:
+      - Displays a complete regional island mastery breakdown grouped by Aegean region (Cyclades, Dodecanese, North Aegean, Saronic, Crete, Sporades, etc.).
+      - Shows awakened vs total islands, regional population, and mini progress bars.
+      - Each regional card is clickable: clicking immediately filters the directory search to that region!
+      - Quick actions: `☀️ View Awakened`, `🔒 View Sleeping`, `🗺️ View All`.
+    - **2. Population in Daylight Drawer (`population`)**:
+      - Demographics intelligence grid: Total Aegean Population (1.77M), Daylight Consumer Market (1.23M, 69.3%), Untapped Sleeping Population (544k, 30.7%), Average Port Size.
+      - Dual columns: Top 5 Populated Daylight Ports vs Top 5 Untapped Sleeping Markets with direct `📍 Focus` and `✨ Awaken` actions.
+      - Quick action: `👥 Sort by Population (Highest First)`.
+    - **3. Ready to Awaken & Fleet Logistics Drawer (`ready`)**:
+      - Column 1: Complete list of all connected ports ready for immediate awakening with their unlock costs, population, opportunity score, and 1-click `✨ Awaken` buttons. Total capital required badge.
+      - Column 2: Fleet Utilization Audit: breakdown of underutilized vessels (empty hold / ballast voyages, idle in port, underfilled) and a direct `🚢 Open Fleet Management Panel` button that seamlessly bridges to the Fleet Panel.
+    - **4. Top Expansion Prospect Radar Drawer (`prospect`)**:
+      - Top strategic expansion candidates ranked algorithmically by economic opportunity score.
+      - For each prospect: Opportunity Score, Port Tier, Opportunity Summary, Key Drivers (Top Exports & Urgent Demands), and instant `✨ Awaken` or `📍 Focus` actions.
+      - Quick action: `💰 Sort Directory by Opportunity`.
+  - **Seamless UX & Audio Integration**:
+    - Integrated with Hellenic audio click sounds, keyboard/mouse focus preservation, and responsive grid layouts.
+  - **Verification**: All 15 test suites (77 unit tests) pass, production Vite client bundle built with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 23: Decoupled Island Prosperity Visualization from Single-Commodity Shortages (`Terrain.ts`, `IslandMarkers.ts`, `archipelago.ts`, `PROGRESS.md`)**:
+  - **Identified & Fixed False Red Alarms on Booming Islands**:
+    - **Root Cause**: `Terrain.ts` and `IslandMarkers.ts` contained an over-aggressive shortage check where *any single imported good* running low or reaching 0 (`m.stock < m.consumeRatePerDay * 0.75 || m.isStarving`) immediately overrode the island's entire status to `distressed`.
+    - This turned 100% Booming islands like Rhodes (which was temporarily waiting for a Fuel tanker at `0/63b` while Wine, Crafts, Grain, Produce, Marble, Olive Oil, Mastic were flourishing) into emergency alert states: painting its shoreline outline Coral Crimson, replacing its `100%` badge with `⚠️ SHORT`, and making its 3D summit pin red.
+    - Because almost every active island in an expanding archipelago imports at least one commodity whose buffer briefly dips while waiting for freighters, virtually the entire map was painted in red distress alarms!
+  - **Calibrated Prosperity vs. Distress Hierarchy**:
+    - **Macro Health (`Terrain.ts`, `IslandMarkers.ts`)**:
+      - Booming ($\ge 70\%$): Radiant Cycladic Cyan shoreline aura `(0.18, 0.82, 0.98, 1.0)`, `${prospPct}%` badge with glowing emerald dot, cyan/emerald summit pin.
+      - Stable ($\ge 40\%$): Aegean Emerald Green shoreline aura `(0.08, 0.85, 0.52, 1.0)`, `${prospPct}%` badge with sky-blue dot, green summit pin.
+      - Developing ($< 40\%$): Warm Amber shoreline aura `(0.96, 0.62, 0.05, 1.0)`, amber dot & pin.
+    - **Genuine Systemic Distress Only**:
+      - Coral Crimson outline (`(0.96, 0.20, 0.22, 1.0)`), red pulsing label, and `⚠️ SHORT` badge now only activate when an island is in genuine economic collapse/distress (`distress > 0.25 || (distress > 0.15 && prosperity < 0.50)`).
+    - **Micro Shortage Indicators Preserved**:
+      - Individual commodity stock deficits remain clearly displayed in the Left Inspector imports table (e.g. `Fuel -14/d 0/63b 91.2d`), the island label hover tooltip (`✨ Booming Prosperity (100%) • Low on Fuel`), and the Economic Advisory Report without corrupting the island's macroscopic prosperity status.
+  - **Archipelago Directory Alignment (`src/sim/archipelago.ts`)**:
+    - Synchronized island directory status classification with the 70% Booming threshold and severe distress check.
+  - **Verification**: All 15 test suites (77 unit tests) pass, production Vite client bundle built with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 22: Selected Island Shoreline Outline Preserves Prosperity State (`Terrain.ts`, `PROGRESS.md`)**:
+  - **Eliminated Yellow Selection Override on Shoreline Outlines (`src/render/Terrain.ts`)**:
+    - Removed the hardcoded yellow/gold highlight (`this.islandOutline[maskId].set(1.0, 0.82, 0.16, 1.0)`) that previously overrode the island's coastline shader whenever an island was selected.
+    - Connected islands now **always** display their true prosperity and health aura even when selected:
+      - Warning Alert Coral Crimson: for severe distress or starving commodity markets.
+      - Radiant Cycladic Cyan: for booming prosperity ($\ge 70\%$, e.g. Rhodes at $97\%$).
+      - Aegean Emerald Green: for stable prosperity ($\ge 40\%$).
+      - Warm Amber: for developing prosperity ($< 40\%$).
+      - Subtle Warm Bronze: for sleeping / unawakened islands.
+    - Island selection remains clearly communicated through the 3D summit pin rings, active HUD inspector panel, and the glowing floating pill label.
+  - **Verification**: All 15 test suites (77 unit tests) pass, production Vite client bundle built with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 21: Calibrated Nautical Voyage Pacing & Multi-Factor Speed Differentiation (`ships.json`, `shipSim.ts`, `FleetPanel.ts`, `main.ts`, `index.html`, `ships.test.ts`, `PROGRESS.md`)**:
+  - **Calibrated Nautical Voyage Pacing (`src/sim/shipSim.ts`)**:
+    - Addressed unrealistic rocket-speed boat movement across the Aegean (voyages between Santorini and Naxos previously completed in just 7.4 seconds at 1x speed).
+    - Introduced a calibrated voyage pace factor (`VOYAGE_PACE_FACTOR = 0.65`), converting real-world nautical miles and km/day into an authentic, visually majestic Aegean cruising pace (~12–16 seconds for inter-island passages at 1x speed, instead of 7.4 seconds).
+    - Preserved accurate physical knot ratings in data, telemetry, and UI displays (`speedKmPerDay / 44.45`).
+  - **Eliminated Uniform / Equal Vessel Speeds**:
+    - **Tier Speed Widening (`public/data/ships.json`, `index.html`)**:
+      - T1 Coastal Boat: `6.8 kt` (nimble displacement hull).
+      - T2 Coaster Schooner: `9.2 kt` (sturdy timber cargo vessel).
+      - T4 Cargo Freighter: `11.5 kt` (massive heavy bulk container ship).
+      - T3 Ro-Ro Passenger Ferry: `16.0 kt` (high-speed twin-hull catamaran outrunning cargo vessels).
+      - T5 VIP Motor Yacht: `21.0 kt` (high-performance luxury cruiser with over 3x the speed of a fishing boat).
+    - **Dynamic Cargo Displacement Load Factor (`src/sim/shipSim.ts`)**:
+      - Unladen vessels sailing in ballast (`loadRatio === 0`): `+12%` sprint speed bonus with light freeboard (`🪶 Ballast`).
+      - Heavily laden vessels carrying full cargo holds (`loadRatio === 1.0`): up to `-22%` draft displacement drag (`📦 Laden`).
+      - Results in a $> 40\%$ speed differential between outbound laden ships and inbound empty ships.
+    - **Combined Aerodynamic Wind & Draft Modifiers**:
+      - Live speed accounts for both Meltemi wind vector (`windSpeedModifier`) and cargo weight (`cargoSpeedModifier`), yielding realistic speeds ranging from $3.8\text{ kt}$ (laden boat beating headwind) to $> 24\text{ kt}$ (VIP yacht running with tailwind).
+  - **UI Telemetry & Handbook Alignment (`FleetPanel.ts`, `main.ts`, `index.html`)**:
+    - Fleet Management table and Left Inspector vessel dossier display live speed in knots with dual tags: wind boost/drag (`💨 ▲` / `⚠️ ▼`) and cargo load (`🪶 Ballast` / `📦 Laden`).
+    - Synchronized Navigator's Guide handbook table with updated vessel specs.
+  - **Verification**: Added comprehensive unit test in `src/sim/ships.test.ts`. All 15 test suites (77 unit tests) pass; Vite production build passes with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 20: Settings Button Visual Upgrade: Proportional Sizing & Sleek Silver Palette (`Icons.ts`, `index.html`, `style.css`, `PROGRESS.md`)**:
+  - **Proportional Geometry & Sizing**:
+    - Replaced the off-center, vertically shrunken gear path in `Icons.ts` with an 8-tooth mechanical cogwheel centered precisely at $(12, 12)$ spanning from $1.9$ to $22.1$ in both axes.
+    - Upgraded `#btn-top-settings` attribute in `index.html` from `data-icon-size="22"` to `data-icon-size="26"`.
+    - Added explicit CSS styling in `style.css` for `#btn-top-settings svg, #btn-top-settings .aegean-icon` with `width: 27px; height: 27px;` matching the fleet button, with min-dimensions of $40\text{px} \times 36\text{px}$.
+  - **Eliminated Gold/Bronze Coloration**:
+    - Replaced the amber/bronze gradient and gold strokes (`#d97706`, `#b45309`, `#fde68a`, `#f59e0b`, `#fbbf24`) with a sleek metallic silver/titanium palette:
+      - Platinum-silver gradient: `#f1f5f9` $\to$ `#94a3b8` $\to$ `#475569`.
+      - Pure silver outer tooth stroke: `#f1f5f9`.
+      - Gunmetal hub: `#0f172a` with `#94a3b8` rim.
+      - 4-spoke Hellenic cross: `#e2e8f0` with platinum axle pin `#f8fafc`.
+    - Updated hover glow in `style.css` from gold to a radiant silver-white drop-shadow (`rgba(255, 255, 255, 0.65)`).
+  - **Verification**: All 15 test suites (76 unit tests) pass, production Vite client bundle built with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 19: Wider and Smoother Island Prosperity Outline Shader (`Terrain.ts`, `PROGRESS.md`)**:
+  - **Refined Prosperity Shoreline Aura Shader (`src/render/Terrain.ts`)**:
+    - **Expanded Radiant Reach**:
+      - Seaward halo distance expanded from `0.045` (~4.5km) to `0.072` (~7.2km) with Hermite-smooth core (`smoothstep(0.062, 0.0, seaDist)`) and soft exponential ambient dissipation (`exp(-seaDist * 16.0)`).
+      - Landward inner perimeter contour expanded from `0.026` to `0.038` with `smoothstep(0.036, 0.0, inlandDist)` and `exp(-inlandDist * 22.0)`.
+    - **Smooth Bilateral Coastline Blending**:
+      - Eliminated the previous abrupt `if (isLandVal < 0.5)` step discontinuity at the 1-pixel raster shoreline boundary.
+      - Implemented smooth bilateral Hermite interpolation `shoreBlend = smoothstep(0.30, 0.70, isLandVal)`, blending `seaGlow` and `landGlow` seamlessly across the water-to-land boundary with zero harsh seams.
+    - **Mainland Exclusion Guard Preserved**:
+      - Maintained strict `landId > 0` condition for the landward contour so that Anatolian Turkey and mainland Greece never render prosperity glows.
+    - **Organic Living Pulse**:
+      - Calmed the pulse frequency to $2.2\,\text{rad/s}$ with a gentle $6\%$ sinusoidal respiration for a serene, organic tide effect.
+  - **Verification**: All 15 test suites (76 unit tests) pass, production Vite client bundle built with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 18: Underutilized Vessel Diagnosis & Multi-Panel Reporting (`shipSim.ts`, `simulation.ts`, `FleetPanel.ts`, `advisory.ts`, `archipelago.ts`, `ArchipelagoModal.ts`, `main.ts`, `style.css`, `ships.test.ts`, `advisory.test.ts`)**:
+  - **Headless Underutilization Evaluation Engine (`src/sim/shipSim.ts`, `src/sim/simulation.ts`)**:
+    - Built comprehensive diagnostic function `evaluateShipUtilization(ship, sim)` identifying sub-optimal vessel operations:
+      1. `idle_in_port`: Docked idle without viable export runs or insufficient warehouse supply.
+      2. `priority_starvation`: Idle at a port waiting for a priority commodity that is not produced or unavailable locally.
+      3. `empty_hold`: Sailing with an empty hold (ballast voyage) while incurring daily upkeep without freight.
+      4. `low_cargo_fill`: Sailing with $< 35\%$ cargo hold utilization on larger vessels ($\ge 40$t capacity).
+    - Exposed `sim.getUnderutilizedShips()` and `sim.getUnderutilizedShipsForIsland(islandId)`.
+  - **Fleet Management Modal (`src/render/FleetPanel.ts`, `index.html`)**:
+    - Added `⚠️ Underutilized Only` filter option to the State filter dropdown.
+    - Updated modal subtitle to show live underutilized count: `${totalShips} Active Vessels • ⚠️ ${underutilizedCount} Underutilized • Upkeep: ...`.
+    - Added `⚠️ ${label}` warning pills in the Status column for affected vessels, with detailed diagnostic tooltip.
+  - **Economic Advisory Report Modal (`src/sim/advisory.ts`, `src/main.ts`)**:
+    - Extended `FleetAdvice` to include `underutilizedShips` and generate executive re-tasking recommendations.
+    - Rendered dedicated **Underutilized Vessels Detected** cards in the Advisory Report with 1-click **`🔄 Prioritize [ShortageGood]`** and **`🎥 Track`** camera follow buttons.
+  - **Left Inspector Panel (`src/main.ts`)**:
+    - Fleet tab header displays `X (⚠️Y)` underutilized count indicator.
+    - Individual vessel rows display `⚠️ Low Load (${fillPct}%)` or `⚠️ Idle` chips with warning tooltips.
+  - **Archipelago Directory (`src/sim/archipelago.ts`, `src/render/ArchipelagoModal.ts`)**:
+    - Added `underutilizedShipsCount` per island card (`⚠️ X Underutilized` chip) and total underutilized vessels metric in the KPI ribbon.
+  - **Verification**: All 15 test suites (76 unit tests) pass, production Vite client bundle built with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 17: Dynamic Harbor Berth Fleet Limits Bounded by Population & Economic Potential (`simulation.ts`, `sourcing.ts`, `SourcingModal.ts`, `archipelago.ts`, `ArchipelagoModal.ts`, `main.ts`, `style.css`, `ships.test.ts`)**:
+  - **Dynamic Harbor Berth Capacity Scaling**:
+    - Eliminated unlimited vessel commissioning per harbor by introducing `getPortFleetCapacity(islandId)` and `getHomePortedShipsCount(islandId)` in `simulation.ts`.
+    - Capacity formula bounds berths dynamically according to socioeconomic potential:
+      - **Base**: 2 berths minimum for any islet/port.
+      - **Population**: `+Math.floor(population / 15,000)` berths (e.g. Santorini 15.5k gives +1; Crete 175k gives +11; Piraeus 160k gives +10).
+      - **Economic Potential Throughput**: `+1` berth if total trade throughput (production + consumption rates) >= 20/d, `+2` berths if >= 40/d.
+      - **Mainland Hub Status**: `+2` berths for strategic mainland ports (`type === 'mainland_port'`, e.g. Piraeus, Izmir, Athens/Lavrio).
+      - **Prosperity / Distress Modifier**: `+1` berth bonus when an island is booming (`prosperity >= 0.75`); `-1` berth penalty during severe distress (`distress > 0.15`, clamped to min 1).
+      - Clamped to minimum of 2 berths per harbor.
+  - **Hard Commission Limits in Simulation**:
+    - `buyShip(tierId, islandId)` now verifies `getHomePortedShipsCount(islandId) < getPortFleetCapacity(islandId)`.
+    - If saturated, rejects purchase without deducting drachmas, returning `{ success: false, reason: '... harbor berths full (X/Y vessels). Reroute existing fleet or expand island population & prosperity.' }`.
+  - **Smart Sourcing Modal Fleet Strategy**:
+    - Added `berthsUsed` and `berthsMax` to `SourcingAnalysis`.
+    - If berths are full, automatically switches strategic recommendation to `'redirect_existing'` and warns the player.
+    - Sourcing Modal shows `⚓ Berths: X / Y` with alert badge when full; disables dedicated commissioning button and prompts the player to redirect existing assigned vessels instead.
+  - **Inspector Shipyard UI**:
+    - Live `#shipyard-island-tag` displays `⚓ Berths: X/Y` with dynamic green / red alert color.
+    - `#btn-buy-ship` is cleanly disabled with `⚓ Harbor Berths Full (X/Y)` when berths are saturated, with tooltip explaining how to expand capacity.
+  - **Archipelago Directory Integration**:
+    - Island entries now include `berthsUsed` and `berthsMax`, displaying an `⚓ X/Y Berths` chip on all island cards in the Archipelago Directory.
+  - **Verification**: All 15 test suites (75 unit tests) pass, production Vite client bundle built with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 16: Interactive Critical Shortage & Advisory Badges Linked to Sourcing Engine (`main.ts`, `style.css`)**:
+  - **Direct Supply Sourcing from Economic Advisory Modal**:
+    - Converted all status badges (`CRITICAL SHORTAGE ➔`, `LOW BUFFER ➔`, `SUPPLIED ➔`, `CAPPED WAREHOUSE ➔`, `PRODUCING ➔`) in the Economic Advisory Report into clickable interactive action buttons (`button.advisory-status-badge.btn-badge-sourcing`).
+    - Added tactile hover micro-animations (scale, pulsing alert glow, cursor pointer) on both status badges and commodity icon pills (`.advisory-good-badge`).
+    - Tapping **`CRITICAL SHORTAGE`** (e.g. for **Grain** at Santorini) immediately opens the **Commodity Sourcing & Fleet Logistics Modal**:
+      1. Scans and lists closest awakened grain exporting ports (e.g. Naxos, Crete/Heraklion, Izmir) with exact sea-lane distance and connection status.
+      2. Analyzes vessel class suitability (cargo capacity, range vs nautical voyage distance, speed).
+      3. Checks vessels stationed at the local harbor (e.g. Santorini), showing whether they are currently bringing other goods or available.
+      4. Provides 1-click **`🔄 Prioritize Grain`** to reroute an existing vessel, or **`🔨 Commission Dedicated Vessel`** to buy a new ship with a dedicated grain priority mandate.
+  - **Verification**: All 15 test suites (73 unit tests) pass, production Vite client bundle built with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 15: Swapped Left and Right Mouse Drag Controls (`Scene.ts`, `CameraManager.ts`)**:
+  - **Intuitive Camera Navigation**:
+    - **Left Mouse Drag (`button 0`)**: Assigned to **PAN** (translating across the Aegean Sea surface and moving the viewport center).
+    - **Right Mouse Drag (`button 2`)**: Assigned to **ROTATE / ORBIT** (pitch and yaw rotation around the focal target).
+    - **Middle Mouse / Wheel**: Preserved as **DOLLY / ZOOM**.
+  - **Context Menu & Selection Handling**:
+    - Added `renderer.domElement.addEventListener('contextmenu', (e) => e.preventDefault())` to eliminate browser context menu interruptions when right-dragging.
+    - Constrained raycaster 3D selection (for islands and ships) strictly to left clicks (`e.button === 0`), preventing unintended selections when right-clicking to rotate.
+    - Updated `CameraManager.ts` to preserve cinematic vessel follow mode during right-click orbit rotations while allowing left-click pans to disengage.
+  - **Verification**: All 15 test suites (73 unit tests) pass, production Vite client bundle built with 0 errors.
+  - **Headless Archipelago Analytics Engine (`src/sim/archipelago.ts`, `src/sim/archipelago.test.ts`)**:
+    - Created decoupled directory evaluator `getArchipelagoDirectory(sim)` computing network-wide and per-island metrics across all 63 islands.
+    - Evaluates population scale (ranking largest hubs like Crete 175k, Rhodes 115k, Izmir 85k), daylight connection status (Booming, Stable, Struggling, Distressed vs Sleeping), maritime prerequisite satisfaction, and unlock affordability.
+    - Calculates an Economic Opportunity Score factoring in consumer demand volume, export capacity (+26 Fuel/d, +14 Wine/d), urgent starvation deficits, and awakening strategic leverage.
+    - Provides human-readable contextual opportunity summaries (e.g. "Major Population Hub (175k) • Strategic Fuel & Grain Port", "✨ Ready to Awaken! 🪙 1,200 unlocks pop 115,000 & +14/d exports").
+    - Verified with comprehensive Vitest suite in `archipelago.test.ts` (population aggregation, awake percentages, sorting extremes, connection requirements).
+  - **Interactive Glassmorphic Modal Component (`src/render/ArchipelagoModal.ts`, `index.html`, `style.css`)**:
+    - Made `#metric-islands` in the top bar interactive with tactile hover elevation, golden border glow, and tooltip (`.metric-chip-clickable`).
+    - Added key shortcut `A` and `Escape` handlers to toggle and close modal.
+    - **KPI Ribbon**: Displays live Archipelago Coverage (`30 / 63 Islands • 48%`), Population in Daylight (`412,000 / 685,000 • 60%`), Ready to Awaken port count, and Top Expansion Prospect.
+    - **Controls Toolbar**: Instant search bar (filtering by island name, region, or commodities produced/consumed), status filter tabs (`All`, `☀️ Daylight`, `🔒 Sleeping`, `✨ Ready to Awaken`), and sorting options (Population, Economic Opportunity, Prosperity %, Awakening Cost, Name, Region).
+    - **Detailed Port Cards**: Rank badge, status pill, population with proportional visual progress bar, economic opportunity score and description, top exports/demands pills, and quick action buttons (`📍 View on Map`, `Awaken Port`, `📊 Report`, `🔍 Logistics`).
+  - **Verification**: All 15 test suites (73 unit tests) pass, production Vite client bundle built with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 13: Interactive Commodity Supply Chain & Sourcing Analyzer (`sourcing.ts`, `sourcing.test.ts`, `SourcingModal.ts`, `main.ts`, `index.html`, `style.css`)**:
+  - **Headless Sourcing & Route Logistics Engine (`src/sim/sourcing.ts`, `src/sim/sourcing.test.ts`)**:
+    - Created decoupled simulation module `analyzeCommoditySourcing(sim, islandId, goodId)` evaluating:
+      1. Island consumption deficit, current stock vs target buffer, and remaining days of supply runway.
+      2. Comprehensive scan of all producing ports across the Aegean, calculating great-circle distance and navigable A* sea-lane path distance (`sim.navGraph.findPathBetweenIslands`).
+      3. Differentiating awakened daylight ports from unawakened dark ports, and direct sea-lane connections from multi-hop sea-lane routes.
+      4. Complete vessel suitability analysis across all 5 tiers (Boat, Coaster, Ferry, Freighter, Yacht) checking cargo eligibility (excludes VIP Yacht), speed, capacity, days of supply per run, and range adequacy (`isRangeAdequate`) vs route distance.
+      5. Stationed / home-ported fleet evaluation at target port (e.g. Rhodes): checks state, destination, cargo, whether it's carrying target vs other goods, and whether it has sufficient range.
+      6. Strategic recommendation: formulation of `'redirect_existing'`, `'commission_new'`, or `'awaken_producer'` with contextual rationale.
+    - Verified with comprehensive unit test suite in `sourcing.test.ts` (fuel producers identification, vessel range suitability e.g. Rhodes -> Kos -> Izmir 273km vs Boat 90km / Coaster 160km / Freighter 500km, and fleet inspection).
+  - **Interactive Glassmorphic Sourcing Modal (`src/render/SourcingModal.ts`, `index.html`, `style.css`)**:
+    - Accessible directly by tapping any commodity pill (`.good-pill`) in the Left Inspector panel or via the Economic Advisory Report.
+    - Displays:
+      - Diagnostic status hero banner (Critical Shortage / Low Buffer / Surplus) with depletion runway and strategic diagnosis.
+      - Closest Exporting Ports grid with direct/hop connection badges, awakened status, production rate, warehouse stock, and "View on Map" focus action.
+      - Vessel Suitability Matrix displaying all 5 tiers with range, capacity, speed, days of supply per trip, and recommended badges.
+      - Stationed Fleet Inspection showing each vessel's status, cargo, priority, and direct action buttons (`🔄 Prioritize [GoodName]` to redirect, `✓ Prioritizing [GoodName]` to reset to auto).
+      - Harbor Shipyard Commission button (`🔨 Commission Dedicated [Tier]`) that buys the vessel at the harbor and automatically assigns its priority to the target good.
+  - **Verification**: All 14 test suites (70 unit tests) pass, production Vite client bundle built successfully with 0 errors.
+  - **Acoustic Redesign**: Upgraded `playCoinSound()` from a generic electronic bell chime into a tactile, multi-impact acoustic simulation of antique gold drachmas dropping, bouncing, and clinking onto a solid oak tabletop.
+  - **Multi-Component Synthesis per Impact**:
+    1. *Warm Wood Body Knock*: Damped 260Hz ➔ 75Hz triangle oscillator creating the deep, resonant thump of heavy timber absorbing impact energy.
+    2. *Hard Rim Click Transient*: Rapid 4.2kHz ➔ 350Hz micro-snap lasting 8ms, capturing the sharp physical bite of a coin rim hitting wood grain.
+    3. *High-Q Metallic Pings*: Inharmonic modal oscillators at 3.45kHz (fundamental ring) and 5.82kHz (overtone) reproducing authentic gold/bronze resonance.
+    4. *Cascading 4-Drop Sequence*: Staggered drops at `0ms`, `42ms`, `88ms`, and `135ms` with subtle acoustic jitter, simulating coins tumbling and settling into a neat heap on the desk.
+  - **Verification**: Verified via Settings preview palette button, all 13 test suites (67 unit tests) pass, and production Vite bundle passed with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 11: Fixed Mainland Turkey Shoreline Outline Glow Artifact (`Terrain.ts`)**:
+  - **Issue Diagnosis**: The terrain fragment shader's `getIslandOutlineGlow` function evaluated inland coastal strokes using `inlandDist` (Channel A of `uMaskTex`). On unassigned mainland territories (such as Western Anatolia / Turkey), `maskId` is 0, which resulted in `inlandDist == 0.0`. In the fragment shader, `smoothstep(0.024, 0.001, inlandDist)` evaluated to full `1.0` when `inlandDist == 0.0`. Combined with `activeId = (landId > 0) ? landId : nearestId`, whenever a nearby Greek island was in distress/shortage, the alert coral-red warning color (`0.96, 0.20, 0.22`) was painted continuously over the entire Turkish mainland.
+  - **Shader Resolution (`Terrain.ts`)**:
+    - Guarded the landward branch so it strictly requires `landId > 0` (recognized islands only; unassigned mainland with `landId <= 0` immediately returns `vec3(0.0)`).
+    - Enforced boundary thresholds on `inlandDist` (`0.0005 < inlandDist <= 0.026`) preventing zero-distance fallback artifacts.
+    - Constrained seaward halo distance to `seaDist <= 0.045`, preventing open water bleed.
+  - **Verification**: All 13 test suites (67 unit tests) pass; production Vite build passes cleanly.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 10: Fixed Tier 5 Luxury Yacht Yaw Orientation (`Ships.ts`)**:
+  - **Issue Diagnosis**: The loaded GLTF model for the Tier 5 Yacht (`/models/yacht/scene.gltf`) had its long hull axis along the Z-axis (length 40.33, beam 8.20) with its pointed prow at `+Z` and wide transom at `-Z`. It was previously configured with `yawAdjustmentRad = Math.PI / 2` (+90°), which incorrectly mapped its long axis into the X-axis, causing yachts to sail completely broadside/sideways with an inflated 1.18m beam.
+  - **Yaw Alignment Fix**: Updated `yawAdjustmentRad` to `Math.PI` (180°), aligning the pointed bow straight forward along the `-Z` heading of travel, squaring the transom to the aft wake, and reducing effective beam to `0.24m`.
+  - **Verification**: Verified vertex coordinates, orientation bounds, 13 test suites (67 unit tests), and production Vite bundle.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 9: Left Inspector Outer Border Viewport Containment & Vessel List Scrollbar (`style.css`)**:
+  - **Outer Border Viewport Containment (`#inspector-panel`, `#hud-overlay`)**:
+    - Restrained `#inspector-panel` height to strictly stay within its grid row area without exceeding viewport height or colliding with `#bottom-bar` (`max-height: calc(100vh - 188px)` with `box-sizing: border-box`, `min-height: 0`).
+    - Added `box-sizing: border-box; overflow: hidden;` to `#hud-overlay` grid layer, ensuring panels stay neatly bounded with consistent 16px margins from top and bottom chrome.
+    - Updated `.panel-content` to gracefully scroll vertically whenever total section height exceeds available viewport space.
+  - **Dedicated Vessel List Scrolling (`.route-list`)**:
+    - Constrained `.route-list` max-height to `140px` (showing ~4-5 vessels comfortably while preserving space for the Harbor Shipyard and commission buttons below).
+    - Added an elegant, slim golden-amber scrollbar (`scrollbar-color: rgba(242, 193, 78, 0.45) ...`) with smooth scrolling for fleets with 6–20+ assigned vessels.
+    - Scoped the global scrollbar reset rule so components specifying intentional custom scrollbars render properly in modern browsers.
+  - **Verification**: All 13 test suites passing (67 unit tests), production Vite client build fully validated with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 8: Single-Word Vessel Names, Modern Short Tier Names & Single-Line Fleet Table Formatting (`shipSim.ts`, `saveLoad.ts`, `ships.json`, `FleetPanel.ts`, `main.ts`, `index.html`, `style.css`, `ships.test.ts`)**:
+  - **Single-Word Vessel Name Standardization & Save Migration (`shipSim.ts`, `saveLoad.ts`, `FleetPanel.ts`, `ships.test.ts`)**:
+    - Built and unit-tested `toSingleWordShipName(...)` to strictly enforce authentic, single-word Aegean nautical, wind, and mythological names across both freshly spawned boats and loaded saved games.
+    - Automatically migrates legacy multi-word names from earlier saves (e.g. `Dolphin of Naxos` ➔ `Delphis`, `Poseidon Pride` ➔ `Poseidon`, `Santorini Sun` ➔ `Helios`, `Agios Nikolaos (Santorini)` ➔ `Nikolaos`, `Aegean Runner` ➔ `Meltemi`, `Panagia Soumela` ➔ `Sirena`).
+    - Integrated with `registerShip`, `spawnShip`, `saveLoad.deserializeSimulation`, and `FleetPanel.ts`.
+  - **Modern, Concise Ship Class & Tier Names (`ships.json`, `Ships.ts`, `FleetPanel.ts`, `main.ts`, `index.html`)**:
+    - Replaced wordy, traditional compound descriptions with clean modern vessel names across UI chips, handbook guide, 3D meshes, and advisory dispatch:
+      - Tier 1: `Traditional Kaiki` ➔ `Boat`
+      - Tier 2: `Aegean Caique` ➔ `Coaster`
+      - Tier 3: `Island Passenger Ferry` ➔ `Ferry`
+      - Tier 4: `Merchant Freighter` ➔ `Freighter`
+      - Tier 5: `Luxury Motor Yacht` ➔ `Yacht`
+    - Updated `ships.json`, `Ships.ts`, `index.html` (filters and handbook table), `FleetPanel.ts` tier pill generator, and `main.ts` shipyard buttons (`getShipShortName`).
+  - **Single-Line Fleet Table Item Formatting (`FleetPanel.ts`, `style.css`)**:
+    - Converted `.fleet-cell-vessel` from a stacked column to a horizontal inline layout: `[Icon] VesselName (X voyages)` all on a single line.
+    - Added `white-space: nowrap` across all `.fleet-table th` and `.fleet-table td` cells (Cargo Hold `🏛️ 25 Marble`, Class/Tier `.badge-tier`, Status, Speed, Profit, and Actions).
+    - Enabled smooth two-axis scrolling with `overflow-x: auto` and `min-width: 880px` on `.fleet-table`, eliminating all vertical row expansion and cell wrapping.
+  - **Verification**: All 13 test suites passing (67 unit tests), production Vite client build fully validated with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 7: Granular Per-Notification-Type Audio Toggle Switch (`notificationAudio.ts`, `NotificationAudio.test.ts`, `main.ts`, `index.html`, `style.css`)**:
+  - **Granular Notification Audio Engine (`notificationAudio.ts`, `NotificationAudio.test.ts`)**:
+    - Created an independent, unit-tested notification audio setting manager with canonical badge channel mapping (`TRADE RUN`, `AWAKENING`, `FESTIVAL`, `VESSELS`, `UNLOCKS`, `CAMERA`, etc.).
+    - Implemented `isNotificationAudioEnabled(badge)` and `setNotificationAudioEnabled(badge, boolean)` with automatic `localStorage` persistence under `aegean_notif_audio_types`.
+    - Unit tested in `NotificationAudio.test.ts` (channel normalization, default-enabled behavior, channel independence, and re-enabling).
+  - **Tiny Card-Level Audio Toggle Switch (`main.ts`, `style.css`, `index.html`)**:
+    - Added a tiny, glassmorphic audio toggle switch (`.feed-audio-toggle`) at the bottom right corner of each notification card in `.feed-footer` alongside the timestamp.
+    - Features distinct visual feedback: active state (`🔊 ON`, bright Cycladic cyan glow) and muted state (`🔇 OFF`, muted red border).
+    - Clicking the toggle updates the preference, plays a soft UI feedback chime when turning ON, and instantly synchronizes all visible cards of that message type in the event feed without reloading.
+  - **Selective Sound Effect Gating (`main.ts`)**:
+    - Wrapped procedural delivery coin/ticket/shimmer chimes, dock cargo loading sounds, festival awakening fanfares, island unlock dawns, and shipyard commission audio in `isNotificationAudioEnabled(channel)`.
+    - Players can now selectively silence repetitive autonomous trade run chimes without missing island awakening fanfare or rare festival events.
+  - **Verification**: All 13 test suites passing (66 unit tests), production Vite client build fully validated with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 6: Interactive Island Connection Navigation & Direct Selection (`simulation.ts`, `IslandMarkers.ts`, `main.ts`, `index.html`, `style.css`)**:
+  - **Interactive Island Pills in Notifications & Dispatches (`main.ts`, `style.css`)**:
+    - Converted static island connection requirement messages (e.g. `Skyros: Must connect to andros or skopelos first`) into interactive, clickable Aegean navigation pills (`[📍 Andros] or [📍 Skopelos]`).
+    - Added automated link parsing in `addNotification` so any island mentions in dispatches or alert toasts are automatically rendered as styled, clickable pills (`.feed-island-link`).
+    - Clicking any island link directly focuses the 3D camera on that island, opens its inspector dossier, and selects it in real-time.
+  - **Left Inspector Connection Requirements Card (`index.html`, `main.ts`, `style.css`)**:
+    - Added a dedicated connection requirement banner (`#inspector-unlock-req-box`) directly under the action buttons when viewing an island with unfulfilled prerequisites.
+    - Displays interactive island buttons for each missing connection link, allowing players to navigate directly to prerequisite islands (e.g. Skopelos or Andros) with one click without searching the map.
+  - **3D Ground Plane & Geographic Raycast Fallback (`IslandMarkers.ts`)**:
+    - Expanded raycast fallback logic in `IslandMarkers.getIslandAtRay`: added true horizontal ground plane intersection (`raycaster.ray.intersectPlane`) and increased detection radius to `3.6` world units.
+    - Enables effortless direct clicking on Skopelos, Skyros, or any island on the 3D map whether clicking on its highest summit peak, its harbor, its coastal shorelines, or its illuminated prosperity outline from any camera altitude.
+  - **Verification**: All 12 test suites passing (62 unit tests), production Vite client build fully validated with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 5: Distance-Based Island Prosperity Outlines & Decluttering LOD (`Terrain.ts`, `IslandMarkers.ts`, `Scene.ts`, `main.ts`)**:
+  - **Distance-Based Island Prosperity Shoreline Outlines (`Terrain.ts`, `Scene.ts`)**:
+    - Implemented cartographic shoreline outlines directly in the 3D terrain shader using the 4-channel island distance field texture (`uMaskTex`), sampling `seaDist` and `inlandDist` to draw crisp coastal borders with luminous seaward halos.
+    - Designed real-time dynamic outline coloration reflecting island prosperity and connection health:
+      - **Distressed** (shortage or distress > 15%): Luminous Coral Crimson (`vec4(0.96, 0.20, 0.22, 1.0)`) with an alert pulse.
+      - **Struggling** (< 40% prosperity): Warm Amber (`vec4(0.96, 0.62, 0.05, 0.95)`).
+      - **Stable** (40%–69% prosperity): Aegean Emerald Green (`vec4(0.08, 0.85, 0.52, 0.95)`).
+      - **Booming** (>= 70% prosperity): Radiant Cycladic Cyan (`vec4(0.18, 0.82, 0.98, 1.0)`).
+      - **Locked / Sleeping** (awaiting connection): Subtle Warm Bronze (`vec4(0.38, 0.32, 0.22, 0.28)`).
+      - **Selected Island**: Radiant Olympian Gold (`vec4(1.0, 0.82, 0.16, 1.0)`).
+    - Integrated across all view modes, including DEM National Geographic Topographic mode (`uViewMode == 2`) and Normal/Day modes (`uViewMode == 0 / 1`).
+    - Added dynamic distance-weighted radiance (`uDistanceOutlineWeight` scaling from `1.30` at high altitude to `0.75` up close).
+  - **Decluttering Level of Detail (LOD) & Distance-Based Marker Culling (`IslandMarkers.ts`)**:
+    - From a distance (camera altitude `camY >= 34` or distance to island `distToCam >= 38`), automatically culls all 3D summit teardrop pin markers (`visible = false`) and 2D HTML labels (`display = 'none'`) across unselected islands.
+    - Smoothly fades in pins and labels when zooming in (`camY < 34`, `distToCam < 38`), scaling smoothly out of the mountain summits.
+    - The active inspection target (`selectedIslandId`) remains visible even from high altitude with its radiant golden pin and glowing outline.
+    - Added distance-to-peak raycasting fallback (`maxClickDistance = 2.6`) so players can easily click and focus on any island from orbit even when 3D pins are hidden.
+  - **Verification**: All 12 test suites passing (62 unit tests), production Vite client build fully validated with 0 errors.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 4: Island Economic Recommendations Advisory Report (`src/sim/advisory.ts`, `src/sim/advisory.test.ts`, `index.html`, `src/style.css`, `src/main.ts`)**:
+  - **Headless Economic Advisory Engine (`src/sim/advisory.ts`, `src/sim/advisory.test.ts`)**:
+    - Built a decoupled, 100% headless economic advisory algorithm strictly adhering to Rule 6 (zero DOM/render imports, unit tested with 4 comprehensive test suites in `advisory.test.ts`):
+      - **Diagnosis & Health Classification**: Analyzes prosperity percentages, starvation rates, and distress levels to categorize port conditions (`distressed`, `struggling`, `stable`, `booming`).
+      - **Lifeline Import Deficit & Supplier Optimization**: Evaluates consumed commodities, buffer reserves, and days remaining; automatically scans all unlocked ports across the Aegean to determine best supplier, distance in km, wholesale cost, and net profit per unit.
+      - **Surplus Monetization & Export Arbitrage**: Monitors warehouse production bottlenecks; automatically identifies highest paying buyer ports across the archipelago with profit margins and destination demand deficits.
+      - **Logistics & Fleet Advisory**: Tracks active assigned vessels, detects unserviced harbors, and recommends cargo priority overrides or fleet commissioning to resolve local supply bottlenecks.
+      - **Awakening & Network Expansion**: Computes treasury and Trade Points requirements vs player balances for locked ports.
+      - **Action Items Checklist**: Synthesizes an executive, actionable checklist ("What needs to be done for this island").
+  - **Left Inspector Integration & Glassmorphic Modal UI (`index.html`, `src/style.css`, `src/main.ts`)**:
+    - Added an attractive `[📊 Report]` pill button (`#btn-island-advisory`) in the Left Inspector panel right beside the Island Prosperity indicator.
+    - Created a rich, dark glassmorphic Economic Report Modal (`#advisory-modal`) with smooth backdrop blur, interactive cards for import lifelines, surplus exports, fleet routing recommendations, and network awakening steps.
+    - Hooked modal opening, closing (`[✕]`, backdrop click, and <kbd>Escape</kbd> key), and updated all relevant unit tests (`12 test files, 61 tests passing`).
+
+  - **Top Navigation Fleet Management Icon (`Icons.ts`, `index.html`, `src/style.css`)**:
+    - Restored the Classical Hellenic Temple / Parthenon icon (`🏛️` / vector temple SVG) for `#btn-top-fleet`, replacing the undersized boat icon.
+    - Scaled the icon up to a prominent, crisp 26px with golden/marble architectural gradients, Doric columns, and subtle luminescent hover glow.
+
+  - **Boat Wake Dissipation & Shorter Trail Length (`BoatWake.ts`, `SettingsPanel.ts`, `BoatWake.test.ts`)**:
+    - Shortened default boat wake lifetime from `3.2s` to `1.4s` (over 50% tighter and more responsive dissipation behind moving hulls).
+    - Reduced wake lateral spread from `4.8` to `3.6` and adjusted wash width (`1.15`) for a crisp, hydrodynamic V-envelope.
+    - Bumped `localStorage` settings key to `aegean_wake_params_v2` to cleanly migrate client settings without stale long-wake overrides.
+    - Updated settings panel slider ranges (`0.4s` to `5.0s`) and preset definitions (Express: 2.0s, Subtle: 0.8s).
+    - Updated unit tests in `BoatWake.test.ts` to dynamically validate trail lifetime pruning; all 61 tests passing.
+
+  - **High-Fidelity Aegean Vessel Vector Icon Suite (`Icons.ts`, `main.ts`, `FleetPanel.ts`, `style.css`, `Icons.test.ts`)**:
+    - Replaced the generic, flat Windows sailboat system emoji (`⛵`) in Maritime Dispatch notifications with handcrafted, theme-responsive Aegean vector SVGs across all 5 vessel tiers (Kaiki, Caique, Ferry, Freighter, Yacht).
+    - **Tier 1 Traditional Kaiki Vector Icon**: Features authentic curved Greek wooden hull in warm Mediterranean teak/cedar gradients, apotropaic prow eye amulet (*Mati*), tall slender mast with golden masthead pennant, billowed linen lug sail catching the Meltemi breeze, fore staysail, and turquoise sea wave crest.
+    - **Theme Variants & Integration**: Integrated all 5 tiers across Classical Antiquity, Minimalist Hellenic, Imperial Gold, and clean Emoji fallback.
+    - **UI-Wide Deployment**: Applied vector ship icons to Maritime Dispatch trade run feeds, Left Inspector vessel titles, shipyard commission buttons, ship popups, and Fleet Management roster tables (`12 test files, 62 unit tests passing`).
+
+  - **Island Connection State Desynchronization Fix (`Scene.ts`, `main.ts`)**:
+    - Resolved contradictory state where an already unlocked island (e.g. Amorgos) showed "Awaiting Connection" with an "Awaken Island" button, and clicking it prompted "already connected".
+    - Fixed root cause where `updateInspector` was reading `isLit` from the 3D terrain shader mask rather than `sim.unlockedIslands`, which fell out of sync upon save restoration or initial load.
+    - Added `setIslandLitImmediate` in `Scene.ts` and ensured `sim.unlockedIslands` is the single source of truth across UI status badges, awakening buttons, shipyard accessibility, and 3D terrain lighting.
+
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 3: Island Festivals & Market Booms Engine (`src/sim/events.ts`, `src/sim/events.test.ts`, `src/sim/simulation.ts`, `src/sim/islandSim.ts`, `index.html`, `src/style.css`, `src/main.ts`)**:
+  - **Headless Seasonal Event Engine (`src/sim/events.ts`, `src/sim/events.test.ts`)**:
+    - Decoupled, unit-tested event manager simulating vibrant island cultural feasts and seasonal harvest gluts across the Aegean:
+      - **Panigiri Festival**: Feast days (Naxos, Ikaria, Amorgos, Paros, Santorini) creating +140% demand surge and +85% price premium for wine, cheese, and fresh produce.
+      - **Olive Harvest Boom**: Bumper autumn harvests (Crete, Lesbos, Peloponnese) yielding +120% extra olive oil output and -45% wholesale purchase discounts.
+      - **Wine Vintage Bottling**: Rare volcanic vintage (Santorini, Samos) producing double supply at -40% acquisition cost.
+      - **Sanctuary Building Boom**: Grand temple and civic restorations (Delos, Rhodes, Athens) consuming marble and tools at +180% demand and +95% payout prices.
+      - **Sponge Diver Regatta**: Spring diving expeditions (Kalymnos, Symi, Chalki) spiking luxury sponge demand (+130%) and merchant rates (+70%).
+    - Support for custom event durations, lifecycle events (`onEventStart`, `onEventEnd`), and autonomous event spawning every 6-10 game days targeting unlocked ports.
+  - **Market & Autonomous Shipping Integration (`src/sim/islandSim.ts`, `src/sim/simulation.ts`)**:
+    - Connected event multipliers directly into `tickIslandEconomy`, updating physical stock flows, dynamic price bounds, and local buy/sell rates.
+    - Autonomous shipping AI naturally redirects and capitalizes on high-margin festival markets without needing manual trade routing.
+  - **HUD, Left Inspector & Dispatch Notifications (`src/main.ts`, `src/style.css`, `index.html`)**:
+    - **Inspector Celebration Banner**: Dedicated `#inspector-festival-banner` with glowing border, festival badge, time remaining countdown (`⏳ ~4d remaining`), and cultural flavor description.
+    - **Commodity Badges & Fire Tags**: Commodities affected by active festivals display glowing tags (e.g. `🎪 Panigiri`) and highlighted price chips (`good-price-chip festival-price` with `🔥`).
+    - **Maritime Dispatch & Fanfare**: Real-time dispatch alerts and celebratory fanfare audio chime (`audio.playAwakeningFanfare()`) whenever festivals begin or conclude.
+  - **Top Bar Metrics & Chronometer Single-Line Scaling (`src/style.css`)**:
+    - Resolved multi-line wrapping inside top-bar metric pills (Treasury, Trade Pts, Archipelago, Wind, and Calendar Chronometer).
+    - Added responsive `clamp()` padding, gap scaling, and strict `white-space: nowrap !important` across all chips, values, and labels, ensuring clean single-line presentation across all display resolutions.
+  - **Inspector Tile Adjustment & Vertical Auto-Scaling (`src/style.css`, `src/main.ts`)**:
+    - Re-engineered commodity market pills (`.good-pill`): streamlined icon footprint (18px), strict `white-space: nowrap !important` on festival tags (`🎪 Panigiri`) and price chips (`good-price-chip festival-price`), eliminating two-line wrapping and right-side truncation.
+    - Compacted stock strings (`${stock}/${cap}` and `${stock}/${target}b`) and tightened pill padding (`4px 6px`) to guarantee ample room for prices and rates across all columns.
+    - Added vertical auto-scaling to `#inspector-panel`: converted `.panel-content` to flexible auto-scrolling with slim custom scrollbars (`scrollbar-width: thin`), compacted festival banner and vessel routes list (`max-height: 72px`), and added media query scaling (`@media (max-height: 850px)`) ensuring shipyard and action buttons are always accessible and visible.
+  - **Bottom-Right Chronometer & Wind Rose Fixed Position Lock (`src/style.css`)**:
+    - Locked `#bottom-chronometer` to a strict fixed width (156px) and `#wind-rose-card` to 154px, preventing widgets from shifting horizontally when date, season names (`Meltemi`/`Spring`), or wind speeds change length.
+    - Enabled `font-variant-numeric: tabular-nums` and fixed widths on time (`44px`), solar icons (`16px`), and season pills (`56px`), ensuring zero pixel jitter or layout shifting during live simulation playback.
+  - **Maritime Dispatch Arrival Highlight & Negative Red Styling (`src/style.css`, `src/main.ts`)**:
+    - Added attention-pulling arrival animation (`feedItemArrive` / `feedItemArriveNegative`): new dispatches briefly flash with a luminous aura and elevated scale before smoothly relaxing into the feed over 2.8 seconds.
+    - Automated negative/warning detection (shortages, shipyard locks, distress, insufficient treasury): negative alerts display in red styling with a crimson border (`#ef4444`), red glowing badge (`⚠️`), and soft red-tinted text.
+  - **Bottom-Right Pictorial Instrument Cluster Redesign (`index.html`, `src/style.css`, `src/main.ts`)**:
+    - Replaced text-heavy calendar and weather rows with authentic marine bridge instruments:
+      - **Celestial Astrolabe & Solar/Lunar Transit Dial**: Dual-hemisphere nautical SVG dial with golden Sun glyph, raybursts, and silver crescent Moon arm dynamically rotating with time-of-day (solar zenith at 12:00, sunset at 18:00, midnight nadir at 00:00).
+      - **Mechanical Date Aperture Stamp**: Classic watchmaker aperture plate displaying stamped month badge (`JUL`) over high-contrast bold day numeral (`7`), preserving element IDs for headless compatibility.
+      - **Time & Seasonal Emblem**: Digital solar time (`13:58`) with seasonal emblem icon (`☀️ Meltemi`, `🌸 Zephyr`, `🍂 Sirocco`, `❄️ Boreas`).
+      - **Beaufort Velocity Bar Gauge**: 5-segment graphic power meter with color-coded luminescent illumination (cyan for light/gentle breeze, amber/gold for moderate, coral pulse for Meltemi gale).
+      - **Wind Flow Pictogram & Compass**: Wind stream pictogram icon, high-contrast bearing badge (`NNE`), and dynamic wind rose needle.
+    - Symmetrically balanced dual-card layout (`176px` / `174px`), zero pixel jitter during live time acceleration.
+  - **Maritime Dispatch Card Dynamic Height & Text Fitting (`src/style.css`)**:
+    - Resolved vertical text truncation on `.feed-item` cards where multi-line trade runs (e.g. `Agios Nikolaos: delivered 1 Crafts to Naxos (+ 🪙 116)`) and timestamps were clipped by flexbox height compression.
+    - Set `flex-shrink: 0`, `height: auto`, and `min-height: fit-content` on `.feed-item`, ensuring cards dynamically expand to fit the complete message and timestamp without vertical clipping.
+    - Added `flex: 1 1 0` and `min-height: 0` to `.event-feed` for smooth vertical scrolling across all dispatches.
+    - Broadened the panel grid column with `clamp(340px, 22vw, 375px)` and optimized padding (`14px` panel / `9px 12px` card) for clean typography and line-wrapping.
+  - **Integration of External 3D GLTF Vessel Models (`public/models/*`, `src/render/Ships.ts`, `CREDITS.md`)**:
+    - Staged all 5 external GLTF model packages into `public/models/`:
+      - **Tier 1 Kaiki** (`/models/kaiki/scene.gltf`): Traditional Greek wooden fishing boat by Godot2000 (CC-BY-4.0).
+      - **Tier 2 Caique** (`/models/caique/scene.gltf`): Motorized cargo schooner by CharlieCatling (Sketchfab Standard).
+      - **Tier 3 Ferry** (`/models/ferry/scene.gltf`): Multi-deck island passenger concept by Gman The Cruise Dude (CC-BY-4.0).
+      - **Tier 4 Freighter** (`/models/freighter/scene.gltf`): Full container cargo ship by Mixmamo.studio (CC-BY-4.0).
+      - **Tier 5 Yacht** (`/models/yacht/scene.gltf`): Luxury twin-engine motor yacht by Sergei (CC-BY-4.0).
+    - Upgraded `ShipsRenderer` with an async streaming pipeline using Three.js `GLTFLoader` and `BufferGeometryUtils`:
+      - Auto-computes bounding boxes, centers hulls at water level ($Y=0$), aligns stems along $-Z$, and normalizes lengths to authentic Aegean world scales.
+      - Converts complex multi-mesh models into ultra-efficient multi-mesh `THREE.InstancedMesh` collections (combines CAD solids into vertex-colored meshes and preserves PBR textures for hulls/cabins).
+      - Reduces total fleet draw calls across the entire archipelago to **~13 draw calls**, easily meeting the 60+ FPS performance target for 100+ vessels.
+      - Recalculates dynamic hydrodynamic profiles (`bowOffset`, `sternOffset`, `beam`) so physical boat wakes emit directly from the real 3D stems of each new model.
+      - Fixed Kaiki yaw orientation (`yawAdjustmentRad: Math.PI / 2` matching stem at `+X`), ensuring the pointed prow faces forward along its travel heading rather than backwards.
+      - Maintains procedural low-poly fallback during initial stream, ensuring zero startup delays.
+  - **Left Inspector Panel Auto-Fit & Vessel List Expansion (`src/style.css`)**:
+    - Eliminated unnecessary vertical scrollbars on the "Active Routes & Vessels" list (`#inspector-routes.route-list`):
+      - Replaced the cramped, hard-coded `max-height: 72px` (which squeezed the list into only ~2 vessels) with `max-height: min(280px, 32vh)` (and `min(160px, 22vh)` on smaller displays), allowing up to 8–9 active vessels to be viewed simultaneously at a glance without scrolling.
+    - Eliminated unused empty real estate at the bottom of the inspector panel:
+      - Applied `align-self: start` and `height: fit-content` to `#inspector-panel`, allowing the card to neatly wrap its actual contents rather than stretching dead space across the entire vertical grid row.
+      - Preserved `max-height: calc(100vh - 100px)` and slim scrollbars to ensure perfect responsiveness without panel overflow on any resolution.
+    - Updated [CREDITS.md](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/CREDITS.md) with full author and license attributions.
+  - **Boat Wake Turn Smoothing, Curvature Safety Clamping & Steering Anti-Oscillation (`src/render/BoatWake.ts`, `src/render/Ships.ts`, `src/render/BoatWake.test.ts`)**:
+    - **Eliminated Steering Flapping / Oscillation**:
+      - Fixed collision avoidance logic in `Ships.ts`: added deterministic tie-breaker symmetry breaking (`ship.id < other.ship.id`) when vessels are sailing directly in line (`Math.abs(alongStb) < 0.16`), preventing ships from rapidly flip-flopping left and right at high frequency when cruising in convoy.
+      - Introduced realistic nautical hull inertia and angular rate limiting (`maxDelta = 3.2 * dt` rad/s), preventing visual yaw from whipping or twitching instantly across frames.
+    - **Stern Wake Emission Origin**:
+      - Corrected wake emitter position in `Ships.ts` to originate directly from the trailing stern transom (`sternOffset`), where rudders and propellers churn the sea, rather than swinging wide at the bow stem.
+    - **Ribbon Self-Intersection & Wrinkle Prevention (`BoatWake.ts`)**:
+      - Added 3-tap Gaussian tangent smoothing along the spine to filter high-frequency angular kinks during turns.
+      - Implemented curvature-aware miter safety clamping on turn interiors: dynamically clamps the inner ribbon half-width to prevent the inner vertices from crossing over or folding backwards, guaranteeing convex, forward-progressing quads without self-intersections or inverted degenerate triangles.
+      - Anchored seafoam turbulence in continuous world-space coordinates (`vWorldPos.xz`) rather than high-frequency UV cosine oscillation (`distCenter * 15.0`), eliminating ray/rib wrinkles across segmented turns.
+    - **Test Suite & Verification**:
+      - Added new unit test in `src/render/BoatWake.test.ts` verifying rapid zig-zag turns and sharp heading changes produce zero NaN coordinates or inverted vertices.
+      - **All 57 unit tests pass cleanly across 11 test files (`npm test`)**; production build passes with zero errors (`npm run build`).
+  - **Top Bar Redundancy Cleanup (`index.html`, `src/style.css`, `src/main.ts`)**:
+    - Removed redundant top bar chips (`#metric-wind` and `#clock-display` with `#game-date` / `#game-time`) that are already featured prominently in the bottom-right pictorial marine instrument cluster (astrolabe dial, date stamp aperture, digital clock, Beaufort power bar, and wind rose card).
+    - Kept top bar focused cleanly on empire-level economics (Treasury, Trade Points, Archipelago) and speed controls.
+  - **Top Bar Navigation Streamlining & Navigator's Guide Integration (`index.html`, `src/render/Icons.ts`, `src/render/FleetPanel.ts`, `src/main.ts`, `src/style.css`)**:
+    - **Removed Audio Button from Top Bar**: Removed `#btn-top-audio` from the top navigation bar. Audio toggling remains accessible via Settings modal (`⚙️`) and the `M` keyboard shortcut.
+    - **Boat Icon for Fleet Management (`Icons.ts`, `index.html`)**: Fixed icon mapping in `src/render/Icons.ts` by adding `'fleet'` to the `ship / boat / kaiki` SVG switch and fallback emoji (previously unhandled `'fleet'` defaulted to the Greek temple/Parthenon building `🏛️`). Top bar button `#btn-top-fleet` now features an authentic Kaiki sailboat icon (`⛵`).
+    - **Integrated Navigator's Guide into Fleet Management Modal**: Removed standalone `#btn-top-help` button and floating `#tutorial-card`. Integrated the comprehensive Skipper's Handbook directly into `#fleet-modal` with dual tab switching:
+      - `⛵ Merchant Fleet` roster tab: Active vessels, status, cargo, and decommission controls.
+      - `🧭 Navigator's Guide` handbook tab: Aegean commerce fundamentals, 3-step trade cycle, vessel tier specs (Kaiki, Caique, Ferry, Freighter, Yacht), Meltemi wind aerodynamics tips, and key commands cheat sheet.
+    - **Hotkeys & Onboarding**: Hotkey `V` toggles Fleet Roster, `H` opens the Navigator's Guide tab inside Fleet Management, and first-time onboarding opens the handbook tab. All 57 unit tests pass (`npm test`) and production build succeeds (`npm run build`).
+  - **Single-Word Boat Names (`src/sim/shipSim.ts`, `src/sim/simulation.ts`)**:
+    - Replaced multi-word and compound vessel names (e.g. `Agios Nikolaos`, `Dolphin of Naxos`, `Poseidon Pride`) with concise, authentic single-word Aegean nautical, wind, and mythological names (`Nikolaos`, `Meltemi`, `Triton`, `Nereus`, `Pelagos`, `Delphis`, `Poseidon`, `Argo`, `Hermes`, `Zephyr`, `Thalassa`, `Sirena`, `Odysseus`, `Calypso`, etc.).
+    - Updated initial starting fleet names from `Agios Nikolaos (Santorini)` and `Dolphin of Naxos` to `Nikolaos` and `Delphis`, keeping HUD cards, maritime dispatches, and fleet lists compact and punchy.
+  - **Soft, Misty & Blurred Hydrodynamic Boat Wakes (`src/render/BoatWake.ts`)**:
+    - Replaced sharp micro-speckle noise with a broad, dual-component Gaussian diffusion blur profile (`washCenter` + `washHaze`) that dynamically expands and softens as the wake ages.
+    - Upgraded turbulence to gentle, low-frequency billowy swirls with zero high-frequency grain or harsh pixel ridges.
+    - Implemented quadratic ease feathering (`smoothstep(1.0, 0.02, distCenter)^2`), providing silky, continuous edge falloff with zero hard boundaries.
+    - Tuned translucency and color blending for an ethereal, misty foam appearance where the Aegean blue sea softly glimmers through the trailing wake.
+  - **Deselect Island / Vessel on Outside Tap (`src/render/IslandMarkers.ts`, `src/render/Scene.ts`, `src/main.ts`)**:
+    - Centralized 3D viewport pointer click handling in `Scene.ts`: checks for ship hits (`getShipAtRay`), island summit pin hits (`islandMarkers.getIslandAtRay`), and filters out camera pans/drags and clicks inside HUD panels, top/bottom bars, island labels, or modals.
+    - Tapping/clicking outside on the open sea or empty background now cleanly triggers `onDeselect()`:
+      - Clears active island selection (`selectedIsland = null`, `scene.setSelectedIsland(null)`), removing map glow and selection rings.
+      - Clears active vessel selection (`selectedShipId = null`, `scene.unfollowShip()`).
+      - Closes the Left Inspector panel (`inspectorPanel.classList.add('closed')`).
+    - Added the same complete selection clearance when pressing <kbd>Escape</kbd>.
+  - **Live Island Prosperity Color Cues on Markers & Labels (`src/render/IslandMarkers.ts`, `src/style.css`)**:
+    - **Prosperity Badge on Island Labels**: Added a dynamic, color-coded prosperity pill (`.label-prosperity-badge`) displaying live percentage (e.g. `85%`, `58%`, `32%`, or `⚠️ SHORT`) directly beside the island name on every active label.
+    - **High-Contrast 4-State Visual Color Palette**:
+      - **Booming (>= 70%)**: Radiant Aegean Emerald (`#10b981`), glowing green aura, pulsing emerald status dot, and green prosperity chip.
+      - **Stable / Daylight (40% - 69%)**: Calm Mediterranean Azure (`#38bdf8`), cyan status dot, and azure prosperity chip.
+      - **Struggling / Low (< 40%)**: Warm Sunlit Amber (`#f59e0b`), amber status dot, and gold warning chip.
+      - **Distressed / Shortage Alert**: Flashing Crimson Red (`#ef4444`) with emergency pulse (`labelDistressPulse`), red alarm dot, and `⚠️ SHORT` badge.
+    - **Radiant 3D Summit Pins & Halos**: Upgraded 3D pin and ring materials with vibrant emissive illumination (`emissiveIntensity: 0.85 - 1.10`) and extended camera altitude visibility ceiling (`camY >= 260`), allowing players to assess the health of their entire archipelago trade network at a glance from any zoom level.
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 2: Meltemi Seasonal Winds & Aerodynamic Weather System (`src/sim/weather.ts`, `src/sim/weather.test.ts`, `src/sim/shipSim.ts`, `src/sim/simulation.ts`, `index.html`, `src/main.ts`, `src/render/FleetPanel.ts`)**:
+  - **Headless Mediterranean Weather Simulation (`src/sim/weather.ts`, `src/sim/weather.test.ts`)**:
+    - Authentic seasonal cycle tied to in-game calendar:
+      - **Spring (May, Day 0-30)**: Mild Aegean Zephyr (8-16 kt, NNE).
+      - **Summer (June - August, Day 30-120)**: Peak Meltemi season (18-36 kt, North/NNE dry gale).
+      - **Autumn (Sept - Oct, Day 120-210)**: Mild Southern Sirocco (8-15 kt, SSW).
+      - **Winter (Nov - Dec, Day 210+)**: Winter Boreas gusts (15-30 kt, NNW).
+    - Multi-day atmospheric weather front oscillations and afternoon diurnal thermal breezes.
+  - **Heading & Aerodynamic Ship Velocity Modifiers**:
+    - **Tailwind Assistance**: Sailing with the wind grants up to **+28% speed boost**.
+    - **Headwind Resistance**: Beating against the wind imposes up to **-28% speed penalty**.
+    - **Beam Reach Efficiency**: Crosswind sailing grants small aerodynamic lift boost (+4%).
+    - **Vessel Class Sensitivity**: Rigged wooden vessels (Tier 1 Kaiki, Tier 2 Caique) are most sensitive (+/- 25%), while heavy steel freighters and high-powered motor yachts cut through winds with greater stability (+/- 8-12%).
+  - **Top Bar HUD & Inspector Wind Indicators**:
+    - Added `#metric-wind` chip in top bar header featuring dynamically rotating compass needle matching wind heading, cardinal bearing, velocity in knots, and season label (`🧭 N 24 kt Meltemi`).
+    - Vessel Inspector dossiers display real-time effective velocity and wind impact note (e.g. `14.8 kt (Tailwind +18%)`).
+    - Fleet Management table dynamically shows effective speed and directional arrow indicators (`▲` green for tailwind, `▼` red for headwind drag).
+  - **Bottom-Right Nautical Instrument Cluster (`#bottom-right-cluster`)**:
+    - **Aegean Wind Rose Compass Dial (`#wind-rose-card`)**: 8-point nautical compass rose with gold North star, cardinal letters, cyan-glowing aerodynamic wind needle dynamically rotating with wind vector, digital speed readout (`24 kt`), bearing tag (`NNE`), and seasonal name (`Meltemi`).
+    - **Nautical Chronometer (`#bottom-chronometer`)**: In-game calendar date, digital solar time (with day/night `☀️`/`🌙` icon), and seasonal classification tag (`Spring`, `Summer`, `Autumn`, `Winter`).
+  - **Test Suite & Verification**:
+    - Unit tests in `src/sim/weather.test.ts` asserting seasonal transitions, tailwind boosts, headwind drag, and ship tier sensitivity curves.
+    - **All 53 unit tests pass cleanly across 10 test files (`npm test`)**; clean production build (`npm run build`).
+
+- [x] 2026-10-17 – **Post-Roadmap Feature 1: Aegean Merchant Fleet Management Panel (`src/render/FleetPanel.ts`, `src/render/FleetPanel.test.ts`, `index.html`, `src/style.css`, `src/main.ts`)**:
+  - **Comprehensive Fleet Table & Live Monitoring**:
+    - Centralized overview of all active merchant vessels across the 63-island archipelago with real-time status, voyages completed, cargo holds, individual cruising speeds, and career profits.
+    - Top bar header button (`#btn-top-fleet`, ⛵) with keyboard shortcut (`V`), close button, and backdrop dismissal.
+    - Summary metrics bar showing total active vessels, cumulative daily fleet upkeep, and lifetime commercial profits.
+  - **Multi-Dimensional Filtering & Sorting**:
+    - Instant text search across vessel names, home ports, and current destinations.
+    - Vessel class filter (All, Tier 1 Kaiki, Tier 2 Caique, Tier 3 Ferry, Tier 4 Freighter, Tier 5 Yacht).
+    - Home port filter across all unlocked ports.
+    - Status filter (All, Sailing, Docked, Loading, Unloading).
+    - Sorting by Profit (High-to-Low / Low-to-High), Trips Completed, Cruising Speed, Vessel Tier, or Name.
+  - **Dynamic In-Table Fleet Commands**:
+    - **Home Port Reassignment**: Directly reassign any ship's home port to any unlocked harbor via in-row dropdown, triggering dock sound and notification.
+    - **Cargo Priority Mandate**: Set specific commodity priority (`auto`, `wine`, `olive_oil`, `fish`, `marble`, `grain`, `fuel`, `crafts`, `mastic`, `cheese`) guiding autonomous AI trade routing.
+    - **3D Camera Tracking**: One-click "🎥 Track" button smoothly glides the camera to the vessel in 3D, initiates target follow mode, closes the modal, and displays the ship dossier.
+  - **In-Place Non-Disruptive Refresh**:
+    - Throttled dynamic cell updater refreshes voyage counters, profit numbers, cargo, and status badges in place without rebuilding DOM elements, preventing focus loss during player interactions.
+    - **Unit Test Suite & Verification**:
+    - Added automated unit tests in `src/render/FleetPanel.test.ts` validating fleet count tracking, upkeep summation, dynamic home port reassignments, and cargo priority changes.
+    - **All 47 unit tests pass cleanly across 9 test files (`npm test`)**; production build passes with zero errors (`npm run build`).
+  - **HUD Header Cleanup**: Removed redundant top bar icon theme cycle button (`#btn-top-icons`). Themes remain configurable via Settings (`S`).
+  - **Maritime Dispatch Panel Active by Default**: `#feed-panel` is now visible upon initial game load with `#btn-toggle-feed` active by default in the bottom toolbar.
+
+- [x] 2026-10-16 – **Milestone 10: Release Prep, Documentation & Attribution Verification (`README.md`, `CREDITS.md`, `PROGRESS.md`, `dist/`)**:
+  - **Comprehensive Player & Developer Guide (`README.md`)**:
+    - Replaced placeholder planning text with full gameplay manual:
+      - The Aegean Awakening core game loop and dynamic day/night shader mechanics.
+      - 63-island regional breakdown (Cyclades, Dodecanese, North Aegean, Saronic, Crete, Greek Mainland, Turkish Gateways).
+      - Multi-tier fleet specifications (Kaiki, Caique, Ferry, Freighter, Yacht) with individual +/- 10% cruising speed variance.
+      - Full keyboard & mouse controls reference (`1`/`2`/`3` speed, `Space` pause, `H` guide, `M` mute, `Esc` deselect, orbit/pan/zoom).
+      - Step-by-step beginner walkthrough from starting Santorini Kaiki to the grand 63-island endgame victory sweep.
+      - Complete technology stack, development workflow, and production build instructions.
+  - **Expanded Attribution Archive (`CREDITS.md`)**:
+    - Full citations for procedural Web Audio synthesis engine, Three.js, Vite, TypeScript, Vitest, EOX Sentinel-2 cloudless imagery, NASA VIIRS Black Marble night lights, Mapzen/AWS Terrarium DEM bathymetry, OpenStreetMap, and Google Fonts (Outfit, Inter).
+  - **Production Assets & Bundle Verification**:
+    - Verified all 14 game data and texture assets in `public/data/` (day/night textures, heightmaps, island mask, light maps, 63-island definitions, 169 sea lane nodes).
+    - Production build (`npm run build`) generates clean, minified production assets in `dist/`.
+    - Automated test suite passes 100% (44 unit tests across 8 test suites in `npm test`).
+
+- [x] 2026-10-16 – **Milestone 9: Procedural Audio Engine, Versioned Save/Load System, Tutorial Guide & Endgame Sequence (`src/audio/AudioManager.ts`, `src/sim/saveLoad.ts`, `src/sim/saveLoad.test.ts`, `src/render/SettingsPanel.ts`, `src/main.ts`, `index.html`, `src/style.css`)**:
+  - **Procedural Web Audio API Sound Engine (`src/audio/AudioManager.ts`)**:
+    - Zero external sound asset dependencies: instant load, zero network latency, no 404s.
+    - Continuous pink-noise Mediterranean ocean surf and sea breeze wind ambience.
+    - Twin-harmonic golden coin clinks (`playCoinSound`) on trade deliveries.
+    - High double-chimes (`playTicketSound`) on Ferry passenger fares.
+    - Royal golden arpeggio shimmers (`playVipShimmerSound`) on luxury Yacht VIP charters.
+    - Deep wooden hull resonance (`playDockSound`) on cargo loading and harbor ship commissioning.
+    - Resonant Hellenic pentatonic lyre fanfare (`playAwakeningFanfare`) on dawn island illuminations.
+    - Multi-octave grand victory fanfare (`playEndgameVictoryFanfare`) on the "Whole Aegean Awake" sequence.
+    - Volume controls (Master, Ambience, SFX) with localStorage persistence and interactive sound preview matrix.
+    - Top-bar audio mute toggle (`btn-top-audio`) with icon states (`🔊` / `🔇`) and keyboard shortcut (`M`).
+  - **Versioned Game State Save/Load System (`src/sim/saveLoad.ts`, `src/sim/saveLoad.test.ts`)**:
+    - Strict headless simulation module (`GameSaveV1`) completely decoupled from DOM and Three.js.
+    - Serializes treasury, trade points, game day, total ticks, unlocked islands set, island delivery histories, all island economy market states (stocks, dynamic buy/sell prices), and complete fleet instances (types, tiers, positions, cargo, headings, accumulated profits).
+    - Daily in-game auto-save and window `beforeunload` auto-save.
+    - Settings panel "Game" tab with "Save Game Now", "Reload Saved Game", and "Reset Entire Archipelago (New Game)" with confirmation dialogs and last-save timestamps.
+    - Automated unit tests (`saveLoad.test.ts`) validating serialization fidelity, full state reconstruction, localStorage persistence, and invalid version rejection.
+  - **Navigator's Guide & Onboarding Tutorial Card (`index.html`, `src/style.css`, `src/main.ts`)**:
+    - Glassmorphic floating onboarding guide introducing new players to harbor markets, shipyard commissioning, and archipelago illumination.
+    - Dismissable with "Don't show on start" checkbox stored in localStorage.
+    - Header help button (`btn-top-help`) and keyboard shortcut (`H`) to toggle the guide card anytime.
+    - **Island Inspector Panel Default Open**: The Left Inspector panel is now active and open by default on game launch, immediately showing Santorini's harbor markets, exports/imports, shipyard, and active vessels without requiring an extra click.
+    - **Dynamic Ship Cruising Speed Variance (+/- 10%)**: Newly commissioned and spawned vessels in `src/sim/shipSim.ts` have an individualized +/- 10% speed multiplier (`0.90 + Math.random() * 0.20`), eliminating synthetic rigid synchronized convoys and creating organic staggering along sea-lane fairways. Inspector knots display accurately reflects each individual boat's measured cruising speed. Added unit tests in `src/sim/ships.test.ts`.
+  - **Endgame 'Whole Aegean Awake' Celebration (`index.html`, `src/style.css`, `src/main.ts`)**:
+    - Automatic detection when all 63 islands in the archipelago are unlocked.
+    - Triggers triumphant victory fanfare and celebratory modal displaying Empire Statistics: drachmas in treasury, trade points, total merchant fleet, and days elapsed.
+    - Initiates a grand 6-second panoramic orbital camera sweep over the illuminated Aegean.
+    - Continue Freeplay and View Credits navigation buttons.
+  - **Archive Credits & Heritage Tribute (`src/render/SettingsPanel.ts`)**:
+    - Credits tab acknowledging Three.js, TypeScript, Vite, Web Audio synthesis, GEBCO bathymetry, and Copernicus EU-DEM data.
+  - **All 44 Vitest Unit Tests Passing (`npm test`) & Production Build Clean (`npm run build`)**.
+  - **Full 63-Node Aegean Roster Validated (`public/data/islands.json`)**:
+    - Validated all 63 islands, archipelagos, and mainland ports with 100% data integrity: exact geographic coordinates, summit peaks, harbor ports, produce/consume pairs, unlock requirements, population, and regional tiering.
+    - Verified 169 fairway and port nodes in the sea-lane navigation graph with 100% deep-water reachability across the Aegean Sea.
+  - **Screen-Space Label LOD & Pin Culling (`src/render/IslandMarkers.ts`)**:
+    - Multi-tier zoom LOD thresholds prevent visual clutter:
+      - Tier 1 regional hubs visible at regional altitude ($camY \le 38$).
+      - Tier 2 medium islands visible at closer altitude ($camY \le 26$).
+      - Tier 3 minor islets visible on close inspection ($camY \le 16$).
+    - Screen-space AABB collision detection & priority decluttering ensures higher-priority labels (selected and lit active ports) take precedence, preventing overlapping label spam.
+    - Unlit and unselected 3D drop-pins now skip per-frame vector math, distance calculations, and matrix updates when not visible, saving 85%+ CPU cycles in the marker loop.
+  - **High-Throughput Simulation Optimization & Route Caching (`src/sim/nav.ts`, `src/sim/shipSim.ts`)**:
+    - **O(1) Route Cache in `SeaLaneGraph`**: Added `pathCache` Map caching A* paths between island ports. Eliminates redundant graph searches across ticks.
+    - **Exportable Goods Pre-Filtering in `ShipSimulationManager`**: Pre-filters goods exported by origin island with positive inventory before evaluating destinations; skips path calculations for islands without viable demand.
+    - **7x Speedup**: Simulation of 200 ticks with 205 autonomous ships across 52 unlocked islands plummeted from **3,871ms down to 548ms**!
+  - **GPU Wake & Fleet Capacity Scaled (`src/render/BoatWake.ts`, `src/render/Ships.ts`)**:
+    - Scaled `BoatWakeRenderer` capacity to **250 boats** and **72 points per boat** with pre-allocated zero-GC typed attribute pools.
+    - Scaled `ShipsRenderer` to **120 vessels per tier** (600 ships total capacity) with 5 WebGL draw calls.
+  - **Automated Stress Test Suite (`src/sim/scale.test.ts`)**:
+    - Added dedicated scale benchmark verifying 60+ nodes and 200+ active ships running simultaneously with active cargo deliveries, finite values, and sub-second execution.
+    - All 39 Vitest unit tests passing (`npm test`). Production build passes cleanly (`npm run build`).
+
+- [x] 2026-10-16 – **Milestone 7 Step 2: Mainland & Turkish Gateways, Passenger Fares & Tourism Economy (`public/data/islands.json`, `src/sim/shipSim.ts`, `src/main.ts`, `src/sim/ships.test.ts`)**:
+  - **Outer Gateway Ports & Balanced Trade Corridors (`public/data/islands.json`)**:
+    - **Piraeus (Athens)**: Mainland gateway hub (450k pop). Unlocks via `syros` (🪙 1,850 / 620 TP). Supplies refined Fuel (+22/d) and Athenian Crafts (+18/d); consumes massive quantities of island grain, olive oil, wine, fish, cheese, produce, marble, and mastic.
+    - **Crete Heraklion**: Southern agricultural giant (175k pop). Unlocks via `santorini` or `milos` (🪙 1,600 / 550 TP). Supplies olive oil (+16/d), produce (+14/d), grain (+12/d), and wine (+10/d); demands fuel, crafts, and marble.
+    - **Samos & Chios (Eastern Aegean Corridors)**:
+      - `samos`: Unlocks via `mykonos` (🪙 1,350 / 480 TP). Supplies Samian Muscat wine (+12/d) and olive oil (+9/d).
+      - `chios`: Unlocks via `samos` or `tinos` (🪙 1,650 / 560 TP). Exclusively produces the world-renowned Chios Mastic (+16/d) with high profit margins.
+    - **Izmir / Smyrna (Anatolian Gateway Hub)**: Major eastern trade emporium (600k pop). Unlocks via `chios` or `samos` (🪙 2,500 / 800 TP). Produces fuel (+26/d), grain (+20/d), produce (+16/d); demands Chios mastic, wine, olive oil, Parian marble, and crafts.
+    - **Kos & Rhodes (Dodecanese Corridor)**:
+      - `kos`: Unlocks via `amorgos` or `naxos` (🪙 1,450 / 510 TP). Supplies produce (+12/d), wine (+8/d), fish (+7/d).
+      - `rhodes`: Southeastern architectural & cultural capital (115k pop). Unlocks via `kos` or `crete_heraklion` (🪙 2,200 / 720 TP). Produces wine (+14/d), crafts (+12/d), produce (+10/d); demands fuel, grain, marble, and olive oil.
+    - Zero dead-ends: 100% verified bilateral supply and demand coverage across all 12 goods.
+  - **Passenger Transit & Tourism Multiplier Economy (`src/sim/shipSim.ts`, `src/main.ts`)**:
+    - **Tier 3 Ferry Passenger Fares**: Passenger catamarans earn ticket fares for every voyage connecting inhabited islands: `fare = (origin.tourism + dest.tourism) * 0.5 * distanceKm * 1.2`. Automatically logged as ticket revenues.
+    - **Tier 5 Luxury Yacht VIP Charter**: High-speed charter superyachts transport VIP travelers across premier Aegean tourism destinations (Santorini, Mykonos, Rhodes, Crete), earning charter fees: `fee = (origin.tourism * dest.tourism) * distanceKm * 4.4`.
+    - **Prestige Luxury Cargo Multipliers**: Delivering high-status Aegean goods (Wine, Crafts, Mastic, Marble) to high-tourism islands earns up to a +45% prestige price bonus.
+    - **Dynamic Island Prosperity Boost**: Ferries and yachts actively boost the destination island's economic prosperity (+2.5% per docking).
+    - **Dynamic UI & Popups**: Dispatch feed announces passenger fare breakdowns (🎟️) and VIP prestige bonuses (👑); 3D catapult animations tag delivery profit badges with passenger tickets and crown emblems.
+  - **Headless Unit Tests & Production Verification**:
+    - Added automated test in `src/sim/ships.test.ts` verifying unlock progression for all 7 gateway ports and passenger/tourism revenues.
+    - All 37 Vitest unit tests passing (`npm test`). Production build passes cleanly (`npm run build`).
+
+- [x] 2026-10-16 – **Milestone 7 Step 1: 5-Tier 3D Fleet Models, Hydrodynamic Profiles & Shipyard Overhaul (`src/render/Ships.ts`, `src/main.ts`, `src/style.css`, `src/sim/ships.test.ts`)**:
+  - **Procedural 3D Maritime Geometries for All 5 Vessel Tiers**:
+    - **Tier 1: Traditional Kaiki (`fishing_boat`)**: Classic wooden coastal fishing boat, flared teak hull, white wheelhouse with Cycladic blue roof, mast, cargo crates, bowsprit (*bastoúni*), and Greek maritime pennant (Cap 25, 7.0 kt).
+    - **Tier 2: Aegean Caique (`caique`)**: Sturdy motorized timber cargo schooner / Trechandiri with amber varnished hull, Cycladic white sheer strake, Aegean blue boot-topping waterline, olive canvas cargo tarp covering central hold, lashed wooden barrels, twin masts (mainmast & foremast) with horizontal boom spar and brass portlights (Cap 75, 9.5 kt).
+    - **Tier 3: Island Passenger Ferry (`ferry`)**: Modern high-speed Ro-Ro passenger catamaran with Aegean navy blue twin demi-hulls, white bridge deck, two-tier passenger observation deck with tinted panoramic solar glass, forward bridge windows, twin Hellenic blue exhaust funnels with white stripes, radar mast, and dual satellite radomes (Cap 200, 14.0 kt).
+    - **Tier 4: Merchant Cargo Freighter (`cargo_ship`)**: Heavy coastal container coaster with anti-fouling red oxide underwater hull, slate charcoal topsides, raised forecastle bow, midships open cargo hold loaded with authentic colorful 20ft/40ft ISO shipping containers (terracotta, cyan, yellow, emerald), electro-hydraulic cargo crane with boom, aft 3-story bridge castle with navigation wings, and industrial exhaust smokestack (Cap 650, 11.5 kt).
+    - **Tier 5: Luxury Motor Yacht (`charter_yacht`)**: VIP high-speed charter superyacht with aerodynamic pearl-white composite hull, vertical axe plumb bow, golden honey Burmese teak foredeck lounge and stepped aft beach club, wrap-around privacy glass salon, navy sunbed cushions, and swept-back flybridge radar arch with dual satellite domes (Cap 80, 18.0 kt).
+  - **Multi-Mesh Instanced Rendering & Dynamic Wake Scaling (`ShipsRenderer`)**:
+    - Replaced single-mesh instancing with 5 dedicated `InstancedMesh` instances (1 per tier).
+    - Maintained maximum performance budget: 5 total draw calls for the entire Aegean fleet.
+    - Added `ShipVisualProfile` defining unique stem bow offset, stern transom offset, beam width, and scale per tier.
+    - Hydrodynamic wakes dynamically scale with each vessel's beam and length (e.g. freighters and ferries emit wider, longer wakes, while kaikis and yachts produce sleek tracks).
+    - Multi-mesh 3D raycasting in `getShipAtRay(...)` detects clicks across all 5 vessel classes.
+  - **Harbor Shipyard & Fleet UI Overhaul**:
+    - Upgraded Shipyard selector to display all 5 tiers with compact 5-column grid layout.
+    - Added distinctive tier badges (`T1` Bronze, `T2` Gold, `T3` Marine Cyan, `T4` Steel Orange, `T5` Violet).
+    - Enhanced vessel dossier with dynamic tier icons (`⛵`, `🚢`, `⛴️`, `🏗️`, `🛥️`) and ship class names.
+    - Added tier badges (`T1`–`T5`) to each active vessel row in the harbor fleet list.
+  - **Unit Tests & Build Verification**:
+    - Added test in `src/sim/ships.test.ts` validating all 5 ship tiers, unlock gates, capacities, and speeds.
+    - All 36 Vitest unit tests passing (`npm test`). Production build passes cleanly (`npm run build`).
+
+- [x] 2026-10-16 – **Motorboat Wake: Bow Origin, Exact Boat Width, Fast Flare, Shorter Dissipation, Blurry Translucency & Random Foam Texture (`src/render/BoatWake.ts`, `src/render/Ships.ts`)**:
+  - **Starts at the Bow of the Boat at Full Boat Width**:
+    - Wake emission originates directly at the vessel's pointed stem / bow (`-0.30 * scaleFactor` in `src/render/Ships.ts`).
+    - Ribbon starts at the exact width of the boat ($1.0\times$ beam, `washWidth: 1.0`), wrapping the hull smoothly as the boat cuts through the water.
+    - Seamless bow lead-in feathering (`smoothstep(0.0, 0.015, t)`) for an immediate, organic bow wave.
+  - **Widens Much Faster**:
+    - Implemented rapid initial expansion: `1.0 + (1.0 - exp(-life * 6.5)) * (spread - 1.0)`. Widens within 1–2 boat lengths ($> 2.6\times$ beam by 10% of trail) to a full $4.2\times$ beam V-envelope.
+  - **Shorter in Length & Fades Out Faster**:
+    - Reduced lifetime from $6.0\text{s}$ to $2.8\text{s}$ ($> 50\%$ shorter physical trail).
+    - Accelerated dissipation in GLSL: power fade `pow(1.0 - t, 2.3)` and early tail feathering (`smoothstep(0.42, 0.88, t)`), naturally dissolving behind the vessel.
+  - **More Blurry & Soft Water Falloff**:
+    - Replaced steep edges with broad, soft feathering: `1.0 - smoothstep(0.18, 0.94, distCenter)`.
+    - Soft diffuse ambient water wash (`exp(-distCenter^2 * 2.6) * 0.35`) blended across the central propeller track.
+  - **More Translucent**:
+    - Reduced `foamOpacity` from $0.75$ to $0.48$; deep Mediterranean sea water clearly shows through the aerated foam and between the lateral V-arms.
+  - **More Random Textured**:
+    - Added 3-octave anisotropic turbulence noise plus high-frequency micro cellular bubble voids (`bubbleNoise`).
+    - Perturbed Kelvin wave phases and scalloped outer boundaries by `(frothNoise - 0.5) * 3.4` for organic bubbly seafoam texture matching aerial references.
+  - All 35 vitest unit tests passing (`npm test`). Build passes cleanly (`npm run build`).
+
+- [x] 2026-10-16 – **Prominent Selected Island Label Highlight & Radiant Glow (`src/style.css`, `src/render/IslandMarkers.ts`)**:
+  - **Selected Island Label High-Visibility Styling**:
+    - Scaled selected island label up to $1.18\times$ (`scale(1.18)`) and raised elevation (`translate(-50%, -108%)`), commanding clear visual focus across the 3D map.
+    - Added a sharp $2\text{px}$ Athenian gold border (`#fbbf24`) with an offset double halo ring (`outline: 2px solid rgba(251, 191, 36, 0.45); outline-offset: 2px`).
+    - Enriched background gradient: `linear-gradient(135deg, rgba(22, 36, 62, 0.98), rgba(9, 16, 30, 0.98))` with `backdrop-filter: blur(10px)`.
+    - Enhanced typography: font size $0.78\text{rem}$ ($12.5\text{px}$, up from $0.65\text{rem}$), bold weight ($700$), crisp `#ffffff` color, and soft golden text bloom (`text-shadow: 0 0 10px rgba(251, 191, 36, 0.65)`).
+    - Enlarged status dot to $8\text{px}$ with a bright neon status glow (`box-shadow: 0 0 8px currentColor, 0 0 16px currentColor`).
+  - **Multi-Layered Radiant Glow Pulse (`@keyframes selectedIslandGlowPulse`)**:
+    - Animated a continuous $2.2\text{s}$ breathing halo with 4 concentric light layers: inner rim ($14\text{px}$ gold), middle bloom ($30\text{px}-45\text{px}$ amber), outer ambient haze ($50\text{px}-70\text{px}$ bronze), and depth ground shadow.
+  - **Synchronized 3D Ground Pin & Rings**:
+    - Ensured selected island label is locked at 100% full opacity (`cand.el.style.opacity = '1'`) regardless of camera distance or altitude.
+    - Sized 3D summit drop-pin to $36\text{px}$ equivalent visual height on screen, with ground rings performing a lively rhythmic gold pulse ($1.35\times$ scale).
+  - All 35 vitest unit tests passing (`npm test`). Build passes cleanly (`npm run build`).
+
+- [x] 2026-10-16 – **Custom Classical Vector Commodity Icons & Sizing Overhaul (`src/render/Icons.ts`, `src/render/Icons.test.ts`, `src/style.css`, `src/main.ts`)**:
+  - **Custom Vector SVGs for All Aegean Goods & Maritime Elements**:
+    - Designed and implemented authentic vector SVGs across 3 classical styles (`antiquity`, `minimalist`, `imperial`) with clean scalable emoji fallback:
+      - **Wine**: Dionysian terracotta/gold Kylix goblet with rich crimson wine fill, stem, base, and vine tendril flourish.
+      - **Water**: Aegean Hydria / sapphire freshwater teardrop with reflection highlight and concentric ripple crests.
+      - **Crafts**: Classical Attic amphora pottery vase with twin handles and Greek key meander band.
+      - **Produce**: Plump Dionysian grape cluster with grapevine stem and foliage.
+      - **Fish**: Akrotiri Minoan Aegean sea bream with dorsal and tail fins, gills, eye, and scales.
+      - **Grain**: Demeter's barley / wheat sheaf with golden ears, awls, and ribbon knot.
+      - **Cheese**: Cycladic aged feta wedge with authentic pores and rustic shading.
+      - **Olive Oil**: Aegean olive branch with leaves, ripe olives, and golden oil cruet drop.
+      - **Marble**: Classical Pentelic marble column capital (fluted Ionic/Doric shaft, volutes, plinth).
+      - **Sponges**: Kalymnos natural sea sponge cluster with porous honeycomb texture.
+      - **Fuel**: Classical Hellenic bronze oil lamp with flame spout and handle.
+      - **Mastic**: Chios mastic branch with crystalline fragrant resin tears.
+      - **Anchor**: Forged classical Mediterranean nautical anchor with wooden stock, flukes, and iron shackle.
+  - **Prominent Sizing & Token Container Styling (`.good-icon-wrapper`)**:
+    - Created dedicated `.good-icon-wrapper` token frame: $28\text{px} \times 28\text{px}$, subtle translucent background disc (`rgba(255,255,255,0.05)`), border (`rgba(255,255,255,0.08)`), drop-shadow, and a hover micro-zoom (`scale(1.15)`) with gold glow.
+    - Upgraded `.good-pill` padding ($6\text{px} \times 9\text{px}$) and font size ($0.82\text{rem}$), making commodities instantly distinct and prominent.
+    - Sized `.vessel-row` to $34\text{px}$ with enlarged `.vessel-icon` ($22\text{px} \times 22\text{px}$ SVG) and upgraded status chips for cargo, harbor dock, and drachma profit.
+  - **Live Runtime Theme Switching**:
+    - Hooked `icons.onStyleChange` to dynamically re-render the active island inspector and vessel dossier instantly whenever the icon style is toggled (via settings panel or top bar button).
+  - **Tests & Verification**:
+    - Added test suite in `src/render/Icons.test.ts` validating SVG generation and fallback across all goods. All 35 vitest unit tests passing (`npm test`). Build passes cleanly (`npm run build`).
+
+- [x] 2026-10-16 – **Bow Wake Origin, Continuous Widening & Smooth Fade-Out (`src/render/Ships.ts`, `src/render/BoatWake.ts`)**:
+  - **Origin Just Behind the Bow**:
+    - Shifted wake emission point from the transom stern ($+0.28 \times \text{scaleFactor}$) forward to just behind the pointed bow ($-0.12 \times \text{scaleFactor}$ along local $Z$), perfectly aligning the wake origin with the vessel's hull displacement and bow wave.
+  - **Continuous Lateral Widening**:
+    - Updated ribbon cross-section width profile in `src/render/BoatWake.ts`: starts slender right behind the bow ($0.65\times$ beam), widens smoothly along the hull ($1.0\times$ beam), and flares out steadily into the Kelvin V-wake envelope ($3.5\times$ beam at tail) as the vessel proceeds forward.
+  - **Progressive Fade-Out as Boat Proceeds**:
+    - Implemented a smooth progressive power fade (`pow(1.0 - t, 1.20)`) in the procedural GLSL shader: peak aerated foam brilliance occurs around the hull and stern ($t \in [0.04, 0.20]$), followed by a continuous, gradual dissipation that smoothly dissolves into the dark Aegean water before expiring.
+  - All 34 vitest tests passing (`npm test`). Clean production build.
+
+- [x] 2026-10-16 – **Darker, Richer Mediterranean Sea Color Palette (`src/render/Terrain.ts`, `src/render/SurroundingWorld.ts`)**:
+  - **DEM Cartographic Mode (View Mode 2)**:
+    - Deepened bathymetric abyss gradient from `vec3(0.015, 0.035, 0.075)` to rich deep midnight navy `vec3(0.007, 0.018, 0.042)`.
+    - Deepened coastal shelf water from `vec3(0.045, 0.095, 0.150)` to `vec3(0.022, 0.052, 0.096)`, reducing washed-out glare and highlighting island topography and ship wakes with dramatic contrast.
+  - **Photographic Simulation Mode (View Modes 0 & 1)**:
+    - Darkened `deepSeaDay` from $(0.018, 0.11, 0.25)$ to $(0.010, 0.062, 0.155)$ and `deepSeaNight` to $(0.008, 0.022, 0.060)$.
+    - Subdued daylight atmospheric sky reflection from $(0.38, 0.58, 0.82)$ to $(0.22, 0.38, 0.58)$ to eliminate milky surface glare.
+  - **Surrounding Mainland & Ocean Horizon**:
+    - Matched surrounding world bathymetry to `vec3(0.006, 0.016, 0.038)` and darkened atmospheric horizon fade (`vec3(0.002, 0.007, 0.018)`).
+  - All 34 vitest tests passing (`npm test`). Clean production build.
+
+- [x] 2026-10-16 – **Prominent Icon & Commodity Glyph Sizing Across UI (`src/style.css`, `index.html`, `src/main.ts`, `src/render/Icons.ts`)**:
+  - **Commodity Glyphs (Wine, Crafts, Fish, Water, Produce, Grain)**:
+    - Added dedicated `.good-emoji` class with `font-size: 1.35rem` ($\approx 21.6\text{px}$, up from $11.5\text{px}$), flex centering, subtle drop shadow, and a micro-scale hover effect (`scale(1.18)`), making all cargo and island market goods instantly recognizable.
+  - **Drachma Coins & Price Tags**:
+    - Wrapped all coin icons in `.coin-icon` with `font-size: 1.15rem` ($\approx 18.5\text{px}$) and SVG dimensions scaled to $18\text{px} \times 18\text{px}$.
+    - Enlarged `.good-price-chip` (font-size $0.80\text{rem}$, padding $2\text{px} \times 7\text{px}$, gap $4\text{px}$), `.shipyard-chip-cost` ($0.78\text{rem}$), `.vessel-profit-chip` ($0.78\text{rem}$), and `#btn-buy-ship` coin icon.
+  - **Maritime Vessels & Fleet List**:
+    - Enlarged `.vessel-icon` from $0.72\text{rem}$ ($11.5\text{px}$) to $1.25\text{rem}$ ($20\text{px}$) with dedicated flex alignment and crisp opacity.
+    - Status chips (`.vessel-cargo-chip`, `.vessel-dest-chip`) upgraded to $0.74\text{rem}$ with `.chip-icon` ($0.95\text{rem}$) for anchors, loads, and crates.
+  - **Top Bar HUD Metrics & Controls**:
+    - Increased `data-icon-size` on Treasury, Trade Points, and Archipelago chips from $19\text{px}$ to $24\text{px}$, with `.metric-icon` sized to $1.35\text{rem}$ ($26\text{px} \times 26\text{px}$).
+    - Time controls and action buttons (`#speed-controls`, `#btn-top-icons`, `#btn-top-settings`) upgraded from $15\text{px} - 18\text{px}$ to $18\text{px} - 22\text{px}$.
+    - Layer cycle button icon enlarged to $1.35\text{rem}$ ($24\text{px} \times 24\text{px}$ SVG), and panel close button to $1.15\text{rem}$.
+  - All 34 vitest tests passing (`npm test`). Clean production build.
+
+- [x] 2026-10-16 – **Hydrodynamic Boat Wake Overhaul & Visual Polish (`src/render/BoatWake.ts`, `src/render/BoatWake.test.ts`)**:
+  - **Eliminated Rectangular Cutoffs & Step Discontinuities**:
+    - Expanded trail capacity from 48 to 120 points per vessel so trails naturally age out rather than being abruptly shifted out while still thick and bright.
+    - Implemented a smooth hermite tail fade: as normalized life $t$ progresses from 0.70 to 0.98, opacity drops to absolute zero (`1.0 - smoothstep(0.70, 0.98, t)`). When the oldest segment expires and is pruned at $t \ge 1.0$, its opacity is already 0.0, completely eliminating transverse flat cuts or polygon cliff faces.
+    - Tail width gently stabilizes and tapers at the tail rather than remaining a giant wide block.
+  - **Eliminated Zebra Pinstripes & Unnatural Striping**:
+    - Replaced the high-frequency longitudinal sine waves (`sin(distCenter * 26.0)`) with authentic Kelvin wake V-crests.
+    - Diagonal wave phase $\phi = (t \cdot 26.0 - |u| \cdot 14.0 - \text{time} \cdot 2.2)$ creates genuine backward-angled chevrons ($\wedge$) at the natural $19.47^\circ$ Kelvin angle.
+    - Wave shoulders are soft, glassy, and translucent (`alpha \le 0.28`), subtly displacing the Mediterranean water without harsh neon lines.
+  - **Replaced Blotchy Swiss-Cheese Blobs with Smooth Propeller Seafoam**:
+    - Replaced the harsh binary `smoothstep` thresholding with continuous multi-octave aerated seafoam density (`0.60 + 0.40 * washNoise`).
+    - Gaussian centerline profile concentrated behind the transom (`exp(-distCenter^2 * 18.0 / widthFactor)`) that naturally broadens and diffuses into fine filaments.
+  - **Smooth Frenet Spine Normals for Turning & Collision Avoidance**:
+    - Derived cross-section normals from centered-difference tangents along the curved spine rather than noisy instantaneous frame-displacement steps.
+    - Prevents ribbon twisting, pinched quads, or lateral shear when vessels maneuver to starboard for collision avoidance.
+  - **Seamless Boundary Feathering**:
+    - Outer 40% of the ribbon smoothly feathers to 0.0 opacity (`1.0 - smoothstep(0.60, 1.0, distCenter)`), rendering outer polygon borders completely invisible against the sea.
+    - Stern lead-in smoothly joins the transom without clipping.
+  - **Unit Tests**:
+    - Added dedicated test in `src/render/BoatWake.test.ts` for two passing vessels with lateral avoidance offsets. All 34 tests passing (`npm test`). Clean production build.
+
+- [x] 2026-10-16 – **Enhanced Translucent Glassmorphic Panels (`src/style.css`)**:
+  - **Lighter, Translucent Backdrop (`rgba(9, 13, 20, 0.48)`)**: Decreased panel background opacity from 0.85 to 0.48 across `--panel-bg`, allowing the underlying Aegean sea, island topography, and moving vessel wakes to remain visibly translucent beneath the UI.
+  - **High-Definition Saturation & Frosted Blur**: Upgraded `--backdrop-blur` from `blur(14px)` to `blur(20px) saturate(190%)` (and `blur(24px) saturate(190%)` for `.settings-panel`), enriching the color vibrancy of 3D Mediterranean waters passing behind the glass while preserving optimal text contrast and sharpness.
+  - **Refined Beveled Glass Edge**: Added subtle top-light inner highlight (`inset 0 1px 0 rgba(255, 255, 255, 0.12)`) and refined borders (`rgba(255, 255, 255, 0.12)`).
+  - All 33 unit tests passing (`npm test`). Clean production build.
+  - **Replaced Default OS Emojis with Custom Antiquity SVG Icons (`src/render/Icons.ts`, `index.html`, `src/style.css`, `src/main.ts`)**:
+    - **Treasury (Drachma)**: Ancient Athenian Owl silver tetradrachm (*Glaux*) numismatic coin with olive sprig, dotted border, and archaic Greek inscription (`ΑΘΕ`).
+    - **Trade Points (Laurel)**: Classical Olympic laurel wreath of victory and civic honor with Hellenic star and ribbon knot.
+    - **Archipelago**: Volcanic Cycladic islands silhouette with Aegean waves and classical sailing vessel.
+    - **Settings (Antikythera)**: The ancient bronze Antikythera astronomical cogwheel mechanism with astronomical cross-spokes and antique gear teeth.
+    - **Time & Speed Controls**: Classical fluted Doric columns pause glyph, Apollo spearhead play glyph, and Hermes winged arrow forward glyphs.
+    - **Map Layers & Navigation**: Mount Olympus peak with topographic contour rings, Selene crescent moon with stars, radiant Helios sun disc with 8-point geometric rays, and Aegean wave crests.
+  - **4 Selectable Icon Styles & Live Option Switcher (`src/render/SettingsPanel.ts`, `index.html`)**:
+    - **Option 1: 🏛️ Classical Antiquity (Default)**: Engraved Athenian tetradrachm, Olympic laurel, and Antikythera gear with warm terracotta, antique bronze, and Olympian gold gradients.
+    - **Option 2: ✨ Minimalist Hellenic**: Crisp geometric line vectors with radiant Aegean cyan (`#38bdf8`) and Cycladic white (`#e0f2fe`) accents.
+    - **Option 3: 👑 Imperial Athenian**: High-contrast polished Athenian gold on deep obsidian.
+    - **Option 4: 😀 Standard System Emojis**: Reverts to original OS system emojis if preferred.
+    - **Interactive Switcher in Settings Panel**: Dedicated top card with 4 interactive option buttons and live status badge.
+    - **Quick Switcher in Top Bar (`#btn-top-icons`)**: One-tap quick toggle button in the header that cycles dynamically through all 4 themes.
+    - **Automatic State Persistence**: Preserved in `localStorage ('aegean_icon_style_v1')`.
+  - **Unit Tests & Production Verification (`src/render/Icons.test.ts`)**:
+    - 5 unit tests covering SVG generation across all 4 themes, Athenian inscriptions, fallbacks, and runtime style switching. All 33 unit tests passing (`npm test`). Clean production build.
+  - **World-Space Continuous Ribbon Hydrodynamics (`src/render/BoatWake.ts`, `src/render/Ships.ts`)**:
+    - **World-Space Stationary Segments**: Wake segments emit at the vessel's transom stern (`+0.28 * scaleFactor` rotated by yaw) into world coordinates. Previous segments remain stationary in world space as the vessel sails away.
+    - **Curved Path Tracking During Turns**: Samples emissions by distance traveled (`minSampleDist = max(0.035, 0.06 * beam)`) with sub-step interpolation, preserving smooth, continuous curved ribbons even during frame-rate variations or sharp fairway turns.
+    - **Zero Static Artifacts & Teleport Reset**: No wakes emitted for stationary or docked boats (`speed < 0.02` or `ship.state !== 'sailing'`). Existing trails dissipate naturally according to lifetime. If a vessel teleports or wraps across routes (`distMoved > 2.0`), trail history resets immediately to prevent cross-map streaks.
+    - **Zero-Allocation GPU Buffer Geometry**: Pre-allocated typed attribute pools (`positions`, `uvs`, `aAge`, `aLife`, `aSpeed`) with dynamic draw ranges. Z-fighting with sea plane eliminated via slight elevation (`seaLevelY + 0.008`) and OpenGL polygon offset.
+  - **Two Complementary Visual Layers in Procedural GLSL Shader (`BoatWakeRenderer`)**:
+    - **Layer 1 (Propeller Wash)**: Narrow Gaussian turbulent core immediately behind stern, with coherent world-anchored FBM procedural noise that breaks the foam into realistic organic clumps and filaments as it ages.
+    - **Layer 2 (Kelvin V-Wake Shoulders)**: Expanding lateral wave shoulders that diverge outwards with age, featuring undulating phase ripples (`sin(distCenter * 26.0 - t * 14.0 + froth * 4.0)`) and delayed onset matching real hydrodynamics.
+    - **Mediterranean Seafoam Color**: Soft pale blue-white wash (`#eaf5ff`) transitioning to translucent azure shoulders (`#b3deff`), with subtle transparency throughout so water is always visible underneath.
+    - **Feathered Non-Rectangular Bounds**: Quad edges feathered along both crosswise and lengthwise axes, completely eliminating rectangular boundaries or repeating stamp textures.
+  - **Interactive Tuner in Graphics Settings Panel (`src/render/SettingsPanel.ts`)**:
+    - Added dedicated "🌊 Wake" tab to the graphics settings modal with 5 real-time sliders:
+      1. **Wake Lifetime**: 2.0s – 14.0s (default 6.0s)
+      2. **Diverging Wave Spread**: 1.0x – 6.0x (default 3.5x)
+      3. **Propeller Wash Width**: 0.50x – 3.00x (default 1.25x)
+      4. **Foam Max Opacity**: 20% – 100% (default 75%)
+      5. **Speed Response**: 0.50x – 2.50x (default 1.20x)
+    - Included 3 hydrodynamic presets: "🌊 Balanced Kaiki", "⚡ High Speed Ferry", and "⛵ Subtle Coastal", along with clipboard config export and persistence in `localStorage`.
+  - **Comprehensive Vitest Suite (`src/render/BoatWake.test.ts`)**:
+    - 6 unit tests validating default parameters, distance sampling, curved path tracking, stopping dissipation, teleport suppression, and runtime parameter tuning. All 28 tests passing (`npm test`). Clean production build.
+  - **Live Economic Visual Feedback on 3D Map Labels (`src/render/IslandMarkers.ts`, `src/style.css`, `src/main.ts`)**:
+    - **Shortage / Running Out of Supplies (`.status-distressed`)**:
+      - Triggered when an island's distress exceeds threshold (`> 0.15`) or any consumed commodity is starving / dangerously depleted (`< 0.75` day of consumption).
+      - Renders an alert coral/crimson red border (`#ef4444`), warm dark alert background (`rgba(30, 10, 14, 0.92)`), coral text, a pulsing red status pip (`.island-status-dot`), and a gentle distress pulse animation.
+      - 3D summit drop-pin transforms to red lacquer (`0xef4444`) with an accelerated warning ripple pulse (`5.2 Hz`).
+      - Tooltip reveals exact missing commodities: e.g. `⚠️ Shortage Alert: Running out of Water, Grain!`.
+    - **Booming Prosperity (`.status-booming`, $\ge 70\%$)**:
+      - Radiant emerald green border (`rgba(16, 185, 129, 0.7)`), mint glow, and emerald status pip.
+      - 3D summit drop-pin transforms to radiant emerald lacquer (`0x10b981`) with calm rhythmic ground ring breath.
+    - **Stable Economy (`.status-stable`, $40\% - 69\%$)**:
+      - Crisp Mediterranean daylight cyan/white border and azure status pip (`#38bdf8`).
+      - 3D summit drop-pin in Mediterranean azure lacquer (`0x0284c7`).
+    - **Struggling / Low Stock (`.status-struggling`, $< 40\%$)**:
+      - Warm amber border (`rgba(245, 158, 11, 0.65)`), amber text, amber status pip, and amber 3D pin (`0xf59e0b`).
+    - **Locked / Dark Islands (`.locked-island`)**:
+      - Retains muted slate/graphite styling; status pips hidden until awakened into daylight.
+  - All 22 vitest tests passing; clean production build.
+
+- [x] 2026-10-16 – **Milestone 6 Complete: Full Playable Loop (2 ➔ 10 Islands), 3D Vessel Follow & Fleet Shipyard**:
+  - **Step 1: 3D Vessel Click Selection & Cinematic Follow Camera**:
+    - **Follow Camera Controller (`src/render/CameraManager.ts`)**: Added `follow(vesselId)` and `unfollow()`. Maintains real-time orbit target delta so the player can freely rotate, pan, and zoom around the cruising ship while it voyages across the Aegean.
+    - **Direct 3D Raycasting (`src/render/Scene.ts`)**: Clicking any sailing ship directly in the 3D scene smoothly selects it and opens its dossier.
+    - **Dedicated Vessel Dossier Panel (`index.html`, `src/style.css`, `src/main.ts`)**: Real-time voyage progress bar, live speed in knots, distance remaining, cargo hold payload details, lifetime delivery metrics (trips, delivered value, net profit, upkeep), and interactive follow toggle button.
+  - **Step 2: Playable Loop Balance Pass (2 ➔ 10 Islands)**:
+    - **Balanced Inner Cyclades Progression Chain (`public/data/islands.json`)**: Tuned unlock costs and Trade Point thresholds across 10 islands: Santorini (Start), Naxos (Start), Paros (🪙 150 / 20 TP), Ios (🪙 220 / 45 TP), Syros (🪙 340 / 80 TP), Mykonos (🪙 480 / 130 TP), Amorgos (🪙 650 / 200 TP), Milos (🪙 850 / 290 TP), Tinos (🪙 1100 / 400 TP), and Crete Heraklion (🪙 1600 / 550 TP).
+    - **Harmonized Supply & Demand**: Verified bilateral commodity balance so every island has at least 2 active trading partners. Syros supplies crucial Maritime Fuel to prevent regional distress, while Crete provides staple produce and grain to the arid Cyclades.
+    - **Accurate Treasury & TP Accounting (`src/sim/shipSim.ts`, `src/sim/simulation.ts`)**: Credited net voyage profit (`revenue - cost`) to company treasury and balanced TP generation (`totalRevenue / 50`).
+  - **Step 3: Fleet Commissioning Shipyard & Cargo Priority Mandate**:
+    - **Harbor Shipyard Tier Selector (`index.html`, `src/main.ts`, `src/style.css`)**: Commission vessels at any unlocked harbor. Added multi-tier selection chips: Traditional Kaiki (2+ islands, 🪙 120, Cap 25), Aegean Caique (4+ islands, 🪙 380, Cap 75), and Island Passenger Ferry (8+ islands, 🪙 1200, Cap 200). Locked tiers show connection prerequisites.
+    - **Vessel Cargo Priority Mandate (`src/sim/shipSim.ts`, `src/main.ts`)**: Added interactive priority selector to each vessel's dossier (`⚡ Auto (Max Profit)`, `🍷 Wine`, `🏺 Crafts`, `⛽ Fuel`, `🏛️ Marble`, `🧀 Cheese`, `🌾 Grain`, `🫒 Olive Oil`, `💧 Water`, `🍅 Produce`, `🐟 Fish`). Autonomous ships apply 3x weighting to mandated goods when profitable.
+  - **Headless & Production Verification**:
+    - 22 unit tests passing in Vitest (`npm test`), including end-to-end 10-island automated unlock progression test.
+    - Clean production build (`npm run build`).
+
+- [x] 2026-10-16 – **Vessel Bow-Forward Heading & Motion Alignment Fixed**:
+  - **Identified & Resolved Root Cause of Backwards/Crab-Walking Sailing**:
+    - **Departure & Route Turn Lag**: The previous visual turn limiter (`MAX_TURN_RATE = 0.52 rad/s`) took 6 seconds in real time to turn 180°. At 4x/16x simulation speeds, boats sailed entire legs backwards down channels before their yaw caught up.
+    - **Pre-aligned Heading at Dock**: In [`src/sim/shipSim.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/sim/shipSim.ts), vessels now pre-align their heading immediately to the departure fairway waypoint during loading/return assignment so they never depart in reverse.
+    - **Responsive Critically-Damped Turn Tracking**: In [`src/render/Ships.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/render/Ships.ts), visual yaw now smoothly tracks path tangent heading without artificial second-scale lag (`turnSpeed = 8.0`) and snaps immediately on route reversals (> 90°).
+    - **Fixed Inverted Vector Mapping**: Corrected `fwdX` and `stbX`/`stbZ` in collision avoidance (previously `fwdX = -sin(heading)` was inverted, flipping forward/aft and port/starboard detection).
+    - **YXZ Naval Euler Order**: Configured dummy instance rotation to `YXZ` order to prevent pitch/roll cross-axis gimbal distortion.
+    - **Visual Geometry Enhancement**: Added a traditional wooden Aegean bowsprit (*bastoúni*) projecting forward from the pointed stem (-Z) and an aft flagpole with Hellenic maritime pennant (+Z), making the bow and stern immediately recognizable from all camera angles.
+  - All 20 vitest unit tests passing; clean production build.
+
+- [x] 2026-10-16 – **Maritime Collision Avoidance & Dynamic Steering Clearance**:
+  - **COLREGS-Compliant Starboard Steering Clearance (`src/render/Ships.ts`)**:
+    - Implemented proactive collision avoidance detection between all navigating vessels within a 1.35-unit proximity bubble.
+    - **Head-On Meeting Maneuver (Rule 14)**: When two vessels approach each other along reciprocal courses, both vessels smoothly alter course to starboard (+ right), generating up to `0.56` world units of lateral clearance so they pass port-to-port with open water between their hulls.
+    - **Overtaking & Obstacle Clearance**: Fast vessels overtaking slower traffic or navigating past docked harbor ships dynamically steer away to the open flank.
+    - **Dynamic Visual Yaw & Banking**: Vessels visibly deflect their headings (`vis.steerAngle`) and heel into the avoidance maneuver (`turnBanking`), smoothly recovering back to the fairway track once clear.
+    - Engine propeller wake trails dynamically follow the curved avoidance path.
+  - All 20 vitest unit tests passing; production build verified.
+
+- [x] 2026-10-16 – **Desaturated Panel Backgrounds (High Contrast Glassmorphism)**:
+  - **Eliminated Blue-on-Blue Panel Muddiness**:
+    - Replaced the saturated navy blue panel backgrounds (`rgba(9, 20, 40, 0.72)`) with a desaturated dark charcoal/graphite glassmorphism (`rgba(14, 16, 21, 0.85)`).
+    - Updated `.glass-panel`, `#top-bar`, `#inspector-panel`, `#feed-panel`, `#bottom-bar`, and `.settings-panel`.
+    - Significantly improves contrast and legibility over the deep blue Aegean sea water, allowing vibrant UI accents (gold treasury, teal trade points, emerald rates, coral demands) to pop cleanly.
+  - All 20 vitest unit tests passing; production build verified.
+
+- [x] 2026-10-16 – **Single Cycling Map Layer Button**:
+  - **Single Compact Button (`#btn-layer-cycle`)**:
+    - Replaced the multi-button group (`🌙 Night | ☀️ Day | 🏔️ DEM`) in the bottom HUD bar with a single, sleek pill button (`.layer-cycle-btn`).
+    - Cycles dynamically on tap through the three Aegean geodata views: `🏔️ DEM` ➔ `🌙 Night` ➔ `☀️ Day` ➔ `🏔️ DEM`.
+    - Features tactile icon rotation animation and dynamic label updates.
+    - Synchronized with Settings modal events (`aegean:layer-change`) and keyboard shortcuts (`N` for Night, `D` for Day, `H` for DEM, plus `M` for cycling).
+  - All 20 vitest unit tests passing; production build verified.
+
+- [x] 2026-10-16 – **Dynamic 3D Engine Propeller Wake Trails Behind Vessels**:
+  - **Dynamic Ribbon Wake System (`src/render/Ships.ts`)**:
+    - Implemented `EngineTrailRenderer`, an instanced dynamic quad ribbon system anchored directly to the stern (propeller) of sailing vessels.
+    - Accurately tracks the vessel's stern in 3D world space (`worldPos.x + sin(yaw) * sternDist, worldPos.z + cos(yaw) * sternDist`), creating continuous curved ribbons along the exact fairway turns navigated by the boat.
+    - Wakes expand realistically as they disperse on the water surface (from `0.08` width at the propeller to `0.36` at the dissipating tail) over a 3.6-second lifespan.
+  - **Custom Seafoam Shader (`ShaderMaterial`)**:
+    - Renders Gaussian feathered soft edges with gentle procedural turbulence ripples (`sin(uv.x * 28.0 - uTime * 7.0)`).
+    - Color gradient matches Mediterranean waters: brilliant pure white frothy core with subtle Aegean turquoise/aquamarine edge tint and smooth alpha falloff.
+    - Zero orphan assets: trails only spawn when boats are sailing (`ship.state === 'sailing'`). When vessels stop, dock, or load cargo, the trail gracefully dissipates until completely gone.
+  - All 20 vitest unit tests passing; production build verified.
+
+- [x] 2026-10-16 – **Compact Visual Vessel Rows & Zero-Scrollbar Inspector Redesign**:
+  - **Ultra-Compact Visual Vessel Section (`.vessel-row`)**:
+    - Replaced the bulky, vertically stacked vessel cards (~75px each) with sleek, single-line visual manifests (`height: 28px`).
+    - Added animated pulsing status dots: 🟢 emerald pulse for sailing, 🟡 amber pulse for loading, 🔵 cyan pulse for unloading, ⚪ slate for docked.
+    - Integrated visual cargo pills (`🏺 25`), compact route/operation tags (`➔ Santorini`, `⚡ Load Crafts`), and formatted drachma profit chips (`+🪙 11.3k`).
+    - Reduced the fleet block height from ~150px to ~60px while enhancing readability and aesthetics.
+  - **Unified At-A-Glance Layout Without Scrollbars**:
+    - Re-architected `#inspector-panel` so all vital information—Island info, Prosperity meter, Dual-column Exports/Imports, Active Vessels, and Action Buttons—is visible simultaneously at a glance.
+    - Converted action buttons into a sleek 2-column grid (`.inspector-actions-row`), cutting another ~40px.
+    - Enforced `overflow: hidden !important` and explicit WebKit scrollbar suppression on `#inspector-panel`, permanently eliminating the vertical scroll bar.
+  - All 20 vitest unit tests passing.
+
+- [x] 2026-10-16 – **Bilateral Supply & Demand Enforcement (Eliminated Reverse Cargo Flow)**:
+  - **Identified Root Cause of Reverse Trade Flow**:
+    - Discovered that the autonomous trade opportunity evaluator in `src/sim/shipSim.ts` iterated through all island markets without checking whether the origin island produced the good or whether the destination island consumed it.
+    - When Naxos exported all its water buffer to Santorini, Naxos's stock reached `0 / 276` and its scarcity price spiked to 28.5 drachmas.
+    - Vessels stationed at Santorini (an importer that consumes -8/d water) saw Santorini's stored drinking water buffer and the high price at Naxos, buying water from Santorini and sailing back to Naxos for a profit.
+  - **Bilateral Supply & Demand Constraints (`src/sim/shipSim.ts`)**:
+    - Enforced strict origin export constraint: ships can **only buy goods that the source island produces** (`currentMarket.produceRatePerDay > 0`).
+    - Enforced strict destination import constraint: ships can **only sell goods to islands that actually consume and demand that good** (`targetMarket.consumeRatePerDay > 0`).
+    - Added `fromIslandId` to `ShipCargo` and `ShipDeliveryEvent` so cargo manifests and delivery events accurately record the loading port.
+    - Added automated unit test in `src/sim/ships.test.ts` verifying that water is never delivered to Naxos, wine is never delivered to Santorini, and all cargo strictly flows from producers to consumers.
+    - All 20 vitest unit tests passing.
+
+  - **Identified Root Causes**:
+    - Discovered that coordinate bounds in earlier fairway scripts differed from `Terrain.ts` (`MAX_LON=28.5` vs `29.5`, `MAX_LAT=41.2` vs `41.0`), shifting coordinate samples by several kilometers relative to the 3D relief mesh.
+    - Discovered that earlier scripts only checked Channel 0 (R) elevation instead of Channel 2 (B) which is the authoritative land mask in `heightmap.png`, missing 233,267 coastal land pixels where elevation was near 0.
+    - Found that the Santorini ➔ Naxos signature corridor previously traversed south of Ios via `wp_santorini_open_north (25.32, 36.56)` into `wp_ios_west_channel (25.20, 36.72)`, drawing a diagonal straight segment directly over the southwest peninsula and slopes of Ios.
+  - **Authoritative Sea-Lane Network Generator (`tools/generate_sea_lanes.py`)**:
+    - Synchronized exact terrain projection bounds (`MIN_LON=22.5, MAX_LON=29.5, MIN_LAT=34.8, MAX_LAT=41.0`) with `Terrain.ts`.
+    - Enforced the true 4K land mask: `is_land = (hmap_rgb[:, :, 2] > 20) | (hmap_rgb[:, :, 0] > 0) | (mask_rgb[:, :, 0] > 0)` and computed 4K Euclidean distance transform.
+    - Re-routed the South Cyclades corridor through deep-water open sea fairways:
+      - `port_santorini (25.4214, 36.3928)` ➔ `wp_santorini_caldera_south (25.375, 36.385)` ➔ `wp_santorini_caldera_mouth (25.300, 36.370)` ➔ `wp_ios_southwest_fairway (25.200, 36.580)` ➔ `wp_ios_west_channel (25.220, 36.720)` ➔ `wp_ios_north_fairway (25.240, 36.850)` ➔ `wp_naxos_harbor_approach (25.340, 37.100)` ➔ `port_naxos (25.3520, 37.1060)`.
+    - Auto-snapped and anchored all 63 ports to verified harbor water clearance.
+    - Ran rigorous raymarching with sub-pixel sampling across all 8,858 edges in `public/data/sea_lanes.json`: **0 bad edges (100% collision-free in water)**.
+    - Verified 100% network connectivity (all 63 Aegean ports fully reachable from Santorini).
+    - All 19 unit tests passing (`npx vitest run`).
+
+  - **Authoritative DEM Map as Default View**:
+    - Set default shader `uViewMode` to `2` (DEM Topographic Elevation with analytical hillshading) in both core Aegean terrain (`src/render/Terrain.ts`) and surrounding Mediterranean world (`src/render/SurroundingWorld.ts`).
+    - Synchronized UI layer switcher in `index.html` to reflect `🏔️ DEM` as the active layer on startup.
+    - Preserves two-way synchronization with Settings Modal and keyboard shortcuts (`N` for Night, `D` for Day, `H` for DEM).
+  - **Dynamic Camera Auto-Zoom to Active Islands (`src/render/CameraManager.ts`, `src/render/Scene.ts`, `src/main.ts`)**:
+    - Upgraded `CameraManager` with dynamic bounding box framing (`fitToPositions`) and smooth cubic ease-in-out transitions.
+    - When the game starts, the camera fly-in dynamically targets the exact geographical center of all active islands (Santorini & Naxos in the Cyclades heart), calculating the bounding span and framing them in optimal view.
+    - When new islands awaken (via commercial deliveries or player investment), the camera smoothly adjusts its frame to encompass the expanding commercial territory.
+    - Added quick-access **🎯 Active Islands** button in the bottom HUD bar and keyboard shortcut (`Z`) for instant auto-zoom re-centering at any time.
+
+- [x] 2026-10-16 – **Elimination of Scroll Bars & Ergonomic Inspector Overhaul**:
+  - **Eliminated All Scroll Bars Across UI**:
+    - Enforced global CSS scrollbar suppression (`* { scrollbar-width: none !important; -ms-overflow-style: none !important; }` and `*::-webkit-scrollbar { display: none !important; }`), permanently removing standard browser white scrollbars from all panels, dialogs, and feed containers.
+  - **Ergonomic Inspector Layout Redesign**:
+    - Re-architected the left Inspector panel from an overstretched single column (~800px) into two dedicated tabs:
+      - **📊 Market & Trade Tab**:
+        - Replaced vertically stacked produce/consume lists with a sleek **dual-column market grid** (`.market-dual-column`): Exports on the left column, Imports on the right column.
+        - Compact 2-line good pills display icon, good name, rate (+/d or -/d) on line 1, and live inventory buffer / local buy-sell price on line 2.
+        - Preserves island prosperity meter and route establishment action button.
+        - Total height reduced to ~310px, fitting comfortably in any viewport height without scrolling.
+      - **⛵ Fleet & Routes Tab**:
+        - Displays dedicated active vessels and route manifests with live fleet count badge (`Fleet (N)`).
+        - Clean scrollable list without scrollbars, showing ship name, good icon, transit state, cargo amount, and accumulated profit.
+        - Action button to commission new kaiki vessels for the harbor shipyard.
+    - Added instant keyboard/mouse tab switching in `main.ts` with accessibility attributes (`role="tab"`, `aria-selected`).
+
+- [x] 2026-10-16 – **Orphan Boat Trail Removal, 3D Goods Catapult Animation & Sleek Non-Overlapping HUD Pills**:
+  - **Removed Orphan Boat Trail Asset**:
+    - Completely stripped the trailing wake geometry, shader, and instanced mesh from [`src/render/Ships.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/render/Ships.ts). Ships now glide cleanly across the Mediterranean water without any clipping artifacts or orphan meshes.
+  - **3D Goods Catapult Animation (`src/render/GoodsCatapult.ts`)**:
+    - Built a high-performance 3D projectile animation system for cargo operations:
+      - **Loading**: Cargo crates and good icons (🍷, 💧, 🫒, 🌾, 🪙, etc.) catapult in high parabolic trajectories ($P(t) = (1-t)A + tB + \text{Up}\cdot 4ht(1-t)$) from the island port into the boat's cargo hold, with tumbling physics and landing impact rings.
+      - **Unloading**: When arriving at destination, goods are catapulted from the vessel up onto the island dock, where a celebratory impact ripple and gold profit pill (`+🪙 450`) drift up into the sky.
+  - **Sleek Non-Overlapping Micro-Pill HUD (`src/render/ShipPopups.ts`, `src/style.css`)**:
+    - Enforced strict 1-active-popup-per-vessel limit: any new status replaces the prior message instantly, eliminating stacked and overlapping text bubbles.
+    - Redesigned status messages into compact, elegant glassmorphic micro-pills (`⛵ En route to Naxos`) without bulky stems or double capsules.
+    - Replaced redundant text loading/unloading toasts with the intuitive 3D catapult animations.
+  - **Inactive Island Marker Culling (`src/render/IslandMarkers.ts`)**:
+    - Removed drop-pin and ripple markers from inactive / locked islands across the Aegean map.
+    - Only active (lit) islands display the 3D summit drop-pin marker (or temporarily while an island is actively selected).
+    - Prevents dark grey inactive pins from cluttering the night ocean background.
+
+- [x] 2026-10-16 – **M5: Ships and Sea Lanes (Autonomous Fleets, Navigation Graph, 3D Kaiki, Wakes, Delivery Awakenings)**:
+  - **Comprehensive Sea-Lane Navigation Graph (`public/data/sea_lanes.json`, `tools/generate_sea_lanes.py`)**:
+    - Created an authoritative maritime transit network across the entire Aegean Sea with 169 nodes (all 63 island and mainland ports + strategic deep-water fairway waypoints) and 178 bidirectional edges.
+    - Verified 100% connectivity between all 63 Aegean ports through authentic shipping corridors (Cyclades Core, Small Cyclades, Dodecanese, Saronic Gulf, Crete Sea, North Aegean, and Turkish coast channels).
+    - Validated zero land clipping using real elevation model raymarching.
+  - **Headless Maritime Navigation & A* Search (`src/sim/nav.ts`, `src/sim/nav.test.ts`)**:
+    - Implemented high-performance A* search with spherical haversine distance heuristic.
+    - Added continuous polyline distance interpolation and bearing calculations for smooth boat headings.
+    - Fully decoupled from rendering; 100% unit-tested with 6 passing tests.
+  - **Autonomous Ship State Machine & Commercial AI (`src/sim/shipSim.ts`, `src/sim/ships.test.ts`)**:
+    - Created `ShipSimulationManager` implementing autonomous trading loop (`idle` ➔ `loading` ➔ `sailing` ➔ `unloading` ➔ `idle`).
+    - Smart trade AI: scans unlocked island markets for profitable export/import spreads, buys goods from source islands, calculates transit upkeep, sails via A* waypoints, and unloads at destination markets.
+    - Money and Trade Points: delivered cargo generates profit for player Treasury and earns company Trade Points (TP).
+    - Delivery dispatch event pipeline with `onShipDelivery` and `isFirstDeliveryToIsland` tracking.
+  - **Procedural 3D Fishing Boat (Traditional Kaiki) & Instanced Renderer (`src/render/Ships.ts`)**:
+    - Designed authentic Mediterranean wooden kaiki boat geometry with curved flared hull, transom stern, Cycladic white wheelhouse cabin, wooden mast, forward deck cargo crates, and navigation lights (port red, starboard green, masthead warm white).
+    - Single-draw-call `InstancedMesh` for 60+ FPS scalability supporting 100+ active vessels simultaneously.
+    - Wave physics: dynamic pitch and roll bobbing synchronized with Mediterranean sea wave frequencies.
+  - **Photorealistic Kelvin Boat Wake (1:1 Reference Match, Custom GLSL & Procedural Ribbon)**:
+    - Replaced basic flat plane with a high-fidelity $32\times 64$ subdivided parametric ribbon mesh (`createWakeGeometry()`) extending $5.4$ units behind the transom ($z \in [0.22, 5.62]$), perfectly anchored to the vessel's stern.
+    - Implemented authentic Kelvin wake GLSL shader reproducing the user's reference image:
+      - **Brilliant Divergent V-Arms**: Two linear diverging wave crests opening backward ($\text{armPos} = v \cdot 0.68 + 0.038$) with a razor-sharp Gaussian core spine ($\text{armSpine} = \exp(-(\text{dist} / 0.0075)^2 \cdot 4.5) \cdot 1.6$) and luminous wave body.
+      - **Stern Apex Churn**: Intense, solid white foaming plume ($\exp(-v / 0.075) \cdot \exp(-(x / 0.13)^2) \cdot 2.2$) at the transom propeller displacement zone.
+      - **Transverse Arched Ripples**: Periodic wave packets ($\cos(v \cdot 38 - t \cdot 6.5 + x^2 \cdot 3.2)$) bridging strictly inside the V arms, scrolling dynamically backward with time.
+      - **Turbulent Rooster Jet**: Propeller central wash decaying along the first third of the wake.
+      - **Ocean Boundary & Tail Fade**: Zero leakage outside the V arms, smooth cubic fade into deep navy Mediterranean water.
+      - **Depth & Surface Alignment**: Positioned at `seaLevelY + 0.015` with `polygonOffset: true` (`-4, -4`), `depthTest: true`, and `renderOrder = 2`, preventing z-fighting and ocean mesh clipping.
+      - **Harbor Wash**: Idle/docked vessels display a compact, localized stern wash, expanding into the full 5.4-unit Kelvin wake when underway.
+  - **Inaugural Delivery & Signature Island Awakening**:
+    - Santorini begins in full morning daylight with the starting commercial fleet; Naxos begins awaiting connection under midnight moonlit lights.
+    - Initial fishing boat (*Agios Nikolaos*) departs Santorini with wine, navigates the southern Cyclades channel, and completes its inaugural delivery at Naxos.
+    - The first delivery triggers the radial golden dawn wave across Naxos harbor, awakening the island into radiant Mediterranean daylight and establishing permanent bilateral trade!
+  - **Floating 3D Ship Dispatch Messages & Speech Bubbles (`src/render/ShipPopups.ts`, `src/style.css`)**:
+    - Created an anchored screen-space speech bubble system projecting 3D ship world positions directly into floating HUD dispatch pills.
+    - Trade deliveries dynamically spawn popups over the ship's mast: `+🪙 45 • Delivered Wine!`, with golden aura on inaugural dawn deliveries (`🌟 +🪙 65 • Naxos Awakens!`).
+    - Harbor cargo operations pop up `📦 Loading Cargo: 25 Grain at Naxos` and `⛵ Setting Sail: En route to Santorini`.
+    - Clicking any vessel pops up a nautical vessel status badge with its current route and cargo manifest.
+    - Features elastic pop-in bounce, ~35px gentle upward float drift, smooth cubic opacity fade-out, and downward speech notch pointing directly at the boat.
+  - **Interactive Fleet Operations & Inspector Integration**:
+    - Raycast ship selection in 3D scene: clicking any vessel announces its captain log, origin, destination, cargo, status, and accumulated profit.
+    - Left Inspector displays live "Active Routes & Vessels" operating at the selected island port.
+    - Added "Commission Vessel" action button allowing players to purchase additional fishing boats for 🪙 120 drachmas.
+    - All 19 vitest tests passing; production build (`tsc && vite build`) passing cleanly.
+
+- [x] 2026-10-16 – **Summit Peak Marker Placement & Label-Synced Auto-Scaling**:
+  - Relocated 3D drop-pin markers and concentric ground ripples from island coasts/ports to each island's highest summit peak (`island.peak` ➔ `peakWorld`), unifying the pin directly beneath the floating screen-space island name pill.
+  - Implemented dynamic perspective screen-space auto-scaling for the 3D pin mesh in [`src/render/IslandMarkers.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/render/IslandMarkers.ts):
+    - Calculates distance-to-camera and viewport FOV factor: $\text{pixelToWorld} = \frac{2 \cdot D \cdot \tan(\text{FOV}/2)}{\text{innerHeight}}$.
+    - Dynamically scales the pin mesh so it maintains a constant, crisp ~30px visual height on screen across all camera altitudes and tilt angles.
+    - Synchronized the screen label pill vertical offset ($36 \cdot \text{pixelToWorld}$) so the label bottom edge sits uniformly 6px above the top pin bulb at any zoom distance.
+    - Enabled pointer raycaster on the 3D pin meshes so clicking either the pin or the label selects and focuses the island peak.
+    - Updated camera focus on selection and key shortcut 'K' in [`src/render/Scene.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/render/Scene.ts) and [`src/main.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/main.ts) to target `peakWorld`.
+
+- [x] 2026-10-16 – **Port-Centered Island Daylight Attenuation (Partial Island Illumination)**:
+  - Eliminated full-island solid illumination where entire island land masses were 100% lit to the coast.
+  - Implemented port-centered geometric Euclidean distance attenuation: light originates from each island's designated harbor/port coordinates (`uIslandPortUV[64]`).
+  - Near the port and quays, the landscape is bathed in vibrant Mediterranean morning daylight; across the interior and mountains, light softly and continuously fades out into the nocturnal starry/moonlit night via quintic smootherstep ($6x^5 - 15x^4 + 10x^3$).
+  - Light reach is seamlessly parameterized by the **🏝️ Island Light Fade Reach** slider in `SettingsPanel.ts` (`uIslandLightRadius * 0.065`), allowing players to calibrate how far daylight extends across their harbors and island territories.
+  - Pre-initialized port locations for starting trade hubs (Santorini and Naxos) and hooked dynamic data binding from `islands.json` in [`src/render/Terrain.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/render/Terrain.ts) and [`src/main.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/main.ts).
+
+- [x] 2026-10-16 – **Broader Territory (Surrounding Mainland) Visual Fidelity & Lighting Parity**:
+  - Boosted [`src/render/SurroundingWorld.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/render/SurroundingWorld.ts) mesh geometry density from `160×180` to `480×540` vertices (259k vertices) for 9× higher 3D relief resolution across Greece, the Peloponnese massifs, Mount Olympus, and the Taurus mountains of Anatolia.
+  - Implemented analytical Sobel gradient filter on the 1024×1152 elevation model (`world_heightmap.png`) in the fragment shader, eliminating flat/blobby hill shading and delivering crisp, razor-sharp topographic normal relief.
+  - Synchronized DEM hypsometric tinting in `SurroundingWorld` with the authoritative Aegean palette (`#1e433d` coast, `#35512f` valley, `#535a30` foothill, `#8a7d6a` slope, `#b7874e` ridge, `#efeff5` summit) and elevation thresholds (`0.015`, `0.075`, `0.500`, `0.700`).
+  - Added directional sun radiance (`2.05×`), sky ambient fill (`0.60×`), sun warmth, and relief contrast (`1.50×`) in DEM mode, matching the core Aegean terrain 1:1.
+  - Added directional sun/moon hillshading, ambient fill, and natural land saturation in Day and Night modes.
+  - Unified displacement height scaling (`uDisplacementScale * 3.5`) across both meshes to eliminate height mismatch at the boundary seam.
+  - Wired two-way synchronization in [`src/render/SettingsPanel.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/render/SettingsPanel.ts) and [`src/render/Scene.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/render/Scene.ts) so sliders and presets update both AegeanTerrain and SurroundingWorld simultaneously.
+
+- [x] 2026-10-16 – **Smooth Island Light Boundary & Cinematic Feathering**:
+  - Eliminated razor-sharp circular cut boundary during island dawn reveal / awakening animations (`src/render/Terrain.ts`).
+  - Replaced narrow `0.006` UV-space step with wide, adaptive feathering (`feather = max(0.038, uWaveRadius * 0.55)`).
+  - Applied quintic smootherstep ($6x^5 - 15x^4 + 10x^3$) for $C^2$ continuity across both land terrain and surrounding sea.
+  - Replaced triangular spike frontier glow with a wide, soft Hann-window cosine bell halo that bathes the light frontier in a warm, diffuse golden dawn bloom.
+  - Enhanced coastal sea attenuation with smootherstep Hermite rolloff for continuous, natural illumination fade into deep night water.
+  - Expanded island wave sweep radii (`maxRadius`) so the light wave comfortably clears all island coastlines before completion without sudden pops.
+
+- [x] 2026-10-16 – **M4: Simulation Core (Goods, Markets, Tick Loop, Headless Tests)**:
+  - Created [`public/data/goods.json`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/public/data/goods.json) with all 12 Mediterranean trade commodities (fish, olive oil, wine, grain, cheese, mastic, marble, sponges, water, fuel, produce, crafts) with base prices, storage volumes, perishability flags, icons, and colors.
+  - Created [`public/data/balance.json`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/public/data/balance.json) configuring 10 Hz fixed simulation ticks, 24-second game days, price elasticity ($k=0.7$), price bounds ($0.35\times$ to $2.85\times$), buffer days, perishable decay, and prosperity/distress growth rates.
+  - Created [`public/data/ships.json`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/public/data/ships.json) defining 5 ship progression tiers (fishing boat, caique, ferry, cargo freighter, charter yacht).
+  - Enhanced [`src/sim/economy.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/sim/economy.ts) with pure supply/demand pricing, buffer targets, storage capacities, perishable decay, and prosperity/distress index tracking.
+  - Implemented [`src/sim/islandSim.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/sim/islandSim.ts) managing isolated island commodity markets, production, consumption, and local market prices.
+  - Implemented [`src/sim/simulation.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/sim/simulation.ts) (`SimulationCore`): deterministic, headless engine with time scaling (Pause, 1x, 4x, 16x), calendar progression, player treasury/TP tracking, island unlocking, and buy/sell execution.
+  - Wrote comprehensive headless unit & soak tests in [`src/sim/simulation.test.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/sim/simulation.test.ts):
+    - Tested price responsiveness to scarcity and surplus across producer and consumer islands.
+    - Verified 10,000-tick headless soak test (~1,000 game days) with zero NaNs, zero negative stocks, and bounded prices.
+  - Connected `SimulationCore` into [`src/main.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/main.ts):
+    - Top bar displays live Treasury (🪙), Trade Points (⚓), Connected Islands count, and Game Date/Time.
+    - Left Inspector displays live island prosperity bar, market prices, produced and consumed goods stocks, and dynamic unlock button with prerequisite checks.
+- [x] 2026-10-16 – **Removed Debug Mask View Mode from Main UI**:
+  - Removed `🗺️ Mask` toggle button from the bottom layer switcher in [`index.html`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/index.html).
+  - Cleaned up [`src/main.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/main.ts): removed `btn-layer-mask` from layer button registration and unbound `'m'` key shortcut so players only switch between true gameplay views (🌙 Night, ☀️ Day, 🏔️ DEM).
+- [x] 2026-10-16 – **Updated Authoritative DEM Color & Topographic Light Defaults**:
+  - Applied user's authoritative DEM parameters across the entire system:
+    - `setDEMParams(0.015, 0.075, 0.500, 0.700)`
+    - `setDisplacementScale(0.85)`
+    - `setDEMLightParams(2.05, 0.60, 0.00, 1.50)`
+    - `setDEMColors({ coast: '#1e433d', valley: '#35512f', foothill: '#535a30', slope: '#8a7d6a', ridge: '#b7874e', summit: '#efeff5' })`
+  - Updated in:
+    - [`src/render/Terrain.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/render/Terrain.ts) shader uniform defaults and `displacementScale` default property.
+    - [`src/render/SettingsPanel.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/render/SettingsPanel.ts) `DEFAULT_DEM_COLORS`, `DEFAULT_DEM_PARAMS`, Default Preset button, and reset action.
+    - Bumped localStorage cache key to `aegean_dem_params_v4` so all browser sessions instantly receive the new configuration.
+    - Locked and logged in [`docs/DECISIONS.md`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/docs/DECISIONS.md).
+- [x] 2026-10-16 – **Island Lighting Engine (Smooth Coastal Distance Attenuation & Multi-Channel Field)**:
+  - Eliminated the abrupt 1-pixel binary knife-edge at coastlines between lit islands and dark sea.
+  - Re-baked 4096×4096 4-channel `island_mask.png` (`tools/bake_island_mask.py`):
+    - **Channel R**: Discrete land territory `maskId` (1..63 on land, 0 on sea), assigned via connected component analysis to guarantee separate islands (e.g. Paros vs Naxos) never cross-contaminate.
+    - **Channel G**: Nearest island ID (1..63) propagated across surrounding coastal waters.
+    - **Channel B**: Normalized Euclidean distance from coast into the sea (0.0 at shoreline -> 1.0 at ~14 km reach).
+    - **Channel A**: Normalized distance inland (0.0 at coast -> 1.0 interior).
+  - Updated `src/render/Terrain.ts`:
+    - Computed continuous `effectiveDayBlend` for both land and sea: solid land stays in full radiant daylight while coastal water softly attenuates via cubic Hermite curve `pow(smoothstep(1.0, 0.0, seaDist / uIslandLightRadius), 1.8)`.
+    - At the shoreline, land and water match 100% in daylight (0.0 distance), transitioning seamlessly into crystal turquoise shelf sea, azure coastal water, and smoothly decaying into midnight navy sea.
+    - Neighboring locked islands (such as Paros across the strait from Naxos) remain completely dark with zero light leakage.
+    - Parameterized coastal fade reach with `uIslandLightRadius` uniform (default 0.45 ≈ 6.2 km) and added an interactive **🏝️ Island Light Fade Reach** slider in `SettingsPanel.ts`.
+  - Configured `THREE.LinearFilter` and `THREE.NoColorSpace` on `mask` texture in `src/render/Scene.ts` (`?v=12`) for sub-texel interpolation without color space distortion.
+  - Built `tools/bake_surrounding_world.py`: baked a wider regional geodata suite spanning Lon 18.0°–34.0° and Lat 30.814°–44.986° (160 × 179.8 world units, centered at Lon 26.0°, Lat 37.9° coincident with the Aegean core):
+    - `public/data/world_day.jpg` (2048×2304): EOX Sentinel-2 cloudless satellite imagery covering all of mainland Greece (Attica, Boeotia, Thessaly, Epirus, and full Peloponnese), the Ionian Sea, Western/Central Turkey (Anatolian plateau, Istanbul, Sea of Marmara, Taurus mountains, Antalya), North Aegean, and the open Mediterranean horizon.
+    - `public/data/world_night.jpg` (2048×2304): Moonlit Mediterranean navy base composited with NASA Black Marble VIIRS nocturnal city lights (Athens, Istanbul, Thessaloniki, Patras, Izmir, Bursa, Antalya, Sofia).
+    - `public/data/world_heightmap.png` (1024×1152): AWS Terrarium elevation model with land/sea mask and bathymetry depth.
+  - Implemented [`src/render/SurroundingWorld.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/src/render/SurroundingWorld.ts):
+    - Seamlessly cradles the ultra-high-resolution 8K Aegean core without z-fighting (soft inner cutout boundary).
+    - Displaces mainland mountain relief (Pindus, Mount Olympus, Taygetus, Taurus mountains) with 3D elevation.
+    - Matches global Day/Night/DEM view mode switching and sun/moon lighting.
+    - Features gentle sea shimmers and a soft 6% outer atmospheric horizon falloff that smoothly dissolves the continent borders into the starry cosmic dome.
+    - Playable area, trade simulation, island ports, and interactive HUD remain focused on the Aegean Archipelago.
+- [x] 2026-10-16 – **Camera Zoom Label De-cluttering & Screen-Space Collision Culling**:
+  - Diagnosed map overview clutter at high/medium zoom (~36 labels rendered simultaneously across the Aegean).
+  - Implemented strict Level of Detail (LOD) thresholds using combined camera altitude and focal distance (`Math.min`):
+    - Lit network islands (Santorini, Naxos) remain visible across gameplay range (`priority = 5000`).
+    - Currently selected island is always visible with gold glow badge (`.selected-island`, `priority = 10000`).
+    - Tier 1 regional hubs (Paros, Mykonos, Chios, Lesbos, Piraeus, etc.) fade in smoothly only when zoomed into regional inspection (`camY <= 38`, `dist <= 38`).
+    - Tier 2 medium islands (Tinos, Andros, Sifnos, Serifos, Ios, Amorgos, etc.) fade in closer (`camY <= 26`, `dist <= 26`).
+    - Tier 3 minor islets (Delos, Antiparos, Thirassia, etc.) appear only on close inspection (`camY <= 16`, `dist <= 16`).
+  - Implemented real-time 2D screen-space bounding box collision detection: sorts candidate labels by priority descending and culls overlapping labels (e.g. Skiathos/Skopelos, Tinos/Mykonos, Bozcaada/Gökçeada), ensuring clean, legible typography with zero overlaps at any camera angle.
+  - Culled 3D port drop-pins with camera altitude so locked pins don't poke through high orbit.
+- [x] 2026-10-16 – **DEM Topographic Lighting & Shading Controls**:
+  - Parameterized DEM mode shader lighting with 4 new uniforms: `uDEMSunRadiance`, `uDEMAmbientFill`, `uDEMSunWarmth`, and `uDEMReliefStrength`.
+  - Added dedicated **☀️ Topographic Sun & Ambient Lighting** control section to the DEM tab in `SettingsPanel.ts`:
+    - **☀️ Direct Sun Radiance** slider (0.10× to 2.50×, default 0.85×): controls directional sunbeam illumination on sunward ridges.
+    - **🌌 Sky Ambient Fill** slider (0.05× to 1.50×, default 0.50×): controls atmospheric diffuse fill for valleys and shaded slopes.
+    - **🔥 Sunlight Warmth** slider (0% to 100%, default 35%): shifts sunlight temperature from crisp alpine white to golden Mediterranean warmth.
+    - **⛰️ Hillshade Relief Contrast** slider (0.10× to 1.50×, default 0.60×): shapes ridge prominence and shadow depth.
+  - Wired live slider events, localStorage persistence, preset buttons (Default, Warm Clay, More Green, Alpine Peaks), and updated `Copy Code` exporter.
 - [x] 2026-10-16 – Q&A completed, decisions locked (`docs/DECISIONS.md`). Personal non-commercial status confirmed.
 - [x] 2026-10-16 – Planning docs, implementation guide, and kickoff prompt written.
 - [x] 2026-10-16 – **M0: Project Scaffold**:
@@ -149,20 +1822,49 @@
       - Opening Settings via `⚙️ Settings` button or `S` key automatically opens the tab corresponding to the currently active view mode.
       - Two-way interaction: clicking tabs inside the tuner also switches the main screen and bottom bar buttons seamlessly.
 
+- [x] 2026-10-16 – **M3: Day/Night Reveal (Signature Visual Mechanic)**:
+  - **Full 63-Island ID Mask**:
+    - Assigned 1-based unique IDs (`maskId: 1..63`) to all 63 Aegean islands in `public/data/islands.json`.
+    - Baked 4K lossless 8-bit territory mask (`public/data/island_mask.png`), mapping all 6.5M land pixels across Cyclades, Dodecanese, North Aegean, Sporades, and Saronic islands.
+  - **Dynamic Per-Island Lighting Engine (GLSL Shader)**:
+    - Wired uniform array `uIslandLit[64]` into `src/render/Terrain.ts` fragment shader.
+    - Starting hubs (Santorini `maskId: 1` and Naxos `maskId: 2`) initialize in daylight (`islandLit = 1.0`).
+    - Unconnected islands remain under moonlit Mediterranean night.
+  - **Radial Golden Dawn Wavefront**:
+    - Modeled dynamic wave expansion from island port: `uWaveIslandId`, `uWaveCenter`, `uWaveRadius`, `uWaveProgress`.
+    - Wavefront smoothly sweeps outward from the harbor across valleys and mountain summits using cubic ease-out.
+    - Added sparkling golden dawn frontier ring (`frontierGlow = vec3(1.35, 1.05, 0.45) * ringIntensity * 1.8`).
+    - Behind the wavefront, night amber city lights extinguish as radiant Mediterranean morning daylight takes over.
+    - Dynamic wave radius sized for island geography (from Cycladic isles up to Crete's entire southern coast).
+  - **3D Marker & UI Synchronization**:
+    - 3D port drop-pins switch between sleep graphite/slate and vivid crimson lacquer with concentric pulsing harbor ripples upon awakening.
+    - Summit peak label badges toggle between `.active-island` (glowing connected badge) and `.locked-island`.
+    - Left Inspector panel dynamically updates status badges (`Daylight • Connected` vs `Awaiting Connection`) and route button (`Awaken Island (Establish Route)`).
+    - Added Maritime Dispatch feed notification with animated highlight on dawn reveal.
+    - Bound debug key `K` (acceptance criteria) to toggle island awakening with cinematic camera focus.
+
+- [x] 2026-10-16 – **DEM Color Tuner Upgrade: Color Pickers + Real-Time HSL Sliders**:
+  - Parameterized all 6 elevation tiers with custom uniforms in `src/render/Terrain.ts`: `uDEMColCoast`, `uDEMColValley`, `uDEMColFoothill`, `uDEMColSlope`, `uDEMColRidge`, and `uDEMColSummit`.
+  - Added expandable color cards for each elevation tier in `SettingsPanel.ts` with native color pickers, hex badges, and individual **🌈 Hue** (`0°-360°`), **🎨 Saturation** (`0%-100%`), and **💡 Luminosity** (`0%-100%`) sliders.
+  - Implemented real-time dynamic slider track gradient previews (rainbow for Hue, saturation sweep, and luminosity lightness).
+  - Bidirectional sync: changing either the color picker or the HSL sliders updates both in real-time, regenerates the live gradient preview bar, updates the 3D DEM shader, and persists to `localStorage`.
+  - Updated "📋 Copy Code" to export both threshold parameters and the 6 hex colors (`terrain.setDEMColors(...)`).
+
 ## In Progress
 _None._
 
 ## Next Step
-**M3 – Day/Night Reveal**:
-- Shader implementation of dynamic per-island lighting: `litAmount[islandId]` data texture lookup in terrain shader.
-- Radial "wave of light" spreading across an island from its port upon connection.
-- Connecting glow state and prosperity-driven illumination.
-- Connecting the visual reveal to the simulation event triggers.
+**M6 – Player Interaction and UI**:
+- Selection: island details, ship route assignments, custom trade orders.
+- Shipyard shop: purchasing ship tiers, home port assignment, vessel fleet roster.
+- Financial overview & trade route profit analysis.
+- Flow overlay: visual trade volume vectors between connected islands.
+- Playable loop from initial pair (Santorini & Naxos) scaling to ~10 islands.
 
 ## Blockers / Open Questions
 _None._
 
 ## Session Notes
-- Dev server running at http://localhost:5174/
-- All test suites passing (`npm test` green, `npm run build` green).
+- Dev server running at http://localhost:5173/
+- All 19 test cases passing across all 4 suites (`npm test` green, `npm run build` green).
 

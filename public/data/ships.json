@@ -1,0 +1,62 @@
+[
+  {
+    "id": "fishing_boat",
+    "name": "Boat",
+    "tier": 1,
+    "capacity": 25,
+    "speed": 6.8,
+    "cost": 120,
+    "range": 90,
+    "upkeepPerDay": 2,
+    "description": "Small coastal boat suitable for short inter-island hops.",
+    "unlock": { "islandsConnected": 2 }
+  },
+  {
+    "id": "caique",
+    "name": "Coaster",
+    "tier": 2,
+    "capacity": 75,
+    "speed": 9.2,
+    "cost": 380,
+    "range": 160,
+    "upkeepPerDay": 6,
+    "description": "Sturdy motorized cargo schooner capable of carrying regional trade goods.",
+    "unlock": { "islandsConnected": 4 }
+  },
+  {
+    "id": "ferry",
+    "name": "Ferry",
+    "tier": 3,
+    "capacity": 200,
+    "speed": 16.0,
+    "cost": 1200,
+    "range": 280,
+    "upkeepPerDay": 18,
+    "description": "Fast multi-deck Ro-Ro vessel connecting archipelagos with high volume.",
+    "unlock": { "islandsConnected": 8 }
+  },
+  {
+    "id": "cargo_ship",
+    "name": "Freighter",
+    "tier": 4,
+    "capacity": 650,
+    "speed": 11.5,
+    "cost": 3200,
+    "range": 500,
+    "upkeepPerDay": 45,
+    "description": "Heavy bulk container freighter serving mainland ports and major trade hubs.",
+    "unlock": { "islandsConnected": 16 }
+  },
+  {
+    "id": "charter_yacht",
+    "name": "Yacht",
+    "tier": 5,
+    "capacity": 80,
+    "speed": 21.0,
+    "cost": 5500,
+    "range": 450,
+    "upkeepPerDay": 60,
+    "description": "High-speed VIP cruiser generating substantial tourist revenue multipliers.",
+    "unlock": { "islandsConnected": 25 }
+  }
+]

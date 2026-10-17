@@ -19,14 +19,14 @@
     },
     "population": 15500,
     "produces": {
-      "wine": 9,
-      "crafts": 5,
-      "fish": 3
+      "wine": 10,
+      "produce": 6,
+      "crafts": 4
     },
     "consumes": {
       "water": 8,
-      "produce": 4,
-      "grain": 5
+      "grain": 5,
+      "olive_oil": 4
     },
     "unlock": {
       "cost": 0,
@@ -35,7 +35,7 @@
     },
     "tourismBase": 0.95,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 1
   },
   {
     "id": "naxos",
@@ -57,14 +57,15 @@
     },
     "population": 19000,
     "produces": {
-      "grain": 8,
-      "cheese": 6,
-      "water": 5
+      "cheese": 8,
+      "grain": 7,
+      "water": 6,
+      "olive_oil": 5
     },
     "consumes": {
-      "fuel": 4,
-      "wine": 2,
-      "crafts": 3
+      "fuel": 5,
+      "wine": 3,
+      "fish": 3
     },
     "unlock": {
       "cost": 0,
@@ -73,7 +74,7 @@
     },
     "tourismBase": 0.4,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 2
   },
   {
     "id": "paros",
@@ -95,25 +96,25 @@
     },
     "population": 14000,
     "produces": {
-      "marble": 7,
-      "wine": 4,
+      "marble": 8,
+      "wine": 6,
       "fish": 4
     },
     "consumes": {
-      "fuel": 3,
-      "water": 4,
-      "grain": 3
+      "water": 5,
+      "grain": 4,
+      "fuel": 4
     },
     "unlock": {
-      "cost": 60,
-      "tp": 10,
+      "cost": 150,
+      "tp": 20,
       "requiresConnectedTo": [
         "naxos"
       ]
     },
     "tourismBase": 0.65,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 3
   },
   {
     "id": "mykonos",
@@ -135,17 +136,20 @@
     },
     "population": 10500,
     "produces": {
-      "crafts": 8,
-      "fish": 3
+      "cheese": 6,
+      "crafts": 7,
+      "fish": 4
     },
     "consumes": {
       "water": 8,
       "produce": 6,
-      "cheese": 4
+      "wine": 5,
+      "olive_oil": 4,
+      "fuel": 4
     },
     "unlock": {
-      "cost": 120,
-      "tp": 25,
+      "cost": 480,
+      "tp": 130,
       "requiresConnectedTo": [
         "naxos",
         "paros",
@@ -154,7 +158,7 @@
     },
     "tourismBase": 0.9,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 4
   },
   {
     "id": "syros",
@@ -176,25 +180,26 @@
     },
     "population": 21500,
     "produces": {
-      "crafts": 6,
-      "fuel": 5,
-      "fish": 4
+      "cheese": 7,
+      "fuel": 6,
+      "crafts": 6
     },
     "consumes": {
       "grain": 6,
       "water": 6,
-      "wine": 4
+      "wine": 4,
+      "olive_oil": 4
     },
     "unlock": {
-      "cost": 90,
-      "tp": 15,
+      "cost": 340,
+      "tp": 80,
       "requiresConnectedTo": [
         "paros"
       ]
     },
     "tourismBase": 0.5,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 5
   },
   {
     "id": "milos",
@@ -216,17 +221,19 @@
     },
     "population": 5300,
     "produces": {
-      "marble": 8,
+      "marble": 7,
+      "cheese": 5,
       "fish": 4
     },
     "consumes": {
-      "water": 5,
+      "water": 6,
       "grain": 4,
-      "produce": 3
+      "produce": 4,
+      "fuel": 3
     },
     "unlock": {
-      "cost": 150,
-      "tp": 30,
+      "cost": 850,
+      "tp": 290,
       "requiresConnectedTo": [
         "santorini",
         "paros"
@@ -234,7 +241,7 @@
     },
     "tourismBase": 0.6,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 6
   },
   {
     "id": "crete_heraklion",
@@ -256,26 +263,29 @@
     },
     "population": 175000,
     "produces": {
-      "olive_oil": 14,
-      "wine": 10,
-      "produce": 12,
-      "grain": 10
+      "olive_oil": 18,
+      "olive": 12,
+      "wine": 12,
+      "cheese": 10,
+      "water": 8
     },
     "consumes": {
-      "fuel": 10,
-      "crafts": 8,
-      "marble": 5
+      "fuel": 14,
+      "marble": 8,
+      "sponges": 7,
+      "mastic": 6
     },
     "unlock": {
-      "cost": 300,
-      "tp": 60,
+      "cost": 1600,
+      "tp": 550,
       "requiresConnectedTo": [
-        "santorini"
+        "santorini",
+        "milos"
       ]
     },
-    "tourismBase": 0.75,
+    "tourismBase": 0.82,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 7
   },
   {
     "id": "rhodes",
@@ -297,26 +307,28 @@
     },
     "population": 115000,
     "produces": {
-      "wine": 8,
-      "produce": 9,
-      "crafts": 7
+      "olive_oil": 14,
+      "wine": 12,
+      "fuel": 10,
+      "produce": 10
     },
     "consumes": {
-      "fuel": 8,
-      "grain": 7,
-      "marble": 4
+      "grain": 12,
+      "marble": 8,
+      "sponges": 7,
+      "mastic": 6
     },
     "unlock": {
-      "cost": 350,
-      "tp": 70,
+      "cost": 2200,
+      "tp": 720,
       "requiresConnectedTo": [
         "kos",
-        "santorini"
+        "crete_heraklion"
       ]
     },
-    "tourismBase": 0.8,
+    "tourismBase": 0.9,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 8
   },
   {
     "id": "kos",
@@ -338,26 +350,28 @@
     },
     "population": 34000,
     "produces": {
-      "produce": 8,
-      "wine": 5,
-      "fish": 4
+      "produce": 12,
+      "cheese": 8,
+      "honey": 7
     },
     "consumes": {
-      "fuel": 5,
-      "water": 5,
-      "crafts": 4
+      "grain": 8,
+      "water": 6,
+      "fuel": 6,
+      "olive_oil": 5
     },
     "unlock": {
-      "cost": 220,
-      "tp": 45,
+      "cost": 1450,
+      "tp": 510,
       "requiresConnectedTo": [
+        "amorgos",
         "naxos",
         "samos"
       ]
     },
-    "tourismBase": 0.7,
+    "tourismBase": 0.85,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 9
   },
   {
     "id": "samos",
@@ -379,26 +393,29 @@
     },
     "population": 33000,
     "produces": {
-      "wine": 10,
-      "olive_oil": 7,
-      "fish": 3
+      "wine": 14,
+      "olive_oil": 8,
+      "honey": 6,
+      "produce": 6
     },
     "consumes": {
-      "fuel": 5,
-      "grain": 5,
-      "crafts": 4
+      "grain": 8,
+      "fuel": 7,
+      "water": 5,
+      "fish": 5
     },
     "unlock": {
-      "cost": 200,
-      "tp": 40,
+      "cost": 1350,
+      "tp": 480,
       "requiresConnectedTo": [
         "mykonos",
-        "chios"
+        "tinos",
+        "ikaria"
       ]
     },
-    "tourismBase": 0.55,
+    "tourismBase": 0.75,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 10
   },
   {
     "id": "chios",
@@ -420,26 +437,27 @@
     },
     "population": 52000,
     "produces": {
-      "mastic": 12,
-      "produce": 6,
-      "fish": 4
+      "mastic": 16,
+      "produce": 9,
+      "olive": 8
     },
     "consumes": {
-      "fuel": 6,
-      "grain": 6,
-      "wine": 4
+      "grain": 8,
+      "fuel": 7,
+      "crafts": 6,
+      "cheese": 5
     },
     "unlock": {
-      "cost": 250,
-      "tp": 50,
+      "cost": 1650,
+      "tp": 560,
       "requiresConnectedTo": [
         "samos",
-        "lesbos"
+        "tinos"
       ]
     },
-    "tourismBase": 0.5,
+    "tourismBase": 0.78,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 11
   },
   {
     "id": "lesbos",
@@ -461,14 +479,16 @@
     },
     "population": 86000,
     "produces": {
-      "olive_oil": 15,
-      "fish": 8,
-      "cheese": 7
+      "olive_oil": 16,
+      "olive": 10,
+      "fish": 9,
+      "cheese": 8
     },
     "consumes": {
-      "fuel": 8,
+      "fuel": 9,
+      "grain": 8,
       "wine": 5,
-      "crafts": 5
+      "marble": 5
     },
     "unlock": {
       "cost": 280,
@@ -480,7 +500,7 @@
     },
     "tourismBase": 0.5,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 12
   },
   {
     "id": "lemnos",
@@ -502,14 +522,15 @@
     },
     "population": 17000,
     "produces": {
-      "grain": 11,
-      "cheese": 6,
-      "fish": 5
+      "grain": 14,
+      "cheese": 8,
+      "wine": 7
     },
     "consumes": {
-      "fuel": 4,
-      "produce": 4,
-      "crafts": 3
+      "water": 5,
+      "fuel": 5,
+      "olive_oil": 5,
+      "crafts": 4
     },
     "unlock": {
       "cost": 260,
@@ -520,7 +541,7 @@
     },
     "tourismBase": 0.45,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 13
   },
   {
     "id": "hydra",
@@ -542,13 +563,14 @@
     },
     "population": 2000,
     "produces": {
-      "crafts": 5,
-      "fish": 3
+      "crafts": 7,
+      "fish": 4
     },
     "consumes": {
-      "water": 5,
-      "fuel": 2,
-      "grain": 2
+      "water": 6,
+      "grain": 4,
+      "olive_oil": 3,
+      "produce": 3
     },
     "unlock": {
       "cost": 100,
@@ -559,7 +581,7 @@
     },
     "tourismBase": 0.85,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 14
   },
   {
     "id": "piraeus",
@@ -581,29 +603,31 @@
     },
     "population": 450000,
     "produces": {
-      "fuel": 20,
-      "crafts": 15
+      "fuel": 25,
+      "crafts": 20
     },
     "consumes": {
-      "grain": 16,
-      "olive_oil": 14,
-      "wine": 12,
-      "fish": 10,
-      "cheese": 8,
+      "grain": 18,
+      "olive_oil": 16,
+      "wine": 14,
+      "fish": 12,
+      "cheese": 10,
       "produce": 10,
-      "marble": 8
+      "honey": 8,
+      "marble": 8,
+      "mastic": 6
     },
     "unlock": {
-      "cost": 500,
-      "tp": 100,
+      "cost": 1850,
+      "tp": 620,
       "requiresConnectedTo": [
         "syros",
         "hydra"
       ]
     },
-    "tourismBase": 0.6,
+    "tourismBase": 0.7,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 15
   },
   {
     "id": "izmir",
@@ -625,29 +649,30 @@
     },
     "population": 600000,
     "produces": {
-      "fuel": 25,
-      "grain": 18,
-      "produce": 15
+      "fuel": 26,
+      "grain": 22,
+      "produce": 18
     },
     "consumes": {
+      "olive_oil": 14,
       "wine": 12,
-      "olive_oil": 10,
-      "marble": 9,
+      "marble": 10,
+      "cheese": 10,
+      "sponges": 8,
       "mastic": 8,
-      "fish": 8,
-      "crafts": 7
+      "crafts": 8
     },
     "unlock": {
-      "cost": 600,
-      "tp": 120,
+      "cost": 2500,
+      "tp": 800,
       "requiresConnectedTo": [
         "chios",
         "samos"
       ]
     },
-    "tourismBase": 0.5,
+    "tourismBase": 0.6,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 16
   },
   {
     "id": "tinos",
@@ -669,18 +694,19 @@
     },
     "population": 8600,
     "produces": {
-      "marble": 6,
-      "crafts": 4,
-      "cheese": 3
+      "marble": 8,
+      "crafts": 6,
+      "produce": 5
     },
     "consumes": {
-      "water": 4,
+      "water": 5,
+      "grain": 4,
       "fuel": 3,
-      "grain": 3
+      "olive_oil": 3
     },
     "unlock": {
-      "cost": 80,
-      "tp": 15,
+      "cost": 1100,
+      "tp": 400,
       "requiresConnectedTo": [
         "syros",
         "mykonos"
@@ -688,7 +714,7 @@
     },
     "tourismBase": 0.6,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 17
   },
   {
     "id": "andros",
@@ -710,14 +736,14 @@
     },
     "population": 9200,
     "produces": {
-      "water": 8,
-      "olive_oil": 4,
-      "fish": 3
+      "water": 9,
+      "olive_oil": 6,
+      "honey": 4
     },
     "consumes": {
+      "grain": 5,
       "fuel": 4,
-      "grain": 4,
-      "wine": 2
+      "wine": 3
     },
     "unlock": {
       "cost": 100,
@@ -728,7 +754,7 @@
     },
     "tourismBase": 0.5,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 18
   },
   {
     "id": "sifnos",
@@ -750,13 +776,15 @@
     },
     "population": 2600,
     "produces": {
-      "crafts": 6,
-      "cheese": 3
+      "crafts": 8,
+      "cheese": 5,
+      "honey": 4
     },
     "consumes": {
-      "water": 3,
-      "fuel": 2,
-      "grain": 2
+      "water": 4,
+      "grain": 4,
+      "olive_oil": 3,
+      "fish": 3
     },
     "unlock": {
       "cost": 70,
@@ -768,7 +796,7 @@
     },
     "tourismBase": 0.7,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 19
   },
   {
     "id": "serifos",
@@ -790,13 +818,15 @@
     },
     "population": 1400,
     "produces": {
-      "marble": 4,
-      "wine": 2
+      "honey": 6,
+      "wine": 4,
+      "fish": 3
     },
     "consumes": {
-      "water": 3,
-      "fuel": 2,
-      "grain": 2
+      "water": 4,
+      "grain": 3,
+      "fuel": 3,
+      "cheese": 2
     },
     "unlock": {
       "cost": 65,
@@ -808,7 +838,7 @@
     },
     "tourismBase": 0.55,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 20
   },
   {
     "id": "kythnos",
@@ -830,13 +860,15 @@
     },
     "population": 1500,
     "produces": {
-      "cheese": 3,
-      "fish": 2
+      "honey": 8,
+      "cheese": 5,
+      "fish": 3
     },
     "consumes": {
-      "water": 3,
-      "fuel": 2,
-      "grain": 2
+      "water": 4,
+      "grain": 3,
+      "olive_oil": 3,
+      "fuel": 2
     },
     "unlock": {
       "cost": 60,
@@ -848,7 +880,7 @@
     },
     "tourismBase": 0.5,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 21
   },
   {
     "id": "kea",
@@ -870,13 +902,14 @@
     },
     "population": 2500,
     "produces": {
-      "cheese": 4,
-      "wine": 3
+      "honey": 6,
+      "cheese": 5,
+      "olive_oil": 4
     },
     "consumes": {
-      "fuel": 3,
-      "grain": 3,
-      "water": 2
+      "grain": 4,
+      "water": 3,
+      "fuel": 3
     },
     "unlock": {
       "cost": 75,
@@ -888,7 +921,7 @@
     },
     "tourismBase": 0.55,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 22
   },
   {
     "id": "ios",
@@ -910,17 +943,19 @@
     },
     "population": 2000,
     "produces": {
-      "cheese": 4,
-      "fish": 3
+      "cheese": 6,
+      "honey": 5,
+      "fish": 4
     },
     "consumes": {
-      "water": 4,
-      "fuel": 2,
-      "wine": 2
+      "water": 5,
+      "grain": 4,
+      "fuel": 3,
+      "wine": 3
     },
     "unlock": {
-      "cost": 70,
-      "tp": 15,
+      "cost": 220,
+      "tp": 45,
       "requiresConnectedTo": [
         "santorini",
         "naxos"
@@ -928,7 +963,7 @@
     },
     "tourismBase": 0.8,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 23
   },
   {
     "id": "amorgos",
@@ -950,25 +985,26 @@
     },
     "population": 2000,
     "produces": {
-      "olive_oil": 3,
-      "crafts": 3,
-      "fish": 3
+      "wine": 6,
+      "honey": 6,
+      "cheese": 4
     },
     "consumes": {
-      "water": 3,
-      "grain": 3,
-      "fuel": 2
+      "water": 5,
+      "grain": 4,
+      "olive_oil": 3,
+      "fuel": 3
     },
     "unlock": {
-      "cost": 90,
-      "tp": 20,
+      "cost": 650,
+      "tp": 200,
       "requiresConnectedTo": [
         "naxos"
       ]
     },
     "tourismBase": 0.65,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 24
   },
   {
     "id": "karpathos",
@@ -990,14 +1026,14 @@
     },
     "population": 6500,
     "produces": {
-      "fish": 5,
-      "olive_oil": 4,
-      "crafts": 3
+      "honey": 7,
+      "olive_oil": 6,
+      "cheese": 5
     },
     "consumes": {
-      "fuel": 4,
-      "grain": 4,
-      "water": 3
+      "grain": 5,
+      "water": 5,
+      "fuel": 4
     },
     "unlock": {
       "cost": 160,
@@ -1009,7 +1045,7 @@
     },
     "tourismBase": 0.6,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 25
   },
   {
     "id": "kalymnos",
@@ -1031,13 +1067,15 @@
     },
     "population": 16000,
     "produces": {
-      "sponges": 8,
-      "fish": 6
+      "sponges": 12,
+      "fish": 8,
+      "honey": 7
     },
     "consumes": {
-      "water": 5,
-      "fuel": 4,
-      "grain": 4
+      "grain": 8,
+      "water": 7,
+      "fuel": 6,
+      "olive_oil": 6
     },
     "unlock": {
       "cost": 130,
@@ -1048,7 +1086,7 @@
     },
     "tourismBase": 0.55,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 26
   },
   {
     "id": "patmos",
@@ -1070,13 +1108,15 @@
     },
     "population": 3000,
     "produces": {
-      "crafts": 5,
-      "fish": 3
+      "crafts": 7,
+      "cheese": 5,
+      "honey": 4
     },
     "consumes": {
-      "water": 4,
-      "fuel": 2,
-      "produce": 2
+      "water": 5,
+      "grain": 4,
+      "olive_oil": 4,
+      "wine": 3
     },
     "unlock": {
       "cost": 110,
@@ -1088,7 +1128,7 @@
     },
     "tourismBase": 0.75,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 27
   },
   {
     "id": "ikaria",
@@ -1110,12 +1150,14 @@
     },
     "population": 8400,
     "produces": {
-      "wine": 6,
-      "fish": 4
+      "honey": 9,
+      "wine": 7,
+      "produce": 5
     },
     "consumes": {
-      "fuel": 3,
-      "grain": 3,
+      "grain": 5,
+      "fuel": 4,
+      "fish": 4,
       "water": 3
     },
     "unlock": {
@@ -1128,7 +1170,7 @@
     },
     "tourismBase": 0.5,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 28
   },
   {
     "id": "thasos",
@@ -1150,14 +1192,15 @@
     },
     "population": 13800,
     "produces": {
-      "marble": 8,
-      "olive_oil": 6,
-      "fish": 4
+      "olive": 10,
+      "marble": 9,
+      "honey": 7,
+      "olive_oil": 6
     },
     "consumes": {
-      "fuel": 4,
-      "grain": 4,
-      "wine": 3
+      "fuel": 5,
+      "grain": 5,
+      "cheese": 4
     },
     "unlock": {
       "cost": 200,
@@ -1169,7 +1212,7 @@
     },
     "tourismBase": 0.5,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 29
   },
   {
     "id": "samothrace",
@@ -1191,13 +1234,14 @@
     },
     "population": 2800,
     "produces": {
-      "water": 6,
-      "fish": 4
+      "water": 9,
+      "cheese": 6,
+      "honey": 5
     },
     "consumes": {
-      "fuel": 3,
-      "grain": 3,
-      "produce": 2
+      "fuel": 4,
+      "grain": 4,
+      "wine": 3
     },
     "unlock": {
       "cost": 180,
@@ -1208,7 +1252,7 @@
     },
     "tourismBase": 0.45,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 30
   },
   {
     "id": "skiathos",
@@ -1230,12 +1274,13 @@
     },
     "population": 6600,
     "produces": {
-      "olive_oil": 4,
+      "olive_oil": 6,
+      "wine": 5,
       "fish": 4
     },
     "consumes": {
-      "fuel": 3,
-      "grain": 3,
+      "grain": 4,
+      "fuel": 4,
       "water": 3
     },
     "unlock": {
@@ -1247,7 +1292,7 @@
     },
     "tourismBase": 0.75,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 31
   },
   {
     "id": "skopelos",
@@ -1269,13 +1314,14 @@
     },
     "population": 4900,
     "produces": {
-      "produce": 5,
-      "olive_oil": 5
+      "produce": 8,
+      "olive_oil": 7,
+      "wine": 5
     },
     "consumes": {
-      "fuel": 3,
-      "grain": 3,
-      "water": 2
+      "grain": 4,
+      "fuel": 4,
+      "water": 3
     },
     "unlock": {
       "cost": 100,
@@ -1287,7 +1333,7 @@
     },
     "tourismBase": 0.65,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 32
   },
   {
     "id": "skyros",
@@ -1309,13 +1355,14 @@
     },
     "population": 3000,
     "produces": {
-      "crafts": 4,
-      "cheese": 3
+      "crafts": 7,
+      "cheese": 5,
+      "fish": 4
     },
     "consumes": {
-      "fuel": 2,
-      "grain": 2,
-      "water": 2
+      "grain": 4,
+      "water": 3,
+      "fuel": 3
     },
     "unlock": {
       "cost": 95,
@@ -1327,7 +1374,7 @@
     },
     "tourismBase": 0.5,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 33
   },
   {
     "id": "spetses",
@@ -1349,13 +1396,14 @@
     },
     "population": 4000,
     "produces": {
-      "crafts": 4,
-      "fish": 3
+      "crafts": 5,
+      "fish": 4,
+      "olive_oil": 4
     },
     "consumes": {
-      "water": 4,
-      "fuel": 2,
-      "grain": 2
+      "water": 5,
+      "grain": 3,
+      "fuel": 3
     },
     "unlock": {
       "cost": 85,
@@ -1366,7 +1414,7 @@
     },
     "tourismBase": 0.75,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 34
   },
   {
     "id": "gokceada",
@@ -1388,13 +1436,14 @@
     },
     "population": 9500,
     "produces": {
-      "olive_oil": 5,
-      "fish": 4
+      "olive_oil": 7,
+      "water": 6,
+      "honey": 5
     },
     "consumes": {
-      "fuel": 3,
-      "grain": 3,
-      "water": 2
+      "fuel": 4,
+      "grain": 4,
+      "crafts": 3
     },
     "unlock": {
       "cost": 140,
@@ -1406,7 +1455,7 @@
     },
     "tourismBase": 0.45,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 35
   },
   {
     "id": "bozcaada",
@@ -1428,13 +1477,15 @@
     },
     "population": 3100,
     "produces": {
-      "wine": 7,
-      "fish": 3
+      "wine": 9,
+      "produce": 6,
+      "fish": 4
     },
     "consumes": {
-      "fuel": 2,
-      "grain": 2,
-      "water": 2
+      "water": 5,
+      "grain": 4,
+      "fuel": 3,
+      "olive_oil": 3
     },
     "unlock": {
       "cost": 120,
@@ -1445,7 +1496,7 @@
     },
     "tourismBase": 0.6,
     "country": "Greece",
-    "maskId": 0
+    "maskId": 36
   },
   {
     "id": "delos",
@@ -1472,13 +1523,15 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "crafts": 3
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 4,
+      "produce": 3,
+      "grain": 2,
+      "fish": 2
     },
-    "maskId": 0
+    "maskId": 37
   },
   {
     "id": "rinia",
@@ -1505,13 +1558,14 @@
     "country": "Greece",
     "population": 450,
     "produces": {
+      "cheese": 4,
       "fish": 3
     },
     "consumes": {
       "water": 3,
       "grain": 2
     },
-    "maskId": 0
+    "maskId": 38
   },
   {
     "id": "antiparos",
@@ -1519,7 +1573,7 @@
     "tier": 3,
     "type": "island",
     "region": "cyclades",
-    "lat": 37.0,
+    "lat": 37,
     "lon": 25.05,
     "peak": {
       "lat": 37.002,
@@ -1538,13 +1592,16 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "fish": 4,
+      "crafts": 3
     },
     "consumes": {
-      "water": 3,
+      "water": 4,
+      "produce": 3,
+      "fuel": 2,
       "grain": 2
     },
-    "maskId": 0
+    "maskId": 39
   },
   {
     "id": "kimolos",
@@ -1571,13 +1628,16 @@
     "country": "Greece",
     "population": 450,
     "produces": {
+      "produce": 4,
+      "cheese": 3,
       "fish": 3
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 4,
+      "grain": 3,
+      "fuel": 2
     },
-    "maskId": 0
+    "maskId": 40
   },
   {
     "id": "folegandros",
@@ -1604,13 +1664,17 @@
     "country": "Greece",
     "population": 450,
     "produces": {
+      "cheese": 5,
+      "honey": 3,
       "fish": 3
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 4,
+      "grain": 3,
+      "olive_oil": 3,
+      "fuel": 2
     },
-    "maskId": 0
+    "maskId": 41
   },
   {
     "id": "sikinos",
@@ -1637,13 +1701,16 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "wine": 5,
+      "honey": 4,
+      "cheese": 3
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 4,
+      "grain": 3,
+      "fuel": 2
     },
-    "maskId": 0
+    "maskId": 42
   },
   {
     "id": "anafi",
@@ -1670,13 +1737,15 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "honey": 4,
+      "fish": 3,
+      "cheese": 2
     },
     "consumes": {
       "water": 3,
       "grain": 2
     },
-    "maskId": 0
+    "maskId": 43
   },
   {
     "id": "koufonisia",
@@ -1703,13 +1772,16 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "fish": 6,
+      "produce": 3
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 4,
+      "grain": 3,
+      "fuel": 3,
+      "cheese": 2
     },
-    "maskId": 0
+    "maskId": 44
   },
   {
     "id": "schinoussa",
@@ -1736,13 +1808,16 @@
     "country": "Greece",
     "population": 450,
     "produces": {
+      "produce": 6,
+      "cheese": 3,
       "fish": 3
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 4,
+      "grain": 3,
+      "fuel": 2
     },
-    "maskId": 0
+    "maskId": 45
   },
   {
     "id": "iraklia",
@@ -1769,13 +1844,16 @@
     "country": "Greece",
     "population": 450,
     "produces": {
+      "honey": 5,
+      "cheese": 4,
       "fish": 3
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 4,
+      "grain": 3,
+      "fuel": 2
     },
-    "maskId": 0
+    "maskId": 46
   },
   {
     "id": "donoussa",
@@ -1802,13 +1880,15 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "honey": 4,
+      "fish": 4
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 4,
+      "grain": 3,
+      "fuel": 2
     },
-    "maskId": 0
+    "maskId": 47
   },
   {
     "id": "gyaros",
@@ -1839,9 +1919,9 @@
     },
     "consumes": {
       "water": 3,
-      "grain": 2
+      "fuel": 2
     },
-    "maskId": 0
+    "maskId": 48
   },
   {
     "id": "leros",
@@ -1868,13 +1948,16 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "fish": 6,
+      "produce": 5,
+      "honey": 4
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "grain": 5,
+      "water": 4,
+      "fuel": 4
     },
-    "maskId": 0
+    "maskId": 49
   },
   {
     "id": "lipsi",
@@ -1901,13 +1984,16 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "wine": 6,
+      "honey": 5,
+      "cheese": 4
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 4,
+      "grain": 3,
+      "fuel": 3
     },
-    "maskId": 0
+    "maskId": 50
   },
   {
     "id": "astypalea",
@@ -1934,13 +2020,17 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "honey": 8,
+      "cheese": 6,
+      "fish": 4
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 5,
+      "grain": 4,
+      "fuel": 3,
+      "olive_oil": 3
     },
-    "maskId": 0
+    "maskId": 51
   },
   {
     "id": "symi",
@@ -1967,13 +2057,17 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "sponges": 8,
+      "fish": 7,
+      "crafts": 5
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 6,
+      "grain": 4,
+      "olive_oil": 4,
+      "produce": 3
     },
-    "maskId": 0
+    "maskId": 52
   },
   {
     "id": "tilos",
@@ -2000,13 +2094,16 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "honey": 5,
+      "cheese": 4,
+      "produce": 4
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 4,
+      "grain": 3,
+      "fuel": 2
     },
-    "maskId": 0
+    "maskId": 53
   },
   {
     "id": "nisyros",
@@ -2033,13 +2130,16 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "produce": 5,
+      "cheese": 4,
+      "crafts": 4
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 4,
+      "grain": 3,
+      "olive_oil": 3
     },
-    "maskId": 0
+    "maskId": 54
   },
   {
     "id": "chalki",
@@ -2066,13 +2166,16 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "fish": 5,
+      "honey": 4,
+      "crafts": 4
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 4,
+      "grain": 3,
+      "fuel": 3
     },
-    "maskId": 0
+    "maskId": 55
   },
   {
     "id": "kasos",
@@ -2099,13 +2202,16 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "cheese": 7,
+      "fish": 4,
+      "honey": 4
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 4,
+      "grain": 4,
+      "fuel": 3
     },
-    "maskId": 0
+    "maskId": 56
   },
   {
     "id": "fourni",
@@ -2132,13 +2238,15 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "fish": 8,
+      "honey": 5
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 5,
+      "grain": 4,
+      "fuel": 4
     },
-    "maskId": 0
+    "maskId": 57
   },
   {
     "id": "psara",
@@ -2165,13 +2273,15 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "fish": 5,
+      "honey": 4
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 4,
+      "grain": 3,
+      "fuel": 3
     },
-    "maskId": 0
+    "maskId": 58
   },
   {
     "id": "agios_efstratios",
@@ -2198,13 +2308,15 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "cheese": 5,
+      "fish": 4
     },
     "consumes": {
+      "grain": 3,
       "water": 3,
-      "grain": 2
+      "fuel": 2
     },
-    "maskId": 0
+    "maskId": 59
   },
   {
     "id": "alonnisos",
@@ -2231,13 +2343,16 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "fish": 8,
+      "olive_oil": 5,
+      "honey": 4
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "grain": 4,
+      "fuel": 3,
+      "water": 3
     },
-    "maskId": 0
+    "maskId": 60
   },
   {
     "id": "poros",
@@ -2264,13 +2379,16 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "produce": 7,
+      "fish": 5,
+      "olive_oil": 4
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "grain": 4,
+      "fuel": 3,
+      "water": 3
     },
-    "maskId": 0
+    "maskId": 61
   },
   {
     "id": "aegina",
@@ -2297,13 +2415,17 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "produce": 9,
+      "crafts": 5,
+      "fish": 4
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 6,
+      "grain": 4,
+      "fuel": 3,
+      "olive_oil": 3
     },
-    "maskId": 0
+    "maskId": 62
   },
   {
     "id": "kastellorizo",
@@ -2330,12 +2452,15 @@
     "country": "Greece",
     "population": 450,
     "produces": {
-      "fish": 3
+      "fish": 5,
+      "crafts": 4
     },
     "consumes": {
-      "water": 3,
-      "grain": 2
+      "water": 5,
+      "grain": 3,
+      "fuel": 3,
+      "produce": 3
     },
-    "maskId": 0
+    "maskId": 63
   }
 ]

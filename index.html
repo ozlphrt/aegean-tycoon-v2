@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aegean Tycoon — Rebirth of the Archipelago</title>
     <meta name="description" content="A 3D simulation of maritime commerce across the Aegean Sea, awakening from night into daylight." />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛵</text></svg>" />
     <!-- Google Fonts: Outfit & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,112 +27,324 @@
       <header id="top-bar" class="glass-panel">
         <div class="brand-section">
           <span class="brand-badge">AEGEAN</span>
-          <h1 id="brand-title">Aegean Tycoon</h1>
+          <h1 id="brand-title">Tycoon</h1>
           <span id="version-tag" class="subtle-tag">v2.0 Pre-Alpha</span>
         </div>
 
         <div class="metrics-section">
-          <div class="metric-chip" id="metric-treasury" title="Company Treasury">
-            <span class="metric-icon">🪙</span>
-            <span class="metric-label">Treasury</span>
+          <div class="metric-chip" id="metric-treasury" title="Company Treasury (Drachmas)">
+            <span class="metric-icon" data-icon="drachma" data-icon-size="24">🪙</span>
+            <span class="metric-label" data-i18n="metric.treasury">Treasury</span>
             <span class="metric-value" id="val-treasury">500 d</span>
           </div>
 
-          <div class="metric-chip" id="metric-trade-points" title="Trade Points earned through commerce">
-            <span class="metric-icon">⭐</span>
-            <span class="metric-label">Trade Pts</span>
+          <div class="metric-chip" id="metric-trade-points" title="Trade Points earned through commerce (Olympic Laurel Wreath)">
+            <span class="metric-icon" data-icon="laurel" data-icon-size="24">⭐</span>
+            <span class="metric-label" data-i18n="metric.tradePoints">Trade Pts</span>
             <span class="metric-value" id="val-tp">0 TP</span>
           </div>
 
-          <div class="metric-chip" id="metric-islands" title="Connected / Total Islands">
-            <span class="metric-icon">🏝️</span>
-            <span class="metric-label">Archipelago</span>
+          <div class="metric-chip metric-chip-clickable" id="metric-islands" title="Aegean Archipelago Directory & Island Intelligence (Click to inspect all islands, populations & economic opportunities)">
+            <span class="metric-icon" data-icon="archipelago" data-icon-size="24">🏝️</span>
+            <span class="metric-label" data-i18n="metric.archipelago">Archipelago</span>
             <span class="metric-value" id="val-islands">2 / 52</span>
           </div>
         </div>
 
-        <div class="time-controls-section">
-          <div class="clock-display" id="clock-display">
-            <span id="game-date">May 1, 2026</span>
-            <span id="game-time">08:00</span>
+        <!-- Top Search Bar for Islands & Vessels -->
+        <div class="top-search-section" id="top-search-container">
+          <div class="top-search-input-wrap">
+            <span class="top-search-icon">🔍</span>
+            <input
+              type="text"
+              id="top-search-input"
+              class="top-search-input"
+              placeholder="Search island, good or vessel... (Press /)"
+              data-i18n-placeholder="search.placeholder"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <kbd class="top-search-kbd" id="top-search-kbd-hint">/</kbd>
+            <button id="btn-top-search-clear" class="btn-top-search-clear" style="display: none;" title="Clear search">✕</button>
           </div>
-          <div class="btn-group" id="speed-controls" role="group" aria-label="Game Speed Controls">
-            <button id="btn-speed-pause" class="btn-icon" title="Pause (Space)">⏸</button>
-            <button id="btn-speed-1x" class="btn-icon active" title="Normal 1x (1)">1x</button>
-            <button id="btn-speed-4x" class="btn-icon" title="Fast 4x (2)">4x</button>
-            <button id="btn-speed-16x" class="btn-icon" title="Ultra 16x (3)">16x</button>
+          <!-- Dropdown Results Floating Menu -->
+          <div id="top-search-dropdown" class="top-search-dropdown closed">
+            <div class="top-search-filter-pills" id="top-search-filter-pills">
+              <button class="top-search-filter-pill active" data-filter="all" data-i18n="search.all">All</button>
+              <button class="top-search-filter-pill" data-filter="islands"><span data-i18n="search.islands">🏝️ Islands</span> (<span id="search-count-islands">0</span>)</button>
+              <button class="top-search-filter-pill" data-filter="vessels"><span data-i18n="search.vessels">⛵ Vessels</span> (<span id="search-count-vessels">0</span>)</button>
+            </div>
+            <div id="top-search-results-list" class="top-search-results-list"></div>
           </div>
-          <button id="btn-top-settings" class="btn-icon" title="Display & Graphics Settings (S)">⚙️</button>
         </div>
+
+        <div class="time-controls-section">
+          <!-- Language Selector (English/US, Greek, Turkish) -->
+          <div class="lang-selector-wrap" id="top-lang-selector" data-no-tooltip="true">
+            <button class="btn-lang-toggle" id="btn-lang-toggle" aria-haspopup="true" aria-expanded="false" data-no-tooltip="true">
+              <span class="lang-flag" id="lang-active-flag">
+                <svg class="flag-icon" viewBox="0 0 190 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="190" height="130" fill="#b22234"/><path stroke="#ffffff" stroke-width="10" d="M0,15h190 M0,35h190 M0,55h190 M0,75h190 M0,95h190 M0,115h190"/><rect width="76" height="70" fill="#3c3b6e"/><g fill="#ffffff"><circle cx="12" cy="10" r="3"/><circle cx="27" cy="10" r="3"/><circle cx="42" cy="10" r="3"/><circle cx="57" cy="10" r="3"/><circle cx="68" cy="10" r="3"/><circle cx="20" cy="22" r="3"/><circle cx="35" cy="22" r="3"/><circle cx="50" cy="22" r="3"/><circle cx="63" cy="22" r="3"/><circle cx="12" cy="35" r="3"/><circle cx="27" cy="35" r="3"/><circle cx="42" cy="35" r="3"/><circle cx="57" cy="35" r="3"/><circle cx="68" cy="35" r="3"/><circle cx="20" cy="48" r="3"/><circle cx="35" cy="48" r="3"/><circle cx="50" cy="48" r="3"/><circle cx="63" cy="48" r="3"/><circle cx="12" cy="60" r="3"/><circle cx="27" cy="60" r="3"/><circle cx="42" cy="60" r="3"/><circle cx="57" cy="60" r="3"/><circle cx="68" cy="60" r="3"/></g></svg>
+              </span>
+              <span class="lang-code" id="lang-active-code">EN</span>
+              <span class="lang-arrow">▾</span>
+            </button>
+            <div class="lang-dropdown closed" id="lang-dropdown" data-no-tooltip="true">
+              <button class="lang-option active" data-lang="en" data-no-tooltip="true">
+                <span class="lang-option-flag">
+                  <svg class="flag-icon" viewBox="0 0 190 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="190" height="130" fill="#b22234"/><path stroke="#ffffff" stroke-width="10" d="M0,15h190 M0,35h190 M0,55h190 M0,75h190 M0,95h190 M0,115h190"/><rect width="76" height="70" fill="#3c3b6e"/><g fill="#ffffff"><circle cx="12" cy="10" r="3"/><circle cx="27" cy="10" r="3"/><circle cx="42" cy="10" r="3"/><circle cx="57" cy="10" r="3"/><circle cx="68" cy="10" r="3"/><circle cx="20" cy="22" r="3"/><circle cx="35" cy="22" r="3"/><circle cx="50" cy="22" r="3"/><circle cx="63" cy="22" r="3"/><circle cx="12" cy="35" r="3"/><circle cx="27" cy="35" r="3"/><circle cx="42" cy="35" r="3"/><circle cx="57" cy="35" r="3"/><circle cx="68" cy="35" r="3"/><circle cx="20" cy="48" r="3"/><circle cx="35" cy="48" r="3"/><circle cx="50" cy="48" r="3"/><circle cx="63" cy="48" r="3"/><circle cx="12" cy="60" r="3"/><circle cx="27" cy="60" r="3"/><circle cx="42" cy="60" r="3"/><circle cx="57" cy="60" r="3"/><circle cx="68" cy="60" r="3"/></g></svg>
+                </span>
+                <span class="lang-option-name">English</span>
+                <span class="lang-option-code">EN</span>
+              </button>
+              <button class="lang-option" data-lang="el" data-no-tooltip="true">
+                <span class="lang-option-flag">
+                  <svg class="flag-icon" viewBox="0 0 190 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="190" height="130" fill="#0d5eaf"/><path stroke="#ffffff" stroke-width="14.44" d="M0,21.67h190 M0,50.56h190 M0,79.44h190 M0,108.33h190"/><rect width="72.22" height="72.22" fill="#0d5eaf"/><path fill="#ffffff" d="M28.89,0h14.44v72.22h-14.44z M0,28.89h72.22v14.44h-72.22z"/></svg>
+                </span>
+                <span class="lang-option-name">Ελληνικά</span>
+                <span class="lang-option-code">ΕΛ</span>
+              </button>
+              <button class="lang-option" data-lang="tr" data-no-tooltip="true">
+                <span class="lang-option-flag">
+                  <svg class="flag-icon" viewBox="0 0 190 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="190" height="130" fill="#e30a17"/><circle cx="76" cy="65" r="39" fill="#ffffff"/><circle cx="86" cy="65" r="31.2" fill="#e30a17"/><polygon points="106,65 125,71.5 113.5,55.5 113.5,74.5 125,58.5" fill="#ffffff"/></svg>
+                </span>
+                <span class="lang-option-name">Türkçe</span>
+                <span class="lang-option-code">TR</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="btn-group" id="speed-controls" role="group" aria-label="Game Speed Controls">
+            <button id="btn-speed-pause" class="btn-icon" title="Pause (Space)" data-icon="pause" data-icon-size="18" data-i18n-title="time.pause">⏸</button>
+            <button id="btn-speed-1x" class="btn-icon active" title="Normal 1x (1)" data-icon="speed-1x" data-icon-size="18" data-i18n-title="time.1x">1x</button>
+            <button id="btn-speed-4x" class="btn-icon" title="Fast 4x (2)" data-icon="speed-4x" data-icon-size="18" data-i18n-title="time.4x">4x</button>
+            <button id="btn-speed-16x" class="btn-icon" title="Ultra 16x (3)" data-icon="speed-16x" data-icon-size="18" data-i18n-title="time.16x">16x</button>
+          </div>
+          <button id="btn-top-fleet" class="btn-icon" title="Fleet Management & Navigator's Guide (V)" data-i18n-title="nav.fleet" data-icon="fleet" data-icon-size="26">🏛️</button>
+          <button id="btn-top-settings" class="btn-icon" title="Display, Audio & Game Settings (S)" data-i18n-title="nav.settings" data-icon="settings" data-icon-size="26">⚙️</button>
       </header>
 
+      <!-- 5-Minute Executive Preview HUD Countdown Bar -->
+      <div id="preview-hud-bar" class="preview-hud-bar hidden">
+        <div class="preview-hud-left">
+          <span class="preview-hud-badge">⏱️ 5-MIN PREVIEW</span>
+          <span class="preview-hud-timer" id="preview-timer-display">05:00</span>
+        </div>
+        <div class="preview-hud-center">
+          <span>15 Ports Awakened • 8 Commercial Vessels Sailing</span>
+        </div>
+        <div class="preview-hud-right">
+          <button id="btn-preview-early-reset" class="btn-preview-reset" title="Skip remaining preview and start your clean slate empire now">
+            ⚡ Start My Own Empire
+          </button>
+        </div>
+      </div>
+
       <!-- Left Inspector Panel (Island & Route Detail) -->
-      <aside id="inspector-panel" class="glass-panel closed">
+      <aside id="inspector-panel" class="glass-panel">
         <div class="panel-header">
           <div class="island-title-row">
             <h2 id="inspector-title">Naxos Port</h2>
             <div class="header-tag-group">
               <span id="inspector-status-badge" class="badge-connected">Daylight • Connected</span>
-              <button id="btn-close-inspector" class="btn-icon btn-panel-close" title="Close Panel (Esc)">✕</button>
+              <button id="btn-close-inspector" class="btn-icon btn-panel-close" title="Close Panel (Esc)" data-i18n-title="inspector.close">✕</button>
             </div>
           </div>
           <p id="inspector-subtitle" class="subtle-text">Cyclades • Population: 19,000</p>
         </div>
 
         <div class="panel-content" id="inspector-body">
-          <div class="section-block">
-            <h3 class="section-title">Production & Exports</h3>
-            <div class="good-pill-list" id="inspector-produces">
-              <span class="good-pill producer" title="Exports Grain">🌾 Grain <strong class="good-rate">+8/d</strong></span>
-              <span class="good-pill producer" title="Exports Cheese">🧀 Cheese <strong class="good-rate">+6/d</strong></span>
-              <span class="good-pill producer" title="Exports Fresh Water">💧 Water <strong class="good-rate">+5/d</strong></span>
-            </div>
-          </div>
+          <!-- Active Island Festival / Market Boom Banner -->
+          <div id="inspector-festival-banner" class="inspector-festival-banner" style="display: none;"></div>
 
-          <div class="section-block">
-            <h3 class="section-title">Imports & Demand</h3>
-            <div class="good-pill-list" id="inspector-consumes">
-              <span class="good-pill consumer" title="Needs Fuel">⛽ Fuel <strong class="good-rate">-4/d</strong></span>
-              <span class="good-pill consumer" title="Needs Wine">🍷 Wine <strong class="good-rate">-2/d</strong></span>
-              <span class="good-pill consumer" title="Needs Crafts">🏺 Crafts <strong class="good-rate">-3/d</strong></span>
-            </div>
-          </div>
-
-          <div class="section-block">
-            <h3 class="section-title">Active Routes & Vessels</h3>
-            <div id="inspector-routes" class="route-list">
-              <div class="route-card" id="route-naxos-santorini">
-                <span class="route-icon">⛵</span>
-                <div class="route-info">
-                  <div class="route-name">Naxos ↔ Santorini</div>
-                  <div class="route-meta">1 Fishing Boat • Carrying Grain</div>
-                </div>
-                <span class="route-profit positive">+18 d/trip</span>
+          <!-- Island Prosperity Block -->
+          <div class="section-block" id="inspector-prosperity-block">
+            <div class="island-metrics-row">
+              <span class="section-title" data-i18n="inspector.prosperity">Island Prosperity</span>
+              <div class="prosperity-actions-wrap">
+                <button id="btn-island-advisory" class="btn-advisory-pill" title="View Economic Recommendations & Strategy Report" data-i18n-title="inspector.report.title">
+                  <span class="advisory-btn-icon">📊</span> <span data-i18n="inspector.report">Report</span>
+                </button>
+                <span id="inspector-prosperity-val" class="prosperity-badge">85% Booming</span>
               </div>
             </div>
+            <div class="prosperity-bar-container">
+              <div id="inspector-prosperity-bar" class="prosperity-bar-fill" style="--prosperity-pct: 85%; clip-path: inset(0 15% 0 0);"></div>
+            </div>
           </div>
-        </div>
 
-        <div class="panel-actions">
-          <button id="btn-new-route" class="btn-primary">Establish Route</button>
-          <button id="btn-buy-ship" class="btn-secondary">Commission Vessel</button>
+          <!-- Dual Column Market (Exports vs Imports) -->
+          <div class="market-dual-column" id="inspector-market-block">
+            <div class="market-col" id="market-col-exports">
+              <div class="col-header-row" id="col-header-exports">
+                <span class="sub-col-title" data-i18n="inspector.exports">Exports (+/d)</span>
+                <span class="col-transfer-pill" id="transfer-pill-exports"></span>
+              </div>
+              <div class="good-pill-list" id="inspector-produces"></div>
+            </div>
+
+            <div class="market-col" id="market-col-imports">
+              <div class="col-header-row" id="col-header-imports">
+                <span class="sub-col-title" data-i18n="inspector.imports">Imports (-/d)</span>
+                <span class="col-transfer-pill" id="transfer-pill-imports"></span>
+              </div>
+              <div class="good-pill-list" id="inspector-consumes"></div>
+            </div>
+          </div>
+
+          <!-- Active Routes & Vessels Block (Compact & Visual) -->
+          <div class="section-block" id="inspector-vessels-block">
+            <div class="island-metrics-row vessels-header-row">
+              <div class="vessels-header-left">
+                <span class="section-title" data-i18n="inspector.harborFleet">Fleet & Routes</span>
+                <span id="inspector-fleet-count" class="fleet-count-tag">0</span>
+              </div>
+              <div class="vessels-header-actions">
+                <button id="btn-inspector-fleet-modal" class="btn-inspector-manage-fleet" title="Open Fleet Management Panel filtered to this port">
+                  ⚙️ Manage
+                </button>
+              </div>
+            </div>
+            <!-- Congestion Banner -->
+            <div id="inspector-congestion-banner" class="harbor-congestion-banner" style="display: none;"></div>
+            <!-- Filter & View Controls -->
+            <div id="inspector-vessel-filter-bar" class="vessel-filter-bar" style="display: none;"></div>
+            <!-- Vessel List or Grouped View -->
+            <div id="inspector-routes" class="route-list"></div>
+          </div>
+
+          <!-- Shipyard Commissioning Block -->
+          <div class="section-block" id="inspector-shipyard-block">
+            <div class="island-metrics-row">
+              <span class="section-title" data-i18n="inspector.shipyard">Harbor Shipyard</span>
+              <span id="shipyard-island-tag" class="stat-label">Select Class</span>
+            </div>
+            <div class="shipyard-tier-chips" id="shipyard-tier-chips"></div>
+          </div>
+
+          <!-- Dual Action Buttons for Islands -->
+          <div class="inspector-actions-row" id="inspector-actions-block">
+            <button id="btn-new-route" class="btn-secondary" data-i18n="inspector.awaken.connected">Connected in Daylight</button>
+            <button id="btn-buy-ship" class="btn-primary" title="Commission selected vessel at this port" data-i18n="inspector.commission">⛵ Commission Vessel</button>
+          </div>
+          <div id="inspector-unlock-req-box" class="inspector-unlock-req" style="display: none;"></div>
+
+          <!-- Dedicated Vessel Dossier Block (Shown when a 3D vessel or fleet row is selected) -->
+          <div class="vessel-dossier" id="inspector-ship-block" style="display: none;">
+            <div class="vessel-dossier-voyage">
+              <div class="voyage-header">
+                <span class="voyage-route-title" id="vessel-voyage-title">⛵ Sailing to Naxos</span>
+                <span class="voyage-status-badge sailing" id="vessel-status-tag">Sailing</span>
+              </div>
+              <div class="voyage-progress-bar">
+                <div class="voyage-progress-fill" id="vessel-progress-fill" style="width: 50%;"></div>
+              </div>
+              <div class="voyage-metrics-row">
+                <span id="vessel-distance-txt">14.2 / 28.5 km (50%)</span>
+                <span id="vessel-speed-txt">12.0 knots</span>
+              </div>
+            </div>
+
+            <!-- Cargo payload section -->
+            <div class="section-block" id="vessel-cargo-section">
+              <div class="island-metrics-row">
+                <span class="section-title">Cargo Hold Payload</span>
+                <span id="vessel-cargo-cap" class="prosperity-badge">25 / 25 Cap</span>
+              </div>
+              <div id="vessel-cargo-detail" style="font-size: 0.76rem; color: #f1f5f9; padding: 4px 0;"></div>
+            </div>
+
+            <!-- Trade & Cargo Priority Section -->
+            <div class="section-block" id="vessel-priority-section">
+              <div class="island-metrics-row">
+                <span class="section-title">Cargo Priority Mandate</span>
+                <span id="vessel-home-tag" class="vessel-home-badge">Home: Santorini</span>
+              </div>
+              <select id="vessel-cargo-priority" class="vessel-priority-select" title="Assign priority commodity for this vessel">
+                <option value="auto">⚡ Auto (Maximum Market Profit)</option>
+                <option value="wine">🍷 Volcanic Wine</option>
+                <option value="crafts">🏺 Cycladic Crafts</option>
+                <option value="fuel">⛽ Maritime Fuel</option>
+                <option value="marble">🏛️ Aegean Marble</option>
+                <option value="cheese">🧀 Artisan Cheese</option>
+                <option value="grain">🌾 Staple Grain</option>
+                <option value="olive_oil">🫒 Olive Oil</option>
+                <option value="water">💧 Fresh Water</option>
+                <option value="produce">🍅 Fresh Produce</option>
+                <option value="fish">🐟 Fresh Fish</option>
+              </select>
+            </div>
+
+            <!-- Strategic Voyage & Port Travel Recommendation -->
+            <div class="section-block" id="vessel-travel-section">
+              <div class="island-metrics-row">
+                <span class="section-title">🧭 Recommended Destination</span>
+                <span id="vessel-travel-badge" class="vessel-dest-badge">Docked</span>
+              </div>
+              <div id="vessel-travel-explanation" class="vessel-travel-explanation"></div>
+              <div id="vessel-travel-recs" class="vessel-travel-recs"></div>
+              
+              <!-- Quick Destination Selector -->
+              <div class="vessel-travel-selector-wrap">
+                <div class="vessel-travel-selector-label">
+                  <span>Order vessel to sail to port:</span>
+                </div>
+                <div class="vessel-travel-selector-row">
+                  <select id="vessel-travel-select" class="vessel-travel-select" title="Select port destination">
+                    <option value="">Choose Port to Travel...</option>
+                  </select>
+                  <button id="btn-vessel-travel-go" class="btn-primary btn-travel-go" title="Order vessel to set sail immediately" disabled>⛵ Set Sail</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Career Performance Metrics Grid -->
+            <div class="vessel-stats-grid">
+              <div class="vessel-stat-card">
+                <span class="stat-label">Trips Delivered</span>
+                <span class="stat-val" id="vessel-trips-val">0</span>
+              </div>
+              <div class="vessel-stat-card">
+                <span class="stat-label">Delivered Value</span>
+                <span class="stat-val gold" id="vessel-delivered-val">🪙 0</span>
+              </div>
+              <div class="vessel-stat-card">
+                <span class="stat-label">Total Net Profit</span>
+                <span class="stat-val profit" id="vessel-profit-val">+🪙 0</span>
+              </div>
+              <div class="vessel-stat-card">
+                <span class="stat-label">Daily Upkeep</span>
+                <span class="stat-val" id="vessel-upkeep-val">🪙 4/d</span>
+              </div>
+            </div>
+
+            <!-- Vessel Interactive Action Buttons -->
+            <div class="inspector-actions-row" style="margin-top: 4px;">
+              <button id="btn-vessel-follow" class="btn-follow" title="Cinematic 3D chase camera tracking this vessel">🎥 Follow Vessel</button>
+              <button id="btn-vessel-decommission" class="btn-danger-decommission" title="Decommission and scrap this vessel to free up 1 harbor berth and recover salvage drachmas">🔨 Decommission</button>
+              <button id="btn-vessel-back" class="btn-secondary" title="Return to Island Harbor view">⚓ Island Port</button>
+            </div>
+          </div>
         </div>
       </aside>
 
+
       <!-- Right Event Feed & Notifications -->
-      <aside id="feed-panel" class="glass-panel closed">
+      <aside id="feed-panel" class="glass-panel">
         <div class="feed-header">
           <span class="feed-title">Maritime Dispatch</span>
           <div class="feed-header-actions">
+            <button id="btn-feed-audio-toggle" class="feed-header-audio-btn on" title="Mute notification sounds" aria-label="Toggle notification sounds">🔊 ON</button>
             <button id="btn-clear-feed" class="btn-text">Clear</button>
             <button id="btn-close-feed" class="btn-icon btn-panel-close" title="Close Dispatches">✕</button>
           </div>
         </div>
         <div id="event-feed-list" class="event-feed">
-          <div class="feed-item event-highlight" id="feed-item-intro">
+          <div class="feed-item event-highlight" id="feed-item-intro" data-badge-type="AWAKENING">
             <span class="feed-badge">AWAKENING</span>
             <p class="feed-text">Santorini and Naxos have opened the first trade exchange in the Aegean.</p>
-            <span class="feed-time">Just now</span>
+            <div class="feed-footer">
+              <span class="feed-time">Just now</span>
+            </div>
           </div>
         </div>
       </aside>
@@ -139,16 +352,14 @@
       <!-- Bottom Mini-bar & Controls -->
       <footer id="bottom-bar" class="glass-panel">
         <div class="quick-toggles">
-          <div class="layer-switcher" id="layer-switcher" role="group" aria-label="Geodata Layer Switcher">
-            <button id="btn-layer-night" class="layer-btn active" title="Night Satellite View (N)">🌙 Night</button>
-            <button id="btn-layer-day" class="layer-btn" title="Day Satellite View (D)">☀️ Day</button>
-            <button id="btn-layer-heightmap" class="layer-btn" title="DEM Heightmap (H)">🏔️ DEM</button>
-            <button id="btn-layer-mask" class="layer-btn" title="Island Territory Mask (M)">🗺️ Mask</button>
-          </div>
-          <button id="btn-open-settings" class="toggle-btn" title="Display & Graphics Settings (S)">
-            <span class="toggle-indicator"></span> ⚙️ Settings
+          <button id="btn-layer-cycle" class="toggle-btn layer-cycle-btn active" title="Cycle Map Layer: DEM ➔ Night ➔ Day (Tap to cycle, or N/D/H)">
+            <span id="layer-cycle-icon" class="layer-icon" data-icon="dem" data-icon-size="18">🏔️</span>
+            <span id="layer-cycle-label">DEM</span>
           </button>
-          <button id="btn-toggle-feed" class="toggle-btn" title="Toggle Maritime Dispatch Panel">
+          <button id="btn-auto-zoom" class="toggle-btn" title="Auto-zoom and frame active islands (Z)">
+            <span class="toggle-indicator"></span> <span data-icon="target" data-icon-size="14" style="display:inline-flex; vertical-align:middle; margin-right:4px;"></span> Active Islands
+          </button>
+          <button id="btn-toggle-feed" class="toggle-btn active" title="Toggle Maritime Dispatch Panel">
             <span class="toggle-indicator"></span> Dispatch
           </button>
           <button id="btn-toggle-flow" class="toggle-btn active" title="Toggle Trade Flow Arcs (F)">
@@ -158,10 +369,544 @@
             <span class="toggle-indicator"></span> Island Labels
           </button>
         </div>
-        <div id="simulation-status" class="status-msg">
-          <span class="pulse-dot"></span> Aegean Geodata Verified • 16 Ports Mapped
+
+        <!-- Compact Red-to-Green Prosperity Legend -->
+        <div id="prosperity-legend" class="prosperity-legend-card" title="Island Prosperity Continuous Scale (0% Deep Red ➔ 100% Green)">
+          <div class="prosperity-legend-header">
+            <span class="prosperity-legend-title">PROSPERITY</span>
+            <span id="prosperity-legend-sel-val" class="prosperity-legend-val">--%</span>
+          </div>
+          <div class="prosperity-legend-bar-wrap">
+            <div class="prosperity-legend-bar"></div>
+            <div id="prosperity-legend-marker" class="prosperity-legend-marker" style="display: none;"></div>
+          </div>
+          <div class="prosperity-legend-ticks">
+            <span>0%</span>
+            <span>15%</span>
+            <span>30%</span>
+            <span>50%</span>
+            <span>70%</span>
+            <span>85%</span>
+            <span>100%</span>
+          </div>
+        </div>
+        <!-- Bottom-Right Instrument Cluster: Date, Time & Wind Rose -->
+        <div class="bottom-right-cluster" id="bottom-right-cluster">
+          <!-- Nautical Date & Time Chronometer: Astrolabe Dial + Date Stamp + Solar Time -->
+          <div class="chrono-card" id="bottom-chronometer" title="In-game Aegean Calendar & Solar Astrolabe">
+            <!-- Celestial Sun/Moon Transit Dial -->
+            <div class="chrono-dial-wrapper">
+              <svg class="celestial-transit-svg" viewBox="0 0 100 100" width="38" height="38">
+                <!-- Outer Brass & Slate Bezel -->
+                <circle cx="50" cy="50" r="46" class="transit-dial-bezel" />
+                <circle cx="50" cy="50" r="41" class="transit-dial-face" />
+                <!-- Horizon line dividing day hemisphere and night abyss -->
+                <line x1="10" y1="50" x2="90" y2="50" class="transit-horizon-line" />
+                <!-- Celestial cardinal ticks (XII Zenith, VI Nadir, VI East, VI West) -->
+                <circle cx="50" cy="11" r="1.5" class="transit-dial-dot" />
+                <circle cx="89" cy="50" r="1.5" class="transit-dial-dot" />
+                <circle cx="50" cy="89" r="1.5" class="transit-dial-dot" />
+                <circle cx="11" cy="50" r="1.5" class="transit-dial-dot" />
+                <!-- Rotating Celestial Transit Arm (Sun at zenith at 12:00, Moon at zenith at 00:00) -->
+                <g id="solar-transit-pointer" class="celestial-transit-arm">
+                  <!-- Pivot Axis -->
+                  <circle cx="50" cy="50" r="3.5" class="celestial-pivot" />
+                  <line x1="50" y1="20" x2="50" y2="80" class="celestial-axis-rod" />
+                  <!-- Radiant Golden Sun (Zenith at 12:00) -->
+                  <g class="celestial-sun-glyph">
+                    <circle cx="50" cy="20" r="5" class="sun-body" />
+                    <line x1="50" y1="12" x2="50" y2="14" class="sun-ray" />
+                    <line x1="50" y1="26" x2="50" y2="28" class="sun-ray" />
+                    <line x1="42" y1="20" x2="44" y2="20" class="sun-ray" />
+                    <line x1="56" y1="20" x2="58" y2="20" class="sun-ray" />
+                  </g>
+                  <!-- Silver Crescent Moon (Zenith at 00:00 midnight) -->
+                  <path d="M 47,76 A 4.5,4.5 0 1 0 53,84 A 4,4 0 1 1 47,76 Z" class="celestial-moon-glyph" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- Mechanical Date Aperture Stamp -->
+            <div class="chrono-stamp-box">
+              <span id="bottom-stamp-month" class="stamp-month">JUL</span>
+              <span id="bottom-stamp-day" class="stamp-day">7</span>
+              <span id="bottom-game-date" class="sr-only">7 Jul 2026</span>
+            </div>
+
+            <!-- Time & Season Readout -->
+            <div class="chrono-readout">
+              <div class="chrono-time-line">
+                <span id="bottom-time-icon" class="chrono-solar-icon">☀️</span>
+                <span id="bottom-game-time" class="chrono-time-val">13:58</span>
+              </div>
+              <div class="chrono-season-badge">
+                <span id="bottom-season-icon" class="season-badge-icon">☀️</span>
+                <span id="bottom-season-tag" class="season-badge-text">Meltemi</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Aegean Wind Rose & Anemometer Dial -->
+          <div class="wind-rose-card" id="wind-rose-card" title="Aegean Wind Rose & Beaufort Force Meter">
+            <div class="wind-rose-dial-wrapper">
+              <svg class="wind-rose-svg" viewBox="0 0 100 100" width="40" height="40">
+                <circle cx="50" cy="50" r="46" class="wind-rose-ring" />
+                <circle cx="50" cy="50" r="38" class="wind-rose-inner-ring" />
+                <!-- 8-Point Compass Star Rays -->
+                <polygon points="50,14 47,44 50,40 53,44" class="wind-rose-star-north" />
+                <polygon points="50,86 47,56 50,60 53,56" class="wind-rose-star-other" />
+                <polygon points="86,50 56,47 60,50 56,53" class="wind-rose-star-other" />
+                <polygon points="14,50 44,47 40,50 44,53" class="wind-rose-star-other" />
+                <!-- Cardinal Letters -->
+                <text x="50" y="24" class="wind-rose-cardinal-text cardinal-n">N</text>
+                <text x="78" y="54" class="wind-rose-cardinal-text">E</text>
+                <text x="50" y="82" class="wind-rose-cardinal-text">S</text>
+                <text x="22" y="54" class="wind-rose-cardinal-text">W</text>
+                <!-- Dynamic Rotating Wind Needle -->
+                <g id="wind-rose-needle" class="wind-rose-needle">
+                  <polygon points="50,12 44,48 50,42 56,48" class="needle-arrowhead" />
+                  <polygon points="50,78 46,52 50,56 54,52" class="needle-tail" />
+                  <circle cx="50" cy="50" r="4" class="needle-center-pivot" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- Beaufort Force Meter & Nautical Wind Speed Readout -->
+            <div class="wind-rose-readout">
+              <div class="wind-speed-line">
+                <span id="bottom-wind-speed" class="wind-speed-val">29 kt</span>
+                <span id="bottom-wind-bearing" class="wind-bearing-tag">NNE</span>
+              </div>
+              <!-- 5-segment graphic Beaufort Force Bar -->
+              <div class="wind-force-meter" id="wind-force-meter" title="Beaufort Wind Velocity Meter">
+                <span class="force-seg seg-1 active"></span>
+                <span class="force-seg seg-2 active"></span>
+                <span class="force-seg seg-3 active"></span>
+                <span class="force-seg seg-4 active"></span>
+                <span class="force-seg seg-5"></span>
+              </div>
+              <div class="wind-meta-line">
+                <svg class="wind-pictogram-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <path d="M4 8h11a3 3 0 1 0-3-3" />
+                  <path d="M2 13h15a3 3 0 1 1-3 3" />
+                  <path d="M6 18h7a2 2 0 1 0-2-2" />
+                </svg>
+                <span id="bottom-wind-name" class="wind-name-val">Summer Meltemi</span>
+              </div>
+            </div>
+          </div>
         </div>
       </footer>
+
+
+
+      <!-- Endgame 'Whole Aegean Awake' Celebration Modal -->
+      <div id="endgame-modal" class="glass-panel endgame-modal closed">
+        <div class="endgame-content">
+          <div class="endgame-badge">🌟 TRIUMPH OF THE ARCHIPELAGO 🌟</div>
+          <h2 class="endgame-title">The Whole Aegean Awakens!</h2>
+          <p class="endgame-subtitle">
+            Every island from Crete and the Peloponnese to the Dodecanese and Asia Minor now glitters in radiant Mediterranean daylight.
+          </p>
+
+          <div class="endgame-stats-grid">
+            <div class="endgame-stat-card">
+              <span class="endgame-stat-label">Empire Treasury</span>
+              <span class="endgame-stat-val gold" id="endgame-val-treasury">🪙 0</span>
+            </div>
+            <div class="endgame-stat-card">
+              <span class="endgame-stat-label">Trade Points</span>
+              <span class="endgame-stat-val laurel" id="endgame-val-tp">⭐ 0</span>
+            </div>
+            <div class="endgame-stat-card">
+              <span class="endgame-stat-label">Merchant Fleet</span>
+              <span class="endgame-stat-val" id="endgame-val-fleet">0 Ships</span>
+            </div>
+            <div class="endgame-stat-card">
+              <span class="endgame-stat-label">Days to Awaken</span>
+              <span class="endgame-stat-val" id="endgame-val-days">0 Days</span>
+            </div>
+          </div>
+
+          <div class="endgame-actions-row">
+            <button id="btn-endgame-continue" class="btn-primary">
+              ⚓ Continue Freeplay
+            </button>
+            <button id="btn-endgame-credits" class="btn-secondary">
+              🏛️ View Credits & Lore
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fleet Management & Navigator's Guide Modal -->
+      <div id="fleet-modal" class="modal-overlay fleet-modal-overlay closed">
+        <div class="glass-panel fleet-modal-container">
+          <div class="modal-header">
+            <div class="modal-title-group">
+              <div class="fleet-tabs" role="tablist">
+                <button id="tab-fleet-roster" class="fleet-tab-btn active" role="tab" aria-selected="true">
+                  <span class="modal-title-icon">⛵</span> Merchant Fleet
+                </button>
+                <button id="tab-fleet-guide" class="fleet-tab-btn" role="tab" aria-selected="false">
+                  <span class="modal-title-icon">🧭</span> Navigator's Guide
+                </button>
+              </div>
+              <p class="modal-subtitle" id="fleet-modal-subtitle">0 Active Vessels • Upkeep: 0 d/day • Career Profit: 0 d</p>
+            </div>
+            <button id="btn-close-fleet" class="btn-close" title="Close (Esc)">✕</button>
+          </div>
+
+          <!-- Tab View 1: Active Fleet Roster -->
+          <div id="fleet-roster-view" class="fleet-tab-view active">
+            <!-- Filter & Controls Toolbar -->
+            <div class="fleet-toolbar">
+              <div class="fleet-search-box">
+                <input type="text" id="fleet-search-input" placeholder="Search vessel or port..." />
+              </div>
+              <div class="fleet-filters">
+                <select id="fleet-filter-tier" class="fleet-select">
+                  <option value="all">All Vessel Classes</option>
+                  <option value="1">Tier 1 • Boat</option>
+                  <option value="2">Tier 2 • Coaster</option>
+                  <option value="3">Tier 3 • Ferry</option>
+                  <option value="4">Tier 4 • Freighter</option>
+                  <option value="5">Tier 5 • Yacht</option>
+                </select>
+
+                <select id="fleet-filter-port" class="fleet-select">
+                  <option value="all">All Home Ports</option>
+                </select>
+
+                <select id="fleet-filter-state" class="fleet-select">
+                  <option value="all">All States</option>
+                  <option value="underutilized">⚠️ Underutilized Only</option>
+                  <option value="sailing">Sailing</option>
+                  <option value="docked">Docked</option>
+                  <option value="loading">Loading</option>
+                  <option value="unloading">Unloading</option>
+                </select>
+
+                <select id="fleet-sort-by" class="fleet-select">
+                  <option value="profit-desc">Sort: Profit (High to Low)</option>
+                  <option value="profit-asc">Sort: Profit (Low to High)</option>
+                  <option value="trips-desc">Sort: Trips Completed</option>
+                  <option value="speed-desc">Sort: Cruising Speed</option>
+                  <option value="tier-desc">Sort: Tier (Highest First)</option>
+                  <option value="name-asc">Sort: Name (A-Z)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Fleet Table -->
+            <div class="fleet-table-scroll">
+              <table class="fleet-table">
+                <thead>
+                  <tr>
+                    <th>Vessel</th>
+                    <th>Class / Tier</th>
+                    <th>Home Port</th>
+                    <th>Current Status</th>
+                    <th>Cargo Hold</th>
+                    <th>Speed</th>
+                    <th>Profit</th>
+                    <th style="text-align: right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="fleet-table-body">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+              <div id="fleet-empty-state" class="fleet-empty-state" style="display:none;">
+                <p>No vessels matching filter criteria.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab View 2: Navigator's Guide Handbook -->
+          <div id="fleet-guide-view" class="fleet-tab-view fleet-guide-view" style="display: none;">
+            <div class="guide-scroll-container">
+              <div class="guide-hero-banner">
+                <span class="guide-hero-icon">🧭</span>
+                <div>
+                  <h3 class="guide-hero-title">Navigator's Guide to Aegean Commerce</h3>
+                  <p class="guide-hero-subtitle">Skipper's handbook for maritime logistics, trade arbitrage, wind dynamics, and archipelago illumination.</p>
+                </div>
+              </div>
+
+              <!-- Core Foundations Cards -->
+              <div class="guide-cards-grid">
+                <div class="guide-card">
+                  <div class="guide-card-header">
+                    <span class="step-num">1</span>
+                    <h4>Inspect Harbors</h4>
+                  </div>
+                  <p>Click on any glowing island to view its export surpluses (green) and import demands (coral). High demand and low stock create lucrative arbitrage spreads!</p>
+                </div>
+
+                <div class="guide-card">
+                  <div class="guide-card-header">
+                    <span class="step-num">2</span>
+                    <h4>Commission Vessels</h4>
+                  </div>
+                  <p>Commission Boats, Coasters, Ferries, or Freighters in port shipyards. Vessels haul cargo autonomously, buying low at home and selling high across the sea.</p>
+                </div>
+
+                <div class="guide-card">
+                  <div class="guide-card-header">
+                    <span class="step-num">3</span>
+                    <h4>Awaken the Archipelago</h4>
+                  </div>
+                  <p>Deliver cargo to dark islands to integrate them into your trading network. Awaken all 52 islands from Crete to Rhodes to claim total Aegean triumph!</p>
+                </div>
+              </div>
+
+              <!-- Vessel Classes & Hydrodynamics Reference -->
+              <div class="guide-reference-section">
+                <h4 class="guide-section-heading">⛵ Aegean Vessel Classes & Hydrodynamics</h4>
+                <div class="guide-vessels-table-wrap">
+                  <table class="guide-vessels-table">
+                    <thead>
+                      <tr>
+                        <th>Class</th>
+                        <th>Role</th>
+                        <th>Capacity</th>
+                        <th>Base Speed</th>
+                        <th>Strategic Advantage</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>T1 Boat</strong></td>
+                        <td>Coastal Fisher / Runner</td>
+                        <td>25</td>
+                        <td>6.8 kt</td>
+                        <td>Low capital cost, fast turnaround for short neighbor hops</td>
+                      </tr>
+                      <tr>
+                        <td><strong>T2 Coaster</strong></td>
+                        <td>Trade Workhorse</td>
+                        <td>75</td>
+                        <td>9.2 kt</td>
+                        <td>Triple cargo capacity with modest upkeep; ideal bulk hauler</td>
+                      </tr>
+                      <tr>
+                        <td><strong>T3 Ferry</strong></td>
+                        <td>Passenger & Freight</td>
+                        <td>200</td>
+                        <td>16.0 kt</td>
+                        <td>High-speed Ro-Ro catamaran earning bonus passenger fares</td>
+                      </tr>
+                      <tr>
+                        <td><strong>T4 Freighter</strong></td>
+                        <td>Heavy Cargo Ship</td>
+                        <td>650</td>
+                        <td>11.5 kt</td>
+                        <td>Massive bulk capacity for marble, grain, and long haul routes</td>
+                      </tr>
+                      <tr>
+                        <td><strong>T5 Yacht</strong></td>
+                        <td>VIP Charter Superyacht</td>
+                        <td>80</td>
+                        <td>21.0 kt</td>
+                        <td>High-speed luxury transport earning VIP tourism prestige multipliers</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Wind and Controls -->
+              <div class="guide-bottom-tips">
+                <div class="guide-tip-box">
+                  <strong>💨 Aegean Seasonal Meltemi:</strong>
+                  <span>Sailing with favorable tailwinds boosts speed by up to <strong>+28%</strong>, while beating into head gales adds up to <strong>-28%</strong> resistance.</span>
+                </div>
+                <div class="guide-tip-box">
+                  <strong>⌨️ Key Commands:</strong>
+                  <span><kbd>Space</kbd> Pause/Play • <kbd>1</kbd>/<kbd>2</kbd>/<kbd>3</kbd> Speed • <kbd>V</kbd> Fleet Roster • <kbd>H</kbd> Navigator's Guide • <kbd>F</kbd> Flows • <kbd>L</kbd> Labels • <kbd>Esc</kbd> Close</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Island Economic Advisory & Recommendations Modal -->
+      <div id="advisory-modal" class="modal-overlay advisory-modal-overlay closed">
+        <div class="glass-panel advisory-modal-container">
+          <div class="modal-header">
+            <div class="modal-title-group">
+              <div class="advisory-header-title-row">
+                <span class="modal-title-icon">📊</span>
+                <h3 id="advisory-modal-title" class="advisory-modal-title">Economic Advisory & Recommendations</h3>
+              </div>
+              <p class="modal-subtitle" id="advisory-modal-subtitle">Port Strategy & Action Checklist</p>
+            </div>
+            <button id="btn-close-advisory" class="btn-close" title="Close (Esc)">✕</button>
+          </div>
+
+          <div class="advisory-modal-body" id="advisory-content">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Commodity Supply & Sourcing Analysis Modal -->
+      <div id="sourcing-modal" class="modal-overlay sourcing-modal-overlay closed">
+        <div class="glass-panel sourcing-modal-container">
+          <div class="modal-header">
+            <div class="modal-title-group">
+              <div class="sourcing-header-title-row">
+                <span class="modal-title-icon" id="sourcing-modal-icon">⛽</span>
+                <h3 id="sourcing-modal-title" class="sourcing-modal-title">Commodity Supply & Sourcing Analysis</h3>
+              </div>
+              <p class="modal-subtitle" id="sourcing-modal-subtitle">Producers, Sea Lanes & Fleet Logistics</p>
+            </div>
+            <button id="btn-close-sourcing" class="btn-close" title="Close (Esc)">✕</button>
+          </div>
+
+          <div class="sourcing-modal-body" id="sourcing-modal-content">
+            <!-- Dynamically populated by SourcingModal.ts -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Archipelago Directory & Island Intelligence Modal -->
+      <div id="archipelago-modal" class="modal-overlay arch-modal-overlay closed">
+        <div class="glass-panel arch-modal-container">
+          <div class="modal-header">
+            <div class="modal-title-group">
+              <div class="arch-header-title-row">
+                <span class="modal-title-icon">🏝️</span>
+                <h3 id="arch-modal-title" class="arch-modal-title">Aegean Archipelago Directory</h3>
+              </div>
+              <p class="modal-subtitle" id="arch-modal-subtitle">Comparative Population, Economic Opportunity & Island Status</p>
+            </div>
+            <button id="btn-close-archipelago" class="btn-close" title="Close (Esc)">✕</button>
+          </div>
+
+          <div class="arch-modal-body" id="archipelago-modal-content">
+            <!-- Dynamically populated by ArchipelagoModal.ts -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 5-Minute Executive Preview Welcome Modal -->
+      <div id="preview-welcome-modal" class="modal-overlay preview-modal-overlay closed">
+        <div class="glass-panel preview-modal-container">
+          <div class="preview-modal-hero">
+            <span class="preview-hero-icon">⛵</span>
+            <span class="preview-hero-tag">EXECUTIVE ARCHIPELAGO TRIAL</span>
+            <h2 class="preview-modal-title">Welcome to Aegean Tycoon</h2>
+            <p class="preview-modal-subtitle">Experience a Thriving Maritime Empire at Full Sail for 5 Minutes</p>
+          </div>
+
+          <div class="preview-modal-body">
+            <div class="preview-info-box">
+              <p class="preview-lead-text">
+                To introduce you to the depth of the Aegean trading network, you are being placed at the helm of an <strong>active, mid-game maritime dynasty</strong>:
+              </p>
+
+              <div class="preview-features-grid">
+                <div class="preview-feature-card">
+                  <span class="feature-icon">🏝️</span>
+                  <div>
+                    <strong>15 Awakened Ports</strong>
+                    <p>Trade across Cyclades, Dodecanese, Samos & Izmir with live supply lines.</p>
+                  </div>
+                </div>
+                <div class="preview-feature-card">
+                  <span class="feature-icon">🚢</span>
+                  <div>
+                    <strong>8 Commercial Vessels</strong>
+                    <p>Command Fishing Boats, Caiques, Passenger Ferries & Freighters.</p>
+                  </div>
+                </div>
+                <div class="preview-feature-card">
+                  <span class="feature-icon">🪙</span>
+                  <div>
+                    <strong>🪙 25,400 Drachmas</strong>
+                    <p>Ample treasury to commission ships, redirect routes, and awaken new ports.</p>
+                  </div>
+                </div>
+                <div class="preview-feature-card">
+                  <span class="feature-icon">⏱️</span>
+                  <div>
+                    <strong>5-Minute Freeplay</strong>
+                    <p>Test drive all systems, inspect supply chains, and hear live coin acoustics.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="preview-reset-notice">
+                <span class="notice-icon">ℹ️</span>
+                <p>
+                  <strong>Important Notice:</strong> In <strong>5 minutes</strong>, this preview voyage will end, and the simulation will automatically reset back to <strong>Day 1 (clean slate)</strong> with 120 drachmas and your first boat at Santorini. From that point on, <strong>all of your personal progress will be saved continuously</strong>!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview-modal-footer">
+            <button id="btn-preview-embark" class="btn-primary btn-preview-main">
+              ⛵ Embark on 5-Minute Preview
+            </button>
+            <button id="btn-preview-skip" class="btn-secondary btn-preview-alt">
+              ⚡ Skip to Clean Slate Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5-Minute Preview Ended / Transition to Clean Slate Modal -->
+      <div id="preview-ended-modal" class="modal-overlay preview-modal-overlay closed">
+        <div class="glass-panel preview-modal-container">
+          <div class="preview-modal-hero ended">
+            <span class="preview-hero-icon">👑</span>
+            <span class="preview-hero-tag">PREVIEW CONCLUDED</span>
+            <h2 class="preview-modal-title">Your 5-Minute Voyage Has Ended!</h2>
+            <p class="preview-modal-subtitle">Resetting to Day 1: Time to Forge Your Personal Maritime Dynasty</p>
+          </div>
+
+          <div class="preview-modal-body">
+            <div class="preview-info-box">
+              <p class="preview-lead-text">
+                You have witnessed the speed, wealth, and bustling commerce of an advanced archipelago trade empire. Now, it is time to build your own from scratch!
+              </p>
+
+              <div class="preview-fresh-start-grid">
+                <div class="fresh-stat-item">
+                  <span class="fresh-stat-label">Starting Port</span>
+                  <span class="fresh-stat-val">📍 Santorini Harbor</span>
+                </div>
+                <div class="fresh-stat-item">
+                  <span class="fresh-stat-label">Starting Treasury</span>
+                  <span class="fresh-stat-val gold">🪙 120 Drachmas</span>
+                </div>
+                <div class="fresh-stat-item">
+                  <span class="fresh-stat-label">Starting Fleet</span>
+                  <span class="fresh-stat-val">⛵ Nikolaos & Delphis (Kaiki)</span>
+                </div>
+                <div class="fresh-stat-item">
+                  <span class="fresh-stat-label">Autosave Status</span>
+                  <span class="fresh-stat-val active">💾 Continuous Saving Active</span>
+                </div>
+              </div>
+
+              <p class="preview-conclusion-text">
+                Every coin you earn, island you awaken, and vessel you commission from this moment forward belongs to your personal legacy.
+              </p>
+            </div>
+          </div>
+
+          <div class="preview-modal-footer">
+            <button id="btn-preview-start-dynasty" class="btn-primary btn-preview-main">
+              🌊 Begin My Archipelago Dynasty
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script type="module" src="/src/main.ts"></script>

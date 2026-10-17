@@ -4,6 +4,7 @@ import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUti
 import type { ShipInstance } from '../sim/shipSim';
 import type { AegeanTerrain } from './Terrain';
 import { BoatWakeRenderer } from './BoatWake';
+import { assetUrl } from '../utils/assets';
 
 interface ShipVisualState {
   yaw: number;
@@ -1019,35 +1020,35 @@ export class ShipsRenderer {
     const modelConfigs = [
       {
         typeId: 'fishing_boat',
-        url: '/models/kaiki/scene.gltf',
+        url: assetUrl('models/kaiki/scene.gltf'),
         targetLength: 0.58,
         yawAdjustmentRad: Math.PI / 2, // Kaiki stem is at +X (rotate +90° to face -Z forward)
         waterlineSinkFactor: 0.18,
       },
       {
         typeId: 'caique',
-        url: '/models/caique/scene.gltf',
+        url: assetUrl('models/caique/scene.gltf'),
         targetLength: 0.86,
         yawAdjustmentRad: Math.PI, // Caique stem is at +Z
         waterlineSinkFactor: 0.22,
       },
       {
         typeId: 'ferry',
-        url: '/models/ferry/scene.gltf',
+        url: assetUrl('models/ferry/scene.gltf'),
         targetLength: 1.28,
         yawAdjustmentRad: Math.PI / 2, // Ferry stem is at +X
         waterlineSinkFactor: 0.20,
       },
       {
         typeId: 'cargo_ship',
-        url: '/models/freighter/scene.gltf',
+        url: assetUrl('models/freighter/scene.gltf'),
         targetLength: 1.72,
         yawAdjustmentRad: Math.PI / 2, // Container freighter stem is at +X
         waterlineSinkFactor: 0.20,
       },
       {
         typeId: 'charter_yacht',
-        url: '/models/yacht/scene.gltf',
+        url: assetUrl('models/yacht/scene.gltf'),
         targetLength: 1.18,
         yawAdjustmentRad: Math.PI, // Superyacht stem is at +Z (rotate 180° to face -Z forward)
         waterlineSinkFactor: 0.16,

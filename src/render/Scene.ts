@@ -11,6 +11,7 @@ import { ShipPopups, type ShipPopupOptions } from './ShipPopups';
 import { GoodsCatapult } from './GoodsCatapult';
 import type { IslandData, IslandEconomyState } from '../data/types';
 import type { ShipInstance, ShipSimulationManager } from '../sim/shipSim';
+import { assetUrl } from '../utils/assets';
 
 export class AegeanScene {
   public renderer: THREE.WebGLRenderer;
@@ -174,15 +175,15 @@ export class AegeanScene {
   private loadWorld(onIslandSelect?: (island: IslandData) => void) {
     const texLoader = new THREE.TextureLoader();
     const urls = {
-      night: '/data/night.jpg?v=11',
-      day: '/data/day.jpg?v=11',
-      lights: '/data/lights.png?v=11',
-      heightmap: '/data/heightmap.png?v=11',
-      normals: '/data/normals.png?v=11',
-      mask: '/data/island_mask.png?v=12',
-      worldDay: '/data/world_day.jpg?v=1',
-      worldNight: '/data/world_night.jpg?v=1',
-      worldHeightmap: '/data/world_heightmap.png?v=1',
+      night: assetUrl('data/night.jpg?v=11'),
+      day: assetUrl('data/day.jpg?v=11'),
+      lights: assetUrl('data/lights.png?v=11'),
+      heightmap: assetUrl('data/heightmap.png?v=11'),
+      normals: assetUrl('data/normals.png?v=11'),
+      mask: assetUrl('data/island_mask.png?v=12'),
+      worldDay: assetUrl('data/world_day.jpg?v=1'),
+      worldNight: assetUrl('data/world_night.jpg?v=1'),
+      worldHeightmap: assetUrl('data/world_heightmap.png?v=1'),
     };
 
     let loaded = 0;

@@ -44,6 +44,7 @@ import {
   formatCompactNumber,
   type SupportedLanguage,
 } from './ui/i18n';
+import { assetUrl } from './utils/assets';
 
 const GOOD_EMOJIS: Record<string, string> = {
   grain: '🌾',
@@ -1986,11 +1987,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 2. Load Simulation Data and Initialize Sim Core
   try {
     const [islandsRes, goodsRes, balanceRes, seaLanesRes, shipsRes] = await Promise.all([
-      fetch('/data/islands.json'),
-      fetch('/data/goods.json'),
-      fetch('/data/balance.json'),
-      fetch('/data/sea_lanes.json'),
-      fetch('/data/ships.json'),
+      fetch(assetUrl('data/islands.json')),
+      fetch(assetUrl('data/goods.json')),
+      fetch(assetUrl('data/balance.json')),
+      fetch(assetUrl('data/sea_lanes.json')),
+      fetch(assetUrl('data/ships.json')),
     ]);
 
     const islandsData: IslandData[] = await islandsRes.json();
@@ -2034,7 +2035,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else if (isFirstTimeUser()) {
       // First-time user experience: Load the 5-Minute Executive Preview Snapshot (15 ports, 8 ships, 🪙 25,400 drachmas)
       try {
-        const previewRes = await fetch('/data/preview_snapshot.json');
+        const previewRes = await fetch(assetUrl('data/preview_snapshot.json'));
         if (previewRes.ok) {
           const snapshot = await previewRes.json();
           const ok = deserializeSimulation(sim, snapshot);

@@ -14,6 +14,8 @@ export interface AudioSettings {
   sfxVolume: number;
 }
 
+import { assetUrl } from '../utils/assets';
+
 const STORAGE_KEY = 'aegean_audio_settings_v1';
 
 export class AudioManager {
@@ -136,7 +138,7 @@ export class AudioManager {
     if (typeof fetch === 'undefined') return;
 
     this.isCoinLoading = true;
-    fetch('/audio/coin.wav')
+    fetch(assetUrl('audio/coin.wav'))
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.arrayBuffer();
@@ -168,7 +170,7 @@ export class AudioManager {
     if (typeof fetch === 'undefined') return;
 
     this.isTicketLoading = true;
-    fetch('/audio/ferry_ticket.wav')
+    fetch(assetUrl('audio/ferry_ticket.wav'))
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.arrayBuffer();

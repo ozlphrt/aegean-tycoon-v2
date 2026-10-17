@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "timestamp": 1792266658466,
+  "timestamp": 1792267611937,
   "gameDay": 42.583,
   "totalTicks": 2570,
   "treasury": 25411.99,
@@ -201,8 +201,8 @@
         },
         "marble": {
           "stock": 15,
-          "buyPrice": 127.67,
-          "sellPrice": 121.28,
+          "buyPrice": 65.47,
+          "sellPrice": 62.2,
           "produceRatePerDay": 0,
           "consumeRatePerDay": 0
         },
@@ -236,8 +236,8 @@
         },
         "crafts": {
           "stock": 15,
-          "buyPrice": 109.41,
-          "sellPrice": 103.94,
+          "buyPrice": 56.11,
+          "sellPrice": 53.3,
           "produceRatePerDay": 0,
           "consumeRatePerDay": 0
         }
@@ -1006,16 +1006,16 @@
           "consumeRatePerDay": 0
         },
         "olive_oil": {
-          "stock": 96.6,
-          "buyPrice": 18.91,
-          "sellPrice": 17.96,
+          "stock": 0.6,
+          "buyPrice": 108.3,
+          "sellPrice": 102.89,
           "produceRatePerDay": 8,
           "consumeRatePerDay": 0
         },
         "wine": {
-          "stock": 7.2,
-          "buyPrice": 119.7,
-          "sellPrice": 113.72,
+          "stock": 170.19,
+          "buyPrice": 35.46,
+          "sellPrice": 33.69,
           "produceRatePerDay": 14,
           "consumeRatePerDay": 0
         },
@@ -3850,7 +3850,7 @@
     "delos": {
       "id": "delos",
       "unlocked": true,
-      "prosperity": 92,
+      "prosperity": 75,
       "distress": 0,
       "markets": {
         "fish": {
@@ -6712,12 +6712,12 @@
   },
   "ships": [
     {
-      "id": "ship_1_o20y",
+      "id": "ship_1_zxgy",
       "name": "Boreas",
       "typeId": "ferry",
       "tier": 3,
       "capacity": 200,
-      "speedKmPerDay": 647.7170959356886,
+      "speedKmPerDay": 665.2862110521712,
       "upkeepPerDay": 18,
       "state": "sailing",
       "homeIslandId": "samos",
@@ -6728,10 +6728,10 @@
         "quantity": 73,
         "buyPrice": 18
       },
-      "distanceTraveledKm": 38.76315732235512,
+      "distanceTraveledKm": 39.82770709046212,
       "position": {
-        "lon": 26.68448357365641,
-        "lat": 37.97291834080238
+        "lon": 26.67454652536026,
+        "lat": 37.977531970368446
       },
       "heading": 5.244670809008892,
       "stateTimeRemaining": 0,
@@ -6741,27 +6741,27 @@
       "cargoPriority": "water"
     },
     {
-      "id": "ship_2_ixnv",
+      "id": "ship_2_vspb",
       "name": "Calypso",
       "typeId": "ferry",
       "tier": 3,
       "capacity": 200,
-      "speedKmPerDay": 745.3504409030663,
+      "speedKmPerDay": 747.6938030024143,
       "upkeepPerDay": 18,
       "state": "sailing",
       "homeIslandId": "samos",
       "currentIslandId": null,
-      "targetIslandId": "samothrace",
+      "targetIslandId": "tinos",
       "cargo": {
-        "goodId": "wine",
-        "quantity": 162,
-        "buyPrice": 21.05,
+        "goodId": "olive_oil",
+        "quantity": 96,
+        "buyPrice": 18.98,
         "fromIslandId": "samos"
       },
-      "distanceTraveledKm": 16.64348728775204,
+      "distanceTraveledKm": 18.913751845351687,
       "position": {
-        "lon": 26.893296363172595,
-        "lat": 37.86356402679738
+        "lon": 26.87542684518272,
+        "lat": 37.8748850313139
       },
       "heading": 5.388535973725626,
       "stateTimeRemaining": -0.0016666666666666592,
@@ -6771,12 +6771,12 @@
       "cargoPriority": "water"
     },
     {
-      "id": "ship_3_k3cf",
+      "id": "ship_3_0jyy",
       "name": "Nikolaos",
       "typeId": "fishing_boat",
       "tier": 1,
       "capacity": 25,
-      "speedKmPerDay": 289.41091375824817,
+      "speedKmPerDay": 274.2774353602944,
       "upkeepPerDay": 2,
       "state": "sailing",
       "homeIslandId": "santorini",
@@ -6787,10 +6787,10 @@
         "quantity": 20,
         "buyPrice": 42
       },
-      "distanceTraveledKm": 16.457499322111953,
+      "distanceTraveledKm": 15.767532021895635,
       "position": {
-        "lon": 25.292481447172303,
-        "lat": 36.41135204055233
+        "lon": 25.293542699498037,
+        "lat": 36.4055151527608
       },
       "heading": 6.13791859783172,
       "stateTimeRemaining": 0,
@@ -6800,12 +6800,12 @@
       "cargoPriority": "auto"
     },
     {
-      "id": "ship_4_qj1m",
+      "id": "ship_4_wsrg",
       "name": "Delphis",
       "typeId": "fishing_boat",
       "tier": 1,
       "capacity": 25,
-      "speedKmPerDay": 292.16196608182605,
+      "speedKmPerDay": 294.72555532835776,
       "upkeepPerDay": 2,
       "state": "sailing",
       "homeIslandId": "naxos",
@@ -6816,10 +6816,10 @@
         "quantity": 24,
         "buyPrice": 35
       },
-      "distanceTraveledKm": 14.702410706991822,
+      "distanceTraveledKm": 14.831417718041239,
       "position": {
-        "lon": 25.25463789027241,
-        "lat": 37.204837293208314
+        "lon": 25.253783581750103,
+        "lat": 37.205704545799136
       },
       "heading": 5.61770613648507,
       "stateTimeRemaining": 0,
@@ -6829,12 +6829,12 @@
       "cargoPriority": "auto"
     },
     {
-      "id": "ship_5_no5t",
+      "id": "ship_5_h8fn",
       "name": "Aeolos",
       "typeId": "caique",
       "tier": 2,
       "capacity": 75,
-      "speedKmPerDay": 401.64685439796864,
+      "speedKmPerDay": 376.5995584615351,
       "upkeepPerDay": 6,
       "state": "sailing",
       "homeIslandId": "syros",
@@ -6845,10 +6845,10 @@
         "quantity": 65,
         "buyPrice": 28
       },
-      "distanceTraveledKm": 13.194867642451221,
+      "distanceTraveledKm": 12.372016047664237,
       "position": {
-        "lon": 25.100199221725465,
-        "lat": 37.46434173305612
+        "lon": 25.0913920902422,
+        "lat": 37.4635961557877
       },
       "heading": 1.4645385113468055,
       "stateTimeRemaining": 0,
@@ -6858,12 +6858,12 @@
       "cargoPriority": "auto"
     },
     {
-      "id": "ship_6_7j3g",
+      "id": "ship_6_crzo",
       "name": "Hermes",
       "typeId": "caique",
       "tier": 2,
       "capacity": 75,
-      "speedKmPerDay": 443.2201792980344,
+      "speedKmPerDay": 370.2107218874671,
       "upkeepPerDay": 6,
       "state": "sailing",
       "homeIslandId": "chios",
@@ -6874,10 +6874,10 @@
         "quantity": 50,
         "buyPrice": 48
       },
-      "distanceTraveledKm": 22.483255162745515,
+      "distanceTraveledKm": 18.779700277552443,
       "position": {
-        "lon": 26.24691446319231,
-        "lat": 38.19523905532423
+        "lon": 26.231724432960068,
+        "lat": 38.22453720480352
       },
       "heading": 2.7550340944894556,
       "stateTimeRemaining": 0,
@@ -6887,12 +6887,12 @@
       "cargoPriority": "auto"
     },
     {
-      "id": "ship_7_d425",
+      "id": "ship_7_53zo",
       "name": "Poseidon",
       "typeId": "cargo_ship",
       "tier": 4,
       "capacity": 650,
-      "speedKmPerDay": 491.55880721969754,
+      "speedKmPerDay": 478.59422185399256,
       "upkeepPerDay": 45,
       "state": "sailing",
       "homeIslandId": "rhodes",
@@ -6903,12 +6903,12 @@
         "quantity": 380,
         "buyPrice": 24
       },
-      "distanceTraveledKm": 27.796274470573604,
+      "distanceTraveledKm": 27.06172993162953,
       "position": {
-        "lon": 27.94210375085138,
-        "lat": 36.47934367124447
+        "lon": 27.949874076196636,
+        "lat": 36.47895981999445
       },
-      "heading": 4.766711676477057,
+      "heading": 4.780786749761552,
       "stateTimeRemaining": 0,
       "tripsCompleted": 0,
       "totalDeliveredValue": 0,
@@ -6916,12 +6916,12 @@
       "cargoPriority": "auto"
     },
     {
-      "id": "ship_8_3bux",
+      "id": "ship_8_fwau",
       "name": "Nereus",
       "typeId": "charter_yacht",
       "tier": 5,
       "capacity": 80,
-      "speedKmPerDay": 848.8680299416537,
+      "speedKmPerDay": 1018.552006999157,
       "upkeepPerDay": 60,
       "state": "loading",
       "homeIslandId": "mykonos",
@@ -6935,8 +6935,8 @@
       },
       "distanceTraveledKm": 0,
       "position": {
-        "lon": 25.279675848044775,
-        "lat": 37.43629825489308
+        "lon": 25.272203279035974,
+        "lat": 37.42795197012326
       },
       "heading": 0.6179926566200743,
       "stateTimeRemaining": 0.015000000000000006,

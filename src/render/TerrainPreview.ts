@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { assetUrl } from '../utils/assets';
 
 export interface IslandData {
   id: string;
@@ -48,11 +49,11 @@ export class TerrainPreview {
 
   private loadTextures() {
     const texConfigs = [
-      { key: 'night', url: '/data/night.jpg' },
-      { key: 'day', url: '/data/day.jpg' },
-      { key: 'lights', url: '/data/lights.png' },
-      { key: 'heightmap', url: '/data/heightmap.png' },
-      { key: 'mask', url: '/data/island_mask.png' },
+      { key: 'night', url: assetUrl('data/night.jpg') },
+      { key: 'day', url: assetUrl('data/day.jpg') },
+      { key: 'lights', url: assetUrl('data/lights.png') },
+      { key: 'heightmap', url: assetUrl('data/heightmap.png') },
+      { key: 'mask', url: assetUrl('data/island_mask.png') },
     ];
 
     texConfigs.forEach(({ key, url }) => {
@@ -94,7 +95,7 @@ export class TerrainPreview {
 
   private async loadIslands() {
     try {
-      const resp = await fetch('/data/islands.json');
+      const resp = await fetch(assetUrl('data/islands.json'));
       const islands: IslandData[] = await resp.json();
 
       const pinGeo = new THREE.CylinderGeometry(0.35, 0.1, 1.2, 12);

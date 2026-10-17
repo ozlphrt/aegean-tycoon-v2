@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import type { IslandData, IslandEconomyState } from '../data/types';
 import { getProsperityRgb } from './prosperityPalette';
+import { assetUrl } from '../utils/assets';
 
 const terrainVertexShader = /* glsl */ `
   varying vec2 vUv;
@@ -567,7 +568,7 @@ export class AegeanTerrain {
     this.islandPortUV[2].set(0.48186, 0.37214);
 
     // Asynchronously preload all island port UV coordinates from islands.json
-    fetch('/data/islands.json')
+    fetch(assetUrl('data/islands.json'))
       .then((res) => res.json())
       .then((islands: IslandData[]) => {
         this.setPortLocations(islands);

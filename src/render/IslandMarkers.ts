@@ -6,6 +6,7 @@ import {
   formatProsperityExact,
 } from './prosperityPalette';
 import { getIslandName } from '../ui/i18n';
+import { assetUrl } from '../utils/assets';
 
 interface PinItem {
   pin: THREE.Mesh;
@@ -113,7 +114,7 @@ export class IslandMarkers {
 
   private async init() {
     try {
-      const resp = await fetch('/data/islands.json');
+      const resp = await fetch(assetUrl('data/islands.json'));
       this.islands = await resp.json();
 
       // Shared map pin geometry

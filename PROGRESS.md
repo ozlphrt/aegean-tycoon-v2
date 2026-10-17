@@ -2,6 +2,18 @@
 
 ## Post-Roadmap Expansions: Island Festivals, Meltemi Weather, Fleet Management, Commodity Sourcing & Archipelago Directory Completed 🎪⛵💨⛽🏝️
 
+- [x] 2026-10-17 – **Post-Roadmap Feature 61: v0.3.0 Release, Automated GitHub Pages Deployment & Locked Connected-Only Prosperity Outlines (`vite.config.ts`, `deploy.yml`, `package.json`, `README.md`, `DECISIONS.md`, `PROGRESS.md`)**:
+  - **Version 0.3.0 Release**:
+    - Bumped `package.json` to version `0.3.0`.
+    - Created [`vite.config.ts`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/vite.config.ts) with `base: './'` for resilient relative pathing across both local and hosted environments.
+    - Verified all 22 test suites (121 unit tests) pass 100% and built clean production bundle.
+  - **Automated GitHub Pages Deployment**:
+    - Configured CI/CD workflow [`.github/workflows/deploy.yml`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/.github/workflows/deploy.yml).
+    - Enabled GitHub Pages REST API build workflow and deployed live to: **https://ozlphrt.github.io/aegean-tycoon-v2/**.
+    - Verified live HTTP response and asset delivery.
+  - **Locked Island Prosperity Outlines (User Decision)**:
+    - Reconfirmed and locked the decision in [`docs/DECISIONS.md`](file:///c:/Users/ozalp/Code/AntiGravity/Argean%20Tycoon%20v2/docs/DECISIONS.md): Only connected/unlocked trade ports display real-time glowing prosperity status outlines (Red -> Orange -> Yellow -> Green along the continuous 7-stop spectrum), keeping unexplored and sleeping islands dark until awakened by active trade.
+
 - [x] 2026-10-17 – **Post-Roadmap Feature 60: Comprehensive Authentic Island Commodities, Table Olives, Thyme Honey & Archipelago Trade Registry (`goods.json`, `islands.json`, `i18n.ts`, `Icons.ts`, `main.ts`, `PROGRESS.md`)**:
   - **Replaced Generic Produce with Authentic Aegean Island Specialties**:
     - **Previous Problem**: Many smaller islands (25+ islands) were assigned generic fallback `{"fish": 3}` and `{"water": 3, "grain": 2}`, and agricultural commodities were overly generic ("Island Produce").

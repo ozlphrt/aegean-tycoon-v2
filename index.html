@@ -5,7 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aegean Tycoon — Rebirth of the Archipelago</title>
     <meta name="description" content="A 3D simulation of maritime commerce across the Aegean Sea, awakening from night into daylight." />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛵</text></svg>" />
+    <!-- App Icons & PWA Manifest -->
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <meta name="theme-color" content="#060d17" />
+    <meta name="apple-mobile-web-app-title" content="Aegean Tycoon" />
+    <meta name="application-name" content="Aegean Tycoon" />
+
+    <!-- Open Graph & Social Cards -->
+    <meta property="og:title" content="Aegean Tycoon — Rebirth of the Archipelago" />
+    <meta property="og:description" content="A 3D simulation of maritime commerce and island trade across the Aegean Sea." />
+    <meta property="og:image" content="./og-image.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="./og-image.png" />
     <!-- Google Fonts: Outfit & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,6 +42,7 @@
       <!-- Top Navigation & Treasury Bar -->
       <header id="top-bar" class="glass-panel">
         <div class="brand-section">
+          <img src="./app-icon-192.png" class="brand-app-icon" alt="Aegean Tycoon Icon" id="brand-logo-img" />
           <span class="brand-badge">AEGEAN</span>
           <h1 id="brand-title">Tycoon</h1>
           <span id="version-tag" class="subtle-tag">v2.0 Pre-Alpha</span>
@@ -796,7 +813,7 @@
       <div id="preview-welcome-modal" class="modal-overlay preview-modal-overlay closed">
         <div class="glass-panel preview-modal-container">
           <div class="preview-modal-hero">
-            <span class="preview-hero-icon">⛵</span>
+            <img src="./app-icon-192.png" class="preview-hero-app-icon" alt="Aegean Tycoon" />
             <span class="preview-hero-tag">EXECUTIVE ARCHIPELAGO TRIAL</span>
             <h2 class="preview-modal-title">Welcome to Aegean Tycoon</h2>
             <p class="preview-modal-subtitle">Experience a Thriving Maritime Empire at Full Sail for 5 Minutes</p>
@@ -863,7 +880,7 @@
       <div id="preview-ended-modal" class="modal-overlay preview-modal-overlay closed">
         <div class="glass-panel preview-modal-container">
           <div class="preview-modal-hero ended">
-            <span class="preview-hero-icon">👑</span>
+            <img src="./app-icon-192.png" class="preview-hero-app-icon ended" alt="Aegean Tycoon" />
             <span class="preview-hero-tag">PREVIEW CONCLUDED</span>
             <h2 class="preview-modal-title">Your 5-Minute Voyage Has Ended!</h2>
             <p class="preview-modal-subtitle">Resetting to Day 1: Time to Forge Your Personal Maritime Dynasty</p>

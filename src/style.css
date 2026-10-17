@@ -132,9 +132,26 @@ body {
 .brand-section {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex-shrink: 0;
   white-space: nowrap;
+}
+
+.brand-app-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  border: 1.5px solid rgba(242, 193, 78, 0.45);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45), 0 0 10px rgba(242, 193, 78, 0.25);
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.brand-app-icon:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6), 0 0 16px rgba(242, 193, 78, 0.5);
 }
 
 .brand-badge {
@@ -10011,6 +10028,21 @@ button.advisory-status-badge:active,
   line-height: 1;
   margin-bottom: 8px;
   filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.5));
+}
+
+.preview-hero-app-icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 20px;
+  border: 2px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), 0 0 24px rgba(56, 189, 248, 0.4);
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.preview-hero-app-icon.ended {
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), 0 0 24px rgba(245, 158, 11, 0.4);
 }
 
 .preview-hero-tag {

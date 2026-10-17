@@ -2,6 +2,23 @@
 
 ## Post-Roadmap Expansions: Island Festivals, Meltemi Weather, Fleet Management, Commodity Sourcing & Archipelago Directory Completed 🎪⛵💨⛽🏝️
 
+- [x] 2026-10-17 – **Post-Roadmap Feature 62: Official Aegean Tycoon App Icon, PWA Web Manifest & Brand Identity Integration (`public/`, `site.webmanifest`, `index.html`, `style.css`, `PROGRESS.md`)**:
+  - **High-Resolution App Icon & PWA Assets**:
+    - Extracted and processed the official Mediterranean twilight squircle app icon into all standard web and mobile icon specifications:
+      - `public/app-icon.png` (1024×1024 high-res master icon).
+      - `public/icon-512.png` & `public/app-icon-512.png` (512×512 PWA splash & launcher).
+      - `public/icon-192.png` & `public/app-icon-192.png` (192×192 mobile home screen & brand badge).
+      - `public/apple-touch-icon.png` (180×180 iOS Safari home screen icon).
+      - `public/favicon-32x32.png` & `public/favicon-16x16.png` (standard browser tab favicons).
+      - `public/favicon.ico` (multi-resolution ICO 16/32/48/64px).
+      - `public/og-image.png` (Open Graph / Twitter card sharing banner).
+  - **Web App Manifest (`public/site.webmanifest`)**:
+    - Created standalone PWA manifest enabling full installability on iOS, Android, macOS, and Windows desktop with official branding and `#060d17` theme color.
+  - **Brand Header & Executive Preview Integration**:
+    - Added the golden squircle app icon to the top bar `#brand-section` next to the `AEGEAN Tycoon` badge with smooth hover scale and glowing border.
+    - Updated `#preview-welcome-modal` and `#preview-ended-modal` hero banners with the official app icon.
+  - **Verification**: `npm run build` compiled cleanly; all 23 test suites (123 unit tests) pass 100%.
+
 - [x] 2026-10-17 – **Post-Roadmap Feature 61: v0.3.0 Release, Automated GitHub Pages Deployment & Locked Connected-Only Prosperity Outlines (`vite.config.ts`, `deploy.yml`, `package.json`, `README.md`, `DECISIONS.md`, `PROGRESS.md`)**:
   - **Version 0.3.0 Release**:
     - Bumped `package.json` to version `0.3.0`.
